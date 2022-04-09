@@ -14,6 +14,7 @@
 
     <!-- Template CSS Files -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/line-awesome.css">
     <link rel="stylesheet" href="css/daterangepicker.css">
     <link rel="stylesheet" href="plugins/fullCalendar/main.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -21,10 +22,120 @@
 <body>
 
 <!-- ================================
+        START HEADER AREA
+================================= -->
+<header class="header-area">
+    <div class="header-top-bar padding-right-100px padding-left-100px">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="header-top-content">
+                        <div class="header-left">
+                            <ul class="list-items">
+                                <li>
+                                    <a href="#"
+                                    ><i class="la la-phone mr-1"></i>(123) 123-456</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="#"
+                                    ><i class="la la-envelope mr-1"></i
+                                    >trizen@example.com</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="header-top-content">
+                        <div class="header-right-action text-right">
+                            <a
+                                    href="#"
+                                    class="theme-btn theme-btn-small theme-btn-transparent mr-1"
+                                    data-toggle="modal"
+                                    data-target="#signupPopupForm"
+                            >Sign Up</a
+                            >
+                            <a
+                                    href="#"
+                                    class="theme-btn theme-btn-small"
+                                    data-toggle="modal"
+                                    data-target="#loginPopupForm"
+                            >Login</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-menu-wrapper padding-right-100px padding-left-100px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="menu-wrapper justify-content-between">
+                        <a href="#" class="down-button"
+                        ><i class="la la-angle-down"></i
+                        ></a>
+                        <div class="logo">
+                            <a href="index.html"
+                            ><img
+                                    src="images/logo.png"
+                                    alt="logo"
+                                    style="max-width: 130px"
+                            /></a>
+                            <div class="menu-toggler">
+                                <i class="la la-bars"></i>
+                                <i class="la la-times"></i>
+                            </div>
+                            <!-- end menu-toggler -->
+                        </div>
+                        <!-- end logo -->
+                        <div class="main-menu-content pr-0 ml-0">
+                            <nav>
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li>
+                                        <a href="#">Venues <i class="la la-angle-down"></i></a>
+                                        <ul class="dropdown-menu-item">
+                                            <li><a href="tour-grid.html">Tour Grid</a></li>
+                                            <li><a href="tour-list.html">Tour List</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="index.html">Resorts</a></li>
+                                    <li><a href="index.html">Hotels</a></li>
+                                    <li><a href="index.html">Destination Weeding</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- end main-menu-content -->
+                        <div class="nav-btn">
+                  <span class="theme-btn"
+                  ><i class="la la-phone mr-1"></i> +8801685562958</span
+                  >
+                        </div>
+                        <!-- end nav-btn -->
+                    </div>
+                    <!-- end menu-wrapper -->
+                </div>
+                <!-- end col-lg-12 -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container-fluid -->
+    </div>
+    <!-- end header-menu-wrapper -->
+</header>
+<!-- ================================
+     END HEADER AREA
+================================= -->
+
+<!-- ================================
     START CARD AREA
 ================================= -->
 <section class="card-area" style="padding-top: 15px; padding-bottom: 15px;">
-    <div class="container-fluid">
+    <div class="container-fluid padding-right-100px padding-left-100px padding-top-50px padding-bottom-50px">
         <div class="row">
             <div class="col-lg-2">
                 <div class="sidebar mt-0">
@@ -41,9 +152,16 @@
                 <div id="modal-view-event" class="modal modal-top fade">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-                            <div class="modal-body">
+                            <div class="modal-header margin-bottom-10px">
                                 <h4 class="modal-title"><span class="event-icon"></span><span class="event-title"></span></h4>
-                                <div class="event-body"></div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <p class="event-startDate"></p>
+                                    <p class="event-endDate"></p>
+                                </div>
+                                <div class="form-group event-body"></div>
+                                <div class="form-group event-status"></div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -74,6 +192,16 @@
                                         <label>Event Description</label>
                                         <textarea class="form-control" name="edesc"></textarea>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Event Status</label>
+                                        <select name="status" class="form-control">
+                                            <option value=""> Select Status</option>
+                                            <option value="approved"> Approved</option>
+                                            <option value="pending"> Pending</option>
+                                            <option value="reject"> Reject</option>
+                                            <option value="complete"> Complete</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn AddEvent btn-primary" >Save</button>
@@ -90,6 +218,171 @@
 </section><!-- end card-area -->
 <!-- ================================
     END CARD AREA
+================================= -->
+
+
+<!-- ================================
+   START FOOTER AREA
+================================= -->
+<section
+        class="footer-area section-bg padding-top-100px padding-bottom-30px"
+>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <div class="footer-logo padding-bottom-30px">
+                        <a href="index.html" class="foot__logo"
+                        ><img style="width: 130px" src="images/logo.png" alt="logo"
+                        /></a>
+                    </div>
+                    <!-- end logo -->
+                    <p class="footer__desc">
+                        Morbi convallis bibendum urna ut viverra. Maecenas consequat
+                    </p>
+                    <ul class="list-items pt-3">
+                        <li>
+                            3015 Grand Ave, Coconut Grove,<br />
+                            Cerrick Way, FL 12345
+                        </li>
+                        <li>+123-456-789</li>
+                        <li><a href="#">trizen@yourwebsite.com</a></li>
+                    </ul>
+                    <div class="footer-social-box">
+                        <ul class="social-profile">
+                            <li>
+                                <a href="#"><i class="lab la-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="lab la-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="lab la-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="lab la-linkedin-in"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end footer-item -->
+            </div>
+            <!-- end col-lg-3 -->
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <h4
+                            class="title curve-shape pb-3 margin-bottom-20px"
+                            data-text="curvs"
+                    >
+                        Company
+                    </h4>
+                    <ul class="list-items list--items">
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="blog-sidebar.html">News</a></li>
+                        <li><a href="contact.html">Support</a></li>
+                    </ul>
+                </div>
+                <!-- end footer-item -->
+            </div>
+            <!-- end col-lg-3 -->
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <h4
+                            class="title curve-shape pb-3 margin-bottom-20px"
+                            data-text="curvs"
+                    >
+                        Other Links
+                    </h4>
+                    <ul class="list-items list--items">
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="faq.html">Faq</a></li>
+                        <li><a href="contact.html">Help Center</a></li>
+                    </ul>
+                </div>
+                <!-- end footer-item -->
+            </div>
+            <!-- end col-lg-3 -->
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <h4
+                            class="title curve-shape pb-3 margin-bottom-20px"
+                            data-text="curvs"
+                    >
+                        Subscribe now
+                    </h4>
+                    <p class="footer__desc pb-3">
+                        Subscribe for latest updates & promotions
+                    </p>
+                    <div class="contact-form-action">
+                        <form action="#">
+                            <div class="input-box">
+                                <label class="label-text">Enter email address</label>
+                                <div class="form-group mb-0">
+                                    <span class="la la-envelope form-icon"></span>
+                                    <input
+                                            class="form-control"
+                                            type="email"
+                                            name="email"
+                                            placeholder="Email address"
+                                    />
+                                    <button
+                                            class="theme-btn theme-btn-small submit-btn"
+                                            type="submit"
+                                    >
+                                        Go
+                                    </button>
+                                    <span class="font-size-14 pt-1"
+                                    ><i class="la la-lock mr-1"></i>Your information is safe
+                        with us.</span
+                                    >
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- end footer-item -->
+            </div>
+            <!-- end col-lg-3 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+    <div class="section-block mt-4"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="copy-right padding-top-30px">
+                    <p class="copy__desc">
+                        &copy; Copyright Trizen 2020. Made with
+                        <span class="la la-heart"></span> by
+                        <a target="_blank" href="https://creativewebsolution.net"
+                        >Creative Web Solution</a
+                        >
+                    </p>
+                </div>
+                <!-- end copy-right -->
+            </div>
+            <!-- end col-lg-7 -->
+            <div class="col-lg-5">
+                <div
+                        class="copy-right-content d-flex align-items-center justify-content-end padding-top-30px"
+                >
+                    <h3 class="title font-size-15 pr-2">We Accept</h3>
+                    <img src="images/payment-img.png" alt="" />
+                </div>
+                <!-- end copy-right-content -->
+            </div>
+            <!-- end col-lg-5 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+<!-- end footer-area -->
+<!-- ================================
+   START FOOTER AREA
 ================================= -->
 
 <!-- Template JS Files -->
@@ -124,6 +417,7 @@
                         start: jQuery('input[name="eStartdate"]').val(),
                         end: jQuery('input[name="eEnddate"]').val(),
                         description: jQuery('input[name="edesc"]').val(),
+                        status: jQuery('select[name="status"] option:selected').val(),
                         allDay: arg.allDay
                     });
                     jQuery('#modal-view-event-add').modal('hide');
@@ -131,9 +425,18 @@
                 });
                 calendar.unselect();
             },
-            eventClick: function(event, jsEvent, view) {
-                jQuery('.event-title').html(event.event.title);
-                jQuery('.event-body').html(event.description);
+            eventClick: function(e, jsEvent, view) {
+                console.log(e);
+                jQuery('.event-title').html(e.event.title);
+                jQuery('.event-body').html('<strong>Description: </strong>'+e.event.extendedProps.description);
+                jQuery('.event-status').html('<strong>Status: </strong>'+e.event.extendedProps.status);
+                if(e.event.endStr != ''){
+                    jQuery('.event-startDate').html('<strong>Start Date: </strong>'+e.event.startStr);
+                    jQuery('.event-endDate').html('<strong>End Date: </strong>'+e.event.endStr);
+                }else{
+                    jQuery('.event-startDate').html('<strong>Date: </strong>'+e.event.startStr);
+                }
+
                 jQuery('#modal-view-event').modal();
             },
             dayMaxEvents: true, // allow "more" link when too many events
@@ -149,13 +452,15 @@
                     end: '2022-04-11',
                     constraint: 'availableForMeeting', // defined below
                     color: '#257e4a',
+                    description:'There are plenty of ready-to-use icons, and they are awesome! But why not to use ready-to-use preloaders as well? We are all about making your life easier, here are some dope helpful tools:',
+                    status:'pending'
                 },
                 {
                     title: 'Weeding',
                     start: '2022-04-18',
                     end: '2022-04-20',
                     color:'#111',
-                    icon:'facebook'
+                    icon:'facebook',
                 },
                 {
                     title: 'Party',

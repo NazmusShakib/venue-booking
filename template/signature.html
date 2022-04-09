@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="author" content="Md. Abdul Awal">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Venues</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link href="css/css2bff7.css?family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+
+    <!-- Template CSS Files -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/daterangepicker.css">
+    <link rel="stylesheet" href="plugins/fullCalendar/main.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ================================
+    START CARD AREA
+================================= -->
+<section class="card-area" style="padding-top: 15px; padding-bottom: 15px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="sidebar mt-0">
+                    <div class="sidebar-widget">
+                        <h3 class="title stroke-shape">Hotel Info</h3>
+                        <div class="sidebar-category">
+
+                            Test
+                        </div>
+                    </div><!-- end sidebar-widget -->
+                </div><!-- end sidebar -->
+            </div><!-- end col-lg-2 -->
+            <div class="col-lg-10">
+                <div id="modal-view-event" class="modal modal-top fade">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h4 class="modal-title"><span class="event-icon"></span><span class="event-title"></span></h4>
+                                <div class="event-body"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--#modal-view-event-->
+
+                <div id="modal-view-event-add" class="modal modal-top fade calendar-modal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <form id="add-event">
+                                <div class="modal-body">
+                                    <h4>Add Event Detail</h4>
+                                    <div class="form-group">
+                                        <label>Event name</label>
+                                        <input type="text" class="form-control" name="eName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Event Start Date</label>
+                                        <input type='date' class="form-control" name="eStartdate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Event End Date</label>
+                                        <input type='date' class="form-control" name="eEnddate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Event Description</label>
+                                        <textarea class="form-control" name="edesc"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn AddEvent btn-primary" >Save</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div><!--#modal-view-event-add-->
+                <div id='calendar'></div>
+            </div><!-- end col-lg-10 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end card-area -->
+<!-- ================================
+    END CARD AREA
+================================= -->
+
+<!-- Template JS Files -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/daterangepicker.js"></script>
+<script src="plugins/fullCalendar/main.min.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            },
+            initialDate: '2022-04-09',
+            navLinks: true, // can click day/week names to navigate views
+            businessHours: true, // display business hours
+            editable: true,
+            selectable: true,
+            selectMirror: true,
+            select: function(arg) {
+                jQuery('input[name="eStartdate"]').val(arg.startStr);
+                jQuery('input[name="eEnddate"]').val(arg.startStr);
+                jQuery('#modal-view-event-add').modal();
+                jQuery(document.body).on('click', '.AddEvent', function (e) {
+                    calendar.addEvent({
+                        title: jQuery('input[name="eName"]').val(),
+                        start: jQuery('input[name="eStartdate"]').val(),
+                        end: jQuery('input[name="eEnddate"]').val(),
+                        description: jQuery('input[name="edesc"]').val(),
+                        allDay: arg.allDay
+                    });
+                    jQuery('#modal-view-event-add').modal('hide');
+                    document.getElementById("add-event").reset();
+                });
+                calendar.unselect();
+            },
+            eventClick: function(event, jsEvent, view) {
+                jQuery('.event-title').html(event.event.title);
+                jQuery('.event-body').html(event.description);
+                jQuery('#modal-view-event').modal();
+            },
+            dayMaxEvents: true, // allow "more" link when too many events
+            events: [
+                {
+                    title: 'Business Lunch',
+                    start: '2022-04-03T13:00:00',
+                    constraint: 'businessHours',
+                },
+                {
+                    title: 'Holiday',
+                    start: '2022-04-11',
+                    end: '2022-04-11',
+                    constraint: 'availableForMeeting', // defined below
+                    color: '#257e4a',
+                },
+                {
+                    title: 'Weeding',
+                    start: '2022-04-18',
+                    end: '2022-04-20',
+                    color:'#111',
+                    icon:'facebook'
+                },
+                {
+                    title: 'Party',
+                    start: '2022-04-29T13:00:00',
+                },
+
+                // areas where "Meeting" must be dropped
+                {
+                    groupId: 'availableForMeeting',
+                    start: '2022-04-11T10:00:00',
+                    end: '2022-04-11T16:00:00',
+                    display: 'background'
+                },
+                // red areas where no events can be dropped
+                {
+                    start: '2022-04-24',
+                    end: '2022-04-28',
+                    overlap: false,
+                    display: 'background',
+                    color: '#ff9f89'
+                },
+                {
+                    start: '2022-04-06',
+                    end: '2022-04-08',
+                    overlap: false,
+                    display: 'background',
+                    color: '#ff9f89'
+                }
+            ]
+        });
+
+        calendar.render();
+    });
+</script>
+</body>
+</html>

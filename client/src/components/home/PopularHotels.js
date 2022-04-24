@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PopularHotelsSlider from "../common/PopularHotelsSlider";
+import PopularHotelsSlider from "../partials/PopularHotelsSlider";
 
 class PopularHotels extends Component {
     render() {

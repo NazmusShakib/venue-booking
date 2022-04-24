@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SearchForm from "../common/SearchForm";
+import SearchForm from "../partials/SearchForm";
 
 class Hero extends Component {
 

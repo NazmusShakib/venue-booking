@@ -1,9 +1,26 @@
 import React, {Component} from 'react';
+import AppendScripts from "../../hooks/AppendScripts";
+
+const TestimonialScripts = () => {
+    let scripts = '$(".testimonial-carousel").owlCarousel({\n' +
+        '            loop: !0,\n' +
+        '            items: 2,\n' +
+        '            nav: !0,\n' +
+        '            dots: !1,\n' +
+        '            smartSpeed: 700,\n' +
+        '            autoplay: !1,\n' +
+        '            margin: 30,\n' +
+        '            navText: [\'<i class="la la-angle-left"></i>\', \'<i class="la la-angle-right"></i>\'],\n' +
+        '            responsive: { 0: { items: 1 }, 900: { items: 2 } },\n' +
+        '        })';
+    AppendScripts(scripts);
+}
 
 class Testimonial extends Component {
     render() {
         return (
             <>
+                <TestimonialScripts/>
                 <section className="testimonial-area padding-top-45px padding-bottom-100px">
                     <div className="container">
                         <div className="row">
@@ -29,7 +46,7 @@ class Testimonial extends Component {
                                         </div>
                                         <div className="author-content d-flex align-items-center">
                                             <div className="author-img">
-                                                <img src="assets/images/team8.jpg" alt="testimonial image"/>
+                                                <img src="assets/images/team8.jpg" alt="testimonial"/>
                                             </div>
                                             <div className="author-bio">
                                                 <h4 className="author__title">Leroy Bell</h4>
@@ -54,7 +71,7 @@ class Testimonial extends Component {
                                         </div>
                                         <div className="author-content d-flex align-items-center">
                                             <div className="author-img">
-                                                <img src="assets/images/team9.jpg" alt="testimonial image"/>
+                                                <img src="assets/images/team9.jpg" alt="testimonial"/>
                                             </div>
                                             <div className="author-bio">
                                                 <h4 className="author__title">Richard Pam</h4>
@@ -79,7 +96,7 @@ class Testimonial extends Component {
                                         </div>
                                         <div className="author-content d-flex align-items-center">
                                             <div className="author-img">
-                                                <img src="assets/images/team10.jpg" alt="testimonial image"/>
+                                                <img src="assets/images/team10.jpg" alt="testimonial"/>
                                             </div>
                                             <div className="author-bio">
                                                 <h4 className="author__title">Luke Jacobs</h4>
@@ -104,7 +121,7 @@ class Testimonial extends Component {
                                         </div>
                                         <div className="author-content d-flex align-items-center">
                                             <div className="author-img">
-                                                <img src="assets/images/team8.jpg" alt="testimonial image"/>
+                                                <img src="assets/images/team8.jpg" alt="testimonial"/>
                                             </div>
                                             <div className="author-bio">
                                                 <h4 className="author__title">Chulbul Panday</h4>

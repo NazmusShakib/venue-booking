@@ -1,9 +1,27 @@
 import React, {Component} from 'react';
+import AppendScripts from "../../hooks/AppendScripts";
+
+const PopularHotelsScripts = () => {
+    let scripts = '$(".hotel-card-carousel-2").owlCarousel({\n' +
+        '            loop: !0,\n' +
+        '            items: 3,\n' +
+        '            nav: !0,\n' +
+        '            dots: !0,\n' +
+        '            smartSpeed: 700,\n' +
+        '            autoplay: !1,\n' +
+        '            active: !0,\n' +
+        '            margin: 30,\n' +
+        '            navText: [\'<i class="la la-angle-left"></i>\', \'<i class="la la-angle-right"></i>\'],\n' +
+        '            responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 } },\n' +
+        '        })';
+    AppendScripts(scripts);
+}
 
 class PopularHotelsSlider extends Component {
     render() {
         return (
             <>
+                <PopularHotelsScripts/>
                 <div className="hotel-card-wrap">
                     <div className="hotel-card-carousel-2 carousel-action">
                         <div className="card-item">

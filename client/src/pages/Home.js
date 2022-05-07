@@ -9,10 +9,12 @@ import TopVisitedPlaces from "../components/home/TopVisitedPlaces";
 import Testimonial from "../components/partials/Testimonial";
 import IntroduceBanner from "../components/home/IntroduceBanner";
 import LatestBlog from "../components/partials/LatestBlog";
+import Daterange from "../hooks/Daterange";
 class Home extends Component {
     render() {
         return (
             <>
+                <Daterange/>
                 <HomePageScripts/>
                 <Hero/>
                 <StartInfo/>

@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
 import Subscribe from "../components/partials/Subscribe";
 import InfoSection from "../components/partials/InfoSection";
+import Daterange from "../hooks/Daterange";
+import Select2 from "../hooks/Select2";
+import JqueryUi from "../hooks/JqueryUi";
 
 class Resorts extends Component {
     render() {
         return (
             <>
+                <Daterange/>
+                <Select2/>
+                <JqueryUi/>
                 <section className="breadcrumb-area bread-bg-7">
                     <div className="breadcrumb-wrap">
                         <div className="container">

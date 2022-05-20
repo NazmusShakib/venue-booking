@@ -97,7 +97,7 @@ class Venues extends Component {
                                                             <div className="checkbox-wrap">
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="r1"/>
-                                                                        <label htmlFor="r1">
+                                                                    <label htmlFor="r1">
                                                         <span className="ratings d-flex align-items-center">
                                                             <i className="la la-star"></i>
                                                             <i className="la la-star"></i>
@@ -107,11 +107,11 @@ class Venues extends Component {
                                                             <span
                                                                 className="color-text-3 font-size-13 ml-1">(55.590)</span>
                                                         </span>
-                                                                        </label>
+                                                                    </label>
                                                                 </div>
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="r2"/>
-                                                                        <label htmlFor="r2">
+                                                                    <label htmlFor="r2">
                                                         <span className="ratings d-flex align-items-center">
                                                             <i className="la la-star"></i>
                                                             <i className="la la-star"></i>
@@ -121,11 +121,11 @@ class Venues extends Component {
                                                             <span
                                                                 className="color-text-3 font-size-13 ml-1">(40.590)</span>
                                                         </span>
-                                                                        </label>
+                                                                    </label>
                                                                 </div>
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="r3"/>
-                                                                        <label htmlFor="r3">
+                                                                    <label htmlFor="r3">
                                                         <span className="ratings d-flex align-items-center">
                                                             <i className="la la-star"></i>
                                                             <i className="la la-star"></i>
@@ -135,11 +135,11 @@ class Venues extends Component {
                                                             <span
                                                                 className="color-text-3 font-size-13 ml-1">(23.590)</span>
                                                         </span>
-                                                                        </label>
+                                                                    </label>
                                                                 </div>
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="r4"/>
-                                                                        <label htmlFor="r4">
+                                                                    <label htmlFor="r4">
                                                         <span className="ratings d-flex align-items-center">
                                                             <i className="la la-star"></i>
                                                             <i className="la la-star"></i>
@@ -149,11 +149,11 @@ class Venues extends Component {
                                                             <span
                                                                 className="color-text-3 font-size-13 ml-1">(12.590)</span>
                                                         </span>
-                                                                        </label>
+                                                                    </label>
                                                                 </div>
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="r5"/>
-                                                                        <label htmlFor="r5">
+                                                                    <label htmlFor="r5">
                                                         <span className="ratings d-flex align-items-center">
                                                             <i className="la la-star"></i>
                                                             <i className="la la-star-o"></i>
@@ -163,7 +163,7 @@ class Venues extends Component {
                                                             <span
                                                                 className="color-text-3 font-size-13 ml-1">(590)</span>
                                                         </span>
-                                                                        </label>
+                                                                    </label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -181,36 +181,36 @@ class Venues extends Component {
                                                             <div className="checkbox-wrap">
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="catChb1"/>
-                                                                        <label htmlFor="catChb1">Pet Allowed</label>
+                                                                    <label htmlFor="catChb1">Pet Allowed</label>
                                                                 </div>
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="catChb2"/>
-                                                                        <label htmlFor="catChb2">Groups Allowed</label>
+                                                                    <label htmlFor="catChb2">Groups Allowed</label>
                                                                 </div>
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="catChb3"/>
-                                                                        <label htmlFor="catChb3">Tour Guides</label>
+                                                                    <label htmlFor="catChb3">Tour Guides</label>
                                                                 </div>
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="catChb4"/>
-                                                                        <label htmlFor="catChb4">Access for
-                                                                            disabled</label>
+                                                                    <label htmlFor="catChb4">Access for
+                                                                        disabled</label>
                                                                 </div>
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="catChb5"/>
-                                                                        <label htmlFor="catChb5">Room Service</label>
+                                                                    <label htmlFor="catChb5">Room Service</label>
                                                                 </div>
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="catChb6"/>
-                                                                        <label htmlFor="catChb6">Parking</label>
+                                                                    <label htmlFor="catChb6">Parking</label>
                                                                 </div>
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="catChb7"/>
-                                                                        <label htmlFor="catChb7">Restaurant</label>
+                                                                    <label htmlFor="catChb7">Restaurant</label>
                                                                 </div>
                                                                 <div className="custom-checkbox">
                                                                     <input type="checkbox" id="catChb8"/>
-                                                                        <label htmlFor="catChb8">Pet friendly</label>
+                                                                    <label htmlFor="catChb8">Pet friendly</label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -260,7 +260,8 @@ class Venues extends Component {
                                                 <span className="price__num">$88.00</span>
                                                 <span className="price__text">Per night</span>
                                             </p>
-                                            <a href="hotel-single.html" className="btn-text">See details<i className="la la-angle-right"></i></a>
+                                            <a href="hotel-single.html" className="btn-text">See details<i
+                                                className="la la-angle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -292,7 +293,8 @@ class Venues extends Component {
                                                 <span className="price__num">$58.00</span>
                                                 <span className="price__text">Per night</span>
                                             </p>
-                                            <a href="hotel-single.html" className="btn-text">See details<i className="la la-angle-right"></i></a>
+                                            <a href="hotel-single.html" className="btn-text">See details<i
+                                                className="la la-angle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -325,7 +327,8 @@ class Venues extends Component {
                                                 <span className="price__num">$88.00</span>
                                                 <span className="price__text">Per night</span>
                                             </p>
-                                            <a href="hotel-single.html" className="btn-text">See details<i className="la la-angle-right"></i></a>
+                                            <a href="hotel-single.html" className="btn-text">See details<i
+                                                className="la la-angle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -358,7 +361,8 @@ class Venues extends Component {
                                                 <span className="price__num">$88.00</span>
                                                 <span className="price__text">Per night</span>
                                             </p>
-                                            <a href="hotel-single.html" className="btn-text">See details<i className="la la-angle-right"></i></a>
+                                            <a href="hotel-single.html" className="btn-text">See details<i
+                                                className="la la-angle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -390,7 +394,8 @@ class Venues extends Component {
                                                 <span className="price__num">$88.00</span>
                                                 <span className="price__text">Per night</span>
                                             </p>
-                                            <a href="hotel-single.html" className="btn-text">See details<i className="la la-angle-right"></i></a>
+                                            <a href="hotel-single.html" className="btn-text">See details<i
+                                                className="la la-angle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -422,7 +427,8 @@ class Venues extends Component {
                                                 <span className="price__num">$88.00</span>
                                                 <span className="price__text">Per night</span>
                                             </p>
-                                            <a href="hotel-single.html" className="btn-text">See details<i className="la la-angle-right"></i></a>
+                                            <a href="hotel-single.html" className="btn-text">See details<i
+                                                className="la la-angle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>

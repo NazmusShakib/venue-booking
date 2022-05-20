@@ -4,6 +4,7 @@ import InfoSection from "../components/partials/InfoSection";
 import Daterange from "../hooks/Daterange";
 import Select2 from "../hooks/Select2";
 import JqueryUi from "../hooks/JqueryUi";
+import {Link} from "react-router-dom";
 
 class Resorts extends Component {
     render() {
@@ -26,7 +27,7 @@ class Resorts extends Component {
                                 <div className="col-lg-6">
                                     <div className="breadcrumb-list text-right">
                                         <ul className="list-items">
-                                            <li><a href="index.html">Home</a></li>
+                                            <li><Link to="/">Home</Link></li>
                                             <li>Resorts</li>
                                         </ul>
                                     </div>
@@ -48,166 +49,6 @@ class Resorts extends Component {
                                         <div>
                                             <h3 className="title font-size-24">2224 Resorts found</h3>
                                             <p className="font-size-14"><span className="mr-1 pt-1">Book with confidence:</span>No resorts booking fees</p>
-                                        </div>
-                                    </div>
-                                    <div className="filter-bar d-flex align-items-center justify-content-between">
-                                        <div className="filter-bar-filter d-flex flex-wrap align-items-center">
-                                            <div className="filter-option">
-                                                <h3 className="title font-size-16">Filter by:</h3>
-                                            </div>
-                                            <div className="filter-option">
-                                                <div className="dropdown dropdown-contain">
-                                                    <a className="dropdown-toggle dropdown-btn dropdown--btn" href="#" role="button" data-toggle="dropdown">
-                                                        Filter Price
-                                                    </a>
-                                                    <div className="dropdown-menu dropdown-menu-wrap">
-                                                        <div className="dropdown-item">
-                                                            <div className="slider-range-wrap">
-                                                                <div className="price-slider-amount padding-bottom-20px">
-                                                                    <label htmlFor="amount" className="filter__label">Price:</label>
-                                                                    <input type="text" id="amount" className="amounts"/>
-                                                                </div>
-                                                                <div id="slider-range"></div>
-                                                            </div>
-                                                            <div className="btn-box pt-4">
-                                                                <button className="theme-btn theme-btn-small theme-btn-transparent" type="button">Apply</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="filter-option">
-                                                <div className="dropdown dropdown-contain">
-                                                    <a className="dropdown-toggle dropdown-btn dropdown--btn" href="#" role="button" data-toggle="dropdown">
-                                                        Review Score
-                                                    </a>
-                                                    <div className="dropdown-menu dropdown-menu-wrap">
-                                                        <div className="dropdown-item">
-                                                            <div className="checkbox-wrap">
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="r1"/>
-                                                                        <label htmlFor="r1">
-                                                        <span className="ratings d-flex align-items-center">
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star"></i>
-                                                            <span className="color-text-3 font-size-13 ml-1">(55.590)</span>
-                                                        </span>
-                                                                        </label>
-                                                                </div>
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="r2"/>
-                                                                        <label htmlFor="r2">
-                                                        <span className="ratings d-flex align-items-center">
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star-o"></i>
-                                                            <span className="color-text-3 font-size-13 ml-1">(40.590)</span>
-                                                        </span>
-                                                                        </label>
-                                                                </div>
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="r3"/>
-                                                                        <label htmlFor="r3">
-                                                        <span className="ratings d-flex align-items-center">
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star-o"></i>
-                                                            <i className="la la-star-o"></i>
-                                                            <span className="color-text-3 font-size-13 ml-1">(23.590)</span>
-                                                        </span>
-                                                                        </label>
-                                                                </div>
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="r4"/>
-                                                                        <label htmlFor="r4">
-                                                        <span className="ratings d-flex align-items-center">
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star-o"></i>
-                                                            <i className="la la-star-o"></i>
-                                                            <i className="la la-star-o"></i>
-                                                            <span className="color-text-3 font-size-13 ml-1">(12.590)</span>
-                                                        </span>
-                                                                        </label>
-                                                                </div>
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="r5"/>
-                                                                        <label htmlFor="r5">
-                                                        <span className="ratings d-flex align-items-center">
-                                                            <i className="la la-star"></i>
-                                                            <i className="la la-star-o"></i>
-                                                            <i className="la la-star-o"></i>
-                                                            <i className="la la-star-o"></i>
-                                                            <i className="la la-star-o"></i>
-                                                            <span className="color-text-3 font-size-13 ml-1">(590)</span>
-                                                        </span>
-                                                                        </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="filter-option">
-                                                <div className="dropdown dropdown-contain">
-                                                    <a className="dropdown-toggle dropdown-btn dropdown--btn" href="#" role="button" data-toggle="dropdown">
-                                                        Facilities
-                                                    </a>
-                                                    <div className="dropdown-menu dropdown-menu-wrap">
-                                                        <div className="dropdown-item">
-                                                            <div className="checkbox-wrap">
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="catChb1"/>
-                                                                        <label htmlFor="catChb1">Pet Allowed</label>
-                                                                </div>
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="catChb2"/>
-                                                                        <label htmlFor="catChb2">Groups Allowed</label>
-                                                                </div>
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="catChb3"/>
-                                                                        <label htmlFor="catChb3">Tour Guides</label>
-                                                                </div>
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="catChb4"/>
-                                                                        <label htmlFor="catChb4">Access for disabled</label>
-                                                                </div>
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="catChb5"/>
-                                                                        <label htmlFor="catChb5">Room Service</label>
-                                                                </div>
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="catChb6"/>
-                                                                        <label htmlFor="catChb6">Parking</label>
-                                                                </div>
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="catChb7"/>
-                                                                        <label htmlFor="catChb7">Restaurant</label>
-                                                                </div>
-                                                                <div className="custom-checkbox">
-                                                                    <input type="checkbox" id="catChb8"/>
-                                                                        <label htmlFor="catChb8">Pet friendly</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="select-contain">
-                                            <select className="select-contain-select">
-                                                <option defaultValue="1">Short by default</option>
-                                                <option defaultValue="2">Popular Hotels</option>
-                                                <option defaultValue="3">Price: low to high</option>
-                                                <option defaultValue="4">Price: high to low</option>
-                                                <option defaultValue="5">A to Z</option>
-                                            </select>
                                         </div>
                                     </div>
                                 </div>

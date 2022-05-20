@@ -72,13 +72,7 @@ class Header extends Component {
                                                     <li>
                                                         <Link to="/">Home</Link>
                                                     </li>
-                                                    <li>
-                                                        <a href="#">Venues <i className="la la-angle-down"></i></a>
-                                                        <ul className="dropdown-menu-item">
-                                                            <li><a href="tour-grid.html">Tour Grid</a></li>
-                                                            <li><a href="tour-list.html">Tour List</a></li>
-                                                        </ul>
-                                                    </li>
+                                                    <li><Link to="venues">Venues</Link> </li>
                                                     <li><Link to="resorts">Resorts</Link> </li>
                                                     <li><Link to="hotels">Hotels</Link> </li>
                                                     <li><a href="index.html">Destination Weeding</a></li>

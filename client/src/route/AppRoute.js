@@ -6,6 +6,7 @@ import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
 import Hotels from "../pages/Hotels";
 import Resorts from "../pages/Resorts";
+import Venues from "../pages/Venues";
 
 class AppRoute extends Component {
     render() {
@@ -18,6 +19,7 @@ class AppRoute extends Component {
                         <Route path="about-us" element={<AboutUs />} />
                         <Route path="hotels" element={<Hotels />} />
                         <Route path="resorts" element={<Resorts />} />
+                        <Route path="venues" element={<Venues />} />
                     </Routes>
                     <Footer/>
                 </BrowserRouter>

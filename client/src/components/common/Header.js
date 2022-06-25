@@ -75,7 +75,7 @@ class Header extends Component {
                                                     <li><Link to="venues">Venues</Link> </li>
                                                     <li><Link to="resorts">Resorts</Link> </li>
                                                     <li><Link to="hotels">Hotels</Link> </li>
-                                                    <li><a href="index.html">Destination Weeding</a></li>
+                                                    <li><Link to="destination-weeding">Destination Weeding</Link></li>
                                                 </ul>
                                             </nav>
                                         </div>

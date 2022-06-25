@@ -12,14 +12,11 @@ class Footer extends Component {
                         <div className="row">
                             <div className="col-lg-3 responsive-column">
                                 <div className="footer-item">
-                                    <div className="footer-logo padding-bottom-30px">
+                                    <div className="footer-logo padding-bottom-20px">
                                         <a href="index.html" className="foot__logo"
                                         ><img style={{'maxWidth': '130px'}} src="assets/images/logo.png" alt="logo"
                                         /></a>
                                     </div>
-                                    <p className="footer__desc">
-                                        Morbi convallis bibendum urna ut viverra. Maecenas consequat
-                                    </p>
                                     <ul className="list-items pt-3">
                                         <li>
                                             3015 Grand Ave, Coconut Grove,<br/>
@@ -56,9 +53,8 @@ class Footer extends Component {
                                     </h4>
                                     <ul className="list-items list--items">
                                         <li><Link to="/about-us">About Us</Link></li>
-                                        <li><a href="services.html">Services</a></li>
-                                        <li><a href="blog-sidebar.html">News</a></li>
-                                        <li><a href="contact.html">Support</a></li>
+                                        <li><Link to="/blog">News / Articles</Link></li>
+                                        <li><Link to="/contact-us">Help & Support</Link></li>
                                     </ul>
                                 </div>
                             </div>
@@ -71,10 +67,9 @@ class Footer extends Component {
                                         Other Links
                                     </h4>
                                     <ul className="list-items list--items">
-                                        <li><a href="#">Terms & Conditions</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
-                                        <li><a href="faq.html">Faq</a></li>
-                                        <li><a href="contact.html">Help Center</a></li>
+                                        <li><Link to="/terms-and-conditions">Terms & Conditions</Link></li>
+                                        <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+                                        <li><Link to="/faq">Faq</Link></li>
                                     </ul>
                                 </div>
                             </div>
@@ -125,10 +120,7 @@ class Footer extends Component {
                                 <div className="copy-right padding-top-30px">
                                     <p className="copy__desc">
                                         &copy; Copyright Trizen 2020. Made with
-                                        <span className="la la-heart"></span> by
-                                        <a target="_blank" href="https://creativewebsolution.net"
-                                        >Creative Web Solution</a
-                                        >
+                                        <span className="la la-heart"></span> by <a target="_blank" href="https://creativewebsolution.net" >Creative Web Solution</a>
                                     </p>
                                 </div>
                             </div>

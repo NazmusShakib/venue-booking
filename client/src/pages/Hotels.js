@@ -20,7 +20,7 @@ class Hotels extends Component {
                                 <div className="col-lg-6">
                                     <div className="breadcrumb-content">
                                         <div className="section-heading">
-                                            <h2 className="sec__title text-white">Hotel List</h2>
+                                            <h2 className="sec__title text-white">Hotel</h2>
                                         </div>
                                     </div>
                                 </div>

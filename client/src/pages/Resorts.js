@@ -7,6 +7,10 @@ import JqueryUi from "../hooks/JqueryUi";
 import {Link} from "react-router-dom";
 
 class Resorts extends Component {
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <>

@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import Select2 from "../hooks/Select2";
-import JqueryUi from "../hooks/JqueryUi";
 import {Link} from "react-router-dom";
 import InfoSection from "../components/partials/InfoSection";
 import Subscribe from "../components/partials/Subscribe";
 
 class DestinationWeeding extends Component {
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <>

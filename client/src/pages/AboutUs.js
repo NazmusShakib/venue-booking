@@ -3,6 +3,10 @@ import Testimonial from "../components/partials/Testimonial";
 import OurTeam from "../components/partials/OurTeam";
 
 class AboutUs extends Component {
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <>

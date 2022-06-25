@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 
 class LatestBlog extends Component {
     render() {
@@ -188,7 +189,7 @@ class LatestBlog extends Component {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="btn-box text-center pt-4">
-                                    <a href="blog-grid.html" className="theme-btn">Read More Post</a>
+                                    <Link to="/blog" className="theme-btn">Read More Post</Link>
                                 </div>
                             </div>
                         </div>

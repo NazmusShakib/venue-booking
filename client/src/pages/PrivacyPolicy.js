@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 
 class PrivacyPolicy extends Component {
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <>

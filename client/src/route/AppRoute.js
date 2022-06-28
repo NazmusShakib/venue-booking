@@ -15,6 +15,8 @@ import TermsAndConditions from "../pages/TermsAndConditions";
 import DestinationWeeding from "../pages/DestinationWeeding";
 import Login from "../pages/auths/Login";
 import Register from "../pages/auths/Register";
+import Dashboard from "../pages/dashboard/Dashboard";
+import Profile from "../pages/dashboard/Profile";
 
 class AppRoute extends Component {
     render() {
@@ -36,6 +38,8 @@ class AppRoute extends Component {
                         <Route path="faq" element={<Faq />} />
                         <Route path="privacy-policy" element={<PrivacyPolicy />} />
                         <Route path="terms-and-conditions" element={<TermsAndConditions />} />
+                        <Route path="dashboard" element={<Dashboard />} />
+                        <Route path="profile" element={<Profile />} />
                     </Routes>
                     <Footer/>
                 </BrowserRouter>

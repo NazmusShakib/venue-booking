@@ -31,29 +31,31 @@ const Login = () => {
             email: loginInput.email,
             password: loginInput.password
         }
-        axios.post('/api/login', data).then(res => {
-            if (res.data.status === 400)
-            {
-                setLogin({...loginInput, processing:false, message:res.data.message, errors:res.data.errors});
-            }
-            else if(res.data.status === 401)
-            {
-                setLogin({...loginInput, processing:false, message:res.data.message});
-            }
-            else if(res.data.status === 200)
-            {
-                SessionHelper.SetAuthSession(res.data.user);
-                setLogin({...loginInput,
-                    processing:false,
-                    errors:[],
-                    email: '',
-                    message: '',
-                    password: ''
-                });
-                navigate('/');
-            }
-        }).catch((error)=>{
-            setLogin({...loginInput, processing:false, message:'Sorry! something went wrong.'});
+        axios.get('/sanctum/csrf-cookie').then(response => {
+            axios.post('/api/login', data).then(res => {
+                if (res.data.status === 400)
+                {
+                    setLogin({...loginInput, processing:false, message:res.data.message, errors:res.data.errors});
+                }
+                else if(res.data.status === 401)
+                {
+                    setLogin({...loginInput, processing:false, message:res.data.message});
+                }
+                else if(res.data.status === 200)
+                {
+                    SessionHelper.SetAuthSession(res.data.user);
+                    setLogin({...loginInput,
+                        processing:false,
+                        errors:[],
+                        email: '',
+                        message: '',
+                        password: ''
+                    });
+                    navigate('/');
+                }
+            }).catch((error)=>{
+                setLogin({...loginInput, processing:false, message:'Sorry! something went wrong.'});
+            });
         });
     }
     return (

@@ -53,14 +53,16 @@ const Header = () => {
                                     <div className="header-right-action text-right">
                                         {SessionHelper.GetAuthSession() !== null ? (
                                             <>
+                                                <Link to="/dashboard" className="theme-btn theme-btn-small theme-btn-transparent mr-1">Dashboard</Link>
+
                                                 <Link className="theme-btn theme-btn-small theme-btn-transparent" to="" onClick={handleLogout}>
                                                     <i className="fas fa-sign-out-alt"></i> Logout
                                                 </Link>
                                             </>
                                         ) : (
                                             <>
-                                                <Link to="register" className="theme-btn theme-btn-small theme-btn-transparent mr-1">Register</Link>
-                                                <Link to="login" className="theme-btn theme-btn-small">Login</Link>
+                                                <Link to="/register" className="theme-btn theme-btn-small theme-btn-transparent mr-1">Register</Link>
+                                                <Link to="/login" className="theme-btn theme-btn-small">Login</Link>
                                             </>
                                         )}
                                     </div>

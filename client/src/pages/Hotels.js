@@ -152,10 +152,10 @@ class Hotels extends Component {
                                         <div className="sidebar-price-range">
                                             <div className="main-search-input-item">
                                                 <div className="price-slider-amount padding-bottom-20px">
-                                                    <label htmlFor="amount2" className="filter__label">Price:</label>
-                                                    <input type="text" id="amount2" className="amounts"/>
+                                                    <label htmlFor="amount" className="filter__label">Price:</label>
+                                                    <input type="text" id="amount" className="amounts"/>
                                                 </div>
-                                                <div id="slider-range2"></div>
+                                                <div id="slider-range"></div>
                                             </div>
                                             <div className="btn-box pt-4">
                                                 <button

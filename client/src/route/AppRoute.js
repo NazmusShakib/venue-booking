@@ -13,6 +13,8 @@ import Faq from "../pages/Faq";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsAndConditions from "../pages/TermsAndConditions";
 import DestinationWeeding from "../pages/DestinationWeeding";
+import Login from "../pages/auths/Login";
+import Register from "../pages/auths/Register";
 
 class AppRoute extends Component {
     render() {
@@ -27,6 +29,8 @@ class AppRoute extends Component {
                         <Route path="resorts" element={<Resorts />} />
                         <Route path="venues" element={<Venues />} />
                         <Route path="destination-weeding" element={<DestinationWeeding />} />
+                        <Route path="login" element={<Login />} />
+                        <Route path="register" element={<Register />} />
                         <Route path="blog" element={<Blog />} />
                         <Route path="contact-us" element={<HelpAndSupport />} />
                         <Route path="faq" element={<Faq />} />

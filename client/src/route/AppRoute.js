@@ -13,10 +13,12 @@ import Faq from "../pages/Faq";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsAndConditions from "../pages/TermsAndConditions";
 import DestinationWeeding from "../pages/DestinationWeeding";
-import Login from "../pages/auths/Login";
-import Register from "../pages/auths/Register";
+import Login from "../pages/authentication/Login";
+import Register from "../pages/authentication/Register";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Profile from "../pages/dashboard/Profile";
+import AuthRoutes from "../_utility/AuthRoutes";
+import GuestRoutes from "../_utility/GuestRoutes";
 
 class AppRoute extends Component {
     render() {
@@ -31,15 +33,19 @@ class AppRoute extends Component {
                         <Route path="resorts" element={<Resorts />} />
                         <Route path="venues" element={<Venues />} />
                         <Route path="destination-weeding" element={<DestinationWeeding />} />
-                        <Route path="login" element={<Login />} />
-                        <Route path="register" element={<Register />} />
                         <Route path="blog" element={<Blog />} />
                         <Route path="contact-us" element={<HelpAndSupport />} />
                         <Route path="faq" element={<Faq />} />
                         <Route path="privacy-policy" element={<PrivacyPolicy />} />
                         <Route path="terms-and-conditions" element={<TermsAndConditions />} />
-                        <Route path="dashboard" element={<Dashboard />} />
-                        <Route path="profile" element={<Profile />} />
+                        <Route element={<GuestRoutes/>}>
+                            <Route path="login" element={<Login />} />
+                            <Route path="register" element={<Register />} />
+                        </Route>
+                        <Route element={<AuthRoutes/>}>
+                            <Route path="dashboard" element={<Dashboard />} />
+                            <Route path="profile" element={<Profile />} />
+                        </Route>
                     </Routes>
                     <Footer/>
                 </BrowserRouter>

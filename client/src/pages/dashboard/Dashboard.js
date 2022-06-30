@@ -27,7 +27,7 @@ class Dashboard extends Component {
                 start: selectInfo.startStr,
                 end: selectInfo.endStr,
                 allDay: selectInfo.allDay
-            })
+            });
         }
     }
 

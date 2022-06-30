@@ -10,7 +10,7 @@ const Sidebar = () => {
     return (
         <>
             <div className="col-lg-2">
-                <nav id="sidebarMenu" className="collapse d-lg-block sidebar collapse bg-white" style={{'padding':0}}>
+                <nav id="sidebarMenu" className="sidebar" style={{'padding':0}}>
                     <div className="position-sticky">
                         <div className="list-group list-group-flush mx-3 mt-4 mb-4">
                             <Link to="/dashboard" className={splitLocation[1] === "dashboard" ? "list-group-item list-group-item-action py-2 ripple active" : "list-group-item list-group-item-action py-2 ripple"}>

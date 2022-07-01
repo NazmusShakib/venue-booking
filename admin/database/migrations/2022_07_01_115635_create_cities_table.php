@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('district_id')->constrained();
             $table->string('name')->unique();
+            $table->string('bn_name')->nullable();
+            $table->string('url')->nullable();
             $table->integer('created_by')->unsigned()->nullable()->index();
             $table->integer('updated_by')->unsigned()->nullable()->index();
             $table->timestamps();

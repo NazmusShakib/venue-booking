@@ -8,6 +8,7 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Encore\Admin\Facades\Admin;
+use App\Models\District;
 
 class CityController extends AdminController
 {
@@ -27,12 +28,27 @@ class CityController extends AdminController
     {
         $grid = new Grid(new City());
 
-        $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
+        $grid->column('id', __('Id'))->sortable();
+        $grid->column('district_id', __('District'))->display(function () {
+            return $this->district->name;
+        })->sortable();
+        $grid->column('name', __('Name'))->sortable();
         //$grid->column('created_by', __('Created by'));
         //$grid->column('updated_by', __('Updated by'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('created_at', __('Created at'))->display(function () {
+            return date('d/F/Y h:i a', strtotime($this->created_at));
+        })->sortable();
+        $grid->column('updated_at', __('Updated at'))->display(function () {
+            return !empty($this->updated_at) ? date('d/F/Y h:i a', strtotime($this->updated_at)) : '';
+        })->sortable();
+
+        $grid->filter(function($filter){
+            // Remove the default id filter
+            $filter->disableIdFilter();
+            // Add a column filter
+            $filter->like('name', 'name');
+            $filter->equal('district_id', 'District')->select(District::get()->pluck('name', 'id'));
+        });
 
         return $grid;
     }
@@ -65,7 +81,9 @@ class CityController extends AdminController
     protected function form()
     {
         $form = new Form(new City());
-
+        $form->select('district_id', __('District'))->options(function () {
+            return District::get()->pluck('name', 'id');
+        });
         $form->text('name', __('Name'));
         if($form->isCreating())
         {

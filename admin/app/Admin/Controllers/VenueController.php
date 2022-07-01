@@ -27,9 +27,9 @@ class VenueController extends AdminController
     {
         $grid = new Grid(new Venue());
 
-        $grid->column('id', __('Id'));
+        $grid->column('id', __('Id'))->sortable();
         $grid->column('featured_image', __('Featured image'));
-        $grid->column('name', __('Name'));
+        $grid->column('name', __('Name'))->sortable();
         //$grid->column('slug', __('Slug'));
         //$grid->column('description', __('Description'));
         //$grid->column('additional_info', __('Additional info'));
@@ -42,8 +42,12 @@ class VenueController extends AdminController
         $grid->column('is_enabled', __('Is enabled'));
         //$grid->column('created_by', __('Created by'));
         //$grid->column('updated_by', __('Updated by'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('created_at', __('Created at'))->display(function () {
+            return date('d/F/Y h:i a', strtotime($this->created_at));
+        })->sortable();
+        $grid->column('updated_at', __('Updated at'))->display(function () {
+            return !empty($this->updated_at) ? date('d/F/Y h:i a', strtotime($this->updated_at)) : '';
+        })->sortable();
 
         return $grid;
     }
@@ -71,10 +75,21 @@ class VenueController extends AdminController
         $show->field('district_id', __('District id'));
         $show->field('city_id', __('City id'));
         $show->field('is_enabled', __('Is enabled'));
-        $show->field('created_by', __('Created by'));
-        $show->field('updated_by', __('Updated by'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
+        //$show->field('created_by', __('Created by'));
+        //$show->field('updated_by', __('Updated by'));
+        $grid->column('created_at', __('Created at'))->display(function () {
+            return date('d/F/Y h:i a', strtotime($this->created_at));
+        })->sortable();
+        $grid->column('updated_at', __('Updated at'))->display(function () {
+            return !empty($this->updated_at) ? date('d/F/Y h:i a', strtotime($this->updated_at)) : '';
+        })->sortable();
+
+        $grid->filter(function($filter){
+            // Remove the default id filter
+            $filter->disableIdFilter();
+            // Add a column filter
+            $filter->like('name', 'name');
+        });
 
         return $show;
     }

@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('districts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('division_id')->constrained();
             $table->string('name')->unique();
+            $table->string('bn_name')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lon')->nullable();
+            $table->string('url')->nullable();
             $table->integer('created_by')->unsigned()->nullable()->index();
             $table->integer('updated_by')->unsigned()->nullable()->index();
             $table->timestamps();

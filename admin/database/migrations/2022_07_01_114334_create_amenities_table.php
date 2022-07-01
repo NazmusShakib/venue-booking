@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('amenities', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->text('remarks');
+            $table->text('remarks')->nullable();
             $table->integer('created_by')->unsigned()->nullable()->index();
             $table->integer('updated_by')->unsigned()->nullable()->index();
             $table->timestamps();

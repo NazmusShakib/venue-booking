@@ -27,12 +27,16 @@ class DivisionController extends AdminController
     {
         $grid = new Grid(new Division());
 
-        $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
+        $grid->column('id', __('Id'))->sortable();
+        $grid->column('name', __('Name'))->sortable();
         //$grid->column('created_by', __('Created by'));
         //$grid->column('updated_by', __('Updated by'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('created_at', __('Created at'))->display(function () {
+            return date('d/F/Y h:i a', strtotime($this->created_at));
+        })->sortable();
+        $grid->column('updated_at', __('Updated at'))->display(function () {
+            return !empty($this->updated_at) ? date('d/F/Y h:i a', strtotime($this->updated_at)) : '';
+        })->sortable();
 
         return $grid;
     }

@@ -55,7 +55,7 @@ class Venue extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function Amenities()
+    public function amenities()
     {
         return $this->belongsToMany(Amenity::class);
     }

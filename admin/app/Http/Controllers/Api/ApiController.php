@@ -27,14 +27,78 @@ class ApiController extends Controller
         return OccasionResource::collection(Occasion::all());
     }
 
+    public function formatVenueFilter($request, $category){
+        $categoryIds = !empty($request->categories) ? $request->categories : [];
+        if(!empty($category))
+            array_push($categoryIds, $category);
+
+        $amenityIds = !empty($request->amenities) ? $request->amenities : [];
+        $occasionIds = !empty($request->occasions) ? $request->occasions : [];
+
+        if(!empty($categoryIds) && count($categoryIds) > 0 )
+        {
+            $cats = array_unique($categoryIds);
+            $categoryIds = Category::whereIn('slug', $cats)->pluck('id')->toArray();
+            sort($categoryIds);
+        }
+
+        if(!empty($amenityIds) && count($amenityIds) > 0 )
+        {
+            $amenities = array_unique($amenityIds);
+            $amenityIds = Amenity::whereIn('slug', $amenities)->pluck('id')->toArray();
+            sort($amenityIds);
+        }
+
+        if(!empty($occasionIds) && count($occasionIds) > 0 )
+        {
+            $occasions = array_unique($occasionIds);
+            $occasionIds = Occasion::whereIn('slug', $occasions)->pluck('id')->toArray();
+            sort($occasionIds);
+        }
+
+        return [
+            'categoryIds' => $categoryIds,
+            'amenityIds' => $amenityIds,
+            'occasionIds' => $occasionIds
+        ];
+    }
+
     public function venues(Request $request, $category = ''){
-        $venues = Venue::whereHas('categories', function($query)use($category){
-            if(!empty($category))
+        $filter = $this->formatVenueFilter($request, $category);
+        $venues = Venue::where(function($query)use($filter){
+            if(!empty($filter['categoryIds']))
             {
-                $id = Category::where('slug', $category)->first()->id;
-                $query->where('category_id', $id);
+                $categoryIds = $filter['categoryIds'];
+                $query->whereHas('categories', function($query)use($categoryIds){
+                    $query->whereIn('category_id', $categoryIds);
+                });
+            }
+
+            if(!empty($filter['amenityIds']))
+            {
+                $amenityIds = $filter['amenityIds'];
+                $query->whereHas('amenities', function($query)use($amenityIds){
+                    $query->whereIn('amenity_id', $amenityIds);
+                });
+            }
+
+            if(!empty($filter['occasionIds']))
+            {
+                $occasionIds = $filter['occasionIds'];
+                $query->whereHas('occasions', function($query)use($occasionIds){
+                    $query->whereIn('occasion_id', $occasionIds);
+                });
             }
         })->get();
+
+
+
+
+
+
+
+
+
         return VenueResource::collection($venues);
     }
 }

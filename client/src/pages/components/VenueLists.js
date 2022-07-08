@@ -18,6 +18,7 @@ class VenueLists extends Component {
         let cat = filter.category;
         let formatFilter = Object.assign({}, filter);
         formatFilter = JSON.stringify(formatFilter);
+        console.log(formatFilter);
         this.getData(cat, formatFilter);
     }
 

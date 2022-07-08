@@ -4,11 +4,14 @@ namespace App\Admin\Controllers;
 
 use App\Models\City;
 use Encore\Admin\Controllers\AdminController;
+use Illuminate\Http\Request;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Encore\Admin\Facades\Admin;
+use App\Models\Division;
 use App\Models\District;
+use DB;
 
 class CityController extends AdminController
 {
@@ -81,8 +84,14 @@ class CityController extends AdminController
     protected function form()
     {
         $form = new Form(new City());
+        //$form->select('division_id', __('Division'))->options(function () {
+            //return Division::pluck('name', 'id');
+        //})->load('district_id', '/admin/load-api/districts');
+        //$form->select('district_id', __('District'))->options(function ($divisionId) {
+            //return District::where('division_id', $divisionId)->pluck('name', 'id');
+        //});
         $form->select('district_id', __('District'))->options(function () {
-            return District::get()->pluck('name', 'id');
+            return District::pluck('name', 'id');
         });
         $form->text('name', __('Name'));
         if($form->isCreating())
@@ -96,5 +105,11 @@ class CityController extends AdminController
         }
 
         return $form;
+    }
+
+    public function loadApiCities(Request $request)
+    {
+        $district_id = $request->get('q');
+        return City::where('district_id', $district_id)->get(['id', DB::raw('name as text')]);
     }
 }

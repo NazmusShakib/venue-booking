@@ -16,8 +16,8 @@
             p = e(".gallery-carousel"),
             h = e(".client-logo"),
             f = e(".testimonial-carousel-2"),
-            w = e('[data-fancybox="video"]'),
-            b = e('[data-fancybox="gallery"]'),
+            w = e('[components-fancybox="video"]'),
+            b = e('[components-fancybox="gallery"]'),
             y = e(".ripple-bg"),
             k = e(".grid-masonry"),
             M = e(".counter"),
@@ -72,7 +72,7 @@
                     e(this).offset().top - e(window).scrollTop() < 20 &&
                     (r.removeClass("active"),
                         e("#single-content-nav")
-                            .find('[data-scroll="' + e(this).attr("id") + '"]')
+                            .find('[components-scroll="' + e(this).attr("id") + '"]')
                             .addClass("active"));
                 });
         }),
@@ -141,7 +141,7 @@
         e(y).length && e(y).ripples({ resolution: 500, dropRadius: 20, perturbance: 0 }),
         e(k).length && e(k).masonry({}),
         M.length && M.countTo({ speed: 1200 }),
-        e('[data-toggle="tooltip"]').length && e('[data-toggle="tooltip"]').tooltip(),
+        e('[components-toggle="tooltip"]').length && e('[components-toggle="tooltip"]').tooltip(),
             l.on("click", ".add-flight-btn", function () {
                 e(".multi-flight-field").length < 3 && e(".multi-flight-field:last").clone().insertAfter(".multi-flight-field:last"),
                     e(this).closest(".multi-flight-wrap").find(".multi-flight-field:last").children(".multi-flight-delete-wrap").show(),
@@ -175,7 +175,7 @@
             e(".progressbar-line").each(function () {
                 e(this)
                     .find(".progressbar-line-item")
-                    .animate({ width: e(this).attr("data-percent") }, 6e3);
+                    .animate({ width: e(this).attr("components-percent") }, 6e3);
             }),
         e(P).length &&
         e(P).owlCarousel({

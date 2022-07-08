@@ -14,9 +14,11 @@ Route::group([
     $router->get('/calendar', 'CalendarController@calendar')->name('calendar');
     $router->resource('categories', CategoryController::class);
     $router->resource('amenities', AmenityController::class);
-    $router->resource('cities', CityController::class);
-    $router->resource('districts', DistrictController::class);
     $router->resource('divisions', DivisionController::class);
+    $router->resource('districts', DistrictController::class);
+    $router->get('load-api/districts', 'DistrictController@loadApiDistricts');
+    $router->resource('cities', CityController::class);
+    $router->get('load-api/cities', 'CityController@loadApiCities');
     $router->resource('occasions', OccasionController::class);
     $router->resource('venues', VenueController::class);
 });

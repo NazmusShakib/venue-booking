@@ -4513,7 +4513,7 @@ var FullCalendar = (function (exports) {
             var splitStates = {};
             if (interaction) {
                 var affectedStores_1 = this._splitEventStore(interaction.affectedEvents, this._getKeysForEventDefs(interaction.affectedEvents));
-                // can't rely on defKeys because event data is mutated
+                // can't rely on defKeys because event components is mutated
                 var mutatedKeysByDefId = this._getKeysForEventDefs(interaction.mutatedEvents);
                 var mutatedStores_1 = this._splitEventStore(interaction.mutatedEvents, mutatedKeysByDefId);
                 var populate = function (key) {
@@ -5272,7 +5272,7 @@ var FullCalendar = (function (exports) {
         DateComponent.prototype.isValidDateDownEl = function (el) {
             return !elementClosest(el, '.fc-event:not(.fc-bg-event)') &&
                 !elementClosest(el, '.fc-more-link') && // a "more.." link
-                !elementClosest(el, 'a[data-navlink]') && // a clickable nav link
+                !elementClosest(el, 'a[components-navlink]') && // a clickable nav link
                 !elementClosest(el, '.fc-popover'); // hack
         };
         return DateComponent;
@@ -6719,7 +6719,7 @@ var FullCalendar = (function (exports) {
         if (timeZoneParam == null) {
             timeZoneParam = options.timeZoneParam;
         }
-        // retrieve any outbound GET/POST data from the options
+        // retrieve any outbound GET/POST components from the options
         if (typeof meta.extraParams === 'function') {
             // supplied as a function that returns a key/value object
             customRequestParams = meta.extraParams();
@@ -11317,7 +11317,7 @@ var FullCalendar = (function (exports) {
                                 revert: function () {
                                     initialContext_1.dispatch({
                                         type: 'MERGE_EVENTS',
-                                        eventStore: relevantEvents_1, // the pre-change data
+                                        eventStore: relevantEvents_1, // the pre-change components
                                     });
                                 },
                             };
@@ -11888,25 +11888,25 @@ var FullCalendar = (function (exports) {
         var instance = createEventInstance(def.defId, { start: start, end: end });
         return { def: def, instance: instance };
     }
-    // Utils for extracting data from element
+    // Utils for extracting components from element
     // ----------------------------------------------------------------------------------------------------
     function getDragMetaFromEl(el) {
         var str = getEmbeddedElData(el, 'event');
         var obj = str ?
             JSON.parse(str) :
-            { create: false }; // if no embedded data, assume no event creation
+            { create: false }; // if no embedded components, assume no event creation
         return parseDragMeta(obj);
     }
     config.dataAttrPrefix = '';
     function getEmbeddedElData(el, name) {
         var prefix = config.dataAttrPrefix;
         var prefixedName = (prefix ? prefix + '-' : '') + name;
-        return el.getAttribute('data-' + prefixedName) || '';
+        return el.getAttribute('components-' + prefixedName) || '';
     }
 
     /*
     Makes an element (that is *external* to any calendar) draggable.
-    Can pass in data that determines how an event will be created when dropped onto a calendar.
+    Can pass in components that determines how an event will be created when dropped onto a calendar.
     Leverages FullCalendar's internal drag-n-drop functionality WITHOUT a third-party drag system.
     */
     var ExternalDraggable = /** @class */ (function () {
@@ -12040,7 +12040,7 @@ var FullCalendar = (function (exports) {
                 dragging.pointer.selector = settings.itemSelector;
             }
             else if (containerEl === document) {
-                dragging.pointer.selector = '[data-event]';
+                dragging.pointer.selector = '[components-event]';
             }
             if (typeof settings.mirrorSelector === 'string') {
                 dragging.mirrorSelector = settings.mirrorSelector;

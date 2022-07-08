@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('venues', function (Blueprint $table) {
             $table->id();
             $table->string('featured_image')->nullable();
+            $table->text('images')->nullable();
             $table->string('name')->index();
             $table->string('slug')->nullable()->index();
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->text('additional_info')->nullable();
-            $table->foreignId('category_id')->constrained();
-            $table->foreignId('occasion_id')->constrained();
-            $table->foreignId('amenity_id')->constrained();
+            $table->string('price_type')->index();
+            $table->decimal('price', 11, 2)->index();
+            $table->bigInteger('capacity')->index();
             $table->foreignId('division_id')->constrained();
             $table->foreignId('district_id')->constrained();
             $table->foreignId('city_id')->constrained();

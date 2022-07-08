@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('district_id')->constrained();
             $table->string('name')->unique();
+            $table->string('slug')->nullable()->index();
             $table->string('bn_name')->nullable();
             $table->string('url')->nullable();
             $table->integer('created_by')->unsigned()->nullable()->index();

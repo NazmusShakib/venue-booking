@@ -4,11 +4,13 @@ namespace App\Admin\Controllers;
 
 use App\Models\District;
 use Encore\Admin\Controllers\AdminController;
+use Illuminate\Http\Request;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Encore\Admin\Facades\Admin;
 use App\Models\Division;
+use DB;
 
 class DistrictController extends AdminController
 {
@@ -96,5 +98,11 @@ class DistrictController extends AdminController
         }
 
         return $form;
+    }
+
+    public function loadApiDistricts(Request $request)
+    {
+        $division_id = $request->get('q');
+        return District::where('division_id', $division_id)->get(['id', DB::raw('name as text')]);
     }
 }

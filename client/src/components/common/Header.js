@@ -34,15 +34,10 @@ const Header = () => {
                                     <div className="header-left">
                                         <ul className="list-items">
                                             <li>
-                                                <a href="#"
-                                                ><i className="la la-phone mr-1"></i>(123) 123-456</a
-                                                >
+                                                <a href="#"><i className="la la-phone mr-1"></i>(123) 123-456</a>
                                             </li>
                                             <li>
-                                                <a href="#"
-                                                ><i className="la la-envelope mr-1"></i
-                                                >trizen@example.com</a
-                                                >
+                                                <a href="#"><i className="la la-envelope mr-1"></i>trizen@example.com</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -76,9 +71,7 @@ const Header = () => {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="menu-wrapper justify-content-between">
-                                    <a href="#" className="down-button"
-                                    ><i className="la la-angle-down"></i
-                                    ></a>
+                                    <a href="#" className="down-button"><i className="la la-angle-down"></i></a>
                                     <div className="logo">
                                         <Link to="/"><img src="assets/images/logo.png" alt="logo" style={{'maxWidth': '130px'}}/></Link>
                                         <div className="menu-toggler">
@@ -93,16 +86,14 @@ const Header = () => {
                                                     <Link to="/">Home</Link>
                                                 </li>
                                                 <li><Link to="venues">Venues</Link> </li>
-                                                <li><Link to="resorts">Resorts</Link> </li>
-                                                <li><Link to="hotels">Hotels</Link> </li>
-                                                <li><Link to="destination-weeding">Destination Weeding</Link></li>
+                                                <li><Link to="venues/resorts">Resorts</Link> </li>
+                                                <li><Link to="venues/hotels">Hotels</Link> </li>
+                                                <li><Link to="venues/destination-weeding">Destination Weeding</Link></li>
                                             </ul>
                                         </nav>
                                     </div>
                                     <div className="nav-btn">
-              <span className="theme-btn"
-              ><i className="la la-phone mr-1"></i> +8801685562958</span
-              >
+                                        <span className="theme-btn"><i className="la la-phone mr-1"></i> +8801685562958</span>
                                     </div>
                                 </div>
                             </div>

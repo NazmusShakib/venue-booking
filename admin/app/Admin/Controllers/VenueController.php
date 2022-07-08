@@ -8,6 +8,12 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Encore\Admin\Facades\Admin;
+use App\Models\Division;
+use App\Models\District;
+use App\Models\City;
+use App\Models\Category;
+use App\Models\Occasion;
+use App\Models\Amenity;
 
 class VenueController extends AdminController
 {
@@ -28,18 +34,18 @@ class VenueController extends AdminController
         $grid = new Grid(new Venue());
 
         $grid->column('id', __('Id'))->sortable();
-        $grid->column('featured_image', __('Featured image'));
+        $grid->column('featured_image', __('Featured Image'))->image(config('app.url').'/storage/', 100, 100);
         $grid->column('name', __('Name'))->sortable();
         //$grid->column('slug', __('Slug'));
         //$grid->column('description', __('Description'));
         //$grid->column('additional_info', __('Additional info'));
-        $grid->column('category_id', __('Category id'));
-        $grid->column('occasion_id', __('Occasion id'));
-        $grid->column('amenity_id', __('Amenity id'));
-        $grid->column('division_id', __('Division id'));
-        $grid->column('district_id', __('District id'));
-        $grid->column('city_id', __('City id'));
-        $grid->column('is_enabled', __('Is enabled'));
+        //$grid->column('category_id', __('Category id'));
+        //$grid->column('occasion_id', __('Occasion id'));
+        //$grid->column('amenity_id', __('Amenity id'));
+        $grid->column('division.name', __('Division'));
+        $grid->column('district.name', __('District'));
+        $grid->column('city.name', __('City'));
+        $grid->column('is_enabled', __('Enabled?'))->replace([0 => 'No', 1 => 'Yes'])->label();
         //$grid->column('created_by', __('Created by'));
         //$grid->column('updated_by', __('Updated by'));
         $grid->column('created_at', __('Created at'))->display(function () {
@@ -103,18 +109,31 @@ class VenueController extends AdminController
     {
         $form = new Form(new Venue());
 
-        $form->text('featured_image', __('Featured image'));
+        $form->image('featured_image', __('Featured image'))->uniqueName()->removable();
+        $form->multipleImage('images')->uniqueName()->removable();
         $form->text('name', __('Name'));
-        $form->text('slug', __('Slug'));
-        $form->textarea('description', __('Description'));
-        $form->textarea('additional_info', __('Additional info'));
-        $form->number('category_id', __('Category id'));
-        $form->number('occasion_id', __('Occasion id'));
-        $form->number('amenity_id', __('Amenity id'));
-        $form->number('division_id', __('Division id'));
-        $form->number('district_id', __('District id'));
-        $form->number('city_id', __('City id'));
+        $form->quill('description');
+        //$form->textarea('description', __('Description'));
+        //$form->textarea('additional_info', __('Additional info'));
+        $form->multipleSelect('categories','Category')->options(Category::all()->pluck('name','id'));
+        $form->multipleSelect('occasions','Occasion')->options(Occasion::all()->pluck('name','id'));
+        $form->multipleSelect('amenities','Amenity')->options(Amenity::all()->pluck('name','id'));
+        $form->select('price_type', __('Price Type'))->options(function () {
+            return Venue::priceType();
+        });
+        $form->number('price', 'Price')->min(0);
+        $form->number('capacity', __('Capacity'))->min(0);
+        $form->select('division_id', __('Division'))->options(function () {
+            return Division::pluck('name', 'id');
+        })->load('district_id', '/admin/load-api/districts');
+        $form->select('district_id', __('District'))->options(function ($divisionId) {
+            return District::where('division_id', $divisionId)->pluck('name', 'id');
+        })->load('city_id', '/admin/load-api/cities');
+        $form->select('city_id', __('City'))->options(function ($district_id) {
+            return City::where('district_id', $district_id)->pluck('name', 'id');
+        });
         $form->switch('is_enabled', __('Is enabled'));
+
         if($form->isCreating())
         {
             $form->hidden('created_by', __('Created by'))->default(Admin::user()->id);

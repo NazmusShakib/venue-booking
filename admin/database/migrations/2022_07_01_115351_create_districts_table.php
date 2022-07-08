@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('division_id')->constrained();
             $table->string('name')->unique();
+            $table->string('slug')->nullable()->index();
             $table->string('bn_name')->nullable();
             $table->string('lat')->nullable();
             $table->string('lon')->nullable();

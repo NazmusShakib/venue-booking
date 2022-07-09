@@ -14,7 +14,7 @@ class Footer extends Component {
                                 <div className="footer-item">
                                     <div className="footer-logo padding-bottom-20px">
                                         <a href="index.html" className="foot__logo"
-                                        ><img style={{'maxWidth': '130px'}} src="assets/images/logo.png" alt="logo"
+                                        ><img style={{'maxWidth': '130px'}} src={`${global.config.clientBaseUrl}/assets/images/logo.png`} alt="logo"
                                         /></a>
                                     </div>
                                     <ul className="list-items pt-3">

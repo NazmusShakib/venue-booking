@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 class VenueLists extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class VenueLists extends Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.getData('', []);
     }
 
@@ -198,15 +200,20 @@ class VenueLists extends Component {
                                 <div className="card-item">
 
                                     <div className="card-img">
-                                        <a href="hotel-single.html" className="d-block">
+                                        <Link to={`/venue/details/${venue.slug}`} className="d-block">
                                             <img style={{'minHeight':'265px'}} src={venue.thumbnail} alt={venue.name}/>
-                                        </a>
+                                        </Link>
+
                                         <div className="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
                                             <i className="la la-heart-o"></i>
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <h3 className="card-title"><a href="hotel-single.html">{venue.name}</a></h3>
+                                        <h3 className="card-title">
+                                            <Link to={`/venue/details/${venue.slug}`}>
+                                                {venue.name}
+                                            </Link>
+                                        </h3>
                                         <p className="card-meta">{venue.district}, {venue.division}</p>
                                         <div className="card-rating">
                                             <i className="las la-users font-size-18"></i><span className="review__text">{venue.capacity}</span>
@@ -216,7 +223,9 @@ class VenueLists extends Component {
                                                 <span className="price__num mr-1">{venue.price}</span>
                                                 <span>{venue.price_type}</span>
                                             </p>
-                                            <a href="hotel-single.html" className="btn-text">See details<i className="la la-angle-right"></i></a>
+                                            <Link to={`/venue/details/${venue.slug}`} className="btn-text">
+                                                See details<i className="la la-angle-right"></i>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

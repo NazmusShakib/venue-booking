@@ -73,7 +73,7 @@ const Header = () => {
                                 <div className="menu-wrapper justify-content-between">
                                     <a href="#" className="down-button"><i className="la la-angle-down"></i></a>
                                     <div className="logo">
-                                        <Link to="/"><img src="assets/images/logo.png" alt="logo" style={{'maxWidth': '130px'}}/></Link>
+                                        <Link to="/"><img src={`${global.config.clientBaseUrl}/assets/images/logo.png`} alt="logo" style={{'maxWidth': '130px'}}/></Link>
                                         <div className="menu-toggler">
                                             <i className="la la-bars"></i>
                                             <i className="la la-times"></i>

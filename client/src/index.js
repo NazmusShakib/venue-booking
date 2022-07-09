@@ -15,6 +15,7 @@ import '../src/assets/css/style.css';
 import '../src/assets/css/custom.css';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import '../src/_utility/Helper';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

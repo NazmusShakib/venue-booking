@@ -16,6 +16,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Profile from "../pages/dashboard/Profile";
 import AuthRoutes from "../_utility/AuthRoutes";
 import GuestRoutes from "../_utility/GuestRoutes";
+import VenueDetails from "../pages/VenueDetails";
 
 class AppRoute extends Component {
     render() {
@@ -39,10 +40,13 @@ class AppRoute extends Component {
                             <Route path="dashboard" element={<Dashboard />} />
                             <Route path="profile" element={<Profile />} />
                         </Route>
+
                         <Route path="/venues">
                             <Route index element={<Venues />} />
                             <Route path=":category" element={<Venues />} />
                         </Route>
+                        <Route path="/venue/details/:venue_slug" element={<VenueDetails />} />
+
                     </Routes>
                     <Footer/>
                 </BrowserRouter>

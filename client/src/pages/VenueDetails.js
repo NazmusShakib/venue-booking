@@ -16,21 +16,6 @@ class VenueDetails extends Component {
     render() {
         return (
             <>
-                <section className="breadcrumb-top-bar">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-12">
-                                <div className="breadcrumb-list breadcrumb-top-list">
-                                    <ul className="list-items bg-transparent radius-none p-0">
-                                        <li><a href="home-index.html">Home</a></li>
-                                        <li>France</li>
-                                        <li>Hilton Hotels and Resorts</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
                 <section className="breadcrumb-area bread-bg-7 py-0">
                     <div className="breadcrumb-wrap">
                         <div className="container">

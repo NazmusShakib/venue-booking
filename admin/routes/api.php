@@ -19,4 +19,6 @@ Route::middleware('auth:sanctum')->group(function() {
     });
     Route::post('/event/store', [ApiController::class, 'event_store']);
     Route::get('/events/{venue_id}', [ApiController::class, 'events']);
+    Route::get('/delete/event/{id}', [ApiController::class, 'delete_event']);
+    Route::post('/venues/lists/for/dropdown', [ApiController::class, 'venues_lists_for_dropdown']);
 });

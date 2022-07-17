@@ -120,4 +120,20 @@ class ApiController extends Controller
         $ec = EventCalendar::where('venue_id', $venue_id)->get();
         return EventCalendarResource::collection($ec);
     }
+
+    public function delete_event($id){
+        EventCalendar::find($id)->delete();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Event successfully deleted.'
+        ]);
+    }
+
+    public function venues_lists_for_dropdown(Request $request){
+        $venues = Venue::select('id', 'name')->where('is_enabled', 1)->get()->toArray();
+        return response()->json([
+            'status' => 200,
+            'venues' => $venues
+        ]);
+    }
 }

@@ -20,7 +20,7 @@ class VenueLists extends Component {
         let cat = filter.category;
         let formatFilter = Object.assign({}, filter);
         formatFilter = JSON.stringify(formatFilter);
-        console.log(formatFilter);
+        //console.log(formatFilter);
         this.getData(cat, formatFilter);
     }
 
@@ -234,7 +234,7 @@ class VenueLists extends Component {
                     ))
                 }
 
-                { this.state.venuesLoading === false &&
+                { this.state.venuesLoading === false && this.state.venues.length > 0 &&
                     <div className="col-lg-12">
                         <div className="btn-box mt-3 text-center">
                             <button type="button" className="theme-btn"><i className="la la-refresh mr-1"></i>Load More</button>

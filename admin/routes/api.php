@@ -17,4 +17,6 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+    Route::post('/event/store', [ApiController::class, 'event_store']);
+    Route::get('/events/{venue_id}', [ApiController::class, 'events']);
 });

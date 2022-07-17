@@ -8,10 +8,12 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\AmenityResource;
 use App\Http\Resources\OccasionResource;
 use App\Http\Resources\VenueResource;
+use App\Http\Resources\EventCalendarResource;
 use App\Models\Category;
 use App\Models\Amenity;
 use App\Models\Occasion;
 use App\Models\Venue;
+use App\Models\EventCalendar;
 
 class ApiController extends Controller
 {
@@ -91,14 +93,31 @@ class ApiController extends Controller
             }
         })->get();
 
-
-
-
-
-
-
-
-
         return VenueResource::collection($venues);
+    }
+
+    public function event_store(Request $request){
+        $e = EventCalendar::create([
+            'created_by' => $request->user_id,
+            'venue_id' => $request->venue_id,
+            'title' => $request->title,
+            'description' => $request->description,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'all_day_event' => $request->allDay,
+        ]);
+
+        $res = new EventCalendarResource($e);
+
+        return response()->json([
+            'status' => 200,
+            'event' => $res,
+            'message' => 'Data successfully stored in database.'
+        ]);
+    }
+
+    public function events($venue_id){
+        $ec = EventCalendar::where('venue_id', $venue_id)->get();
+        return EventCalendarResource::collection($ec);
     }
 }

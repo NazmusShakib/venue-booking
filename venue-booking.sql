@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 08, 2022 at 02:34 PM
+-- Generation Time: Jul 17, 2022 at 06:11 AM
 -- Server version: 5.7.33
 -- PHP Version: 8.1.3
 
@@ -942,7 +942,11 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 (855, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"62\"}', '2022-07-05 22:58:33', '2022-07-05 22:58:33'),
 (856, 1, 'admin/venues/2', 'PUT', '127.0.0.1', '{\"name\":\"ewew\",\"description\":\"<p>ewew<\\/p>\",\"categories\":[\"1\",\"8\",\"9\",null],\"occasions\":[\"1\",null],\"amenities\":[\"1\",null],\"price_type\":\"per-day\",\"price\":\"800.00\",\"capacity\":\"500\",\"division_id\":\"8\",\"district_id\":\"62\",\"city_id\":\"466\",\"is_enabled\":\"off\",\"updated_by\":\"1\",\"_token\":\"rakw76oGS1LnNIO6QvFX86FB9950eJc5I09nMb05\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/venues\"}', '2022-07-05 22:58:44', '2022-07-05 22:58:44'),
 (857, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-07-05 22:58:44', '2022-07-05 22:58:44'),
-(858, 1, 'admin/categories', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-05 23:12:36', '2022-07-05 23:12:36');
+(858, 1, 'admin/categories', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-05 23:12:36', '2022-07-05 23:12:36'),
+(859, 1, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2022-07-13 06:25:31', '2022-07-13 06:25:31'),
+(860, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-07-13 06:25:32', '2022-07-13 06:25:32'),
+(861, 1, 'admin/auth/logout', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-13 06:25:38', '2022-07-13 06:25:38'),
+(862, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-07-13 06:25:47', '2022-07-13 06:25:47');
 
 -- --------------------------------------------------------
 
@@ -1083,7 +1087,7 @@ CREATE TABLE `admin_users` (
 --
 
 INSERT INTO `admin_users` (`id`, `username`, `password`, `name`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$q4kYyUrvB2vtgeqdNbVHyuOabPfe47uad1yBauFQ7JKtItVjzuS1m', 'Administrator', NULL, 'bmN8r9BWkH91W0wXgrHtbjOHi5CEAgSQJhHCXHORHqSJBKanOmmmFZtTNvOI', '2022-06-24 23:30:05', '2022-06-24 23:30:05');
+(1, 'admin', '$2y$10$q4kYyUrvB2vtgeqdNbVHyuOabPfe47uad1yBauFQ7JKtItVjzuS1m', 'Administrator', NULL, 'mDOUIXwLpg2QSVGEvQWKEVi4OKmOafk4sv3TRCtN35IMGW53BiTEIVZ5D6I9', '2022-06-24 23:30:05', '2022-06-24 23:30:05');
 
 -- --------------------------------------------------------
 
@@ -1877,6 +1881,101 @@ INSERT INTO `divisions` (`id`, `name`, `slug`, `created_by`, `updated_by`, `crea
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `event_calendars`
+--
+
+CREATE TABLE `event_calendars` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `venue_id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `feedback` text COLLATE utf8mb4_unicode_ci,
+  `start_date` datetime DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
+  `all_day_event` tinyint(1) NOT NULL DEFAULT '1',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `created_by` int(10) UNSIGNED DEFAULT NULL,
+  `updated_by` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `event_calendars`
+--
+
+INSERT INTO `event_calendars` (`id`, `venue_id`, `title`, `description`, `feedback`, `start_date`, `end_date`, `all_day_event`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 1, 'dsds', 'sddssd', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:00:08', '2022-07-15 12:00:08'),
+(2, 1, 'dds', 'sddsds', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:01:33', '2022-07-15 12:01:33'),
+(3, 1, 'dds', 'sddsds', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:01:50', '2022-07-15 12:01:50'),
+(4, 1, 'a', 'c', NULL, '2022-07-12 00:00:00', '2022-07-13 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:02:25', '2022-07-15 12:02:25'),
+(5, 1, 'ty', 'ty', NULL, '2022-07-13 00:00:00', '2022-07-14 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:03:53', '2022-07-15 12:03:53'),
+(6, 1, 'ty', 'ty', NULL, '2022-07-13 00:00:00', '2022-07-14 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:03:58', '2022-07-15 12:03:58'),
+(7, 1, 'sd', 'sd', NULL, '2022-07-12 00:00:00', '2022-07-13 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:05:22', '2022-07-15 12:05:22'),
+(8, 1, 'we', 'we', NULL, '2022-07-12 00:00:00', '2022-07-13 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:05:38', '2022-07-15 12:05:38'),
+(9, 1, 're', 'er', NULL, '2022-07-12 00:00:00', '2022-07-13 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:05:58', '2022-07-15 12:05:58'),
+(10, 1, 'er', 'er', NULL, '2022-07-12 00:00:00', '2022-07-13 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:06:48', '2022-07-15 12:06:48'),
+(11, 1, 'erre', 'erer', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:26:20', '2022-07-15 12:26:20'),
+(12, 1, 'erre', 'erer', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:26:32', '2022-07-15 12:26:32'),
+(13, 1, 'erre', 'erer', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:27:41', '2022-07-15 12:27:41'),
+(14, 1, 'erre', 'erer', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:28:14', '2022-07-15 12:28:14'),
+(15, 1, 'sa', 'sa', NULL, '2022-07-06 00:00:00', '2022-07-07 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:28:20', '2022-07-15 12:28:20'),
+(16, 1, 'er', 'er', NULL, '2022-07-07 00:00:00', '2022-07-08 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:31:58', '2022-07-15 12:31:58'),
+(17, 1, 'er', 'rere', NULL, '2022-07-06 00:00:00', '2022-07-07 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:41:18', '2022-07-15 12:41:18'),
+(18, 1, 're', 'erer', NULL, '2022-07-20 00:00:00', '2022-07-21 00:00:00', 1, 0, 1, NULL, '2022-07-15 12:43:26', '2022-07-15 12:43:26'),
+(19, 1, 'saas', 'asas', NULL, '2022-07-04 00:00:00', '2022-07-05 00:00:00', 1, 0, 1, NULL, '2022-07-16 07:31:48', '2022-07-16 07:31:48'),
+(20, 1, 'aassa', 'assaas', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 07:32:02', '2022-07-16 07:32:02'),
+(21, 1, 'ffdf', 'fddf', NULL, '2022-07-19 00:00:00', '2022-07-20 00:00:00', 1, 0, 1, NULL, '2022-07-16 07:49:35', '2022-07-16 07:49:35'),
+(22, 1, 'zxz', 'zxxz', NULL, '2022-07-12 00:00:00', '2022-07-13 00:00:00', 1, 0, 1, NULL, '2022-07-16 08:06:56', '2022-07-16 08:06:56'),
+(23, 1, 'sffsdf', 'sdsdfdsf', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 08:31:30', '2022-07-16 08:31:30'),
+(24, 1, 'dsds', 'dsds', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 08:39:54', '2022-07-16 08:39:54'),
+(25, 1, 'dsds', 'dsdsds', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 08:40:03', '2022-07-16 08:40:03'),
+(26, 1, 'sdds', 'sddssd', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 08:40:18', '2022-07-16 08:40:18'),
+(27, 1, 'asa', 'asas', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 08:41:19', '2022-07-16 08:41:19'),
+(28, 1, 'assa', 'sasa', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 08:41:36', '2022-07-16 08:41:36'),
+(29, 1, 'dsd', 'dsdssd', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 08:42:10', '2022-07-16 08:42:10'),
+(30, 1, 'assa', 'sasa', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 08:42:27', '2022-07-16 08:42:27'),
+(31, 1, 'assa', 'assa', NULL, '2022-07-16 00:00:00', '2022-07-17 00:00:00', 1, 0, 1, NULL, '2022-07-16 08:44:04', '2022-07-16 08:44:04'),
+(32, 1, 'dsds', 'dsds', NULL, '2022-07-12 00:00:00', '2022-07-13 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:01:26', '2022-07-16 21:01:26'),
+(33, 1, 'rere', 'reer', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:01:47', '2022-07-16 21:01:47'),
+(34, 1, 'rerere', 'rerere', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:03:09', '2022-07-16 21:03:09'),
+(35, 1, 'ew', 'ewew', NULL, '2022-07-14 00:00:00', '2022-07-15 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:03:29', '2022-07-16 21:03:29'),
+(36, 1, 'ewew', 'weew', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:03:51', '2022-07-16 21:03:51'),
+(37, 1, 'ewwe', 'ewew', NULL, '2022-07-05 00:00:00', '2022-07-06 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:03:59', '2022-07-16 21:03:59'),
+(38, 1, 'eew', 'ewew', NULL, '2022-07-13 00:00:00', '2022-07-14 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:04:47', '2022-07-16 21:04:47'),
+(39, 1, 'ewew', 'ewewew', NULL, '2022-07-13 00:00:00', '2022-07-14 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:04:51', '2022-07-16 21:04:51'),
+(40, 1, 'dsds', 'sdsd', NULL, '2022-07-12 00:00:00', '2022-07-13 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:06:03', '2022-07-16 21:06:03'),
+(41, 1, 'ewew', 'ewew', NULL, '2022-07-19 00:00:00', '2022-07-20 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:06:20', '2022-07-16 21:06:20'),
+(42, 1, 'ddsds', 'sdds', NULL, '2022-07-15 00:00:00', '2022-07-16 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:07:02', '2022-07-16 21:07:02'),
+(43, 1, 'ewwe', 'wewe', NULL, '2022-07-18 00:00:00', '2022-07-19 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:15:09', '2022-07-16 21:15:09'),
+(44, 1, 'ewewew', 'ewew', NULL, '2022-07-18 00:00:00', '2022-07-19 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:15:16', '2022-07-16 21:15:16'),
+(45, 1, 'rere', 'erre', NULL, '2022-07-18 00:00:00', '2022-07-19 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:15:48', '2022-07-16 21:15:48'),
+(46, 1, 'erer', 'rere', NULL, '2022-07-18 00:00:00', '2022-07-19 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:15:53', '2022-07-16 21:15:53'),
+(47, 1, 'erre', 'erre', NULL, '2022-07-18 00:00:00', '2022-07-19 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:16:27', '2022-07-16 21:16:27'),
+(48, 1, 'erre', 'erer', NULL, '2022-07-18 00:00:00', '2022-07-19 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:16:43', '2022-07-16 21:16:43'),
+(49, 1, 'erre', 'erer', NULL, '2022-07-18 00:00:00', '2022-07-19 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:16:51', '2022-07-16 21:16:51'),
+(50, 1, 'ewe', 'wewew', NULL, '2022-07-18 00:00:00', '2022-07-19 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:17:07', '2022-07-16 21:17:07'),
+(51, 1, 'ewwe', 'ewew', NULL, '2022-07-18 00:00:00', '2022-07-19 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:19:08', '2022-07-16 21:19:08'),
+(52, 1, 'weewwe', 'wewewe', NULL, '2022-07-19 00:00:00', '2022-07-20 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:19:13', '2022-07-16 21:19:13'),
+(53, 1, 'weew', 'wewe', NULL, '2022-07-06 00:00:00', '2022-07-07 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:20:59', '2022-07-16 21:20:59'),
+(54, 1, 'werwe', 'fsdfsd', NULL, '2022-07-07 00:00:00', '2022-07-08 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:21:04', '2022-07-16 21:21:04'),
+(55, 1, 'ed', 'sdds', NULL, '2022-07-06 00:00:00', '2022-07-07 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:22:21', '2022-07-16 21:22:21'),
+(56, 1, 'ewew', 'ewew', NULL, '2022-07-08 00:00:00', '2022-07-09 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:25:37', '2022-07-16 21:25:37'),
+(57, 1, 'ewew', 'ewew', NULL, '2022-07-04 00:00:00', '2022-07-05 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:25:43', '2022-07-16 21:25:43'),
+(58, 1, 'rere', 're', NULL, '2022-07-12 00:00:00', '2022-07-13 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:30:48', '2022-07-16 21:30:48'),
+(59, 1, 'ewew', 'wewe', NULL, '2022-07-25 00:00:00', '2022-07-26 00:00:00', 1, 0, 1, NULL, '2022-07-16 21:36:25', '2022-07-16 21:36:25'),
+(60, 1, 'sdds', 'dssd', NULL, '2022-07-11 00:00:00', '2022-07-12 00:00:00', 1, 0, 1, NULL, '2022-07-16 22:50:39', '2022-07-16 22:50:39'),
+(61, 1, 'ffd', 'fdfd', NULL, '2022-07-21 00:00:00', '2022-07-22 00:00:00', 1, 0, 1, NULL, '2022-07-16 22:50:52', '2022-07-16 22:50:52'),
+(62, 1, 'eafdds', 'ffasf', NULL, '2022-07-22 00:00:00', '2022-07-23 00:00:00', 1, 0, 1, NULL, '2022-07-16 22:51:24', '2022-07-16 22:51:24'),
+(63, 1, 'sdaadsda', 'ads asdasd', NULL, '2022-07-31 00:00:00', '2022-08-07 00:00:00', 1, 0, 1, NULL, '2022-07-16 22:53:07', '2022-07-16 22:53:07'),
+(64, 1, 'dfsd', 'sdfdsfdsf', NULL, '2022-07-27 00:00:00', '2022-07-31 00:00:00', 1, 0, 1, NULL, '2022-07-16 22:53:51', '2022-07-16 22:53:51'),
+(65, 1, 'test', 'test', NULL, '2022-07-10 00:00:00', '2022-07-11 00:00:00', 1, 0, 1, NULL, '2022-07-17 00:07:42', '2022-07-17 00:07:42'),
+(66, 1, 'sdfdfsdf', 'sdfsdfsdf', NULL, '2022-07-10 00:00:00', '2022-07-11 00:00:00', 1, 0, 1, NULL, '2022-07-17 00:08:09', '2022-07-17 00:08:09'),
+(67, 1, 'ew', 'ew', NULL, '2022-07-03 00:00:00', '2022-07-04 00:00:00', 1, 0, 1, NULL, '2022-07-17 00:09:58', '2022-07-17 00:09:58');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -1921,7 +2020,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (31, '2022_07_01_115642_create_venues_table', 6),
 (35, '2022_07_02_173603_create_category_venue_table', 7),
 (36, '2022_07_02_173805_create_occasion_venue_table', 7),
-(37, '2022_07_02_173843_create_amenity_venue_table', 7);
+(37, '2022_07_02_173843_create_amenity_venue_table', 7),
+(38, '2022_07_15_050549_create_event_calendars_table', 8);
 
 -- --------------------------------------------------------
 
@@ -2020,9 +2120,11 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
-(7, 'App\\Models\\User', 1, 'abdulawalbd121@gmail.com_Token', 'fcaac11b584bb3b1ce29634db5d496fa245e61cebc3679597a3e17098dc9acc2', '[\"*\"]', NULL, '2022-06-30 01:13:29', '2022-06-30 01:13:29'),
-(8, 'App\\Models\\User', 1, 'abdulawalbd121@gmail.com_Token', 'dd32724dbc4988d5954f6197edc3b35e8a538635195d853c725b48fd4577daeb', '[\"*\"]', NULL, '2022-07-03 07:48:24', '2022-07-03 07:48:24'),
-(9, 'App\\Models\\User', 1, 'abdulawalbd121@gmail.com_Token', 'e423f93c7394bab0b689230eb8ec6f1cdc24d572a5bae8baa82b7ab7df03936e', '[\"*\"]', NULL, '2022-07-04 13:23:44', '2022-07-04 13:23:44');
+(5, 'App\\Models\\User', 1, 'abdulawalbd121@gmail.com_Token', '6616e6110b92890ef17b1760b50ecf4610b9d01ca5f755a06de76ab765c39908', '[\"*\"]', '2022-07-15 12:54:48', '2022-07-15 11:03:26', '2022-07-15 12:54:48'),
+(6, 'App\\Models\\User', 1, 'abdulawalbd121@gmail.com_Token', '11a1fd1d9deefd4d53a6c586a8ff4dc4d8c278d8679711e2244243916d820b8c', '[\"*\"]', '2022-07-16 08:44:15', '2022-07-16 07:14:54', '2022-07-16 08:44:15'),
+(7, 'App\\Models\\User', 1, 'abdulawalbd121@gmail.com_Token', '7f6e66a9f0f8bd224aae52ba006ffab7b51edeeea1c81c1f118de4581ada71a6', '[\"*\"]', NULL, '2022-07-16 21:01:12', '2022-07-16 21:01:12'),
+(8, 'App\\Models\\User', 1, 'abdulawalbd121@gmail.com_Token', '932e8067b9c8520f0fb374ba7d588c511f2278ba7c08321664647ad960294822', '[\"*\"]', '2022-07-16 21:04:51', '2022-07-16 21:01:17', '2022-07-16 21:04:51'),
+(9, 'App\\Models\\User', 1, 'abdulawalbd121@gmail.com_Token', '5245ba8b57c3e93ec56827230c9324a3280998c79dec36b38a8e3bc0cf0220ad', '[\"*\"]', '2022-07-17 00:09:58', '2022-07-16 21:05:55', '2022-07-17 00:09:58');
 
 -- --------------------------------------------------------
 
@@ -2218,6 +2320,19 @@ ALTER TABLE `divisions`
   ADD KEY `divisions_updated_by_index` (`updated_by`);
 
 --
+-- Indexes for table `event_calendars`
+--
+ALTER TABLE `event_calendars`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `event_calendars_venue_id_foreign` (`venue_id`),
+  ADD KEY `event_calendars_start_date_index` (`start_date`),
+  ADD KEY `event_calendars_end_date_index` (`end_date`),
+  ADD KEY `event_calendars_all_day_event_index` (`all_day_event`),
+  ADD KEY `event_calendars_status_index` (`status`),
+  ADD KEY `event_calendars_created_by_index` (`created_by`),
+  ADD KEY `event_calendars_updated_by_index` (`updated_by`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -2298,7 +2413,7 @@ ALTER TABLE `admin_menu`
 -- AUTO_INCREMENT for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=859;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=863;
 
 --
 -- AUTO_INCREMENT for table `admin_permissions`
@@ -2361,6 +2476,12 @@ ALTER TABLE `divisions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `event_calendars`
+--
+ALTER TABLE `event_calendars`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -2370,7 +2491,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `occasions`
@@ -2456,6 +2577,14 @@ ALTER TABLE `districts`
 ALTER TABLE `divisions`
   ADD CONSTRAINT `divisions_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `divisions_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `event_calendars`
+--
+ALTER TABLE `event_calendars`
+  ADD CONSTRAINT `event_calendars_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `event_calendars_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `event_calendars_venue_id_foreign` FOREIGN KEY (`venue_id`) REFERENCES `venues` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `occasions`

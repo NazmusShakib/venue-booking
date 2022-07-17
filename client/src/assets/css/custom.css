@@ -4,3 +4,7 @@
     border-color: transparent;
     border-top-color: rgba(128, 137, 150, 0.1);
 }
+
+.modal{
+    background: rgba(0,0,0,0.5);
+}

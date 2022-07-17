@@ -11,6 +11,10 @@ import IntroduceBanner from "../components/home/IntroduceBanner";
 import LatestBlog from "../components/partials/LatestBlog";
 import Daterange from "../hooks/Daterange";
 class Home extends Component {
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <>

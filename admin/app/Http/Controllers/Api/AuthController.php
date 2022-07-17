@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use Hash;
-use App\Models\user;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -25,11 +25,11 @@ class AuthController extends Controller
                             $fail('The '.$attribute.' is invalid.');
                         }
                     }
-                    
+
                     if(substr($value,0,1) == '_'){
                         $fail('The username cannot contain underscores at the beginning or end.');
                     }
-                    
+
                     if(substr($value, -1) == '_'){
                         $fail('The username cannot contain underscores at the beginning or end.');
                     }
@@ -55,6 +55,7 @@ class AuthController extends Controller
             $token = $user->createToken($user->email.'_Token')->plainTextToken;
 
             $res = [
+                'user_id' => $user->id,
                 'name' => $user->name,
                 'username' => $user->username,
                 'email' => $user->email,
@@ -67,7 +68,7 @@ class AuthController extends Controller
                 'message' => 'Registration successfully completed!.'
             ]);
         }
-        
+
     }
 
     public function login(Request $request){
@@ -85,7 +86,7 @@ class AuthController extends Controller
         }else{
 
             $user = User::where('email', $request->email)->first();
- 
+
             if (! $user || ! Hash::check($request->password, $user->password)) {
                 return response()->json([
                     'status' => 401,
@@ -96,6 +97,7 @@ class AuthController extends Controller
             $token = $user->createToken($user->email.'_Token')->plainTextToken;
 
             $res = [
+                'user_id' => $user->id,
                 'name' => $user->name,
                 'username' => $user->username,
                 'email' => $user->email,

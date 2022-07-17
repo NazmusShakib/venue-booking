@@ -165,7 +165,7 @@ const Register = () => {
                                         <span className="la la-lock form-icon"></span>
                                         <input
                                             className="form-control"
-                                            type="text"
+                                            type="password"
                                             name="password"
                                             placeholder="Type password"
                                             onChange={handleInput} value={registerInput.password}
@@ -179,7 +179,7 @@ const Register = () => {
                                         <span className="la la-lock form-icon"></span>
                                         <input
                                             className="form-control"
-                                            type="text"
+                                            type="password"
                                             name="confirm_password"
                                             placeholder="Type again password"
                                             onChange={handleInput} value={registerInput.confirm_password}

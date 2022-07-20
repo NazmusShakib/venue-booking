@@ -85,4 +85,9 @@ class Venue extends Model
             'per-person'=>'Per Person'
         ];
     }
+
+    public static function options(){
+        $options = static::pluck('name', 'id')->toArray();
+        return $options;
+    }
 }

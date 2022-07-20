@@ -22,7 +22,7 @@ return new class extends Migration
             $table->dateTime('start_date')->nullable()->index();
             $table->dateTime('end_date')->nullable()->index();
             $table->boolean('all_day_event')->default(true)->index();
-            $table->boolean('status')->default(false)->index();
+            $table->enum('status', ['pending', 'approved', 'rejected', 'completed'])->default('pending');
             $table->integer('created_by')->unsigned()->nullable()->index();
             $table->integer('updated_by')->unsigned()->nullable()->index();
             $table->timestamps();

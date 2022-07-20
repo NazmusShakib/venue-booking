@@ -22,7 +22,7 @@ class EventCalendarResource extends JsonResource
             //'user_id' => $this->created_by,
             'description' => $this->description,
             'allDay' => $this->all_day_event,
-            'status' => $this->status == 0 ? 'pending' : 'Approved',
+            'status' => $this->status,
             //'feedback' => $this->feedback,
         ];
     }

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Sidebar from "./Sidebar";
-import Daterange from "../../hooks/Daterange";
 import FullCalendar, { formatDate } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -8,7 +7,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import SessionHelper from "../../session/SessionHelper";
 import axios from "axios";
-
+import Select from 'react-select';
 class Dashboard extends Component {
 
     constructor() {
@@ -23,7 +22,7 @@ class Dashboard extends Component {
             selectedEventDateInfo:[],
             selectedEventInfo:[],
             venueLists:[],
-            loadCalendar:''
+            loadCalendar:'',
         }
     }
 
@@ -39,27 +38,26 @@ class Dashboard extends Component {
         });
     }
 
-    getEventsData=()=>{
-        let ec = document.getElementById("event_venue_id");
-        let e_venue_id = ec.value;
-        axios.get('/sanctum/csrf-cookie').then(response => {
-            axios.get('/api/events/'+e_venue_id).then(res => {
-                this.setState({currentEvents:res.data.data});
-            }).catch((error)=>{});
-        });
-    }
-
-    handleEventSelect = (e) =>{
-        e.persist();
-        this.setState({loadCalendar:e.target.value});
-        this.getEventsData();
-        const calendarApi = this.calendarRef.current.getApi();
-        calendarApi.unselect();
+    handleEventSelect = (selectedOption) =>{
+        this.setState({loadCalendar:selectedOption.value});
+        this.setState({venue_id : selectedOption.value});
+        this.getEventsData(selectedOption.value);
     }
 
     handleInput = (e) =>{
         e.persist();
         this.setState({[e.target.name] : e.target.value});
+    }
+
+    getEventsData=(venue_id='')=>{
+        let venueId = venue_id !== '' ? venue_id : this.state.venue_id;
+        axios.get('/sanctum/csrf-cookie').then(response => {
+            axios.get('/api/events/'+venueId).then(res => {
+                const calendarApi = this.calendarRef.current.getApi();
+                calendarApi.unselect();
+                this.setState({currentEvents:res.data.data});
+            }).catch((error)=>{});
+        });
     }
 
     handleDateSelect = (selectInfo) => {
@@ -69,34 +67,23 @@ class Dashboard extends Component {
     }
 
     addEvent=()=>{
-        let e = document.getElementById("event_venue_id");
-        let venue_id = e.value;
         const data = {
             user_id:SessionHelper.GetAuthUserId(),
-            venue_id:venue_id,
+            venue_id:this.state.venue_id,
             title:this.state.title,
             description:this.state.description,
             start_date:this.state.selectedEventDateInfo.startStr,
             end_date:this.state.selectedEventDateInfo.endStr,
-            allDay:this.state.selectedEventDateInfo.allDay
+            allDay:this.state.selectedEventDateInfo.allDay,
+            status:'pending'
         }
 
         axios.get('/sanctum/csrf-cookie').then(response => {
             axios.post('/api/event/store', data).then(res => {
+                console.log(res.data);
                 if (res.data.status === 200)
                 {
-                    let calendarApi = this.state.selectedEventDateInfo.view.calendar
-                    calendarApi.unselect() // clear date selection
-                    calendarApi.addEvent({
-                        id: res.data.event.id,
-                        title:res.data.event.title,
-                        description:res.data.event.description,
-                        status:res.data.event.status,
-                        start: res.data.event.start,
-                        end: res.data.event.end,
-                        allDay: res.data.event.allDay
-                    });
-
+                    this.getEventsData();
                     this.closeAddModal();
                 }
             }).catch((error)=>{});
@@ -152,7 +139,6 @@ class Dashboard extends Component {
     render() {
         return (
             <>
-                <Daterange/>
                 <section>
                     <div className="container-fluid padding-right-100px padding-left-100px padding-top-50px padding-bottom-50px">
                         <div className="row">
@@ -220,16 +206,11 @@ class Dashboard extends Component {
                                     </div>
                                 </div>
                                 <div className="form-group mb-5">
-                                    <select className="form-control" id="event_venue_id" name="venue_id" onChange={e => { this.handleInput(e); this.handleEventSelect(e) }}>
-                                        <option value="">---Select Venue---</option>
-                                        {
-                                            this.state.venueLists.map((venue, index) => (
-                                                <React.Fragment key={index}>
-                                                    <option value={venue.id}>{venue.name}</option>
-                                                </React.Fragment>
-                                            ))
-                                        }
-                                    </select>
+                                    <Select
+                                        name="venue_id"
+                                        options={this.state.venueLists}
+                                        onChange={this.handleEventSelect}
+                                    />
                                 </div>
                                 {this.state.loadCalendar !== '' &&
                                     <FullCalendar

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 
 class DiscountBanner extends Component {
     render() {
@@ -21,9 +22,9 @@ class DiscountBanner extends Component {
                                             </h2>
                                         </div>
                                         <div className="btn-box pt-4">
-                                            <a href="#" className="theme-btn border-0"
-                                            >Learn More <i className="la la-arrow-right ml-1"></i
-                                            ></a>
+                                            <Link className="theme-btn border-0" to='/terms-and-conditions'>
+                                                Learn More <i className="la la-arrow-right ml-1"></i>
+                                            </Link>
                                         </div>
                                     </div>
                                     <div className="company-logo">

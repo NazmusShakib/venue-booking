@@ -105,6 +105,7 @@ class ApiController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'all_day_event' => $request->allDay,
+            'status' => $request->status,
         ]);
 
         $res = new EventCalendarResource($e);
@@ -130,7 +131,8 @@ class ApiController extends Controller
     }
 
     public function venues_lists_for_dropdown(Request $request){
-        $venues = Venue::select('id', 'name')->where('is_enabled', 1)->get()->toArray();
+        $venues = Venue::select('id as value', 'name as label')->where('is_enabled', 1)->get()->toArray();
+
         return response()->json([
             'status' => 200,
             'venues' => $venues

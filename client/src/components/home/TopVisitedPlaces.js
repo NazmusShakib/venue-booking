@@ -1,6 +1,22 @@
 import React, {Component} from 'react';
+import axios from "axios";
+import {Link} from "react-router-dom";
 
 class TopVisitedPlaces extends Component {
+    constructor() {
+        super();
+        this.state = {
+            venues:[]
+        }
+    }
+    componentDidMount() {
+        let filter = [];
+        axios.post('/api/venues', filter).then(res => {
+            console.log(res.data.data);
+            this.setState({venues:res.data.data});
+        }).catch((error)=>{});
+    }
+
     render() {
         return (
             <>
@@ -11,174 +27,48 @@ class TopVisitedPlaces extends Component {
                                 <div className="section-heading">
                                     <h2 className="sec__title">Top Visited Places</h2>
                                     <p className="sec__desc pt-3">
-                                        Morbi convallis bibendum urna ut viverra Maecenas quis
+                                        Top Visited Places
                                     </p>
                                 </div>
                             </div>
                             <div className="col-lg-4">
                                 <div className="btn-box btn--box text-right">
-                                    <a href="tour-grid.html" className="theme-btn">Discover More</a>
+                                    <Link to={`/venues`} className="theme-btn">
+                                        Discover More
+                                    </Link>
                                 </div>
                             </div>
                         </div>
                         <div className="row padding-top-50px">
-                            <div className="col-lg-4">
-                                <div className="card-item destination-card">
-                                    <div className="card-img">
-                                        <img src="assets/images/destination-img2.jpg" alt="destination-img"/>
-                                        <span className="badge">new york</span>
-                                    </div>
-                                    <div className="card-body">
-                                        <h3 className="card-title">
-                                            <a href="tour-details.html">Main Street Park</a>
-                                        </h3>
-                                        <div className="card-rating d-flex align-items-center">
-                  <span className="ratings d-flex align-items-center mr-1">
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star-o"></i>
-                    <i className="la la-star-o"></i>
-                  </span>
-                                            <span className="rating__text">(70694 Reviews)</span>
+                            {
+                                this.state.venues.map((venue, index)=>(
+                                    <React.Fragment key={index}>
+                                        <div className="col-lg-4">
+                                            <div className="card-item destination-card">
+                                                <div className="card-img">
+                                                    <img style={{'minHeight':'265px', 'maxHeight':'265px'}} src={venue.thumbnail} alt={venue.name}/>
+                                                    <span className="badge">{venue.district}</span>
+                                                </div>
+                                                <div className="card-body">
+                                                    <h3 className="card-title">
+                                                        <Link to={`/venue/details/${venue.slug}`}>
+                                                            {venue.name}
+                                                        </Link>
+                                                    </h3>
+                                                    <div className="card-price d-flex align-items-center justify-content-between">
+                                                        <p className="tour__text">50 Tours</p>
+                                                        <p>
+                                                            <span className="price__from">Price</span>
+                                                            <span className="price__num">{venue.price}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div
-                                            className="card-price d-flex align-items-center justify-content-between"
-                                        >
-                                            <p className="tour__text">50 Tours</p>
-                                            <p>
-                                                <span className="price__from">Price</span>
-                                                <span className="price__num">$58.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-item destination-card">
-                                    <div className="card-img">
-                                        <img src="assets/images/destination-img3.jpg" alt="destination-img"/>
-                                        <span className="badge">chicago</span>
-                                    </div>
-                                    <div className="card-body">
-                                        <h3 className="card-title">
-                                            <a href="tour-details.html">Chicago Cultural Center</a>
-                                        </h3>
-                                        <div className="card-rating d-flex align-items-center">
-                  <span className="ratings d-flex align-items-center mr-1">
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star-o"></i>
-                  </span>
-                                            <span className="rating__text">(70694 Reviews)</span>
-                                        </div>
-                                        <div
-                                            className="card-price d-flex align-items-center justify-content-between"
-                                        >
-                                            <p className="tour__text">50 Tours</p>
-                                            <p>
-                                                <span className="price__from">Price</span>
-                                                <span className="price__num">$68.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-4">
-                                <div className="card-item destination-card">
-                                    <div className="card-img">
-                                        <img src="assets/images/destination-img4.jpg" alt="destination-img"/>
-                                        <span className="badge">Hong Kong</span>
-                                    </div>
-                                    <div className="card-body">
-                                        <h3 className="card-title">
-                                            <a href="tour-details.html">Lugard Road Lookout</a>
-                                        </h3>
-                                        <div className="card-rating d-flex align-items-center">
-                  <span className="ratings d-flex align-items-center mr-1">
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star-o"></i>
-                    <i className="la la-star-o"></i>
-                  </span>
-                                            <span className="rating__text">(70694 Reviews)</span>
-                                        </div>
-                                        <div
-                                            className="card-price d-flex align-items-center justify-content-between"
-                                        >
-                                            <p className="tour__text">150 Tours</p>
-                                            <p>
-                                                <span className="price__from">Price</span>
-                                                <span className="price__num">$79.00</span>
-                                                <span className="price__num before-price">$89.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-item destination-card">
-                                    <div className="card-img">
-                                        <img src="assets/images/destination-img5.jpg" alt="destination-img"/>
-                                        <span className="badge">Las Vegas</span>
-                                    </div>
-                                    <div className="card-body">
-                                        <h3 className="card-title">
-                                            <a href="tour-details.html">Planet Hollywood Resort</a>
-                                        </h3>
-                                        <div className="card-rating d-flex align-items-center">
-                  <span className="ratings d-flex align-items-center mr-1">
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star-o"></i>
-                  </span>
-                                            <span className="rating__text">(70694 Reviews)</span>
-                                        </div>
-                                        <div
-                                            className="card-price d-flex align-items-center justify-content-between"
-                                        >
-                                            <p className="tour__text">50 Tours</p>
-                                            <p>
-                                                <span className="price__from">Price</span>
-                                                <span className="price__num">$88.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-4">
-                                <div className="card-item destination-card">
-                                    <div className="card-img">
-                                        <img src="assets/images/destination-img.jpg" alt="destination-img"/>
-                                        <span className="badge">Shanghai</span>
-                                    </div>
-                                    <div className="card-body">
-                                        <h3 className="card-title">
-                                            <a href="tour-details.html">Oriental Pearl TV Tower</a>
-                                        </h3>
-                                        <div className="card-rating d-flex align-items-center">
-                  <span className="ratings d-flex align-items-center mr-1">
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                    <i className="la la-star"></i>
-                  </span>
-                                            <span className="rating__text">(70694 Reviews)</span>
-                                        </div>
-                                        <div
-                                            className="card-price d-flex align-items-center justify-content-between"
-                                        >
-                                            <p className="tour__text">50 Tours</p>
-                                            <p>
-                                                <span className="price__from">Price</span>
-                                                <span className="price__num">$58.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    </React.Fragment>
+                                ))
+                            }
+
                         </div>
                     </div>
                 </section>

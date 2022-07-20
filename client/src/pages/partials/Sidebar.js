@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Daterange from "../../hooks/Daterange";
-import Select2 from "../../hooks/Select2";
 import JqueryUi from "../../hooks/JqueryUi";
 import Categories from "./components/Categories";
 import Occasions from "./components/Occasions";
@@ -40,7 +39,6 @@ class Sidebar extends Component {
         return (
             <>
                 <Daterange/>
-                <Select2/>
                 <JqueryUi/>
                 <div className="sidebar mb-0 p-0">
                     <div className="sidebar-widget p-4">

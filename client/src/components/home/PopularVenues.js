@@ -1,7 +1,22 @@
 import React, {Component} from 'react';
-import PopularHotelsSlider from "../partials/PopularHotelsSlider";
+import PopularVenuesSlider from "../partials/PopularVenuesSlider";
+import axios from "axios";
 
-class PopularHotels extends Component {
+class PopularVenues extends Component {
+    constructor() {
+        super();
+        this.state={
+            venues:[]
+        }
+    }
+
+    componentDidMount() {
+        let filter = [];
+        axios.post('/api/venues', filter).then(res => {
+            this.setState({venues:res.data.data});
+        }).catch((error)=>{});
+    }
+
     render() {
         return (
             <>
@@ -11,7 +26,7 @@ class PopularHotels extends Component {
                             <div className="col-lg-12">
                                 <div className="section-heading text-center">
                                     <h2 className="sec__title line-height-55">
-                                        Popular Hotel Destinations <br/>
+                                        Popular Destinations <br/>
                                         You Might Like
                                     </h2>
                                 </div>
@@ -19,7 +34,7 @@ class PopularHotels extends Component {
                         </div>
                         <div className="row padding-top-50px">
                             <div className="col-lg-12">
-                                <PopularHotelsSlider/>
+                                <PopularVenuesSlider venues={this.state.venues}/>
                             </div>
                         </div>
                     </div>
@@ -29,4 +44,4 @@ class PopularHotels extends Component {
     }
 }
 
-export default PopularHotels;
+export default PopularVenues;

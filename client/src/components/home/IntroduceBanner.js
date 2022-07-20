@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 
 class IntroduceBanner extends Component {
     render() {
@@ -23,9 +24,9 @@ class IntroduceBanner extends Component {
                                     </h2>
                                 </div>
                                 <div className="btn-box padding-top-35px">
-                                    <a href="become-local-expert.html" className="theme-btn border-0"
-                                    >Join with us</a
-                                    >
+                                    <Link className="theme-btn border-0" to='/register'>
+                                        Join with us
+                                    </Link>
                                 </div>
                             </div>
                         </div>

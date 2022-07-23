@@ -37,3 +37,7 @@
 .carousel-action .owl-dots button:focus {
     outline: none !important;
 }
+
+.hero-wrapper .fullscreen-slide-contain .owl-item{
+    height: 512px;
+}

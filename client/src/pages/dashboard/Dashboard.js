@@ -26,7 +26,6 @@ class Dashboard extends Component {
         }
     }
 
-
     componentDidMount() {
         let data = {
             user_id:SessionHelper.GetAuthUserId(),
@@ -38,7 +37,7 @@ class Dashboard extends Component {
         });
     }
 
-    handleEventSelect = (selectedOption) =>{
+    handleVenueSelect = (selectedOption) =>{
         this.setState({loadCalendar:selectedOption.value});
         this.setState({venue_id : selectedOption.value});
         this.getEventsData(selectedOption.value);
@@ -209,7 +208,7 @@ class Dashboard extends Component {
                                     <Select
                                         name="venue_id"
                                         options={this.state.venueLists}
-                                        onChange={this.handleEventSelect}
+                                        onChange={this.handleVenueSelect}
                                     />
                                 </div>
                                 {this.state.loadCalendar !== '' &&

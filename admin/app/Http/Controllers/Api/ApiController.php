@@ -10,6 +10,7 @@ use App\Http\Resources\OccasionResource;
 use App\Http\Resources\VenueResource;
 use App\Http\Resources\EventCalendarResource;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Amenity;
 use App\Models\Occasion;
 use App\Models\Venue;
@@ -136,6 +137,33 @@ class ApiController extends Controller
         return response()->json([
             'status' => 200,
             'venues' => $venues
+        ]);
+    }
+
+    public function city_lists_for_dropdown(Request $request){
+        $cities = City::select('id as value', 'name as label')->get()->toArray();
+
+        return response()->json([
+            'status' => 200,
+            'cities' => $cities
+        ]);
+    }
+
+    public function category_lists_for_dropdown(Request $request){
+        $cats = Category::select('id as value', 'name as label')->get()->toArray();
+
+        return response()->json([
+            'status' => 200,
+            'categories' => $cats
+        ]);
+    }
+
+    public function occasion_lists_for_dropdown(Request $request){
+        $occasions = Occasion::select('id as value', 'name as label')->get()->toArray();
+
+        return response()->json([
+            'status' => 200,
+            'occasions' => $occasions
         ]);
     }
 }

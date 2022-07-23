@@ -22,7 +22,7 @@ class DiscountBanner extends Component {
                                             </h2>
                                         </div>
                                         <div className="btn-box pt-4">
-                                            <Link className="theme-btn border-0" to='/terms-and-conditions'>
+                                            <Link className="theme-btn border-0" to='/about-us'>
                                                 Learn More <i className="la la-arrow-right ml-1"></i>
                                             </Link>
                                         </div>

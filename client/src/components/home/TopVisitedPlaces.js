@@ -6,14 +6,15 @@ class TopVisitedPlaces extends Component {
     constructor() {
         super();
         this.state = {
-            venues:[]
+            venues:[],
+            loading:true
         }
     }
     componentDidMount() {
         let filter = [];
         axios.post('/api/venues', filter).then(res => {
-            console.log(res.data.data);
             this.setState({venues:res.data.data});
+            this.setState({loading:false});
         }).catch((error)=>{});
     }
 
@@ -40,6 +41,64 @@ class TopVisitedPlaces extends Component {
                             </div>
                         </div>
                         <div className="row padding-top-50px">
+                            { this.state.loading === true &&
+                                <div className="col-sm-12 loaderPlaceholder">
+                                    <div className="row">
+                                        <div className="col-lg-4 responsive-column">
+                                            <div className="ph-item">
+                                                <div className="ph-col-12">
+                                                    <div className="ph-picture"></div>
+                                                    <div className="ph-row">
+                                                        <div className="ph-col-6 big"></div>
+                                                        <div className="ph-col-4 empty big"></div>
+                                                        <div className="ph-col-2 big"></div>
+                                                        <div className="ph-col-4"></div>
+                                                        <div className="ph-col-8 empty"></div>
+                                                        <div className="ph-col-6"></div>
+                                                        <div className="ph-col-6 empty"></div>
+                                                        <div className="ph-col-12"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-4 responsive-column">
+                                            <div className="ph-item">
+                                                <div className="ph-col-12">
+                                                    <div className="ph-picture"></div>
+                                                    <div className="ph-row">
+                                                        <div className="ph-col-6 big"></div>
+                                                        <div className="ph-col-4 empty big"></div>
+                                                        <div className="ph-col-2 big"></div>
+                                                        <div className="ph-col-4"></div>
+                                                        <div className="ph-col-8 empty"></div>
+                                                        <div className="ph-col-6"></div>
+                                                        <div className="ph-col-6 empty"></div>
+                                                        <div className="ph-col-12"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-4 responsive-column">
+                                            <div className="ph-item">
+                                                <div className="ph-col-12">
+                                                    <div className="ph-picture"></div>
+                                                    <div className="ph-row">
+                                                        <div className="ph-col-6 big"></div>
+                                                        <div className="ph-col-4 empty big"></div>
+                                                        <div className="ph-col-2 big"></div>
+                                                        <div className="ph-col-4"></div>
+                                                        <div className="ph-col-8 empty"></div>
+                                                        <div className="ph-col-6"></div>
+                                                        <div className="ph-col-6 empty"></div>
+                                                        <div className="ph-col-12"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
                             {
                                 this.state.venues.map((venue, index)=>(
                                     <React.Fragment key={index}>

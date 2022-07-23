@@ -2,6 +2,16 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 
 class Footer extends Component {
+    constructor() {
+        super();
+
+        let today = new Date(), date = today.getFullYear();
+
+        this.state = {
+            date: date
+        };
+    }
+
     render() {
         return (
             <>
@@ -23,7 +33,7 @@ class Footer extends Component {
                                             Cerrick Way, FL 12345
                                         </li>
                                         <li>+123-456-789</li>
-                                        <li><a href="#">trizen@yourwebsite.com</a></li>
+                                        <li><a href="#">info@venue-connect.com</a></li>
                                     </ul>
                                     <div className="footer-social-box">
                                         <ul className="social-profile">
@@ -119,15 +129,13 @@ class Footer extends Component {
                             <div className="col-lg-7">
                                 <div className="copy-right padding-top-30px">
                                     <p className="copy__desc">
-                                        &copy; Copyright Trizen 2020. Made with
+                                        &copy; Copyright Venues Connect {this.state.date}. Made with
                                         <span className="la la-heart"></span> by <a target="_blank" href="https://creativewebsolution.net" >Creative Web Solution</a>
                                     </p>
                                 </div>
                             </div>
                             <div className="col-lg-5">
-                                <div
-                                    className="copy-right-content d-flex align-items-center justify-content-end padding-top-30px"
-                                >
+                                <div className="copy-right-content d-flex align-items-center justify-content-end padding-top-30px">
                                     <h3 className="title font-size-15 pr-2">We Accept</h3>
                                     <img src="assets/images/payment-img.png" alt=""/>
                                 </div>

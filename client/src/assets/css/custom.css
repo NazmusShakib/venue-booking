@@ -8,3 +8,32 @@
 .modal{
     background: rgba(0,0,0,0.5);
 }
+
+.carousel-action .owl-dots {
+    width: 100%;
+    text-align: center;
+    padding-top: 0px;
+}
+.carousel-action .owl-dots button {
+    width: 13px;
+    height: 13px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid rgba(19, 41, 104, 0.1);
+    display: inline-block;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    margin: 0 2px;
+}
+.carousel-action .owl-dots button.active {
+    background-color: #287dfa;
+    border-color: #287dfa;
+    outline: none !important;
+}
+.carousel-action .owl-dots button:focus {
+    outline: none !important;
+}

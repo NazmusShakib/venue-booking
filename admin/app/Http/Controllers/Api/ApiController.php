@@ -8,6 +8,7 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\AmenityResource;
 use App\Http\Resources\OccasionResource;
 use App\Http\Resources\VenueResource;
+use App\Http\Resources\VenueDetailsResource;
 use App\Http\Resources\EventCalendarResource;
 use App\Models\Category;
 use App\Models\City;
@@ -95,6 +96,14 @@ class ApiController extends Controller
         })->get();
 
         return VenueResource::collection($venues);
+    }
+
+    public function venue_details($slug){
+        $venue = new VenueDetailsResource(Venue::where('slug', $slug)->first());
+        return response()->json([
+            'status' => 200,
+            'venue' => $venue
+        ]);
     }
 
     public function event_store(Request $request){

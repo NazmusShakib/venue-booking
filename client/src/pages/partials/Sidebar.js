@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import Daterange from "../../hooks/Daterange";
-import JqueryUi from "../../hooks/JqueryUi";
 import Categories from "./components/Categories";
 import Occasions from "./components/Occasions";
 import Amenities from "./components/Amenities";
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import PriceRangeSlider from 'react-rangeslider'
+
 let cats = [];
 let occasions = [];
 let amenities = [];
@@ -11,7 +12,8 @@ class Sidebar extends Component {
     constructor() {
         super();
         this.state={
-            accordianId:''
+            accordianId:'',
+            priceValue:10
         }
     }
 
@@ -35,11 +37,24 @@ class Sidebar extends Component {
         this.props.receiveFilterResponseFromSidebar('amenities', amenities);
     }
 
+    handleDateRangeEvent(event, picker) {
+        console.log(picker.startDate);
+    }
+    handleDateRangeCallback(start, end, label) {
+        console.log(start, end, label);
+    }
+
+
+    handlePriceRangeOnChange = (value) => {
+        this.setState({
+            priceValue: value
+        })
+    }
+
     render() {
+        let formatUSD = value => value + ' $';
         return (
             <>
-                <Daterange/>
-                <JqueryUi/>
                 <div className="sidebar mb-0 p-0">
                     <div className="sidebar-widget p-4">
                         <h3 className="title stroke-shape">Search Resorts</h3>
@@ -57,7 +72,9 @@ class Sidebar extends Component {
                                         <label className="label-text">Check in - Check out</label>
                                         <div className="form-group">
                                             <span className="la la-calendar form-icon"></span>
-                                            <input className="date-range form-control" type="text" name="daterange" readOnly/>
+                                            <DateRangePicker onEvent={this.handleDateRangeEvent} onCallback={this.handleDateRangeCallback}>
+                                                <input type="text" className="form-control" />
+                                            </DateRangePicker>
                                         </div>
                                     </div>
                                 </form>
@@ -69,16 +86,25 @@ class Sidebar extends Component {
                     </div>
                     <div className="sidebar-widget border-bottom-0 p-0 pl-4 pr-4">
                         <h3 className="title stroke-shape">Filter by Price</h3>
-                        <div className="sidebar-price-range">
-                            <div className="main-search-input-item">
+                        <div className="sidebar-price-range overflow-hidden">
+                            <div className="main-search-input-item slider custom-labels mb-5">
                                 <div className="price-slider-amount padding-bottom-20px">
-                                    <label htmlFor="amount" className="filter__label">Price:</label>
-                                    <input type="text" id="amount" className="amounts"/>
+                                    <h3 className='text-center text-success'>{this.state.priceValue+'$'}</h3>
                                 </div>
-                                <div id="slider-range"></div>
-                            </div>
-                            <div className="btn-box pt-4">
-                                <button className="theme-btn theme-btn-small theme-btn-transparent" type="button">Apply</button>
+
+                                <PriceRangeSlider
+                                    min={0}
+                                    max={10000}
+                                    value={this.state.priceValue}
+                                    labels={{
+                                        0: 'Low',
+                                        5000: 'Medium',
+                                        10000: 'High'
+                                    }}
+                                    format={formatUSD}
+                                    handleLabel={''}
+                                    onChange={this.handlePriceRangeOnChange}
+                                />
                             </div>
                         </div>
                     </div>

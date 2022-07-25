@@ -9532,7 +9532,7 @@ body {
 .single-content-sidebar {
     margin-top: -115px;
     position: relative;
-    z-index: 1;
+    z-index: 3;
     background-color: transparent;
     border: none;
     -webkit-border-radius: 0;

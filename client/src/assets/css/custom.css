@@ -4,11 +4,9 @@
     border-color: transparent;
     border-top-color: rgba(128, 137, 150, 0.1);
 }
-
 .modal{
     background: rgba(0,0,0,0.5);
 }
-
 .carousel-action .owl-dots {
     width: 100%;
     text-align: center;
@@ -40,4 +38,40 @@
 
 .hero-wrapper .fullscreen-slide-contain .owl-item{
     height: 512px;
+}
+
+.hero-box::before{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+.venue-details-carousel-action .owl-nav div.owl-prev{
+    left: 5px;
+}
+
+.venue-details-carousel-action .owl-nav div.owl-next{
+    right: 5px;
+}
+
+.venue-details-carousel-action .owl-stage-outer::before{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.single-content-wrap img{
+    max-width: 100%;
 }

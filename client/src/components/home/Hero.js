@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import SearchForm from "../partials/SearchForm";
-
-
 import OwlCarousel from 'react-owl-carousel';
 const options = {
     loop: true,
@@ -32,7 +30,7 @@ class Hero extends Component {
                         {/*        <li><img src="assets/images/hero--bg3.jpg" alt=""/></li>*/}
                         {/*    </ul>*/}
                         {/*</div>*/}
-                        <div className="container" style={{'position': 'absolute', 'bottom': '0', 'z-index': '1', 'left': '0', 'right': '0'}}>
+                        <div className="container" style={{'position': 'absolute', 'bottom': '0', 'zIndex': '3', 'left': '0', 'right': '0'}}>
                             <div className="row">
                                 <div className="col-lg-12">
                                     <div className="hero-content pb-5">

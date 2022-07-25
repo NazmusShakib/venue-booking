@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Resources;
-
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\Venue;
 
-class VenueResource extends JsonResource
+class VenueDetailsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,9 +14,18 @@ class VenueResource extends JsonResource
      */
     public function toArray($request)
     {
+        $images = [];
+        if(!empty($this->images))
+        {
+            foreach($this->images as $image){$images[] = asset(\Storage::url($image));}
+        }
+
         return [
             'id' => $this->id,
             'thumbnail' => asset(\Storage::url($this->featured_image)),
+            'images' => $images,
+            'additional_info' => $this->additional_info,
+            'description' => $this->description,
             'name' => $this->name,
             'slug' => $this->slug,
             'price' => '$'.round($this->price),

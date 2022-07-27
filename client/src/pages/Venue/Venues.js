@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
-import InfoSection from "../components/partials/InfoSection";
-import Subscribe from "../components/partials/Subscribe";
+import InfoSection from "../../components/partials/InfoSection";
+import Subscribe from "../../components/partials/Subscribe";
 import {Link} from "react-router-dom";
-import Sidebar from "./partials/Sidebar";
-import VenueLists from "./components/VenueLists";
-import {
-    useLocation,
-    useNavigate,
-    useParams,
-} from "react-router-dom";
+import Sidebar from "../partials/Sidebar";
+import VenueLists from "./partials/VenueLists";
+import WithRouter from "../../_utility/WithRouter";
 let filteredCategories = [];
 let filteredOccasions = [];
 let filteredAmenities = [];
@@ -142,23 +138,4 @@ class Venues extends Component {
     }
 }
 
-const withRouter = (Component) => {
-    const Wrapper = (props) => {
-        let location = useLocation();
-        let navigate = useNavigate();
-        let params = useParams();
-
-        return (
-            <Component
-                location={location}
-                navigate={navigate}
-                params={params}
-                {...props}
-            />
-        );
-    };
-
-    return Wrapper;
-};
-
-export default withRouter(Venues);
+export default WithRouter(Venues);

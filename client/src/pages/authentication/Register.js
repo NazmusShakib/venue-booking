@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import SessionHelper from "../../session/SessionHelper";
 import {useNavigate} from "react-router";
 import axios from "axios";
+import queryString from "query-string";
 
 const Register = () => {
     useEffect(() => {
@@ -10,6 +11,8 @@ const Register = () => {
     }, []);
 
     const navigate = useNavigate();
+    const location = useLocation();
+    let redirectTo = queryString.parse(location.search).redirect;
     const [registerInput, setRegister] = useState({
         'name':'',
         'username':'',
@@ -54,7 +57,13 @@ const Register = () => {
                         password: '',
                         confirm_password: '',
                     });
-                    navigate('/');
+                    if(redirectTo === 'undefined' || redirectTo === 'null')
+                    {
+                        navigate('/');
+                    }else
+                    {
+                        navigate(redirectTo.toString());
+                    }
                 }
             }).catch((error)=>{
                 setRegister({...registerInput, processing:false, message:'Sorry! something went wrong.'});

@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
-import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 import axios from "axios";
 import OwlCarousel from 'react-owl-carousel';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
-// import Daterange from "../hooks/Daterange";
+import Moment from 'moment';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
+import SessionHelper from "../../session/SessionHelper";
+import WithRouter from "../../_utility/WithRouter";
+import {useNavigate} from "react-router";
 const options = {
     loop: true,
     items: 1,
@@ -22,7 +25,8 @@ class VenueDetails extends Component {
         super();
         this.state = {
             venue:[],
-            images:[]
+            images:[],
+            amenities:[]
         }
     }
 
@@ -32,13 +36,29 @@ class VenueDetails extends Component {
         axios.get('/api/venue/details/'+slug,).then(res => {
             this.setState({venue:res.data.venue});
             this.setState({images:res.data.venue.images});
+            this.setState({amenities:res.data.venue.amenities});
         }).catch((error)=>{});
+    }
+
+    handleDateRangeEvent(event, picker) {
+        let data = {
+            'startDate':Moment(picker.startDate).format('YYYY-MM-DD'),
+            'endDate':Moment(picker.endDate).format('YYYY-MM-DD')
+        };
+        SessionHelper.SetFilterSession(data);
+        document.getElementById('bookNowBtn').removeAttribute('disabled');
+        document.getElementById('bookNowBtn').removeAttribute('title');
+        document.getElementById('bookNowBtn').classList.remove('disabled');
+    }
+
+    formSubmit(e) {
+        e.preventDefault();
+        this.props.navigate('/venue/booking/'+this.state.venue.slug);
     }
 
     render() {
         return (
             <>
-                {/*<Daterange/>*/}
                 <section className="hero-wrapper hero-wrapper2">
                     { this.state.images.length < 1 &&
                         <div className="loaderPlaceholder p-0">
@@ -74,6 +94,20 @@ class VenueDetails extends Component {
                                                 {ReactHtmlParser(this.state.venue.description)}
                                             </div>
                                             <div className="section-block"></div>
+                                            <div id="amenities" className="page-scroll">
+                                                <div className="single-content-item padding-top-40px padding-bottom-20px">
+                                                    <h3 className="title font-size-20">Amenities</h3>
+                                                    <div className="amenities-feature-item pt-4">
+                                                        {
+                                                            this.state.amenities.map((amenity, index) => (
+                                                                <React.Fragment key={index}>
+                                                                <span className="badge badge-primary p-2 mr-2">{amenity.name}</span>
+                                                                </React.Fragment>
+                                                            ))
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -81,37 +115,25 @@ class VenueDetails extends Component {
                                     <div className="sidebar single-content-sidebar mb-0">
                                         <div className="sidebar-widget single-content-widget">
                                             <div className="sidebar-widget-item">
-                                                <div className="sidebar-book-title-wrap mb-3">
-                                                    <h3>Popular</h3>
-                                                    <p>
-                                                        <span className="text-form">From</span>
-                                                        <span className="text-value ml-2 mr-1">৳ 133399.00</span>
-                                                        <span className="before-price">৳ 144412.00</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="sidebar-widget-item">
                                                 <div className="contact-form-action">
-                                                    <form action="#">
+                                                    <form onSubmit={this.formSubmit.bind(this)}>
                                                         <div className="input-box">
                                                             <label className="label-text">Check in - Check out</label>
-
                                                             <div className="form-group">
                                                                 <span className="la la-calendar form-icon"></span>
-                                                                <DateRangePicker>
+                                                                <DateRangePicker onEvent={this.handleDateRangeEvent.bind(this)}>
                                                                     <input type="text" className="form-control" />
                                                                 </DateRangePicker>
                                                             </div>
                                                         </div>
+                                                        <div className="btn-box pt-2">
+                                                            <button type="submit" title="Please select date first." id="bookNowBtn" disabled className="disabled theme-btn text-center w-100 mb-2 btn-outline-none">
+                                                                <i className="la la-shopping-cart mr-2 font-size-18"></i>
+                                                                Book Now
+                                                            </button>
+                                                        </div>
                                                     </form>
                                                 </div>
-                                            </div>
-
-                                            <div className="btn-box pt-2">
-                                                <a href="hotel-booking.html" className="theme-btn text-center w-100 mb-2">
-                                                    <i className="la la-shopping-cart mr-2 font-size-18"></i>
-                                                    Book Now
-                                                </a>
                                             </div>
                                         </div>
                                         <div className="sidebar-widget single-content-widget">
@@ -183,20 +205,16 @@ class VenueDetails extends Component {
                                             <div className="sidebar-list">
                                                 <ul className="list-items">
                                                     <li>
-                                                        <i className="la la-dollar icon-element mr-2"></i>No-hassle
-                                                        best price guarantee
+                                                        <i className="la la-dollar icon-element mr-2"></i>No-hassle best price guarantee
                                                     </li>
                                                     <li>
-                                                        <i className="la la-microphone icon-element mr-2"></i
-                                                        >Customer care available 24/7
+                                                        <i className="la la-microphone icon-element mr-2"></i> Customer care available 24/7
                                                     </li>
                                                     <li>
-                                                        <i className="la la-thumbs-up icon-element mr-2"></i
-                                                        >Hand-picked Tours & Activities
+                                                        <i className="la la-thumbs-up icon-element mr-2"></i> Hand-picked Tours & Activities
                                                     </li>
                                                     <li>
-                                                        <i className="la la-file-text icon-element mr-2"></i>Free
-                                                        Travel Insureance
+                                                        <i className="la la-file-text icon-element mr-2"></i>Free Travel Insureance
                                                     </li>
                                                 </ul>
                                             </div>
@@ -231,23 +249,4 @@ class VenueDetails extends Component {
     }
 }
 
-const withRouter = (Component) => {
-    const Wrapper = (props) => {
-        let location = useLocation();
-        let navigate = useNavigate();
-        let params = useParams();
-
-        return (
-            <Component
-                location={location}
-                navigate={navigate}
-                params={params}
-                {...props}
-            />
-        );
-    };
-
-    return Wrapper;
-};
-
-export default withRouter(VenueDetails);
+export default WithRouter(VenueDetails);

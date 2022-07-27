@@ -16,6 +16,14 @@ class SessionHelper extends Component {
     static RemoveAuthSession(){
         sessionStorage.removeItem('AuthUser');
     }
+
+    static SetFilterSession(data){
+        sessionStorage.setItem('filter', JSON.stringify(data));
+    }
+
+    static GetFilterSession(){
+        return JSON.parse(sessionStorage.getItem('filter'));
+    }
 }
 
 export default SessionHelper;

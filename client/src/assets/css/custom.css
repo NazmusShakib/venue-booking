@@ -75,3 +75,20 @@
 .single-content-wrap img{
     max-width: 100%;
 }
+
+.btn-outline-none:hover, .btn-outline-none:focus, .theme-btn:focus, .theme-btn:hover{
+    outline: none;
+}
+
+.disabled, .disabled:hover, .disabled:focus{
+    cursor: not-allowed;
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: #ffffff;
+}
+
+.flex-direction-column{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

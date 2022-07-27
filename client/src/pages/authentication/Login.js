@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from "react-router";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import axios from "axios";
 import SessionHelper from "../../session/SessionHelper";
+import queryString from 'query-string';
 
 const Login = () => {
     useEffect(() => {
@@ -10,6 +11,8 @@ const Login = () => {
     }, []);
 
     const navigate = useNavigate();
+    const location = useLocation();
+    let redirectTo = queryString.parse(location.search).redirect;
 
     const [loginInput, setLogin] = useState({
         'email':'',
@@ -51,7 +54,14 @@ const Login = () => {
                         message: '',
                         password: ''
                     });
-                    navigate('/');
+
+                    if(redirectTo === 'undefined' || redirectTo === 'null')
+                    {
+                        navigate('/');
+                    }else
+                    {
+                        navigate(redirectTo.toString());
+                    }
                 }
             }).catch((error)=>{
                 setLogin({...loginInput, processing:false, message:'Sorry! something went wrong.'});
@@ -133,22 +143,13 @@ const Login = () => {
                                         <span className="la la-lock form-icon"></span>
                                         <input
                                             className="form-control"
-                                            type="text"
+                                            type="password"
                                             name="password"
                                             placeholder="Type your password"
                                             onChange={handleInput} value={loginInput.password}
                                         />
                                     </div>
                                     <p className="text-danger">{loginInput.errors.password}</p>
-                                    {/*<div className="d-flex align-items-center justify-content-between">
-                                        <div className="custom-checkbox mb-0">
-                                            <input type="checkbox" id="rememberchb"/>
-                                            <label htmlFor="rememberchb">Remember me</label>
-                                        </div>
-                                        <p className="forgot-password">
-                                            <a href="recover.html">Forgot Password?</a>
-                                        </p>
-                                    </div>*/}
                                 </div>
                                 <div className="btn-box pt-3 pb-4">
                                     <button type="submit" className={loginInput.processing == true ? 'btn btn-block btn-lg btn-danger disabled font-size-16' : 'btn btn-block btn-primary btn-lg font-size-16'}>

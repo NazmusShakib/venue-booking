@@ -4,7 +4,7 @@ import Home from "../pages/Home";
 import AboutUs from "../pages/AboutUs";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
-import Venues from "../pages/Venues";
+import Venues from "../pages/Venue/Venues";
 import Blog from "../pages/Blog";
 import HelpAndSupport from "../pages/HelpAndSupport";
 import Faq from "../pages/Faq";
@@ -16,7 +16,8 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Profile from "../pages/dashboard/Profile";
 import AuthRoutes from "../_utility/AuthRoutes";
 import GuestRoutes from "../_utility/GuestRoutes";
-import VenueDetails from "../pages/VenueDetails";
+import VenueDetails from "../pages/Venue/VenueDetails";
+import VenueBooking from "../pages/Venue/VenueBooking";
 
 class AppRoute extends Component {
     render() {
@@ -46,6 +47,7 @@ class AppRoute extends Component {
                             <Route path=":category" element={<Venues />} />
                         </Route>
                         <Route path="/venue/details/:venue_slug" element={<VenueDetails />} />
+                        <Route path="/venue/booking/:venue_slug" element={<VenueBooking />} />
 
                     </Routes>
                     <Footer/>

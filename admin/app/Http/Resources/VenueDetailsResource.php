@@ -28,12 +28,15 @@ class VenueDetailsResource extends JsonResource
             'description' => $this->description,
             'name' => $this->name,
             'slug' => $this->slug,
-            'price' => '$'.round($this->price),
+            'price' => '৳'.round($this->price),
             'price_type'=> Venue::priceType()[$this->price_type] ?? '',
             'capacity' => $this->capacity,
             'division' => $this->division->name,
             'city' => $this->city->name,
             'district' => $this->district->name,
+            'categories' => CategoryResource::collection($this->categories),
+            'occasions' => OccasionResource::collection($this->occasions),
+            'amenities' => AmenityResource::collection($this->amenities),
             'created_at' => date('d-m-Y', strtotime($this->created_at)),
             'updated_at' => date('d-m-Y', strtotime($this->updated_at))
         ];

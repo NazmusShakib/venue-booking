@@ -20,7 +20,7 @@ class VenueResource extends JsonResource
             'thumbnail' => asset(\Storage::url($this->featured_image)),
             'name' => $this->name,
             'slug' => $this->slug,
-            'price' => '$'.round($this->price),
+            'price' => '৳'.round($this->price),
             'price_type'=> Venue::priceType()[$this->price_type] ?? '',
             'capacity' => $this->capacity,
             'division' => $this->division->name,

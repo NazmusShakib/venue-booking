@@ -7,7 +7,6 @@ import Moment from 'moment';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import SessionHelper from "../../session/SessionHelper";
 import WithRouter from "../../_utility/WithRouter";
-import {useNavigate} from "react-router";
 const options = {
     loop: true,
     items: 1,

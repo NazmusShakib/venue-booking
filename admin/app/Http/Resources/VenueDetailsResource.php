@@ -29,6 +29,7 @@ class VenueDetailsResource extends JsonResource
             'name' => $this->name,
             'slug' => $this->slug,
             'price' => '৳'.round($this->price),
+            'price_integer_value' => round($this->price),
             'price_type'=> Venue::priceType()[$this->price_type] ?? '',
             'capacity' => $this->capacity,
             'division' => $this->division->name,

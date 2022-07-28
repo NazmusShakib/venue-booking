@@ -10,7 +10,7 @@ class SessionHelper extends Component {
     }
 
     static GetAuthUserId(){
-        return this.GetAuthSession().user_id;
+        return this.GetAuthSession() !== null ? this.GetAuthSession().user_id : '';
     }
 
     static RemoveAuthSession(){

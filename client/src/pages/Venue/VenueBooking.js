@@ -15,21 +15,25 @@ class VenueBooking extends Component {
             venue:[],
             images:[],
             amenities:[],
-            category_id:'',
             categoryLists:[],
-            occasion_id:'',
             occasionLists:[],
-            loading:true
+            loading:true,
+            category_id:'',
+            occasion_id:'',
+            name:SessionHelper.GetAuthSession() !== null ? SessionHelper.GetAuthSession().name : '',
+            email:SessionHelper.GetAuthSession() !== null ? SessionHelper.GetAuthSession().email : '',
+            receive_promotional_offers:false,
+            agree:false
         }
     }
 
     componentDidMount() {
+        console.log(SessionHelper.GetAuthSession());
         window.scrollTo(0, 0);
         let slug = this.props.params.venue_slug;
         let data = {};
         axios.get('/sanctum/csrf-cookie').then(response => {
             axios.get('/api/venue/details/'+slug,).then(res => {
-                console.log(res.data.venue);
                 this.setState({venue:res.data.venue});
                 this.setState({images:res.data.venue.images});
                 this.setState({amenities:res.data.venue.amenities});
@@ -50,6 +54,53 @@ class VenueBooking extends Component {
 
     handleOccasionSelect = (selectedOption) =>{
         this.setState({occasion_id : selectedOption.value});
+    }
+
+    handleInput = (e) =>{
+        e.persist();
+        this.setState({[e.target.name] : e.target.value});
+
+        if(e.target.name.toString() === 'receive_promotional_offers')
+        {
+            this.setState({receive_promotional_offers : e.target.checked});
+        }
+
+        if(e.target.name.toString() === 'agree')
+        {
+            this.setState({agree : e.target.checked});
+        }
+    }
+
+    formSubmit(e) {
+        e.preventDefault();
+        let data = {
+            'venue_id':this.state.venue.id,
+            'user_id':SessionHelper.GetAuthUserId(),
+            'start_date':SessionHelper.GetFilterSession().startDate,
+            'end_date':SessionHelper.GetFilterSession().endDate,
+            'capacity':this.state.venue.capacity,
+            'name':this.state.name,
+            'email':this.state.email,
+            'category_id':this.state.category_id,
+            'occasion_id':this.state.occasion_id,
+            'mobile_number':this.state.mobile_number,
+            'address':this.state.address,
+            'total_guests':this.state.total_guests,
+            'price_type':this.state.venue.price_type,
+            'net_total_price':this.state.venue.price_integer_value,
+            'receive_promotional_offers':this.state.receive_promotional_offers,
+            'agree':this.state.agree,
+            'status':'pending',
+        }
+
+        axios.get('/sanctum/csrf-cookie').then(response => {
+            axios.post('/api/order/store', data).then(res => {
+                if (res.data.status === 200)
+                {
+                    this.props.navigate('/dashboard');
+                }
+            }).catch((error)=>{});
+        });
     }
 
     render() {
@@ -102,7 +153,7 @@ class VenueBooking extends Component {
                                     <div className="form-content">
                                         <div className="contact-form-action">
                                             {SessionHelper.GetAuthSession() !== null ? (
-                                                <form method="post">
+                                                <form onSubmit={this.formSubmit.bind(this)} method="post">
                                                     <div className="row">
                                                         <div className="col-lg-6 responsive-column">
                                                             <div className="input-box">
@@ -133,7 +184,7 @@ class VenueBooking extends Component {
                                                                 <label className="label-text">Name</label>
                                                                 <div className="form-group">
                                                                     <span className="la la-user form-icon"></span>
-                                                                    <input className="form-control" type="text" name="text" placeholder="Name" />
+                                                                    <input onChange={this.handleInput} className="form-control" type="text" name="name" placeholder="Name" defaultValue={this.state.name}/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -142,7 +193,7 @@ class VenueBooking extends Component {
                                                                 <label className="label-text">Your Email</label>
                                                                 <div className="form-group">
                                                                     <span className="la la-envelope-o form-icon"></span>
-                                                                    <input className="form-control" type="email" name="email" placeholder="Email address"/>
+                                                                    <input onChange={this.handleInput} className="form-control" type="email" name="email" placeholder="Email address" defaultValue={this.state.email}/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -151,7 +202,7 @@ class VenueBooking extends Component {
                                                                 <label className="label-text">Mobile Number</label>
                                                                 <div className="form-group">
                                                                     <span className="la la-phone form-icon"></span>
-                                                                    <input className="form-control" type="text" name="text" placeholder="Mobile Number"/>
+                                                                    <input onChange={this.handleInput} className="form-control" type="text" name="mobile_number" placeholder="Mobile Number"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -160,7 +211,7 @@ class VenueBooking extends Component {
                                                                 <label className="label-text">How many guests you are planning for event?*</label>
                                                                 <div className="form-group">
                                                                     <span className="las la-users form-icon"></span>
-                                                                    <input className="form-control" type="text" name="text" placeholder="Total Guests"/>
+                                                                    <input onChange={this.handleInput} className="form-control" type="number" name="total_guests" placeholder="Total Guests" min="0" max={this.state.venue.capacity}/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -169,21 +220,21 @@ class VenueBooking extends Component {
                                                                 <label className="label-text">Address Line</label>
                                                                 <div className="form-group">
                                                                     <span className="la la-map-marked form-icon"></span>
-                                                                    <textarea className="form-control" type="text" name="text" placeholder="Address line"></textarea>
+                                                                    <textarea onChange={this.handleInput} className="form-control" type="text" name="address" placeholder="Address line"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div className="col-lg-12">
                                                             <div className="input-box">
                                                                 <div className="custom-checkbox mb-0">
-                                                                    <input type="checkbox" id="receiveChb"/>
+                                                                    <input onChange={this.handleInput} name="receive_promotional_offers" type="checkbox" id="receiveChb"/>
                                                                     <label htmlFor="receiveChb">I want to receive promotional offers in the future</label>
                                                                 </div>
                                                             </div>
                                                             <div className="input-box">
                                                                 <div className="form-group">
                                                                     <div className="custom-checkbox">
-                                                                        <input type="checkbox" id="agreechb"/>
+                                                                        <input onChange={this.handleInput} name="agree" type="checkbox" id="agreechb"/>
                                                                         <label htmlFor="agreechb">By continuing, you agree to the <Link to='/terms-and-conditions'>Terms & Conditions</Link>.</label>
                                                                     </div>
                                                                 </div>

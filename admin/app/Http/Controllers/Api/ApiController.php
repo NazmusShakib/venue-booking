@@ -10,12 +10,14 @@ use App\Http\Resources\OccasionResource;
 use App\Http\Resources\VenueResource;
 use App\Http\Resources\VenueDetailsResource;
 use App\Http\Resources\EventCalendarResource;
+use App\Http\Resources\OrderResource;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Amenity;
 use App\Models\Occasion;
 use App\Models\Venue;
 use App\Models\EventCalendar;
+use App\Models\Order;
 
 class ApiController extends Controller
 {
@@ -174,5 +176,18 @@ class ApiController extends Controller
             'status' => 200,
             'occasions' => $occasions
         ]);
+    }
+
+    public function order_store(Request $request){
+        $order = Order::create($request->all());
+        return response()->json([
+            'status' => 200,
+            'message' => 'Order successfully stored in database.'
+        ]);
+    }
+
+    public function orders($user_id){
+        $order = Order::where('user_id', $user_id)->get();
+        return OrderResource::collection($order);
     }
 }

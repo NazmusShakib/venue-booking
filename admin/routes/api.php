@@ -25,4 +25,6 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::post('/event/store', [ApiController::class, 'event_store']);
     Route::get('/events/{venue_id}', [ApiController::class, 'events']);
     Route::get('/delete/event/{id}', [ApiController::class, 'delete_event']);
+    Route::post('/order/store', [ApiController::class, 'order_store']);
+    Route::get('/orders/{user_id}', [ApiController::class, 'orders']);
 });

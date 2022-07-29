@@ -92,3 +92,8 @@
     justify-content: center;
     flex-direction: column;
 }
+
+.sidebar-widget .sidebar-category .collapse.show{
+    max-height: 700px;
+    overflow-y: auto;
+}

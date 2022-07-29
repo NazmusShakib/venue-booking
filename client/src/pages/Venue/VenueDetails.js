@@ -100,7 +100,7 @@ class VenueDetails extends Component {
                                                         {
                                                             this.state.amenities.map((amenity, index) => (
                                                                 <React.Fragment key={index}>
-                                                                <span className="badge badge-primary p-2 mr-2">{amenity.name}</span>
+                                                                <span className="badge badge-primary p-2 mr-2 mb-2">{amenity.name}</span>
                                                                 </React.Fragment>
                                                             ))
                                                         }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ApiController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/cities', [ApiController::class, 'cities']);
 Route::get('/categories', [ApiController::class, 'categories']);
 Route::get('/amenities', [ApiController::class, 'amenities']);
 Route::get('/occasions', [ApiController::class, 'occasions']);

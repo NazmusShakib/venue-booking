@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import SessionHelper from "../../../session/SessionHelper";
 
 class VenueLists extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class VenueLists extends Component {
         let cat = filter.category;
         let formatFilter = Object.assign({}, filter);
         formatFilter = JSON.stringify(formatFilter);
-        //console.log(formatFilter);
+        console.log(formatFilter);
         this.getData(cat, formatFilter);
     }
 
@@ -36,13 +37,13 @@ class VenueLists extends Component {
         this.setState({venuesLoading:true});
         if(!cat){
             axios.post('/api/venues', filter).then(res => {
-                this.setState({venuesLoading:false});
                 this.setState({venues:res.data.data});
+                this.setState({venuesLoading:false});
             }).catch((error)=>{});
         }else{
             axios.post('/api/venues/'+cat, filter).then(res => {
-                this.setState({venuesLoading:false});
                 this.setState({venues:res.data.data});
+                this.setState({venuesLoading:false});
             }).catch((error)=>{});
         }
     }
@@ -201,12 +202,8 @@ class VenueLists extends Component {
 
                                     <div className="card-img">
                                         <Link to={`/venue/details/${venue.slug}`} className="d-block">
-                                            <img style={{'minHeight':'265px'}} src={venue.thumbnail} alt={venue.name}/>
+                                            <img style={{'minHeight':'285px'}} src={venue.thumbnail} alt={venue.name}/>
                                         </Link>
-
-                                        <div className="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
-                                            <i className="la la-heart-o"></i>
-                                        </div>
                                     </div>
                                     <div className="card-body">
                                         <h3 className="card-title">

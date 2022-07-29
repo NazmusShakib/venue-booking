@@ -10,6 +10,7 @@ use App\Http\Resources\OccasionResource;
 use App\Http\Resources\VenueResource;
 use App\Http\Resources\VenueDetailsResource;
 use App\Http\Resources\EventCalendarResource;
+use App\Http\Resources\CityResource;
 use App\Http\Resources\OrderResource;
 use App\Models\Category;
 use App\Models\City;
@@ -22,6 +23,10 @@ use App\Models\User;
 
 class ApiController extends Controller
 {
+    public function cities(){
+        return CityResource::collection(City::all());
+    }
+
     public function categories(){
         return CategoryResource::collection(Category::all());
     }
@@ -154,7 +159,7 @@ class ApiController extends Controller
     }
 
     public function city_lists_for_dropdown(Request $request){
-        $cities = City::select('id as value', 'name as label')->get()->toArray();
+        $cities = City::select('slug as value', 'name as label')->get()->toArray();
 
         return response()->json([
             'status' => 200,
@@ -163,7 +168,7 @@ class ApiController extends Controller
     }
 
     public function category_lists_for_dropdown(Request $request){
-        $cats = Category::select('id as value', 'name as label')->get()->toArray();
+        $cats = Category::select('slug as value', 'name as label')->get()->toArray();
 
         return response()->json([
             'status' => 200,
@@ -172,7 +177,7 @@ class ApiController extends Controller
     }
 
     public function occasion_lists_for_dropdown(Request $request){
-        $occasions = Occasion::select('id as value', 'name as label')->get()->toArray();
+        $occasions = Occasion::select('slug as value', 'name as label')->get()->toArray();
 
         return response()->json([
             'status' => 200,

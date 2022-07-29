@@ -18,7 +18,7 @@ class Categories extends Component {
         else
         {
             cats = cats.filter(function(cat){
-                return cat != e.target.value;
+                return cat !== e.target.value;
             });
         }
         responseCats['responsedCategories'] = cats;

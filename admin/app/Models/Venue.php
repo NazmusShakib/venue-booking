@@ -82,7 +82,7 @@ class Venue extends Model
             ''=>'--Select Price Type',
             'per-day'=>'Per Day',
             'per-night'=>'Per Night',
-            'per-person'=>'Per Person'
+            //'per-person'=>'Per Person'
         ];
     }
 

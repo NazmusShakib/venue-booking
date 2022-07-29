@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Cities from "./components/Cities";
 import Categories from "./components/Categories";
 import Occasions from "./components/Occasions";
 import Amenities from "./components/Amenities";
@@ -6,6 +7,7 @@ import DateRangePicker from "react-bootstrap-daterangepicker";
 import PriceRangeSlider from 'react-rangeslider';
 import Moment from "moment";
 
+let cities = [];
 let cats = [];
 let occasions = [];
 let amenities = [];
@@ -25,6 +27,11 @@ class Sidebar extends Component {
     handleOnClickForAccordian(e){
         let accordianId = e.target.getAttribute('data-target');
         this.setState({accordianId:accordianId});
+    }
+
+    receiveCityFilterResponse(response){
+        cities['filteredCities'] = response.responsedCities;
+        this.props.receiveFilterResponseFromSidebar('cities', cities);
     }
 
     receiveCategoryFilterResponse(response){
@@ -121,10 +128,20 @@ class Sidebar extends Component {
                     <div className="sidebar-widget p-0">
                         <div className="accordion" id="accordionExample">
                             <div className="sidebar-category pl-4 pr-4">
+                                <button onClick={this.handleOnClickForAccordian.bind(this)} id="headingCity" className="mb-3 text-decoration-none btn btn-link btn-block text-left title stroke-shape mb-0 pl-0" type="button" data-toggle="collapse" data-target="#collapseCity" aria-expanded="true" aria-controls="headingCity">
+                                    City
+                                </button>
+                                <div id="collapseCity" className={(this.state.accordianId == '#collapseCity' || this.state.accordianId == '') ? 'collapse show' : 'collapse'} aria-labelledby="headingCity"
+                                     data-parent="#accordionExample">
+                                    <Cities receiveCityFilterResponse={this.receiveCityFilterResponse.bind(this)}/>
+                                </div>
+                            </div>
+
+                            <div className="sidebar-category pl-4 pr-4">
                                 <button onClick={this.handleOnClickForAccordian.bind(this)} id="headingOne" className="mb-3 text-decoration-none btn btn-link btn-block text-left title stroke-shape mb-0 pl-0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="headingOne">
                                     Category
                                 </button>
-                                <div id="collapseOne" className={(this.state.accordianId == '#collapseOne' || this.state.accordianId == '') ? 'collapse show' : 'collapse'} aria-labelledby="headingOne"
+                                <div id="collapseOne" className={this.state.accordianId == '#collapseOne' ? 'collapse show' : 'collapse'} aria-labelledby="headingOne"
                                      data-parent="#accordionExample">
                                     <Categories receiveCategoryFilterResponse={this.receiveCategoryFilterResponse.bind(this)}/>
                                 </div>

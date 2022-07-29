@@ -5,6 +5,8 @@ import {Link} from "react-router-dom";
 import Sidebar from "../partials/Sidebar";
 import VenueLists from "./partials/VenueLists";
 import WithRouter from "../../_utility/WithRouter";
+
+let filteredCities = [];
 let filteredCategories = [];
 let filteredOccasions = [];
 let filteredAmenities = [];
@@ -27,37 +29,44 @@ class Venues extends Component {
     }
 
     receiveFilterResponseFromSidebar(responseType, filter){
-        if(responseType.toString() == 'date')
+        if(responseType.toString() === 'date')
         {
             filteredDate = filter.filteredDate;
         }
 
-        if(responseType.toString() == 'price')
+        if(responseType.toString() === 'price')
         {
             filteredPrice = filter.filteredPrice;
         }
 
-        if(responseType.toString() == 'categories')
+        if(responseType.toString() === 'cities')
+        {
+            filteredCities = filter.filteredCities;
+        }
+
+        if(responseType.toString() === 'categories')
         {
             filteredCategories = filter.filteredCategories;
         }
 
-        if(responseType.toString() == 'occasions')
+        if(responseType.toString() === 'occasions')
         {
             filteredOccasions = filter.filteredOccasions;
         }
 
-        if(responseType.toString() == 'amenities')
+        if(responseType.toString() === 'amenities')
         {
             filteredAmenities = filter.filteredAmenities;
         }
 
         data['category'] = this.props.params.category;
+        data['cities'] = filteredCities;
         data['categories'] = filteredCategories;
         data['occasions'] = filteredOccasions;
         data['amenities'] = filteredAmenities;
         data['date'] = filteredDate;
         data['price'] = filteredPrice;
+
         this.doVenueListFilter.current.doVenueListFilter(data);
     }
 

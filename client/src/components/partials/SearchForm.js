@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import Select from 'react-select';
 import axios from "axios";
+import Moment from "moment";
+import SessionHelper from "../../session/SessionHelper";
+import WithRouter from "../../_utility/WithRouter";
 class SearchForm extends Component {
     constructor() {
         super();
         this.state = {
-            city_id:'',
+            city:'',
             cityLists:[],
-            category_id:'',
+            category:'',
             categoryLists:[],
-            occasion_id:'',
+            occasion:'',
             occasionLists:[]
         }
     }
@@ -30,15 +33,25 @@ class SearchForm extends Component {
     }
 
     handleCitySelect = (selectedOption) =>{
-        this.setState({city_id : selectedOption.value});
+        this.setState({city : selectedOption.value});
     }
 
     handleCategorySelect = (selectedOption) =>{
-        this.setState({category_id : selectedOption.value});
+        this.setState({category : selectedOption.value});
     }
 
     handleOccasionSelect = (selectedOption) =>{
-        this.setState({occasion_id : selectedOption.value});
+        this.setState({occasion : selectedOption.value});
+    }
+
+    formSubmit(e) {
+        let data = {
+            'occasion' : [this.state.occasion],
+            'category' : [this.state.category],
+            'city' : [this.state.city]
+        };
+        SessionHelper.SetFilterSession(data);
+        this.props.navigate('/venues');
     }
 
     render() {
@@ -46,13 +59,13 @@ class SearchForm extends Component {
             <>
                 <div className="search-fields-container">
                     <div className="contact-form-action">
-                        <form action="/venues" className="row">
+                        <form onSubmit={this.formSubmit.bind(this)} className="row">
                             <div className="col-lg-4 pr-0">
                                 <div className="input-box">
                                     <label className="label-text">City</label>
                                     <div className="form-group">
                                         <Select
-                                            name="city_id"
+                                            name="city"
                                             options={this.state.cityLists}
                                             onChange={this.handleCitySelect}
                                         />
@@ -65,7 +78,7 @@ class SearchForm extends Component {
                                     <label className="label-text">Category</label>
                                     <div className="form-group">
                                         <Select
-                                            name="category_id"
+                                            name="category"
                                             options={this.state.categoryLists}
                                             onChange={this.handleCategorySelect}
                                         />
@@ -78,7 +91,7 @@ class SearchForm extends Component {
                                     <label className="label-text">Occasion</label>
                                     <div className="form-group">
                                         <Select
-                                            name="occasion_id"
+                                            name="occasion"
                                             options={this.state.occasionLists}
                                             onChange={this.handleOccasionSelect}
                                         />
@@ -107,4 +120,4 @@ class SearchForm extends Component {
     }
 }
 
-export default SearchForm;
+export default WithRouter(SearchForm);

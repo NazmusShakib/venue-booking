@@ -8,6 +8,8 @@ import WithRouter from "../../_utility/WithRouter";
 let filteredCategories = [];
 let filteredOccasions = [];
 let filteredAmenities = [];
+let filteredDate = [];
+let filteredPrice = [];
 let data = [];
 class Venues extends Component {
 
@@ -25,6 +27,16 @@ class Venues extends Component {
     }
 
     receiveFilterResponseFromSidebar(responseType, filter){
+        if(responseType.toString() == 'date')
+        {
+            filteredDate = filter.filteredDate;
+        }
+
+        if(responseType.toString() == 'price')
+        {
+            filteredPrice = filter.filteredPrice;
+        }
+
         if(responseType.toString() == 'categories')
         {
             filteredCategories = filter.filteredCategories;
@@ -40,11 +52,12 @@ class Venues extends Component {
             filteredAmenities = filter.filteredAmenities;
         }
 
+        data['category'] = this.props.params.category;
         data['categories'] = filteredCategories;
         data['occasions'] = filteredOccasions;
         data['amenities'] = filteredAmenities;
-        data['category'] = this.props.params.category;
-
+        data['date'] = filteredDate;
+        data['price'] = filteredPrice;
         this.doVenueListFilter.current.doVenueListFilter(data);
     }
 

@@ -55,15 +55,16 @@ const Login = () => {
                         password: ''
                     });
 
-                    if(redirectTo === 'undefined' || redirectTo === 'null')
+                    if(redirectTo === undefined || redirectTo === null)
                     {
-                        navigate('/');
+                        navigate('/dashboard');
                     }else
                     {
                         navigate(redirectTo.toString());
                     }
                 }
             }).catch((error)=>{
+                console.log(error);
                 setLogin({...loginInput, processing:false, message:'Sorry! something went wrong.'});
             });
         });
@@ -152,7 +153,7 @@ const Login = () => {
                                     <p className="text-danger">{loginInput.errors.password}</p>
                                 </div>
                                 <div className="btn-box pt-3 pb-4">
-                                    <button type="submit" className={loginInput.processing == true ? 'btn btn-block btn-lg btn-danger disabled font-size-16' : 'btn btn-block btn-primary btn-lg font-size-16'}>
+                                    <button type="submit" className={loginInput.processing === true ? 'btn btn-block btn-lg btn-danger disabled font-size-16' : 'btn btn-block btn-primary btn-lg font-size-16'}>
 
                                         {loginInput.processing === true ? (
                                             <>

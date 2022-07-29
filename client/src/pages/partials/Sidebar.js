@@ -3,17 +3,22 @@ import Categories from "./components/Categories";
 import Occasions from "./components/Occasions";
 import Amenities from "./components/Amenities";
 import DateRangePicker from "react-bootstrap-daterangepicker";
-import PriceRangeSlider from 'react-rangeslider'
+import PriceRangeSlider from 'react-rangeslider';
+import Moment from "moment";
 
 let cats = [];
 let occasions = [];
 let amenities = [];
+let date = [];
+let price = [];
 class Sidebar extends Component {
     constructor() {
         super();
         this.state={
             accordianId:'',
-            priceValue:10
+            priceValue:10,
+            start_date: Moment().format('YYYY-MM-DD'),
+            end_date: Moment().format('YYYY-MM-DD')
         }
     }
 
@@ -38,58 +43,62 @@ class Sidebar extends Component {
     }
 
     handleDateRangeEvent(event, picker) {
-        console.log(picker.startDate);
-    }
-    handleDateRangeCallback(start, end, label) {
-        console.log(start, end, label);
+        this.setState({
+            start_date: Moment(picker.startDate).format('YYYY-MM-DD'),
+            end_date: Moment(picker.endDate).format('YYYY-MM-DD')
+        });
     }
 
+    receiveDateRangeFilterResponse(){
+        date['filteredDate'] = {
+            'check_in' : this.state.start_date,
+            'check_out' : this.state.end_date
+        }
+
+        this.props.receiveFilterResponseFromSidebar('date', date);
+    }
 
     handlePriceRangeOnChange = (value) => {
-        this.setState({
-            priceValue: value
-        })
+        this.setState({priceValue: value});
     }
 
+    handleChangeComplete = () => {
+        price['filteredPrice'] = this.state.priceValue;
+        this.props.receiveFilterResponseFromSidebar('price', price);
+    };
+
     render() {
-        let formatUSD = value => value + ' $';
+        let formatPrice = value => '৳ '+value;
         return (
             <>
                 <div className="sidebar mb-0 p-0">
                     <div className="sidebar-widget p-4">
-                        <h3 className="title stroke-shape">Search Resorts</h3>
+                        <h3 className="title stroke-shape">Search Venues</h3>
                         <div className="sidebar-widget-item">
                             <div className="contact-form-action">
                                 <form action="#">
                                     <div className="input-box">
-                                        <label className="label-text">Destination / Resort Name</label>
-                                        <div className="form-group">
-                                            <span className="la la-map-marker form-icon"></span>
-                                            <input className="form-control" type="text" name="text" placeholder="Destination, hotel name"/>
-                                        </div>
-                                    </div>
-                                    <div className="input-box">
                                         <label className="label-text">Check in - Check out</label>
                                         <div className="form-group">
                                             <span className="la la-calendar form-icon"></span>
-                                            <DateRangePicker onEvent={this.handleDateRangeEvent} onCallback={this.handleDateRangeCallback}>
+                                            <DateRangePicker onEvent={this.handleDateRangeEvent.bind(this)}>
                                                 <input type="text" className="form-control" />
                                             </DateRangePicker>
+                                            <span className="form-icon" style={{'top':'6px', 'right':'6px', 'left':'auto'}}>
+                                                <button onClick={this.receiveDateRangeFilterResponse.bind(this)} type="button" className="btn btn-xs btn-primary">Go</button>
+                                            </span>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div className="btn-box pt-2">
-                            <a href="hotel-search-result.html" className="theme-btn">Search Now</a>
-                        </div>
                     </div>
-                    <div className="sidebar-widget border-bottom-0 p-0 pl-4 pr-4">
+                    <div className="sidebar-widget border-bottom-0 p-0 pl-4 pr-4 pb-1">
                         <h3 className="title stroke-shape">Filter by Price</h3>
-                        <div className="sidebar-price-range overflow-hidden">
+                        <div className="sidebar-price-range">
                             <div className="main-search-input-item slider custom-labels mb-5">
                                 <div className="price-slider-amount padding-bottom-20px">
-                                    <h3 className='text-center text-success'>{this.state.priceValue+'$'}</h3>
+                                    <h3 className='text-center text-success'>৳{this.state.priceValue}</h3>
                                 </div>
 
                                 <PriceRangeSlider
@@ -101,9 +110,10 @@ class Sidebar extends Component {
                                         5000: 'Medium',
                                         10000: 'High'
                                     }}
-                                    format={formatUSD}
+                                    format={formatPrice}
                                     handleLabel={''}
                                     onChange={this.handlePriceRangeOnChange}
+                                    onChangeComplete={this.handleChangeComplete}
                                 />
                             </div>
                         </div>

@@ -18,6 +18,7 @@ use App\Models\Occasion;
 use App\Models\Venue;
 use App\Models\EventCalendar;
 use App\Models\Order;
+use App\Models\User;
 
 class ApiController extends Controller
 {
@@ -143,7 +144,8 @@ class ApiController extends Controller
     }
 
     public function venues_lists_for_dropdown(Request $request){
-        $venues = Venue::select('id as value', 'name as label')->where('is_enabled', 1)->get()->toArray();
+        $venue_id = User::find($request->user_id)->venue_id;
+        $venues = Venue::select('id as value', 'name as label')->whereIn('id', $venue_id)->where('is_enabled', 1)->get()->toArray();
 
         return response()->json([
             'status' => 200,

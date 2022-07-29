@@ -57,9 +57,9 @@ const Register = () => {
                         password: '',
                         confirm_password: '',
                     });
-                    if(redirectTo === 'undefined' || redirectTo === 'null')
+                    if(redirectTo === undefined || redirectTo === null)
                     {
-                        navigate('/');
+                        navigate('/dashboard');
                     }else
                     {
                         navigate(redirectTo.toString());
@@ -197,7 +197,7 @@ const Register = () => {
                                     <p className="text-danger">{registerInput.errors.confirm_password}</p>
                                 </div>
                                 <div className="btn-box pt-3 pb-4">
-                                    <button type="submit" className={registerInput.processing == true ? 'btn btn-block btn-lg btn-danger disabled font-size-16' : 'btn btn-block btn-primary btn-lg font-size-16'} disabled={registerInput.processing == true ? 'disabled' : ''}>
+                                    <button type="submit" className={registerInput.processing === true ? 'btn btn-block btn-lg btn-danger disabled font-size-16' : 'btn btn-block btn-primary btn-lg font-size-16'} disabled={registerInput.processing === true ? 'disabled' : ''}>
                                         {registerInput.processing === true ? (
                                             <>
                                                 <i className="las la-spinner"></i> Register Account

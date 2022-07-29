@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import Sidebar from "./Sidebar";
 import EventCalendar from "./partials/EventCalendar";
 import Orders from "./partials/Orders";
+import SessionHelper from "../../session/SessionHelper";
 class Dashboard extends Component {
-
-
-
     render() {
         return (
             <>
@@ -14,8 +12,8 @@ class Dashboard extends Component {
                         <div className="row">
                             <Sidebar/>
                             <div className="col-lg-10">
-                                {/*<EventCalendar/>*/}
-                                <Orders/>
+                                {SessionHelper.GetAuthSession().type === 1 && (<EventCalendar/>)}
+                                {SessionHelper.GetAuthSession().type === 0 && (<Orders/>)}
                             </div>
                         </div>
                     </div>
@@ -26,4 +24,3 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
-

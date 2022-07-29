@@ -22,6 +22,8 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'venue_id',
+        'type'
     ];
 
     /**
@@ -42,4 +44,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setVenueIdAttribute($venue_id)
+    {
+        if (is_array($venue_id)) {
+            $this->attributes['venue_id'] = !empty($venue_id) ? json_encode($venue_id) : NULL;
+        }
+    }
+
+    public function getVenueIdAttribute($venue_id)
+    {
+        return !empty($venue_id) ? json_decode($venue_id, true) : '';
+    }
 }

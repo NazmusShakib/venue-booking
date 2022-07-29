@@ -206,32 +206,32 @@ class EventCalendar extends Component {
                     />
                 </div>
                 {this.state.loadCalendar !== '' &&
-                <FullCalendar
-                    ref={this.calendarRef}
-                    plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
-                    headerToolbar={{
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-                    }}
-                    initialView='dayGridMonth'
-                    editable={true}
-                    selectable={true}
-                    selectMirror={true}
-                    dayMaxEvents={true}
-                    weekends={this.state.weekendsVisible}
-                    initialEvents={this.state.currentEvents}
-                    events={this.state.currentEvents}
-                    select={this.handleDateSelect}
-                    eventContent={this.renderEventContent} // custom render function
-                    eventClick={this.handleEventClick}
-                    // eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-                    /* you can update a remote database when these fire:
-                    eventAdd={function(){}} //After add event
-                    eventChange={function(){}}
-                    eventRemove={function(){}}
-                    */
-                />
+                    <FullCalendar
+                        ref={this.calendarRef}
+                        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
+                        headerToolbar={{
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                        }}
+                        initialView='dayGridMonth'
+                        editable={true}
+                        selectable={true}
+                        selectMirror={true}
+                        dayMaxEvents={true}
+                        weekends={this.state.weekendsVisible}
+                        initialEvents={this.state.currentEvents}
+                        events={this.state.currentEvents}
+                        select={this.handleDateSelect}
+                        eventContent={this.renderEventContent} // custom render function
+                        eventClick={this.handleEventClick}
+                        // eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+                        /* you can update a remote database when these fire:
+                        eventAdd={function(){}} //After add event
+                        eventChange={function(){}}
+                        eventRemove={function(){}}
+                        */
+                    />
                 }
             </>
         );

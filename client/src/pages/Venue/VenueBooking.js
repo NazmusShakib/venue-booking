@@ -28,7 +28,7 @@ class VenueBooking extends Component {
     }
 
     componentDidMount() {
-        console.log(SessionHelper.GetAuthSession());
+        //console.log(SessionHelper.GetAuthSession());
         window.scrollTo(0, 0);
         let slug = this.props.params.venue_slug;
         let data = {};
@@ -76,8 +76,8 @@ class VenueBooking extends Component {
         let data = {
             'venue_id':this.state.venue.id,
             'user_id':SessionHelper.GetAuthUserId(),
-            'start_date':SessionHelper.GetFilterSession().startDate,
-            'end_date':SessionHelper.GetFilterSession().endDate,
+            'start_date':Moment(SessionHelper.GetFilterSession().startDate).format('YYYY-MM-DD'),
+            'end_date':Moment(SessionHelper.GetFilterSession().endDate).format('YYYY-MM-DD'),
             'capacity':this.state.venue.capacity,
             'name':this.state.name,
             'email':this.state.email,

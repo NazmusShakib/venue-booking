@@ -60,7 +60,7 @@ class AuthController extends Controller
                 'username' => $user->username,
                 'email' => $user->email,
                 'token' => $token,
-                'type' => $user->type
+                'type' => $user->type ? $user->type : 0
             ];
 
             return response()->json([

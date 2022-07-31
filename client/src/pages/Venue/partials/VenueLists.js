@@ -91,7 +91,7 @@ class VenueLists extends Component {
                 }
                 this.setState({current_page:res.data.meta.current_page});
                 this.setState({last_page:res.data.meta.last_page});
-                this.setState({ venues: [...this.state.venues, ...res.data.data ] });
+                this.setState({ venues: [...this.state.venues, ...res.data.data] });
                 this.setState({venuesLoading:false});
             }).catch((error)=>{});
         }else{
@@ -102,7 +102,7 @@ class VenueLists extends Component {
                 }
                 this.setState({current_page:res.data.meta.current_page});
                 this.setState({last_page:res.data.meta.last_page});
-                this.setState({ venues: [...this.state.venues, ...res.data.data ] });
+                this.setState({ venues: [...this.state.venues, ...res.data.data] });
                 this.setState({venuesLoading:false});
             }).catch((error)=>{});
         }

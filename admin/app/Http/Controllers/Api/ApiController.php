@@ -212,7 +212,27 @@ class ApiController extends Controller
     }
 
     public function order_store(Request $request){
-        $order = Order::create($request->all());
+        $order = new Order;
+        $order->venue_id = $request->venue_id;
+        $order->user_id = $request->user_id;
+        $order->start_date = date('Y-m-d', strtotime($request->start_date));
+        $order->end_date = date('Y-m-d', strtotime($request->end_date));
+        $order->capacity = $request->capacity;
+        $order->name = $request->name;
+        $order->email = $request->email;
+        $order->category_id = Category::where('slug', $request->category_id)->first()->id;
+        $order->occasion_id = Occasion::where('slug', $request->occasion_id)->first()->id;
+        $order->mobile_number = $request->mobile_number;
+        $order->address = $request->address;
+        $order->total_guests = $request->total_guests;
+        $order->price_type = $request->price_type;
+        $order->net_total_price = $request->net_total_price;
+        $order->receive_promotional_offers = $request->receive_promotional_offers;
+        $order->agree = $request->agree;
+        $order->status = $request->status;
+        $order->save();
+
+
         return response()->json([
             'status' => 200,
             'message' => 'Order successfully stored in database.'

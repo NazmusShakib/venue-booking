@@ -92,7 +92,7 @@ class ApiController extends Controller
         $filter = $this->formatVenueFilter($request, $category);
 
         $venues = Venue::where(function($query)use($filter){
-            if(!empty($filter['price']))
+            if(!empty($filter['price']) && $filter['price'] > 0)
             {
                 $price = (double) $filter['price'];
                 $query->where('price', '<=', $price);

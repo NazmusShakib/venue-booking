@@ -5,7 +5,7 @@ import OwlCarousel from 'react-owl-carousel';
 const options = {
     autoplay: true,
     loop: false,
-    rewind: true,
+    rewind: false,
     items: 3,
     nav: true,
     dots: true,

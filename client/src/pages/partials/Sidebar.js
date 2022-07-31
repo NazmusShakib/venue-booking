@@ -18,7 +18,7 @@ class Sidebar extends Component {
         super();
         this.state={
             accordianId:'',
-            priceValue:2000,
+            priceValue:0,
             start_date: Moment().format('YYYY-MM-DD'),
             end_date: Moment().format('YYYY-MM-DD')
         }
@@ -105,17 +105,17 @@ class Sidebar extends Component {
                         <div className="sidebar-price-range">
                             <div className="main-search-input-item slider custom-labels mb-5">
                                 <div className="price-slider-amount padding-bottom-20px">
-                                    <h3 className='text-center text-success'>৳{this.state.priceValue}</h3>
+                                    <h3 className='text-center text-success'>{this.state.priceValue ? '৳ '+this.state.priceValue : ''}</h3>
                                 </div>
 
                                 <PriceRangeSlider
                                     min={0}
-                                    max={100000}
+                                    max={200000}
                                     value={this.state.priceValue}
                                     labels={{
-                                        500: 'Low',
-                                        50000: 'Medium',
-                                        100000: 'High'
+                                        5000: 'Low',
+                                        100000: 'Medium',
+                                        200000: 'High'
                                     }}
                                     format={formatPrice}
                                     handleLabel={''}
@@ -131,7 +131,7 @@ class Sidebar extends Component {
                                 <button onClick={this.handleOnClickForAccordian.bind(this)} id="headingCity" className="mb-3 text-decoration-none btn btn-link btn-block text-left title stroke-shape mb-0 pl-0" type="button" data-toggle="collapse" data-target="#collapseCity" aria-expanded="true" aria-controls="headingCity">
                                     City
                                 </button>
-                                <div id="collapseCity" className={(this.state.accordianId == '#collapseCity' || this.state.accordianId == '') ? 'collapse show' : 'collapse'} aria-labelledby="headingCity"
+                                <div id="collapseCity" className={(this.state.accordianId === '#collapseCity' || this.state.accordianId === '') ? 'collapse show' : 'collapse'} aria-labelledby="headingCity"
                                      data-parent="#accordionExample">
                                     <Cities receiveCityFilterResponse={this.receiveCityFilterResponse.bind(this)}/>
                                 </div>
@@ -141,7 +141,7 @@ class Sidebar extends Component {
                                 <button onClick={this.handleOnClickForAccordian.bind(this)} id="headingOne" className="mb-3 text-decoration-none btn btn-link btn-block text-left title stroke-shape mb-0 pl-0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="headingOne">
                                     Category
                                 </button>
-                                <div id="collapseOne" className={this.state.accordianId == '#collapseOne' ? 'collapse show' : 'collapse'} aria-labelledby="headingOne"
+                                <div id="collapseOne" className={this.state.accordianId === '#collapseOne' ? 'collapse show' : 'collapse'} aria-labelledby="headingOne"
                                      data-parent="#accordionExample">
                                     <Categories receiveCategoryFilterResponse={this.receiveCategoryFilterResponse.bind(this)}/>
                                 </div>
@@ -151,7 +151,7 @@ class Sidebar extends Component {
                                 <button onClick={this.handleOnClickForAccordian.bind(this)} className="mb-3 text-decoration-none btn btn-link btn-block text-left title stroke-shape mb-0 pl-0" type="button" data-toggle="collapse" data-target="#collapseOccasions" aria-expanded="true" aria-controls="collapseOccasions">
                                     Occasions
                                 </button>
-                                <div id="collapseOccasions" className={this.state.accordianId == '#collapseOccasions' ? 'collapse show' : 'collapse'} aria-labelledby="collapseOccasions"
+                                <div id="collapseOccasions" className={this.state.accordianId === '#collapseOccasions' ? 'collapse show' : 'collapse'} aria-labelledby="collapseOccasions"
                                      data-parent="#accordionExample">
                                     <Occasions receiveOccasionsFilterResponse={this.receiveOccasionsFilterResponse.bind(this)}/>
                                 </div>
@@ -161,7 +161,7 @@ class Sidebar extends Component {
                                 <button onClick={this.handleOnClickForAccordian.bind(this)} className="mb-3 text-decoration-none btn btn-link btn-block text-left title stroke-shape mb-0 pl-0" type="button" data-toggle="collapse" data-target="#collapseAmenity" aria-expanded="true" aria-controls="collapseAmenity">
                                     Amenity
                                 </button>
-                                <div id="collapseAmenity" className={this.state.accordianId == '#collapseAmenity' ? 'collapse show' : 'collapse'} aria-labelledby="collapseAmenity"
+                                <div id="collapseAmenity" className={this.state.accordianId === '#collapseAmenity' ? 'collapse show' : 'collapse'} aria-labelledby="collapseAmenity"
                                      data-parent="#accordionExample">
                                     <Amenities receiveAmenitiesFilterResponse={this.receiveAmenitiesFilterResponse.bind(this)}/>
                                 </div>

@@ -31,7 +31,7 @@ class VenueLists extends Component {
         let formatFilter = Object.assign({}, filter);
         defaultSearchFormSessionFilter = formatFilter;
         formatFilter = JSON.stringify(formatFilter);
-        console.log(formatFilter);
+        //console.log(formatFilter);
         this.setState(previousState => ({
             page: 1,
         }), () => {
@@ -56,11 +56,10 @@ class VenueLists extends Component {
         this.setState({venuesLoading:true});
         if(!cat){
             axios.post(`/api/venues?page=${this.state.page}`, filter).then(res => {
-                if(this.state.page+1 <= this.state.last_page)
+                if(this.state.page <= this.state.last_page)
                 {
                     this.setState({page: this.state.page+1});
                 }
-
                 this.setState({current_page:res.data.meta.current_page});
                 this.setState({last_page:res.data.meta.last_page});
                 this.setState({venues:res.data.data});
@@ -68,11 +67,10 @@ class VenueLists extends Component {
             }).catch((error)=>{});
         }else{
             axios.post(`/api/venues/${cat}?page=${this.state.page}`, filter).then(res => {
-                if(this.state.page+1 <= this.state.last_page)
+                if(this.state.page <= this.state.last_page)
                 {
                     this.setState({page: this.state.page+1});
                 }
-
                 this.setState({current_page:res.data.meta.current_page});
                 this.setState({last_page:res.data.meta.last_page});
                 this.setState({venues:res.data.data});
@@ -87,7 +85,7 @@ class VenueLists extends Component {
         let filter = JSON.stringify(defaultSearchFormSessionFilter);
         if(!cat){
             axios.post(`/api/venues?page=${this.state.page}`, filter).then(res => {
-                if(this.state.page+1 <= this.state.last_page)
+                if(this.state.page <= this.state.last_page)
                 {
                     this.setState({page: this.state.page+1});
                 }
@@ -98,7 +96,7 @@ class VenueLists extends Component {
             }).catch((error)=>{});
         }else{
             axios.post(`/api/venues/${cat}?page=${this.state.page}`, filter).then(res => {
-                if(this.state.page+1 <= this.state.last_page)
+                if(this.state.page <= this.state.last_page)
                 {
                     this.setState({page: this.state.page+1});
                 }

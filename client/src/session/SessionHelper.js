@@ -58,15 +58,16 @@ class SessionHelper extends Component {
     }
 
     static GetSessionFilterCity(){
-        return (this.GetFilterSession().city !== undefined && this.GetFilterSession().city !== null) ? this.GetFilterSession().city : [];
+        // return this.GetFilterSession().city ?? [];
+        return (this.GetFilterSession() !== null && this.GetFilterSession().city !== undefined && this.GetFilterSession().city !== null) ? this.GetFilterSession().city : [];
     }
 
     static GetSessionFilterCategory(){
-        return (this.GetFilterSession().category !== undefined && this.GetFilterSession().category !== null) ? this.GetFilterSession().category : [];
+        return (this.GetFilterSession() !== null && this.GetFilterSession().category !== undefined && this.GetFilterSession().category !== null) ? this.GetFilterSession().category : [];
     }
 
     static GetSessionFilterOccasion(){
-        return (this.GetFilterSession().occasion !== undefined && this.GetFilterSession().occasion !== null) ? this.GetFilterSession().occasion : [];
+        return (this.GetFilterSession() !== null && this.GetFilterSession().occasion !== undefined && this.GetFilterSession().occasion !== null) ? this.GetFilterSession().occasion : [];
     }
 }
 

@@ -58,22 +58,34 @@ class VenueLists extends Component {
             axios.post(`/api/venues?page=${this.state.page}`, filter).then(res => {
                 if(this.state.page <= this.state.last_page)
                 {
-                    this.setState({page: this.state.page+1});
+                    this.setState(previousState => ({
+                        page: this.state.page+1,
+                    }), () => {
+                        this.setState({venues:res.data.data});
+                    });
+                }else{
+                    this.setState({venues:res.data.data});
                 }
+
                 this.setState({current_page:res.data.meta.current_page});
                 this.setState({last_page:res.data.meta.last_page});
-                this.setState({venues:res.data.data});
                 this.setState({venuesLoading:false});
             }).catch((error)=>{});
         }else{
             axios.post(`/api/venues/${cat}?page=${this.state.page}`, filter).then(res => {
                 if(this.state.page <= this.state.last_page)
                 {
-                    this.setState({page: this.state.page+1});
+                    this.setState(previousState => ({
+                        page: this.state.page+1,
+                    }), () => {
+                        this.setState({venues:res.data.data});
+                    });
+                }else{
+                    this.setState({venues:res.data.data});
                 }
+
                 this.setState({current_page:res.data.meta.current_page});
                 this.setState({last_page:res.data.meta.last_page});
-                this.setState({venues:res.data.data});
                 this.setState({venuesLoading:false});
             }).catch((error)=>{});
         }

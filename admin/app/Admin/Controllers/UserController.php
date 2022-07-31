@@ -96,7 +96,7 @@ class UserController extends AdminController
             $form->multipleSelect('venue_id','Select Venues')->options(Venue::all()->pluck('name','id'));
         })->rules('required');
 
-        $form->password('password', 'Password')->rules('required|confirmed|min:8')
+        $form->password('password', 'Password')->rules('required|confirmed|min:6')
         ->default(function ($form) {
            return $form->model()->password;
         });

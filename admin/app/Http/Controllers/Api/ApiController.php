@@ -232,7 +232,6 @@ class ApiController extends Controller
         $order->status = $request->status;
         $order->save();
 
-
         return response()->json([
             'status' => 200,
             'message' => 'Order successfully stored in database.'

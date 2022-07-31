@@ -24,7 +24,7 @@ use App\Models\User;
 class ApiController extends Controller
 {
     public function cities(){
-        return CityResource::collection(City::all());
+        return CityResource::collection(City::has('venues')->get());
     }
 
     public function categories(){
@@ -40,6 +40,9 @@ class ApiController extends Controller
     }
 
     public function formatVenueFilter($request, $category){
+        $date = !empty($request->date) ? $request->date : [];
+        $price = !empty($request->price) ? $request->price : [];
+        $cityIds = !empty($request->cities) ? $request->cities : [];
         $categoryIds = !empty($request->categories) ? $request->categories : [];
         if(!empty($category))
             array_push($categoryIds, $category);
@@ -52,6 +55,13 @@ class ApiController extends Controller
             $cats = array_unique($categoryIds);
             $categoryIds = Category::whereIn('slug', $cats)->pluck('id')->toArray();
             sort($categoryIds);
+        }
+
+        if(!empty($cityIds) && count($cityIds) > 0 )
+        {
+            $cities = array_unique($cityIds);
+            $cityIds = City::whereIn('slug', $cities)->pluck('id')->toArray();
+            sort($cityIds);
         }
 
         if(!empty($amenityIds) && count($amenityIds) > 0 )
@@ -69,6 +79,9 @@ class ApiController extends Controller
         }
 
         return [
+            'date' => $date,
+            'price' => $price,
+            'cityIds' => $cityIds,
             'categoryIds' => $categoryIds,
             'amenityIds' => $amenityIds,
             'occasionIds' => $occasionIds
@@ -77,7 +90,20 @@ class ApiController extends Controller
 
     public function venues(Request $request, $category = ''){
         $filter = $this->formatVenueFilter($request, $category);
+
         $venues = Venue::where(function($query)use($filter){
+            if(!empty($filter['price']))
+            {
+                $price = (double) $filter['price'];
+                $query->where('price', '<=', $price);
+            }
+
+            if(!empty($filter['cityIds']))
+            {
+                $cityIds = $filter['cityIds'];
+                $query->whereIn('city_id', $cityIds);
+            }
+
             if(!empty($filter['categoryIds']))
             {
                 $categoryIds = $filter['categoryIds'];
@@ -101,7 +127,7 @@ class ApiController extends Controller
                     $query->whereIn('occasion_id', $occasionIds);
                 });
             }
-        })->get();
+        })->paginate(6);
 
         return VenueResource::collection($venues);
     }
@@ -159,7 +185,7 @@ class ApiController extends Controller
     }
 
     public function city_lists_for_dropdown(Request $request){
-        $cities = City::select('slug as value', 'name as label')->get()->toArray();
+        $cities = City::has('venues')->select('slug as value', 'name as label')->get()->toArray();
 
         return response()->json([
             'status' => 200,

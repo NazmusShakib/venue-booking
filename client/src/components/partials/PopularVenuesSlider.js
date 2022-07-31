@@ -3,12 +3,13 @@ import {Link} from "react-router-dom";
 import OwlCarousel from 'react-owl-carousel';
 
 const options = {
-    loop: true,
+    autoplay: true,
+    loop: false,
+    rewind: true,
     items: 3,
     nav: true,
     dots: true,
     smartSpeed: 700,
-    autoplay: true,
     active: true,
     margin: 30,
     navElement:'div',

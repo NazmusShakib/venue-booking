@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import Sidebar from "../partials/Sidebar";
 import VenueLists from "./partials/VenueLists";
 import WithRouter from "../../_utility/WithRouter";
+import SessionHelper from "../../session/SessionHelper";
 
 let filteredCities = [];
 let filteredCategories = [];
@@ -59,10 +60,15 @@ class Venues extends Component {
             filteredAmenities = filter.filteredAmenities;
         }
 
-        data['category'] = this.props.params.category;
-        data['cities'] = filteredCities;
-        data['categories'] = filteredCategories;
-        data['occasions'] = filteredOccasions;
+        // HomePageSearchFromSession
+        let getSessionCat = SessionHelper.GetSessionFilterCategory();
+        let getSessionCity = SessionHelper.GetSessionFilterCity();
+        let getSessionOccasion = SessionHelper.GetSessionFilterOccasion();
+
+        data['category'] = this.props.params.category !== null ? this.props.params.category : '';
+        data['cities'] = filteredCities.concat(getSessionCity);
+        data['categories'] = filteredCategories.concat(getSessionCat);
+        data['occasions'] = filteredOccasions.concat(getSessionOccasion);
         data['amenities'] = filteredAmenities;
         data['date'] = filteredDate;
         data['price'] = filteredPrice;
@@ -142,9 +148,7 @@ class Venues extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-8">
-                                <div className="row">
-                                    <VenueLists category={this.state.category} ref={this.doVenueListFilter}/>
-                                </div>
+                                <VenueLists category={this.state.category} ref={this.doVenueListFilter}/>
                             </div>
                             <div className="col-lg-4">
                                 <Sidebar receiveFilterResponseFromSidebar={this.receiveFilterResponseFromSidebar}/>

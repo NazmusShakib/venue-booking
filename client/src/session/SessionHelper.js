@@ -24,6 +24,50 @@ class SessionHelper extends Component {
     static GetFilterSession(){
         return JSON.parse(sessionStorage.getItem('filter'));
     }
+
+    static RemoveFilterSessionItem(key){
+        let filter = {};
+        if(key === 'cities')
+        {
+            filter = {
+                'occasion' : (SessionHelper.GetFilterSession() !== '' || SessionHelper.GetFilterSession() !== null) ? SessionHelper.GetFilterSession().occasion : [],
+                'category' : (SessionHelper.GetFilterSession() !== '' || SessionHelper.GetFilterSession() !== null) ? SessionHelper.GetFilterSession().category : [],
+                'city' : []
+            };
+        }
+
+        if(key === 'categories')
+        {
+            filter = {
+                'occasion' : (SessionHelper.GetFilterSession() !== '' || SessionHelper.GetFilterSession() !== null) ? SessionHelper.GetFilterSession().occasion : [],
+                'city' : (SessionHelper.GetFilterSession() !== '' || SessionHelper.GetFilterSession() !== null) ? SessionHelper.GetFilterSession().city : [],
+                'category' : []
+            };
+        }
+
+        if(key === 'occasions')
+        {
+            filter = {
+                'category' : (SessionHelper.GetFilterSession() !== '' || SessionHelper.GetFilterSession() !== null) ? SessionHelper.GetFilterSession().category : [],
+                'city' : (SessionHelper.GetFilterSession() !== '' || SessionHelper.GetFilterSession() !== null) ? SessionHelper.GetFilterSession().city : [],
+                'occasion' : []
+            };
+        }
+
+        this.SetFilterSession(filter);
+    }
+
+    static GetSessionFilterCity(){
+        return (this.GetFilterSession().city !== undefined && this.GetFilterSession().city !== null) ? this.GetFilterSession().city : [];
+    }
+
+    static GetSessionFilterCategory(){
+        return (this.GetFilterSession().category !== undefined && this.GetFilterSession().category !== null) ? this.GetFilterSession().category : [];
+    }
+
+    static GetSessionFilterOccasion(){
+        return (this.GetFilterSession().occasion !== undefined && this.GetFilterSession().occasion !== null) ? this.GetFilterSession().occasion : [];
+    }
 }
 
 export default SessionHelper;

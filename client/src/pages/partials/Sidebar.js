@@ -18,7 +18,7 @@ class Sidebar extends Component {
         super();
         this.state={
             accordianId:'',
-            priceValue:10,
+            priceValue:2000,
             start_date: Moment().format('YYYY-MM-DD'),
             end_date: Moment().format('YYYY-MM-DD')
         }
@@ -110,12 +110,12 @@ class Sidebar extends Component {
 
                                 <PriceRangeSlider
                                     min={0}
-                                    max={10000}
+                                    max={100000}
                                     value={this.state.priceValue}
                                     labels={{
-                                        0: 'Low',
-                                        5000: 'Medium',
-                                        10000: 'High'
+                                        500: 'Low',
+                                        50000: 'Medium',
+                                        100000: 'High'
                                     }}
                                     format={formatPrice}
                                     handleLabel={''}

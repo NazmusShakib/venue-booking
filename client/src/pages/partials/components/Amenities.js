@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
+
 let amenities = [];
 let responseAmenities=[];
 class Amenities extends Component {

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import SessionHelper from "../../../session/SessionHelper";
+
 let cats = [];
 let responseCats=[];
 class Categories extends Component {
@@ -20,13 +22,19 @@ class Categories extends Component {
             cats = cats.filter(function(cat){
                 return cat !== e.target.value;
             });
+
+            let reCat = SessionHelper.GetSessionFilterCategory();
+            if(reCat.toString() === e.target.value){
+                SessionHelper.RemoveFilterSessionItem('categories');
+            }
         }
         responseCats['responsedCategories'] = cats;
         this.props.receiveCategoryFilterResponse(responseCats);
     }
 
     componentDidMount() {
-        cats = [];
+        cats = SessionHelper.GetSessionFilterCategory();
+
         axios.get('/api/categories').then(res => {this.setState({categories:res.data.data});}).catch((error)=>{});
     }
 
@@ -38,7 +46,14 @@ class Categories extends Component {
 
                         <React.Fragment key={index}>
                             <div className="custom-checkbox">
-                                <input  onClick={this.handleCategoryFilter.bind(this)} type="checkbox" value={category.slug} name="category" id={category.slug}/>
+                                {cats.includes(category.slug) === true &&
+                                    <input  onClick={this.handleCategoryFilter.bind(this)} defaultChecked type="checkbox" value={category.slug} name="category" id={category.slug}/>
+                                }
+
+                                {cats.includes(category.slug) === false &&
+                                    <input  onClick={this.handleCategoryFilter.bind(this)} type="checkbox" value={category.slug} name="category" id={category.slug}/>
+                                }
+
                                 <label htmlFor={category.slug}>{category.name}</label>
                             </div>
                         </React.Fragment>

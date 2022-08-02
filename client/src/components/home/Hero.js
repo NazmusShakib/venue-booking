@@ -19,17 +19,10 @@ class Hero extends Component {
                 <section className="hero-wrapper hero-wrapper2">
                     <div className="hero-box pb-0 pt-0">
                         <OwlCarousel className='carousel-action fullscreen-slide-contain' {...options}>
-                            <img src="assets/images/hero-bg2.jpg" alt="" style={{'minHeight':'512px'}}/>
-                            <img src="assets/images/hero--bg2.jpg" alt="" style={{'minHeight':'512px'}}/>
-                            <img src="assets/images/hero--bg3.jpg" alt="" style={{'minHeight':'512px'}}/>
+                            <img src="assets/images/hero-bg2.jpg" alt="" />
+                            <img src="assets/images/hero--bg2.jpg" alt="" />
+                            <img src="assets/images/hero--bg3.jpg" alt="" />
                         </OwlCarousel>
-                        {/*<div id="fullscreen-slide-contain">*/}
-                        {/*    <ul className="slides-container">*/}
-                        {/*        <li><img src="assets/images/hero-bg2.jpg" alt=""/></li>*/}
-                        {/*        <li><img src="assets/images/hero--bg2.jpg" alt=""/></li>*/}
-                        {/*        <li><img src="assets/images/hero--bg3.jpg" alt=""/></li>*/}
-                        {/*    </ul>*/}
-                        {/*</div>*/}
                         <div className="container" style={{'position': 'absolute', 'bottom': '0', 'zIndex': '3', 'left': '0', 'right': '0'}}>
                             <div className="row">
                                 <div className="col-lg-12">

@@ -8,20 +8,7 @@
             i = e(".main-menu-content .dropdown-menu-item"),
             o = document.querySelector(".header-menu-wrapper"),
             s = e("#back-to-top"),
-            r = e("#single-content-nav .scroll-link"),
-            c = e(".hotel-card-carousel"),
-            u = e(".card-img-carousel"),
-            m = e(".car-carousel"),
-            g = e(".trending-carousel"),
-            p = e(".gallery-carousel"),
-            h = e(".client-logo"),
-            f = e(".testimonial-carousel-2"),
-            w = e('[components-fancybox="video"]'),
-            b = e('[components-fancybox="gallery"]'),
-            y = e(".ripple-bg"),
-            k = e(".grid-masonry"),
-            M = e(".counter"),
-            P = e(".full-width-slider");
+            r = e("#single-content-nav .scroll-link");
         if (
             (n.delay("500").fadeOut(2e3),
                 l.on("click", ".down-button", function () {
@@ -76,127 +63,28 @@
                             .addClass("active"));
                 });
         }),
-            r.on("click", function (t) {
-                var l = e(e(this).attr("href"));
-                e(a).animate({ scrollTop: l.offset().top }, 600), e(this).addClass("active"), t.preventDefault();
-            }),
-            l.on("click", "#back-to-top", function () {
-                return e(a).animate({ scrollTop: 0 }, 800), !1;
-            }),
-        e(c).length &&
-        e(c).owlCarousel({
-            loop: !0,
-            items: 4,
-            nav: !0,
-            dots: !0,
-            smartSpeed: 700,
-            autoplay: !1,
-            active: !0,
-            margin: 30,
-            navText: ['<i class="la la-angle-left"></i>', '<i class="la la-angle-right"></i>'],
-            responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 }, 1441: { items: 4 } },
+        r.on("click", function (t) {
+            var l = e(e(this).attr("href"));
+            e(a).animate({ scrollTop: l.offset().top }, 600), e(this).addClass("active"), t.preventDefault();
         }),
-        e(u).length && e(u).owlCarousel({ loop: !0, items: 1, nav: !0, dots: !0, smartSpeed: 700, autoplay: !1, active: !0, margin: 30, navText: ['<i class="la la-angle-left"></i>', '<i class="la la-angle-right"></i>'] }),
-        e(m).length &&
-        e(m).owlCarousel({
-            loop: !0,
-            items: 3,
-            nav: !0,
-            dots: !0,
-            smartSpeed: 700,
-            autoplay: !1,
-            active: !0,
-            margin: 30,
-            navText: ['<i class="la la-angle-left"></i>', '<i class="la la-angle-right"></i>'],
-            responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 } },
+        l.on("click", "#back-to-top", function () {
+            return e(a).animate({ scrollTop: 0 }, 800), !1;
         }),
-        e(g).length &&
-        e(g).owlCarousel({
-            loop: !0,
-            items: 3,
-            nav: !0,
-            dots: !0,
-            smartSpeed: 700,
-            autoplay: !1,
-            margin: 30,
-            navText: ['<i class="la la-long-arrow-left"></i>', '<i class="la la-long-arrow-right"></i>'],
-            responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 } },
+
+        l.on("click", ".toggle-menu > li .toggle-menu-icon", function (t) {
+            return (
+                t.preventDefault(),
+                e(this).closest("li").siblings().removeClass("active").find(".toggle-drop-menu, .dropdown-menu-item").slideUp(200),
+                e(this).closest("li").toggleClass("active").find(".toggle-drop-menu, .dropdown-menu-item").slideToggle(200),
+                !1
+            );
         }),
-        e(p).length && e(p).owlCarousel({ loop: !0, items: 1, nav: !0, dots: !0, smartSpeed: 700, margin: 20, navText: ['<i class="la la-long-arrow-left"></i>', '<i class="la la-long-arrow-right"></i>'] }),
-        e(h).length && e(h).owlCarousel({ loop: !0, items: 6, nav: !1, dots: !1, smartSpeed: 700, autoplay: !0, responsive: { 0: { items: 1 }, 425: { items: 2 }, 480: { items: 2 }, 767: { items: 4 }, 992: { items: 6 } } }),
-        e(f).length &&
-        e(f).owlCarousel({
-            loop: !0,
-            items: 3,
-            nav: !0,
-            dots: !0,
-            smartSpeed: 700,
-            autoplay: !1,
-            margin: 30,
-            navText: ['<i class="la la-long-arrow-left"></i>', '<i class="la la-long-arrow-right"></i>'],
-            responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 } },
+        e(".dropdown-btn").on("click", function (t) {
+            t.preventDefault(), e(this).next(".dropdown-menu-wrap").slideToggle(300), t.stopPropagation();
         }),
-        e(w).length && e(w).fancybox({ buttons: ["share", "fullScreen", "close"] }),
-        e(b).length && e(b).fancybox({ buttons: ["share", "slideShow", "fullScreen", "download", "thumbs", "close"] }),
-        e(y).length && e(y).ripples({ resolution: 500, dropRadius: 20, perturbance: 0 }),
-        e(k).length && e(k).masonry({}),
-        M.length && M.countTo({ speed: 1200 }),
-        e('[components-toggle="tooltip"]').length && e('[components-toggle="tooltip"]').tooltip(),
-            l.on("click", ".add-flight-btn", function () {
-                e(".multi-flight-field").length < 3 && e(".multi-flight-field:last").clone().insertAfter(".multi-flight-field:last"),
-                    e(this).closest(".multi-flight-wrap").find(".multi-flight-field:last").children(".multi-flight-delete-wrap").show(),
-                    e(".date-multi-picker").daterangepicker("destroy");
-                var t = 0;
-                e(".date-multi-picker").each(function () {
-                    e(this)
-                        .attr("id", "date" + t)
-                        .daterangepicker({ singleDatePicker: !0, opens: "right", local: { format: "DD/MM/YYYY" } }),
-                        t++;
-                });
-            }),
-            l.on("click", ".multi-flight-remove", function () {
-                e(".multi-flight-remove").closest(".multi-flight-wrap").find(".multi-flight-field").not(":first").last().remove();
-            }),
-            l.on("click", ".toggle-menu > li .toggle-menu-icon", function (t) {
-                return (
-                    t.preventDefault(),
-                        e(this).closest("li").siblings().removeClass("active").find(".toggle-drop-menu, .dropdown-menu-item").slideUp(200),
-                        e(this).closest("li").toggleClass("active").find(".toggle-drop-menu, .dropdown-menu-item").slideToggle(200),
-                        !1
-                );
-            }),
-            e(".dropdown-btn").on("click", function (t) {
-                t.preventDefault(), e(this).next(".dropdown-menu-wrap").slideToggle(300), t.stopPropagation();
-            }),
-            l.on("click", function (t) {
-                var l = e(".dropdown-contain");
-                l === t.target || l.has(t.target).length || e(".dropdown-menu-wrap").slideUp(300);
-            }),
-            e(".progressbar-line").each(function () {
-                e(this)
-                    .find(".progressbar-line-item")
-                    .animate({ width: e(this).attr("components-percent") }, 6e3);
-            }),
-        e(P).length &&
-        e(P).owlCarousel({
-            center: !0,
-            items: 2,
-            nav: !0,
-            dots: !1,
-            loop: !0,
-            margin: 10,
-            smartSpeed: 500,
-            navText: ['<i class="la la-long-arrow-left"></i>', '<i class="la la-long-arrow-right"></i>'],
-            responsive: { 0: { items: 1, autoplay: !0 }, 576: { items: 2 } },
-        }),
-            l.on("click", ".recommended-tag", function () {
-                e(this).addClass("active"), e(".undo-btn").addClass("active"), e(this).siblings().removeClass("active");
-            }),
-            l.on("click", ".undo-btn", function () {
-                e(this).removeClass("active"), e(".recommended-tag").removeClass("active");
-            }),
-            l.on("click", ".paste-btn", function (t) {
-                t.preventDefault(), e("#resume_text").toggle();
-            });
+        l.on("click", function (t) {
+            var l = e(".dropdown-contain");
+            l === t.target || l.has(t.target).length || e(".dropdown-menu-wrap").slideUp(300);
+        });
     });
 })(jQuery);

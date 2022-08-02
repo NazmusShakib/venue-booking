@@ -15,9 +15,11 @@ class Footer extends Component {
     render() {
         return (
             <>
-                <section
-                    className="footer-area section-bg padding-top-100px padding-bottom-30px"
-                >
+                <div id="back-to-top">
+                    <i className="la la-angle-up" title="Go top"></i>
+                </div>
+
+                <section className="footer-area section-bg padding-top-100px padding-bottom-30px">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-3 responsive-column">

@@ -81,6 +81,8 @@ class EventCalendar extends Component {
                 console.log(res.data);
                 if (res.data.status === 200)
                 {
+                    this.setState({title:''});
+                    this.setState({description:''});
                     this.getEventsData();
                     this.closeAddModal();
                 }

@@ -19,11 +19,13 @@ class EventCalendarResource extends JsonResource
             'title' => $this->title,
             'start' => date('Y-m-d', strtotime($this->start_date)),
             'end' => date('Y-m-d', strtotime($this->end_date)),
-            //'user_id' => $this->created_by,
+            'createdBy' => $this->createdBy->name,
+            'updatedBy' => $this->updatedBy->name ?? '',
             'description' => $this->description,
             'allDay' => $this->all_day_event,
             'status' => $this->status,
-            //'feedback' => $this->feedback,
+            'feedback' => $this->feedback,
+            'color'=> $this->status == 'approved' ? 'green' : '#00b2ff'
         ];
     }
 }

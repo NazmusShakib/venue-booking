@@ -17,6 +17,7 @@ Route::post('/venues/lists/for/dropdown', [ApiController::class, 'venues_lists_f
 Route::post('/city/lists/for/dropdown', [ApiController::class, 'city_lists_for_dropdown']);
 Route::post('/category/lists/for/dropdown', [ApiController::class, 'category_lists_for_dropdown']);
 Route::post('/occasion/lists/for/dropdown', [ApiController::class, 'occasion_lists_for_dropdown']);
+Route::post('/booking/availability/checking', [ApiController::class, 'booking_availability_checking']);
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::post('/logout', [AuthController::class, 'logout']);

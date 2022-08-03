@@ -23,9 +23,12 @@ class VenueDetails extends Component {
     constructor() {
         super();
         this.state = {
+            loading:true,
             venue:[],
             images:[],
-            amenities:[]
+            amenities:[],
+            startDate:'',
+            endDate:''
         }
     }
 
@@ -33,6 +36,7 @@ class VenueDetails extends Component {
         window.scrollTo(0, 0);
         let slug = this.props.params.venue_slug;
         axios.get('/api/venue/details/'+slug,).then(res => {
+            this.setState({loading:false});
             this.setState({venue:res.data.venue});
             this.setState({images:res.data.venue.images});
             this.setState({amenities:res.data.venue.amenities});
@@ -40,19 +44,47 @@ class VenueDetails extends Component {
     }
 
     handleDateRangeEvent(event, picker) {
-        let data = {
-            'startDate':Moment(picker.startDate).format('YYYY-MM-DD'),
-            'endDate':Moment(picker.endDate).format('YYYY-MM-DD')
-        };
-        SessionHelper.SetFilterSession(data);
-        document.getElementById('bookNowBtn').removeAttribute('disabled');
-        document.getElementById('bookNowBtn').removeAttribute('title');
-        document.getElementById('bookNowBtn').classList.remove('disabled');
+        if(event.type.toString() === 'apply')
+        {
+            picker.element.val(
+                picker.startDate.format('MM/DD/YYYY') +
+                ' - ' +
+                picker.endDate.format('MM/DD/YYYY')
+            );
+            this.setState({startDate:Moment(picker.startDate).format('YYYY-MM-DD')});
+            this.setState({endDate:Moment(picker.endDate).format('YYYY-MM-DD')});
+        }
+
+        if(event.type.toString() === 'cancel')
+        {
+            picker.element.val('');
+            this.setState({startDate:''});
+            this.setState({endDate:''});
+        }
     }
 
     formSubmit(e) {
         e.preventDefault();
-        this.props.navigate('/venue/booking/'+this.state.venue.slug);
+        SessionHelper.SetFilterSession({
+            'startDate' : this.state.startDate,
+            'endDate' : this.state.endDate
+        });
+
+        let data = {
+            'venue_id':this.state.venue.id,
+            'check_in' : this.state.startDate,
+            'check_out' : this.state.endDate
+        }
+
+        axios.get('/sanctum/csrf-cookie').then(response => {
+            axios.post('/api/booking/availability/checking', data).then(res => {
+                console.log(res);
+                if (res.data.status === 200)
+                {
+                    //this.props.navigate('/venue/booking/'+this.state.venue.slug);
+                }
+            }).catch((error)=>{});
+        });
     }
 
     render() {
@@ -84,7 +116,62 @@ class VenueDetails extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-8">
-                                    <div className="single-content-wrap padding-top-60px">
+                                    { this.state.loading === true &&
+                                        <div className="row">
+                                            <div className="col-lg-12 responsive-column">
+                                                <div className="ph-item">
+                                                    <div className="ph-col-12">
+                                                        <div className="ph-picture"></div>
+                                                        <div className="ph-row">
+                                                            <div className="ph-col-6 big"></div>
+                                                            <div className="ph-col-2 big"></div>
+                                                            <div className="ph-col-4"></div>
+                                                            <div className="ph-col-6"></div>
+                                                            <div className="ph-col-12"></div>
+                                                            <div className="ph-col-6 big"></div>
+                                                            <div className="ph-col-2 big"></div>
+                                                            <div className="ph-col-4"></div>
+                                                            <div className="ph-col-6"></div>
+                                                            <div className="ph-col-12"></div>
+                                                            <div className="ph-col-6 big"></div>
+                                                            <div className="ph-col-2 big"></div>
+                                                            <div className="ph-col-4"></div>
+                                                            <div className="ph-col-6"></div>
+                                                            <div className="ph-col-12"></div>
+                                                            <div className="ph-col-6 big"></div>
+                                                            <div className="ph-col-2 big"></div>
+                                                            <div className="ph-col-4"></div>
+                                                            <div className="ph-col-6"></div>
+                                                            <div className="ph-col-12"></div>
+                                                            <div className="ph-col-6 big"></div>
+                                                            <div className="ph-col-2 big"></div>
+                                                            <div className="ph-col-4"></div>
+                                                            <div className="ph-col-6"></div>
+                                                            <div className="ph-col-12"></div>
+                                                            <div className="ph-col-6 big"></div>
+                                                            <div className="ph-col-2 big"></div>
+                                                            <div className="ph-col-4"></div>
+                                                            <div className="ph-col-6"></div>
+                                                            <div className="ph-col-12"></div>
+                                                            <div className="ph-col-6 big"></div>
+                                                            <div className="ph-col-2 big"></div>
+                                                            <div className="ph-col-4"></div>
+                                                            <div className="ph-col-6"></div>
+                                                            <div className="ph-col-12"></div>
+                                                            <div className="ph-col-6 big"></div>
+                                                            <div className="ph-col-2 big"></div>
+                                                            <div className="ph-col-4"></div>
+                                                            <div className="ph-col-6"></div>
+                                                            <div className="ph-col-12"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    {this.state.loading === false &&
+                                        <div className="single-content-wrap padding-top-60px">
                                         <div id="description" className="page-scroll">
                                             <div className="single-content-item padding-bottom-40px">
                                                 <h1 className="title font-size-35 mb-3">
@@ -94,13 +181,15 @@ class VenueDetails extends Component {
                                             </div>
                                             <div className="section-block"></div>
                                             <div id="amenities" className="page-scroll">
-                                                <div className="single-content-item padding-top-40px padding-bottom-20px">
+                                                <div
+                                                    className="single-content-item padding-top-40px padding-bottom-20px">
                                                     <h3 className="title font-size-20">Amenities</h3>
                                                     <div className="amenities-feature-item pt-4">
                                                         {
                                                             this.state.amenities.map((amenity, index) => (
                                                                 <React.Fragment key={index}>
-                                                                <span className="badge badge-primary p-2 mr-2 mb-2">{amenity.name}</span>
+                                                                    <span
+                                                                        className="badge badge-primary p-2 mr-2 mb-2">{amenity.name}</span>
                                                                 </React.Fragment>
                                                             ))
                                                         }
@@ -109,6 +198,7 @@ class VenueDetails extends Component {
                                             </div>
                                         </div>
                                     </div>
+                                    }
                                 </div>
                                 <div className="col-lg-4">
                                     <div className="sidebar single-content-sidebar mb-0">
@@ -117,18 +207,23 @@ class VenueDetails extends Component {
                                                 <div className="contact-form-action">
                                                     <form onSubmit={this.formSubmit.bind(this)}>
                                                         <div className="input-box">
-                                                            <label className="label-text">Check in - Check out</label>
+                                                            <h3 className="title stroke-shape">Book Now</h3>
                                                             <div className="form-group">
                                                                 <span className="la la-calendar form-icon"></span>
-                                                                <DateRangePicker onEvent={this.handleDateRangeEvent.bind(this)}>
-                                                                    <input type="text" className="form-control" />
+                                                                <DateRangePicker
+                                                                    initialSettings={{ autoUpdateInput: false,locale: {cancelLabel: 'Clear'}}}
+                                                                    onEvent={this.handleDateRangeEvent.bind(this)}
+                                                                >
+                                                                    <input type="text" className="form-control" placeholder="Check in - Check out"/>
                                                                 </DateRangePicker>
                                                             </div>
                                                         </div>
+
                                                         <div className="btn-box pt-2">
-                                                            <button type="submit" title="Please select date first." id="bookNowBtn" disabled className="disabled theme-btn text-center w-100 mb-2 btn-outline-none">
-                                                                <i className="la la-shopping-cart mr-2 font-size-18"></i>
-                                                                Book Now
+                                                            <button type="submit" id="bookNowBtn"
+                                                                    className="theme-btn text-center w-100 mb-2 btn-outline-none">
+                                                                <i className="la la-shopping-cart mr-2 font-size-18"></i> Book
+                                                                Now
                                                             </button>
                                                         </div>
                                                     </form>

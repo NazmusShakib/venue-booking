@@ -31,7 +31,7 @@ class VenueLists extends Component {
         let formatFilter = Object.assign({}, filter);
         defaultSearchFormSessionFilter = formatFilter;
         formatFilter = JSON.stringify(formatFilter);
-        //console.log(formatFilter);
+        console.log(formatFilter);
         this.setState(previousState => ({
             page: 1,
         }), () => {
@@ -313,11 +313,11 @@ class VenueLists extends Component {
                         </div>
                         <div className="row">
                             { this.state.current_page !== this.state.last_page &&
-                            <div className="col-lg-12">
-                                <div className="btn-box mt-3 text-center">
-                                    <button type="button" onClick={this.loadMore.bind(this)} className="theme-btn"><i className="la la-refresh mr-1"></i>Load More</button>
+                                <div className="col-lg-12">
+                                    <div className="btn-box mt-3 text-center">
+                                        <button type="button" onClick={this.loadMore.bind(this)} className="theme-btn"><i className="la la-refresh mr-1"></i>Load More</button>
+                                    </div>
                                 </div>
-                            </div>
                             }
                         </div>
                     </>

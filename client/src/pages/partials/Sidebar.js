@@ -18,9 +18,7 @@ class Sidebar extends Component {
         super();
         this.state={
             accordianId:'',
-            priceValue:0,
-            start_date: Moment().format('YYYY-MM-DD'),
-            end_date: Moment().format('YYYY-MM-DD')
+            priceValue:0
         }
     }
 
@@ -50,26 +48,36 @@ class Sidebar extends Component {
     }
 
     handleDateRangeEvent(event, picker) {
-        this.setState({
-            start_date: Moment(picker.startDate).format('YYYY-MM-DD'),
-            end_date: Moment(picker.endDate).format('YYYY-MM-DD')
-        });
-    }
-
-    receiveDateRangeFilterResponse(){
-        date['filteredDate'] = {
-            'check_in' : this.state.start_date,
-            'check_out' : this.state.end_date
+        if(event.type.toString() === 'apply')
+        {
+            picker.element.val(
+                picker.startDate.format('MM/DD/YYYY') +
+                ' - ' +
+                picker.endDate.format('MM/DD/YYYY')
+            );
+            date['filteredDate'] = {
+                'check_in' : Moment(picker.startDate).format('YYYY-MM-DD'),
+                'check_out' : Moment(picker.endDate).format('YYYY-MM-DD')
+            }
+            this.props.receiveFilterResponseFromSidebar('date', date);
         }
-
-        this.props.receiveFilterResponseFromSidebar('date', date);
+        
+        if(event.type.toString() === 'cancel')
+        {
+            picker.element.val('');
+            date['filteredDate'] = {
+                'check_in' : '',
+                'check_out' : ''
+            }
+            this.props.receiveFilterResponseFromSidebar('date', date);
+        }
     }
 
     handlePriceRangeOnChange = (value) => {
         this.setState({priceValue: value});
     }
 
-    handleChangeComplete = () => {
+    handleChangeComplete = (val) => {
         price['filteredPrice'] = this.state.priceValue;
         this.props.receiveFilterResponseFromSidebar('price', price);
     };
@@ -88,12 +96,12 @@ class Sidebar extends Component {
                                         <label className="label-text">Check in - Check out</label>
                                         <div className="form-group">
                                             <span className="la la-calendar form-icon"></span>
-                                            <DateRangePicker onEvent={this.handleDateRangeEvent.bind(this)}>
-                                                <input type="text" className="form-control" />
+                                            <DateRangePicker
+                                                initialSettings={{ autoUpdateInput: false,locale: {cancelLabel: 'Clear'}}}
+                                                onEvent={this.handleDateRangeEvent.bind(this)}
+                                            >
+                                                <input type="text" className="form-control" defaultValue="" placeholder="Choose Date Range"/>
                                             </DateRangePicker>
-                                            <span className="form-icon" style={{'top':'6px', 'right':'6px', 'left':'auto'}}>
-                                                <button onClick={this.receiveDateRangeFilterResponse.bind(this)} type="button" className="btn btn-xs btn-primary">Go</button>
-                                            </span>
                                         </div>
                                     </div>
                                 </form>

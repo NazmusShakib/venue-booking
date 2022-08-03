@@ -40,7 +40,7 @@ class ApiController extends Controller
     }
 
     public function formatVenueFilter($request, $category){
-        $date = !empty($request->date) ? $request->date : [];
+        $dates = !empty($request->date) ? $request->date : [];
         $price = !empty($request->price) ? $request->price : [];
         $cityIds = !empty($request->cities) ? $request->cities : [];
         $categoryIds = !empty($request->categories) ? $request->categories : [];
@@ -79,7 +79,7 @@ class ApiController extends Controller
         }
 
         return [
-            'date' => $date,
+            'dates' => $dates,
             'price' => $price,
             'cityIds' => $cityIds,
             'categoryIds' => $categoryIds,
@@ -90,8 +90,12 @@ class ApiController extends Controller
 
     public function venues(Request $request, $category = ''){
         $filter = $this->formatVenueFilter($request, $category);
-
         $venues = Venue::where(function($query)use($filter){
+            if(!empty($filter['dates']['check_in']) && !empty($filter['dates']['check_out']))
+            {
+                $query->available($filter['dates']);
+            }
+
             if(!empty($filter['price']) && $filter['price'] > 0)
             {
                 $price = (double) $filter['price'];
@@ -141,7 +145,7 @@ class ApiController extends Controller
     }
 
     public function event_store(Request $request){
-        $e = EventCalendar::create([
+        $data = [
             'created_by' => $request->user_id,
             'venue_id' => $request->venue_id,
             'title' => $request->title,
@@ -150,14 +154,22 @@ class ApiController extends Controller
             'end_date' => $request->end_date,
             'all_day_event' => $request->allDay,
             'status' => $request->status,
-        ]);
+        ];
 
-        $res = new EventCalendarResource($e);
+        if(!EventCalendar::eventExists($data)->exists())
+        {
+            $e = EventCalendar::create($data);
+            $res = new EventCalendarResource($e);
+            return response()->json([
+                'status' => 200,
+                'event' => $res,
+                'message' => 'Data successfully stored in database.'
+            ]);
+        }
 
         return response()->json([
-            'status' => 200,
-            'event' => $res,
-            'message' => 'Data successfully stored in database.'
+            'status' => 400,
+            'error' => 'Sorry! you can\'t add more event on same dates'
         ]);
     }
 
@@ -208,6 +220,33 @@ class ApiController extends Controller
         return response()->json([
             'status' => 200,
             'occasions' => $occasions
+        ]);
+    }
+
+    public function booking_availability_checking(Request $request){
+        $data = [
+            'venue_id' => $request->venue_id,
+            'check_in'=>date('Y-m-d', strtotime($request->check_in)),
+            'check_out'=>date('Y-m-d', strtotime($request->check_out))
+        ];
+        $venue = Venue::find($request->venue_id);
+        //$availability = $venue->bookingAvailable($data)->exists();
+        $check_in=date('Y-m-d', strtotime($request->check_in));
+        $check_out=date('Y-m-d', strtotime($request->check_out));
+        $venue_id = $request->venue_id;
+        $availability = Order::where('venue_id',$request->venue_id)->where('status', 'approved')->where('payment_status', 'completed')
+                        ->where(function($query) use($check_in, $check_out){
+                                $query->where('start_date', '<', $check_in)
+                                      ->where('end_date', '>', $check_in);
+                        })->orWhere(function($query) use($check_in, $check_out){
+                                $query->where('start_date', '<', $check_out)
+                                      ->where('end_date', '>', $check_out);
+                        })->count();
+
+        return response()->json([
+            'status' => 200,
+            'availability' => $availability,
+            'available_dates' => $availability === false ? $venue->availableDates() : []
         ]);
     }
 

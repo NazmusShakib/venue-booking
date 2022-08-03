@@ -23,14 +23,13 @@ return new class extends Migration
             $table->dateTime('end_date')->nullable()->index();
             $table->boolean('all_day_event')->default(true)->index();
             $table->enum('status', ['pending', 'approved', 'rejected', 'completed'])->default('pending');
-            $table->integer('created_by')->unsigned()->nullable()->index();
+            $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
             $table->integer('updated_by')->unsigned()->nullable()->index();
             $table->timestamps();
         });
 
         Schema::table('event_calendars', function(Blueprint $table)
         {
-            $table->foreign('created_by')->references('id')->on('admin_users')->onDelete('SET NULL');
             $table->foreign('updated_by')->references('id')->on('admin_users')->onDelete('SET NULL');
         });
     }

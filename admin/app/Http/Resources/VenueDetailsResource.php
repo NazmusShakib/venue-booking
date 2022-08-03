@@ -35,6 +35,7 @@ class VenueDetailsResource extends JsonResource
             'division' => $this->division->name,
             'city' => $this->city->name,
             'district' => $this->district->name,
+            //'available_dates' => $this->availableDates(),
             'categories' => CategoryResource::collection($this->categories),
             'occasions' => OccasionResource::collection($this->occasions),
             'amenities' => AmenityResource::collection($this->amenities),

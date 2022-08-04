@@ -23,7 +23,9 @@ class VenueBooking extends Component {
             name:SessionHelper.GetAuthSession() !== null ? SessionHelper.GetAuthSession().name : '',
             email:SessionHelper.GetAuthSession() !== null ? SessionHelper.GetAuthSession().email : '',
             receive_promotional_offers:false,
-            agree:false
+            agree:false,
+            confirmBtn:true,
+            errors:[]
         }
     }
 
@@ -73,6 +75,7 @@ class VenueBooking extends Component {
 
     formSubmit(e) {
         e.preventDefault();
+        this.setState({confirmBtn:false});
         let data = {
             'venue_id':this.state.venue.id,
             'user_id':SessionHelper.GetAuthUserId(),
@@ -95,6 +98,12 @@ class VenueBooking extends Component {
 
         axios.get('/sanctum/csrf-cookie').then(response => {
             axios.post('/api/order/store', data).then(res => {
+                this.setState({confirmBtn:true});
+                if (res.data.status === 400)
+                {
+                    this.setState({errors:res.data.errors});
+                }
+
                 if (res.data.status === 200)
                 {
                     this.props.navigate('/dashboard');
@@ -164,6 +173,7 @@ class VenueBooking extends Component {
                                                                         options={this.state.categoryLists}
                                                                         onChange={this.handleCategorySelect}
                                                                     />
+                                                                    <p className="text-danger">{this.state.errors.category_id}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -176,6 +186,7 @@ class VenueBooking extends Component {
                                                                         options={this.state.occasionLists}
                                                                         onChange={this.handleOccasionSelect}
                                                                     />
+                                                                    <p className="text-danger">{this.state.errors.occasion_id}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -184,7 +195,8 @@ class VenueBooking extends Component {
                                                                 <label className="label-text">Name</label>
                                                                 <div className="form-group">
                                                                     <span className="la la-user form-icon"></span>
-                                                                    <input onChange={this.handleInput} className="form-control" type="text" name="name" placeholder="Name" defaultValue={this.state.name}/>
+                                                                    <input required onChange={this.handleInput} className="form-control" type="text" name="name" placeholder="Name" defaultValue={this.state.name}/>
+                                                                    <p className="text-danger">{this.state.errors.name}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -193,7 +205,8 @@ class VenueBooking extends Component {
                                                                 <label className="label-text">Your Email</label>
                                                                 <div className="form-group">
                                                                     <span className="la la-envelope-o form-icon"></span>
-                                                                    <input onChange={this.handleInput} className="form-control" type="email" name="email" placeholder="Email address" defaultValue={this.state.email}/>
+                                                                    <input required onChange={this.handleInput} className="form-control" type="email" name="email" placeholder="Email address" defaultValue={this.state.email}/>
+                                                                    <p className="text-danger">{this.state.errors.email}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -202,7 +215,8 @@ class VenueBooking extends Component {
                                                                 <label className="label-text">Mobile Number</label>
                                                                 <div className="form-group">
                                                                     <span className="la la-phone form-icon"></span>
-                                                                    <input onChange={this.handleInput} className="form-control" type="text" name="mobile_number" placeholder="Mobile Number"/>
+                                                                    <input required onChange={this.handleInput} className="form-control" type="text" name="mobile_number" placeholder="Mobile Number"/>
+                                                                    <p className="text-danger">{this.state.errors.mobile_number}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -211,7 +225,8 @@ class VenueBooking extends Component {
                                                                 <label className="label-text">How many guests you are planning for event?*</label>
                                                                 <div className="form-group">
                                                                     <span className="las la-users form-icon"></span>
-                                                                    <input onChange={this.handleInput} className="form-control" type="number" name="total_guests" placeholder="Total Guests" min="0" max={this.state.venue.capacity}/>
+                                                                    <input required onChange={this.handleInput} className="form-control" type="number" name="total_guests" placeholder="Total Guests" min="0" max={this.state.venue.capacity}/>
+                                                                    <p className="text-danger">{this.state.errors.total_guests}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -220,7 +235,8 @@ class VenueBooking extends Component {
                                                                 <label className="label-text">Address Line</label>
                                                                 <div className="form-group">
                                                                     <span className="la la-map-marked form-icon"></span>
-                                                                    <textarea onChange={this.handleInput} className="form-control" type="text" name="address" placeholder="Address line"></textarea>
+                                                                    <textarea required onChange={this.handleInput} className="form-control" type="text" name="address" placeholder="Address line"></textarea>
+                                                                    <p className="text-danger">{this.state.errors.address}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -240,9 +256,16 @@ class VenueBooking extends Component {
                                                                 </div>
                                                             </div>
                                                             <div className="btn-box">
-                                                                <button className="theme-btn" type="submit">
-                                                                    Confirm Booking
-                                                                </button>
+                                                                {this.state.confirmBtn === true ? (
+                                                                    <button type="submit" id="bookNowBtn" className="theme-btn">
+                                                                        <i className="la la-shopping-cart mr-2 font-size-18"></i> Confirm Booking
+                                                                    </button>
+
+                                                                ) : (
+                                                                    <button type="submit" id="bookNowBtn" className="disabled theme-btn">
+                                                                        <i className="las la-spin la-spinner mr-2 font-size-18"></i> Processing
+                                                                    </button>
+                                                                )}
                                                             </div>
                                                         </div>
                                                     </div>

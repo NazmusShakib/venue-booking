@@ -197,15 +197,18 @@ const Register = () => {
                                     <p className="text-danger">{registerInput.errors.confirm_password}</p>
                                 </div>
                                 <div className="btn-box pt-3 pb-4">
-                                    <button type="submit" className={registerInput.processing === true ? 'btn btn-block btn-lg btn-danger disabled font-size-16' : 'btn btn-block btn-primary btn-lg font-size-16'} disabled={registerInput.processing === true ? 'disabled' : ''}>
-                                        {registerInput.processing === true ? (
-                                            <>
-                                                <i className="las la-spinner"></i> Register Account
-                                            </>
-                                        ) : (
-                                            <> Register Account</>
-                                        )}
-                                    </button>
+                                    {registerInput.processing === true ? (
+                                        <>
+                                            <button type="submit" className="btn btn-block btn-lg btn-danger disabled font-size-16">
+                                                <i className="las la-spin la-spinner"></i> Register Account
+                                            </button>
+                                        </>
+                                    ) : (
+
+                                        <button type="submit" className="btn btn-block btn-primary btn-lg font-size-16">
+                                            Register Account
+                                        </button>
+                                    )}
                                 </div>
                             </form>
                         </div>

@@ -20,6 +20,7 @@ use App\Models\Venue;
 use App\Models\EventCalendar;
 use App\Models\Order;
 use App\Models\User;
+use Validator;
 
 class ApiController extends Controller
 {
@@ -229,28 +230,41 @@ class ApiController extends Controller
             'check_in'=>date('Y-m-d', strtotime($request->check_in)),
             'check_out'=>date('Y-m-d', strtotime($request->check_out))
         ];
+
         $venue = Venue::find($request->venue_id);
-        //$availability = $venue->bookingAvailable($data)->exists();
-        $check_in=date('Y-m-d', strtotime($request->check_in));
-        $check_out=date('Y-m-d', strtotime($request->check_out));
-        $venue_id = $request->venue_id;
-        $availability = Order::where('venue_id',$request->venue_id)->where('status', 'approved')->where('payment_status', 'completed')
-                        ->where(function($query) use($check_in, $check_out){
-                                $query->where('start_date', '<', $check_in)
-                                      ->where('end_date', '>', $check_in);
-                        })->orWhere(function($query) use($check_in, $check_out){
-                                $query->where('start_date', '<', $check_out)
-                                      ->where('end_date', '>', $check_out);
-                        })->count();
+        $availability = $venue->bookingAvailable($data)->exists();
 
         return response()->json([
-            'status' => 200,
-            'availability' => $availability,
-            'available_dates' => $availability === false ? $venue->availableDates() : []
+            'status'            =>  200,
+            'availability'      =>   $availability,
+            'available_dates'   =>  $availability === false ? $venue->availableDates() : [],
+            'message'           =>  $availability === false ? 'Sorry! your selected dates is not available for booking, please! see below our available dates for this venue' : '',
         ]);
     }
 
     public function order_store(Request $request){
+        $validation = Validator::make($request->all(), [
+            'venue_id' => ['required'],
+            'user_id' => ['required'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['required', 'date'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'string', 'max:255'],
+            'category_id' => ['required', 'string', 'max:255'],
+            'occasion_id' => ['required', 'string', 'max:255'],
+            'mobile_number' => ['required', 'string', 'max:255'],
+            'total_guests' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255']
+        ]);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Booking failed!.',
+                'errors' => $validation->messages()
+            ]);
+        }
+
         $order = new Order;
         $order->venue_id = $request->venue_id;
         $order->user_id = $request->user_id;

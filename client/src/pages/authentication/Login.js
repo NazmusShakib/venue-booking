@@ -153,16 +153,20 @@ const Login = () => {
                                     <p className="text-danger">{loginInput.errors.password}</p>
                                 </div>
                                 <div className="btn-box pt-3 pb-4">
-                                    <button type="submit" className={loginInput.processing === true ? 'btn btn-block btn-lg btn-danger disabled font-size-16' : 'btn btn-block btn-primary btn-lg font-size-16'}>
+
 
                                         {loginInput.processing === true ? (
                                             <>
-                                                <i className="las la-spinner"></i> Login Account
+                                                <button type="submit" className="btn btn-block btn-lg btn-danger disabled font-size-16">
+                                                    <i className="las la-spin la-spinner"></i> Login Account
+                                                </button>
                                             </>
                                         ) : (
-                                            <>Login Account</>
+                                            <button type="submit" className="btn btn-block btn-primary btn-lg font-size-16">
+                                               Login Account
+                                            </button>
                                         )}
-                                    </button>
+
                                 </div>
                             </form>
                         </div>

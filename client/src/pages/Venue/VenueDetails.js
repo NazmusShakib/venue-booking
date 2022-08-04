@@ -28,7 +28,10 @@ class VenueDetails extends Component {
             images:[],
             amenities:[],
             startDate:'',
-            endDate:''
+            endDate:'',
+            bookNowBtn:true,
+            available_dates:[],
+            message:''
         }
     }
 
@@ -65,11 +68,7 @@ class VenueDetails extends Component {
 
     formSubmit(e) {
         e.preventDefault();
-        SessionHelper.SetFilterSession({
-            'startDate' : this.state.startDate,
-            'endDate' : this.state.endDate
-        });
-
+        this.setState({bookNowBtn:false});
         let data = {
             'venue_id':this.state.venue.id,
             'check_in' : this.state.startDate,
@@ -81,15 +80,65 @@ class VenueDetails extends Component {
                 console.log(res);
                 if (res.data.status === 200)
                 {
-                    //this.props.navigate('/venue/booking/'+this.state.venue.slug);
+                    if(res.data.availability === true)
+                    {
+                        SessionHelper.SetFilterSession({
+                            'startDate' : this.state.startDate,
+                            'endDate' : this.state.endDate
+                        });
+                        this.props.navigate('/venue/booking/'+this.state.venue.slug);
+                    }
+
+                    if(res.data.availability === false){
+                        this.setState(previousState => ({
+                            message: res.data.message,
+                            available_dates: res.data.available_dates,
+                        }), () => {
+                            document.getElementById('availableDatesModal').classList.add('show');
+                            document.getElementById("availableDatesModal").style.display = "block";
+                        });
+                    }
                 }
+                this.setState({bookNowBtn:true});
             }).catch((error)=>{});
         });
+    }
+
+    closeModal = (e) =>{
+        document.getElementById('availableDatesModal').classList.remove('show');
+        document.getElementById("availableDatesModal").style.display = "none";
     }
 
     render() {
         return (
             <>
+                <div className="modal fade" id="availableDatesModal">
+                    <div className="modal-dialog modal-dialog-centered" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLongTitle">Available Dates</h5>
+                                <button type="button" className="close" onClick={this.closeModal}>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <p className="text-info">{this.state.message}</p>
+                                <br/>
+                                {
+                                    this.state.available_dates.map((date, index) => (
+                                        <React.Fragment key={index}>
+                                            <span className="badge badge-primary p-2 mr-2 mb-2">{date}</span>
+                                        </React.Fragment>
+                                    ))
+                                }
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-danger" onClick={this.closeModal}> Close </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <section className="hero-wrapper hero-wrapper2">
                     { this.state.images.length < 1 &&
                         <div className="loaderPlaceholder p-0">
@@ -214,17 +263,22 @@ class VenueDetails extends Component {
                                                                     initialSettings={{ autoUpdateInput: false,locale: {cancelLabel: 'Clear'}}}
                                                                     onEvent={this.handleDateRangeEvent.bind(this)}
                                                                 >
-                                                                    <input type="text" className="form-control" placeholder="Check in - Check out"/>
+                                                                    <input required type="text" className="form-control" placeholder="Check in - Check out"/>
                                                                 </DateRangePicker>
                                                             </div>
                                                         </div>
 
                                                         <div className="btn-box pt-2">
-                                                            <button type="submit" id="bookNowBtn"
-                                                                    className="theme-btn text-center w-100 mb-2 btn-outline-none">
-                                                                <i className="la la-shopping-cart mr-2 font-size-18"></i> Book
-                                                                Now
-                                                            </button>
+                                                            {this.state.bookNowBtn === true ? (
+                                                                <button type="submit" id="bookNowBtn" className="theme-btn text-center w-100 mb-2 btn-outline-none">
+                                                                    <i className="la la-shopping-cart mr-2 font-size-18"></i> Book Now
+                                                                </button>
+
+                                                            ) : (
+                                                                <button type="submit" id="bookNowBtn" className="disabled theme-btn text-center w-100 mb-2 btn-outline-none">
+                                                                    <i className="las la-spin la-spinner mr-2 font-size-18"></i> Processing
+                                                                </button>
+                                                            )}
                                                         </div>
                                                     </form>
                                                 </div>

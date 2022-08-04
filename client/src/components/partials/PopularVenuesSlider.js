@@ -96,11 +96,6 @@ class PopularVenuesSlider extends Component {
                                                 <img style={{'height': '265px'}} src={venue.thumbnail}
                                                      alt={venue.name}/>
                                             </Link>
-
-                                            <div className="add-to-wishlist icon-element" data-toggle="tooltip"
-                                                 data-placement="top" title="Bookmark">
-                                                <i className="la la-heart-o"></i>
-                                            </div>
                                         </div>
                                         <div className="card-body">
                                             <h3 className="card-title">

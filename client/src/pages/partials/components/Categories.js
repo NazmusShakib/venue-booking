@@ -34,8 +34,17 @@ class Categories extends Component {
 
     componentDidMount() {
         cats = SessionHelper.GetSessionFilterCategory();
-
-        axios.get('/api/categories').then(res => {this.setState({categories:res.data.data});}).catch((error)=>{});
+        let sessionCategories = SessionHelper.GetCategoriesSession();
+        if(sessionCategories === null){
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                axios.get('/api/categories').then(res => {
+                    this.setState({categories:res.data.data});
+                    SessionHelper.SetCategoriesSession(res.data.data);
+                }).catch((error)=>{});
+            });
+        }else{
+            this.setState({categories:sessionCategories});
+        }
     }
 
     render() {

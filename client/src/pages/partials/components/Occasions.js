@@ -31,7 +31,17 @@ class Occasions extends Component {
 
     componentDidMount() {
         occasions = SessionHelper.GetSessionFilterOccasion();
-        axios.get('/api/occasions').then(res => {this.setState({occasions:res.data.data});}).catch((error)=>{});
+        let sessionOccasions = SessionHelper.GetOccasionsSession();
+        if(sessionOccasions === null){
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                axios.get('/api/occasions').then(res => {
+                    this.setState({occasions:res.data.data});
+                    SessionHelper.SetOccasionsSession(res.data.data);
+                }).catch((error)=>{});
+            });
+        }else{
+            this.setState({occasions:sessionOccasions});
+        }
     }
 
     render() {

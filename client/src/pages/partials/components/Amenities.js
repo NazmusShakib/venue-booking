@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import SessionHelper from "../../../session/SessionHelper";
 
 let amenities = [];
 let responseAmenities=[];
@@ -24,7 +25,17 @@ class Amenities extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/amenities').then(res => {this.setState({amenities:res.data.data});}).catch((error)=>{});
+        let sessionAmenities = SessionHelper.GetAmenitiesSession();
+        if(sessionAmenities === null){
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                axios.get('/api/amenities').then(res => {
+                    this.setState({amenities:res.data.data});
+                    SessionHelper.SetAmenitiesSession(res.data.data);
+                }).catch((error)=>{});
+            });
+        }else{
+            this.setState({amenities:sessionAmenities});
+        }
     }
 
     render() {

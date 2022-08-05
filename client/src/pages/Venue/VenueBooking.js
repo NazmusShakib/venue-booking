@@ -34,6 +34,9 @@ class VenueBooking extends Component {
         window.scrollTo(0, 0);
         let slug = this.props.params.venue_slug;
         let data = {};
+        let sessionCategoryList = SessionHelper.GetCategoryListForDropdownSession();
+        let sessionOccasionList = SessionHelper.GetOccasionListForDropdownSession();
+
         axios.get('/sanctum/csrf-cookie').then(response => {
             axios.get('/api/venue/details/'+slug,).then(res => {
                 this.setState({venue:res.data.venue});
@@ -41,12 +44,24 @@ class VenueBooking extends Component {
                 this.setState({amenities:res.data.venue.amenities});
                 this.setState({loading:false});
             }).catch((error)=>{});
-            axios.post('/api/category/lists/for/dropdown', data).then(res => {
-                this.setState({categoryLists:res.data.categories});
-            }).catch((error)=>{});
-            axios.post('/api/occasion/lists/for/dropdown', data).then(res => {
-                this.setState({occasionLists:res.data.occasions});
-            }).catch((error)=>{});
+
+            if(sessionCategoryList === null){
+                axios.post('/api/category/lists/for/dropdown', data).then(res => {
+                    this.setState({categoryLists:res.data.categories});
+                    SessionHelper.SetCategoryListForDropdownSession(res.data.categories);
+                }).catch((error)=>{});
+            }else{
+                this.setState({categoryLists:sessionCategoryList});
+            }
+
+            if(sessionOccasionList === null){
+                axios.post('/api/occasion/lists/for/dropdown', data).then(res => {
+                    this.setState({occasionLists:res.data.occasions});
+                    SessionHelper.SetOccasionListForDropdownSession(res.data.occasions);
+                }).catch((error)=>{});
+            }else{
+                this.setState({occasionLists:sessionOccasionList});
+            }
         });
     }
 

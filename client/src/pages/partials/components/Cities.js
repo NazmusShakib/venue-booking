@@ -35,10 +35,17 @@ class Cities extends Component {
 
     componentDidMount() {
         cities = SessionHelper.GetSessionFilterCity();
-
-        axios.get('/api/cities').then(res => {
-            this.setState({cities:res.data.data});
-        }).catch((error)=>{});
+        let sessionCities = SessionHelper.GetCitiesSession();
+        if(sessionCities === null){
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                axios.get('/api/cities').then(res => {
+                    this.setState({cities:res.data.data});
+                    SessionHelper.SetCitiesSession(res.data.data);
+                }).catch((error)=>{});
+            });
+        }else{
+            this.setState({cities:sessionCities});
+        }
     }
 
     render() {

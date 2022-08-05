@@ -12,8 +12,8 @@ class Dashboard extends Component {
                         <div className="row">
                             <Sidebar/>
                             <div className="col-lg-10">
-                                {SessionHelper.GetAuthSession().type === 1 && (<EventCalendar/>)}
-                                {SessionHelper.GetAuthSession().type === 0 && (<Orders/>)}
+                                {parseInt(SessionHelper.GetAuthSession().type) === 1 && (<EventCalendar/>)}
+                                {parseInt(SessionHelper.GetAuthSession().type) === 0 && (<Orders/>)}
                             </div>
                         </div>
                     </div>

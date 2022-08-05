@@ -19,17 +19,43 @@ class SearchForm extends Component {
 
     componentDidMount() {
         let data = {};
-        axios.get('/sanctum/csrf-cookie').then(response => {
-            axios.post('/api/city/lists/for/dropdown', data).then(res => {
-                this.setState({cityLists:res.data.cities});
-            }).catch((error)=>{});
-            axios.post('/api/category/lists/for/dropdown', data).then(res => {
-                this.setState({categoryLists:res.data.categories});
-            }).catch((error)=>{});
-            axios.post('/api/occasion/lists/for/dropdown', data).then(res => {
-                this.setState({occasionLists:res.data.occasions});
-            }).catch((error)=>{});
-        });
+        let cityList = SessionHelper.GetCityListForDropdownSession();
+        let categoryList = SessionHelper.GetCategoryListForDropdownSession();
+        let occasionList = SessionHelper.GetOccasionListForDropdownSession();
+        if(cityList === null || categoryList === null || occasionList === null){
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                if(cityList === null){
+                    axios.post('/api/city/lists/for/dropdown', data).then(res => {
+                        this.setState({cityLists:res.data.cities});
+                        SessionHelper.SetCityListForDropdownSession(res.data.cities);
+                    }).catch((error)=>{});
+                }else{
+                    this.setState({cityLists:cityList});
+                }
+
+                if(categoryList === null){
+                    axios.post('/api/category/lists/for/dropdown', data).then(res => {
+                        this.setState({categoryLists:res.data.categories});
+                        SessionHelper.SetCategoryListForDropdownSession(res.data.categories);
+                    }).catch((error)=>{});
+                }else{
+                    this.setState({categoryLists:categoryList});
+                }
+
+                if(occasionList === null){
+                    axios.post('/api/occasion/lists/for/dropdown', data).then(res => {
+                        this.setState({occasionLists:res.data.occasions});
+                        SessionHelper.SetOccasionListForDropdownSession(res.data.occasions);
+                    }).catch((error)=>{});
+                }else{
+                    this.setState({occasionLists:occasionList});
+                }
+            });
+        }else{
+            if(cityList){this.setState({cityLists:cityList});}
+            if(categoryList){this.setState({categoryLists:categoryList});}
+            if(occasionList){this.setState({occasionLists:occasionList});}
+        }
     }
 
     handleCitySelect = (selectedOption) =>{

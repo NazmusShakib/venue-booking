@@ -58,7 +58,6 @@ class SessionHelper extends Component {
     }
 
     static GetSessionFilterCity(){
-        // return this.GetFilterSession().city ?? [];
         return (this.GetFilterSession() !== null && this.GetFilterSession().city !== undefined && this.GetFilterSession().city !== null) ? this.GetFilterSession().city : [];
     }
 
@@ -68,6 +67,62 @@ class SessionHelper extends Component {
 
     static GetSessionFilterOccasion(){
         return (this.GetFilterSession() !== null && this.GetFilterSession().occasion !== undefined && this.GetFilterSession().occasion !== null) ? this.GetFilterSession().occasion : [];
+    }
+
+    static SetCityListForDropdownSession(data){
+        sessionStorage.setItem('city_lists_for_dropdown', JSON.stringify(data));
+    }
+
+    static GetCityListForDropdownSession(){
+        return JSON.parse(sessionStorage.getItem('city_lists_for_dropdown'));
+    }
+
+    static SetCategoryListForDropdownSession(data){
+        sessionStorage.setItem('category_lists_for_dropdown', JSON.stringify(data));
+    }
+
+    static GetCategoryListForDropdownSession(){
+        return JSON.parse(sessionStorage.getItem('category_lists_for_dropdown'));
+    }
+
+    static SetOccasionListForDropdownSession(data){
+        sessionStorage.setItem('occasion_lists_for_dropdown', JSON.stringify(data));
+    }
+
+    static GetOccasionListForDropdownSession(){
+        return JSON.parse(sessionStorage.getItem('occasion_lists_for_dropdown'));
+    }
+
+    static SetCitiesSession(data){
+        sessionStorage.setItem('cities', JSON.stringify(data));
+    }
+
+    static GetCitiesSession(){
+        return JSON.parse(sessionStorage.getItem('cities'));
+    }
+
+    static SetCategoriesSession(data){
+        sessionStorage.setItem('categories', JSON.stringify(data));
+    }
+
+    static GetCategoriesSession(){
+        return JSON.parse(sessionStorage.getItem('categories'));
+    }
+
+    static SetAmenitiesSession(data){
+        sessionStorage.setItem('amenities', JSON.stringify(data));
+    }
+
+    static GetAmenitiesSession(){
+        return JSON.parse(sessionStorage.getItem('amenities'));
+    }
+
+    static SetOccasionsSession(data){
+        sessionStorage.setItem('occasions', JSON.stringify(data));
+    }
+
+    static GetOccasionsSession(){
+        return JSON.parse(sessionStorage.getItem('occasions'));
     }
 }
 

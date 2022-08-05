@@ -27,6 +27,7 @@ class Venues extends Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0);
+
     }
 
     receiveFilterResponseFromSidebar(responseType, filter){
@@ -76,11 +77,14 @@ class Venues extends Component {
         this.doVenueListFilter.current.doVenueListFilter(data);
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.params.category !== this.props.params.category)
-        {
-            this.setState({category:this.props.params.category});
+    static getDerivedStateFromProps(props, state){
+        if(props.params.category !== state.category){
+            //Change in state
+            return{
+                category: props.params.category
+            };
         }
+        return null; // No change to state
     }
 
     render() {

@@ -22,7 +22,8 @@ class VenueLists extends Component {
             'categories': SessionHelper.GetSessionFilterCategory(),
             'occasions': SessionHelper.GetSessionFilterOccasion()
         };
-        this.getData('', JSON.stringify(defaultSearchFormSessionFilter));
+
+        this.getData(this.props.category, JSON.stringify(defaultSearchFormSessionFilter));
     }
 
     doVenueListFilter(filter){
@@ -31,7 +32,7 @@ class VenueLists extends Component {
         let formatFilter = Object.assign({}, filter);
         defaultSearchFormSessionFilter = formatFilter;
         formatFilter = JSON.stringify(formatFilter);
-        console.log(formatFilter);
+        //console.log(formatFilter);
         this.setState(previousState => ({
             page: 1,
         }), () => {
@@ -44,6 +45,7 @@ class VenueLists extends Component {
         {
             this.setState({category:this.props.category});
             let cat = this.props.category;
+            //console.log(cat);
             this.setState(previousState => ({
                 page: 1,
             }), () => {
@@ -56,6 +58,7 @@ class VenueLists extends Component {
         this.setState({venuesLoading:true});
         if(!cat){
             axios.post(`/api/venues?page=${this.state.page}`, filter).then(res => {
+                //console.log(res);
                 if(this.state.page <= this.state.last_page)
                 {
                     this.setState(previousState => ({

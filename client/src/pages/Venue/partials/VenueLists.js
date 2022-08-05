@@ -59,36 +59,24 @@ class VenueLists extends Component {
         if(!cat){
             axios.post(`/api/venues?page=${this.state.page}`, filter).then(res => {
                 //console.log(res);
-                if(this.state.page <= this.state.last_page)
+                if(res.data.meta.current_page === 1)
                 {
-                    this.setState(previousState => ({
-                        page: this.state.page+1,
-                    }), () => {
-                        this.setState({venues:res.data.data});
-                    });
-                }else{
-                    this.setState({venues:res.data.data});
+                    this.setState({page: 2});
                 }
-
                 this.setState({current_page:res.data.meta.current_page});
                 this.setState({last_page:res.data.meta.last_page});
+                this.setState({venues:res.data.data});
                 this.setState({venuesLoading:false});
             }).catch((error)=>{});
         }else{
             axios.post(`/api/venues/${cat}?page=${this.state.page}`, filter).then(res => {
-                if(this.state.page <= this.state.last_page)
+                if(res.data.meta.current_page === 1)
                 {
-                    this.setState(previousState => ({
-                        page: this.state.page+1,
-                    }), () => {
-                        this.setState({venues:res.data.data});
-                    });
-                }else{
-                    this.setState({venues:res.data.data});
+                    this.setState({page: 2});
                 }
-
                 this.setState({current_page:res.data.meta.current_page});
                 this.setState({last_page:res.data.meta.last_page});
+                this.setState({venues:res.data.data});
                 this.setState({venuesLoading:false});
             }).catch((error)=>{});
         }
@@ -96,7 +84,7 @@ class VenueLists extends Component {
 
     loadMore(e){
         this.setState({venuesLoading:true});
-        let cat = this.state.category;
+        let cat = this.props.category;
         let filter = JSON.stringify(defaultSearchFormSessionFilter);
         if(!cat){
             axios.post(`/api/venues?page=${this.state.page}`, filter).then(res => {
@@ -106,7 +94,7 @@ class VenueLists extends Component {
                 }
                 this.setState({current_page:res.data.meta.current_page});
                 this.setState({last_page:res.data.meta.last_page});
-                this.setState({ venues: [...this.state.venues, ...res.data.data] });
+                this.setState({ venues: [...this.state.venues, ...res.data.data]});
                 this.setState({venuesLoading:false});
             }).catch((error)=>{});
         }else{
@@ -117,7 +105,7 @@ class VenueLists extends Component {
                 }
                 this.setState({current_page:res.data.meta.current_page});
                 this.setState({last_page:res.data.meta.last_page});
-                this.setState({ venues: [...this.state.venues, ...res.data.data] });
+                this.setState({ venues: [...this.state.venues, ...res.data.data]});
                 this.setState({venuesLoading:false});
             }).catch((error)=>{});
         }

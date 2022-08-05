@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 29, 2022 at 10:51 AM
+-- Generation Time: Aug 05, 2022 at 02:57 AM
 -- Server version: 5.7.33
 -- PHP Version: 8.1.3
 
@@ -323,7 +323,132 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `input`, `created_at`, `updated_at`) VALUES
 (1360, 1, 'admin/users/1', 'PUT', '127.0.0.1', '{\"name\":\"sasas\",\"username\":\"admin\",\"email\":\"abdulawalbd121@gmail.com\",\"type\":\"1\",\"venue_id\":[\"1\",\"2\",null],\"password\":\"$2y$10$H4tKE8g65tRli4qRmKvMduXS5cwwE6LUOX5tQxUgN3kTwOzeIbX16\",\"password_confirmation\":\"$2y$10$H4tKE8g65tRli4qRmKvMduXS5cwwE6LUOX5tQxUgN3kTwOzeIbX16\",\"email_verified_at\":\"2022-07-29T05:07:14.000000Z\",\"_token\":\"fVmyO5JM3glxhS79gIhM0y56jVCpAoXBJJHlo64g\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/users\"}', '2022-07-29 03:12:09', '2022-07-29 03:12:09'),
 (1361, 1, 'admin/users', 'GET', '127.0.0.1', '[]', '2022-07-29 03:12:09', '2022-07-29 03:12:09'),
-(1362, 1, 'admin/users/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 03:12:13', '2022-07-29 03:12:13');
+(1362, 1, 'admin/users/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 03:12:13', '2022-07-29 03:12:13'),
+(1363, 1, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2022-07-29 05:17:30', '2022-07-29 05:17:30'),
+(1364, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-07-29 05:17:31', '2022-07-29 05:17:31'),
+(1365, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:20:40', '2022-07-29 05:20:40'),
+(1366, 1, 'admin/venues/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:20:42', '2022-07-29 05:20:42'),
+(1367, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"2\"}', '2022-07-29 05:27:37', '2022-07-29 05:27:37'),
+(1368, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"12\"}', '2022-07-29 05:27:37', '2022-07-29 05:27:37'),
+(1369, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"16\"}', '2022-07-29 05:27:41', '2022-07-29 05:27:41'),
+(1370, 1, 'admin/venues', 'POST', '127.0.0.1', '{\"name\":\"Radisson\",\"description\":\"<h3><strong>Things To Know<\\/strong><\\/h3><h4><strong>Approach<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Ambience<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Food and Service<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Known For<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Best suited for<\\/strong><\\/h4><ul><li>Anniversary<\\/li><li>Birthday Party<\\/li><li>Cocktail Party<\\/li><li>Conference<\\/li><li>Corporate Party<\\/li><li>Engagement<\\/li><li>First Birthday Party<\\/li><li>Meeting<\\/li><li>Party<\\/li><li>Pool Party<\\/li><li>Reception<\\/li><li>Social Gathering<\\/li><li>Team Building<\\/li><li>Wedding<\\/li><\\/ul><p><br><\\/p><h4><strong>Cuisines<\\/strong><\\/h4><ul><li>Multi Cuisine<\\/li><li>Social Function Menu<\\/li><li>High Tea Menu<\\/li><\\/ul><p><br><\\/p><h4><strong>Terms and Conditions<\\/strong><\\/h4><ul><li>All Government applicable taxes will be applied.<\\/li><li>All Venue Rules Apply.<\\/li><\\/ul><p class=\\\"ql-align-justify\\\"><br><\\/p><p><br><\\/p>\",\"categories\":[\"9\",null],\"occasions\":[\"1\",\"2\",\"8\",null],\"amenities\":[\"1\",\"2\",\"4\",\"7\",\"9\",\"13\",\"17\",\"34\",null],\"price_type\":\"per-day\",\"price\":\"50000\",\"capacity\":\"5000\",\"division_id\":\"2\",\"district_id\":\"16\",\"city_id\":\"145\",\"is_enabled\":\"on\",\"created_by\":\"1\",\"_token\":\"fVmyO5JM3glxhS79gIhM0y56jVCpAoXBJJHlo64g\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/venues\"}', '2022-07-29 05:27:58', '2022-07-29 05:27:58'),
+(1371, 1, 'admin/venues/create', 'GET', '127.0.0.1', '[]', '2022-07-29 05:27:58', '2022-07-29 05:27:58'),
+(1372, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:29:09', '2022-07-29 05:29:09'),
+(1373, 1, 'admin/venues/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:29:11', '2022-07-29 05:29:11'),
+(1374, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"6\"}', '2022-07-29 05:29:25', '2022-07-29 05:29:25'),
+(1375, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":null}', '2022-07-29 05:29:25', '2022-07-29 05:29:25'),
+(1376, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"2\"}', '2022-07-29 05:29:26', '2022-07-29 05:29:26'),
+(1377, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"16\"}', '2022-07-29 05:29:27', '2022-07-29 05:29:27'),
+(1378, 1, 'admin/venues/1', 'PUT', '127.0.0.1', '{\"name\":\"Radisson\",\"description\":\"<h4><strong>Approach<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Ambience<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Food and Service<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Known For<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Best suited for<\\/strong><\\/h4><ul><li>Anniversary<\\/li><li>Birthday Party<\\/li><li>Cocktail Party<\\/li><li>Conference<\\/li><li>Corporate Party<\\/li><li>Engagement<\\/li><li>First Birthday Party<\\/li><li>Meeting<\\/li><li>Party<\\/li><li>Pool Party<\\/li><li>Reception<\\/li><li>Social Gathering<\\/li><li>Team Building<\\/li><li>Wedding<\\/li><\\/ul><p><br><\\/p><h4><strong>Cuisines<\\/strong><\\/h4><ul><li>Multi Cuisine<\\/li><li>Social Function Menu<\\/li><li>High Tea Menu<\\/li><\\/ul><p><br><\\/p><h4><strong>Terms and Conditions<\\/strong><\\/h4><ul><li>All Government applicable taxes will be applied.<\\/li><li>All Venue Rules Apply.<\\/li><\\/ul><p class=\\\"ql-align-justify\\\"><br><\\/p><p><br><\\/p>\",\"categories\":[\"9\",null],\"occasions\":[\"1\",\"2\",\"8\",null],\"amenities\":[\"1\",\"2\",\"4\",\"7\",\"9\",\"13\",\"17\",\"34\",null],\"price_type\":\"per-day\",\"price\":\"50000.00\",\"capacity\":\"5000\",\"division_id\":\"2\",\"district_id\":\"16\",\"city_id\":\"146\",\"is_enabled\":\"on\",\"updated_by\":\"1\",\"_token\":\"fVmyO5JM3glxhS79gIhM0y56jVCpAoXBJJHlo64g\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/venues\"}', '2022-07-29 05:29:32', '2022-07-29 05:29:32'),
+(1379, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-07-29 05:29:33', '2022-07-29 05:29:33'),
+(1380, 1, 'admin/venues/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:29:37', '2022-07-29 05:29:37'),
+(1381, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:29:43', '2022-07-29 05:29:43'),
+(1382, 1, 'admin/venues/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:29:45', '2022-07-29 05:29:45'),
+(1383, 1, 'admin/venues/1', 'PUT', '127.0.0.1', '{\"name\":\"Radisson\",\"description\":\"<h4><strong>Approach<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Ambience<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Food and Service<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Known For<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Best suited for<\\/strong><\\/h4><p><br><\\/p><ul><li>Anniversary<\\/li><li>Birthday Party<\\/li><li>Cocktail Party<\\/li><li>Conference<\\/li><li>Corporate Party<\\/li><li>Engagement<\\/li><li>First Birthday Party<\\/li><li>Meeting<\\/li><li>Party<\\/li><li>Pool Party<\\/li><li>Reception<\\/li><li>Social Gathering<\\/li><li>Team Building<\\/li><li>Wedding<\\/li><\\/ul><p><br><\\/p><h4><strong>Cuisines<\\/strong><\\/h4><p><br><\\/p><ul><li>Multi Cuisine<\\/li><li>Social Function Menu<\\/li><li>High Tea Menu<\\/li><\\/ul><p><br><\\/p><h4><strong>Terms and Conditions<\\/strong><\\/h4><p><br><\\/p><ul><li>All Government applicable taxes will be applied.<\\/li><li>All Venue Rules Apply.<\\/li><\\/ul><p class=\\\"ql-align-justify\\\"><br><\\/p><p><br><\\/p>\",\"categories\":[\"9\",null],\"occasions\":[\"1\",\"2\",\"8\",null],\"amenities\":[\"1\",\"2\",\"4\",\"7\",\"9\",\"13\",\"17\",\"34\",null],\"price_type\":\"per-day\",\"price\":\"50000.00\",\"capacity\":\"5000\",\"division_id\":\"2\",\"district_id\":null,\"city_id\":null,\"is_enabled\":\"on\",\"updated_by\":\"1\",\"_token\":\"fVmyO5JM3glxhS79gIhM0y56jVCpAoXBJJHlo64g\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/venues\"}', '2022-07-29 05:30:14', '2022-07-29 05:30:14'),
+(1384, 1, 'admin/venues/1/edit', 'GET', '127.0.0.1', '[]', '2022-07-29 05:30:16', '2022-07-29 05:30:16'),
+(1385, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"4\"}', '2022-07-29 05:30:24', '2022-07-29 05:30:24'),
+(1386, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":null}', '2022-07-29 05:30:25', '2022-07-29 05:30:25'),
+(1387, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"2\"}', '2022-07-29 05:30:26', '2022-07-29 05:30:26'),
+(1388, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"16\"}', '2022-07-29 05:30:27', '2022-07-29 05:30:27'),
+(1389, 1, 'admin/venues/1', 'PUT', '127.0.0.1', '{\"name\":\"Radisson\",\"description\":\"<h4><strong>Approach<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Ambience<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Food and Service<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Known For<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Best suited for<\\/strong><\\/h4><p><br><\\/p><ul><li>Anniversary<\\/li><li>Birthday Party<\\/li><li>Cocktail Party<\\/li><li>Conference<\\/li><li>Corporate Party<\\/li><li>Engagement<\\/li><li>First Birthday Party<\\/li><li>Meeting<\\/li><li>Party<\\/li><li>Pool Party<\\/li><li>Reception<\\/li><li>Social Gathering<\\/li><li>Team Building<\\/li><li>Wedding<\\/li><\\/ul><p><br><\\/p><h4><strong>Cuisines<\\/strong><\\/h4><p><br><\\/p><ul><li>Multi Cuisine<\\/li><li>Social Function Menu<\\/li><li>High Tea Menu<\\/li><\\/ul><p><br><\\/p><h4><strong>Terms and Conditions<\\/strong><\\/h4><p><br><\\/p><ul><li>All Government applicable taxes will be applied.<\\/li><li>All Venue Rules Apply.<\\/li><\\/ul><p class=\\\"ql-align-justify\\\"><br><\\/p><p><br><\\/p>\",\"categories\":[\"9\",null],\"occasions\":[\"1\",\"2\",\"8\",null],\"amenities\":[\"1\",\"2\",\"4\",\"7\",\"9\",\"13\",\"17\",\"34\",null],\"price_type\":\"per-day\",\"price\":\"50000.00\",\"capacity\":\"5000\",\"division_id\":\"2\",\"district_id\":\"16\",\"city_id\":\"146\",\"is_enabled\":\"on\",\"updated_by\":\"1\",\"_token\":\"fVmyO5JM3glxhS79gIhM0y56jVCpAoXBJJHlo64g\",\"_method\":\"PUT\"}', '2022-07-29 05:30:30', '2022-07-29 05:30:30'),
+(1390, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-07-29 05:30:30', '2022-07-29 05:30:30'),
+(1391, 1, 'admin/venues/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:30:32', '2022-07-29 05:30:32'),
+(1392, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"6\"}', '2022-07-29 05:35:06', '2022-07-29 05:35:06'),
+(1393, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"40\"}', '2022-07-29 05:35:06', '2022-07-29 05:35:06'),
+(1394, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"41\"}', '2022-07-29 05:35:08', '2022-07-29 05:35:08'),
+(1395, 1, 'admin/venues', 'POST', '127.0.0.1', '{\"name\":\"Essel Tower Club\",\"description\":\"<h4><strong>Approach<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Ambience<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Food and Service<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Known For<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Best suited for<\\/strong><\\/h4><p><br><\\/p><ul><li>Anniversary<\\/li><li>Birthday Party<\\/li><li>Cocktail Party<\\/li><li>Conference<\\/li><li>Corporate Party<\\/li><li>Engagement<\\/li><li>First Birthday Party<\\/li><li>Meeting<\\/li><li>Party<\\/li><li>Pool Party<\\/li><li>Reception<\\/li><li>Social Gathering<\\/li><li>Team Building<\\/li><li>Wedding<\\/li><\\/ul><p><br><\\/p><h4><strong>Cuisines<\\/strong><\\/h4><p><br><\\/p><ul><li>Multi Cuisine<\\/li><li>Social Function Menu<\\/li><li>High Tea Menu<\\/li><\\/ul><p><br><\\/p><h4><strong>Terms and Conditions<\\/strong><\\/h4><p><br><\\/p><ul><li>All Government applicable taxes will be applied.<\\/li><li>All Venue Rules Apply.<\\/li><\\/ul><p class=\\\"ql-align-justify\\\"><br><\\/p><p><br><\\/p>\",\"categories\":[\"8\",null],\"occasions\":[\"3\",\"6\",\"9\",\"10\",\"14\",\"15\",\"16\",null],\"amenities\":[\"1\",\"6\",\"8\",\"10\",\"18\",\"29\",\"30\",\"31\",null],\"price_type\":\"per-night\",\"price\":\"30000\",\"capacity\":\"2000\",\"division_id\":\"6\",\"district_id\":\"41\",\"city_id\":\"317\",\"is_enabled\":\"on\",\"created_by\":\"1\",\"_token\":\"fVmyO5JM3glxhS79gIhM0y56jVCpAoXBJJHlo64g\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/venues\"}', '2022-07-29 05:35:39', '2022-07-29 05:35:39'),
+(1396, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-07-29 05:35:39', '2022-07-29 05:35:39'),
+(1397, 1, 'admin/venues/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:41:56', '2022-07-29 05:41:56'),
+(1398, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:42:05', '2022-07-29 05:42:05'),
+(1399, 1, 'admin/venues/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:42:11', '2022-07-29 05:42:11'),
+(1400, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-07-29 05:43:56', '2022-07-29 05:43:56'),
+(1401, 1, 'admin/venues/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:44:02', '2022-07-29 05:44:02'),
+(1402, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"5\"}', '2022-07-29 05:45:47', '2022-07-29 05:45:47'),
+(1403, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"36\"}', '2022-07-29 05:45:47', '2022-07-29 05:45:47'),
+(1404, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"39\"}', '2022-07-29 05:45:52', '2022-07-29 05:45:52'),
+(1405, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"38\"}', '2022-07-29 05:45:59', '2022-07-29 05:45:59'),
+(1406, 1, 'admin/venues', 'POST', '127.0.0.1', '{\"name\":\"Farm Aravalia Mangar\",\"description\":\"<h4><strong>Approach<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Ambience<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Food and Service<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Known For<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Best suited for<\\/strong><\\/h4><p><br><\\/p><ul><li>Anniversary<\\/li><li>Birthday Party<\\/li><li>Cocktail Party<\\/li><li>Conference<\\/li><li>Corporate Party<\\/li><li>Engagement<\\/li><li>First Birthday Party<\\/li><li>Meeting<\\/li><li>Party<\\/li><li>Pool Party<\\/li><li>Reception<\\/li><li>Social Gathering<\\/li><li>Team Building<\\/li><li>Wedding<\\/li><\\/ul><p><br><\\/p><h4><strong>Cuisines<\\/strong><\\/h4><p><br><\\/p><ul><li>Multi Cuisine<\\/li><li>Social Function Menu<\\/li><li>High Tea Menu<\\/li><\\/ul><p><br><\\/p><h4><strong>Terms and Conditions<\\/strong><\\/h4><p><br><\\/p><ul><li>All Government applicable taxes will be applied.<\\/li><li>All Venue Rules Apply.<\\/li><\\/ul>\",\"categories\":[\"6\",null],\"occasions\":[\"6\",\"7\",\"12\",\"15\",\"16\",null],\"amenities\":[\"1\",\"3\",\"4\",\"21\",\"30\",\"36\",null],\"price_type\":\"per-day\",\"price\":\"70000\",\"capacity\":\"10000\",\"division_id\":\"5\",\"district_id\":\"38\",\"city_id\":\"299\",\"is_enabled\":\"on\",\"created_by\":\"1\",\"_token\":\"fVmyO5JM3glxhS79gIhM0y56jVCpAoXBJJHlo64g\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/venues\"}', '2022-07-29 05:46:20', '2022-07-29 05:46:20'),
+(1407, 1, 'admin/venues/create', 'GET', '127.0.0.1', '[]', '2022-07-29 05:46:21', '2022-07-29 05:46:21'),
+(1408, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-07-29 05:46:53', '2022-07-29 05:46:53'),
+(1409, 1, 'admin/venues/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:46:59', '2022-07-29 05:46:59'),
+(1410, 1, 'admin/venues/2/edit', 'GET', '127.0.0.1', '[]', '2022-07-29 05:47:20', '2022-07-29 05:47:20'),
+(1411, 1, 'admin/venues/3/edit', 'GET', '127.0.0.1', '[]', '2022-07-29 05:47:41', '2022-07-29 05:47:41'),
+(1412, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"8\"}', '2022-07-29 05:52:18', '2022-07-29 05:52:18'),
+(1413, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"61\"}', '2022-07-29 05:52:18', '2022-07-29 05:52:18'),
+(1414, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"63\"}', '2022-07-29 05:52:21', '2022-07-29 05:52:21'),
+(1415, 1, 'admin/venues', 'POST', '127.0.0.1', '{\"name\":\"Dreams Gardens\",\"description\":\"<h4><strong>Approach<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Ambience<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Food and Service<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Known For<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Best suited for<\\/strong><\\/h4><p><br><\\/p><ul><li>Anniversary<\\/li><li>Birthday Party<\\/li><li>Cocktail Party<\\/li><li>Conference<\\/li><li>Corporate Party<\\/li><li>Engagement<\\/li><li>First Birthday Party<\\/li><li>Meeting<\\/li><li>Party<\\/li><li>Pool Party<\\/li><li>Reception<\\/li><li>Social Gathering<\\/li><li>Team Building<\\/li><li>Wedding<\\/li><\\/ul><p><br><\\/p><h4><strong>Cuisines<\\/strong><\\/h4><p><br><\\/p><ul><li>Multi Cuisine<\\/li><li>Social Function Menu<\\/li><li>High Tea Menu<\\/li><\\/ul><p><br><\\/p><h4><strong>Terms and Conditions<\\/strong><\\/h4><p><br><\\/p><ul><li>All Government applicable taxes will be applied.<\\/li><li>All Venue Rules Apply.<\\/li><\\/ul><p><br><\\/p>\",\"categories\":[\"4\",\"6\",\"8\",\"9\",null],\"occasions\":[\"1\",\"2\",\"4\",\"6\",\"8\",\"14\",null],\"amenities\":[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"12\",\"17\",\"19\",\"20\",\"21\",\"22\",\"23\",\"24\",\"25\",\"26\",\"27\",\"28\",\"32\",\"35\",\"36\",null],\"price_type\":\"per-day\",\"price\":\"80000\",\"capacity\":\"20000\",\"division_id\":\"8\",\"district_id\":\"63\",\"city_id\":\"479\",\"is_enabled\":\"on\",\"created_by\":\"1\",\"_token\":\"fVmyO5JM3glxhS79gIhM0y56jVCpAoXBJJHlo64g\",\"after-save\":\"2\"}', '2022-07-29 05:52:38', '2022-07-29 05:52:38'),
+(1416, 1, 'admin/venues/create', 'GET', '127.0.0.1', '[]', '2022-07-29 05:52:38', '2022-07-29 05:52:38'),
+(1417, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:52:53', '2022-07-29 05:52:53'),
+(1418, 1, 'admin/venues/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:58:52', '2022-07-29 05:58:52'),
+(1419, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-07-29 05:58:59', '2022-07-29 05:58:59'),
+(1420, 1, 'admin/venues/create', 'GET', '127.0.0.1', '[]', '2022-07-29 05:59:05', '2022-07-29 05:59:05'),
+(1421, 1, 'admin/venues/create', 'GET', '127.0.0.1', '[]', '2022-07-29 05:59:06', '2022-07-29 05:59:06'),
+(1422, 1, 'admin/venues/create', 'GET', '127.0.0.1', '[]', '2022-07-29 05:59:07', '2022-07-29 05:59:07'),
+(1423, 1, 'admin/venues/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-29 05:59:11', '2022-07-29 05:59:11'),
+(1424, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"1\"}', '2022-07-29 06:02:04', '2022-07-29 06:02:04'),
+(1425, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"1\"}', '2022-07-29 06:02:04', '2022-07-29 06:02:04'),
+(1426, 1, 'admin/venues', 'POST', '127.0.0.1', '{\"name\":\"Casabella Banquet\",\"description\":\"<h4><strong>Approach<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Ambience<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Food and Service<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Known For<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Best suited for<\\/strong><\\/h4><p><br><\\/p><ul><li>Anniversary<\\/li><li>Birthday Party<\\/li><li>Cocktail Party<\\/li><li>Conference<\\/li><li>Corporate Party<\\/li><li>Engagement<\\/li><li>First Birthday Party<\\/li><li>Meeting<\\/li><li>Party<\\/li><li>Pool Party<\\/li><li>Reception<\\/li><li>Social Gathering<\\/li><li>Team Building<\\/li><li>Wedding<\\/li><\\/ul><p><br><\\/p><h4><strong>Cuisines<\\/strong><\\/h4><p><br><\\/p><ul><li>Multi Cuisine<\\/li><li>Social Function Menu<\\/li><li>High Tea Menu<\\/li><\\/ul><p><br><\\/p><h4><strong>Terms and Conditions<\\/strong><\\/h4><p><br><\\/p><ul><li>All Government applicable taxes will be applied.<\\/li><li>All Venue Rules Apply.<\\/li><\\/ul><p class=\\\"ql-align-justify\\\"><br><\\/p><p><br><\\/p>\",\"categories\":[\"8\",\"9\",null],\"occasions\":[\"1\",\"2\",\"4\",\"5\",\"8\",\"10\",\"12\",\"16\",null],\"amenities\":[\"1\",\"3\",\"5\",\"12\",\"13\",\"15\",\"16\",\"17\",\"18\",\"19\",\"21\",\"22\",null],\"price_type\":\"per-night\",\"price\":\"150000\",\"capacity\":\"25000\",\"division_id\":\"1\",\"district_id\":\"1\",\"city_id\":\"1\",\"is_enabled\":\"on\",\"created_by\":\"1\",\"_token\":\"fVmyO5JM3glxhS79gIhM0y56jVCpAoXBJJHlo64g\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/venues\"}', '2022-07-29 06:02:15', '2022-07-29 06:02:15'),
+(1427, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-07-29 06:02:15', '2022-07-29 06:02:15'),
+(1428, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"3\"}', '2022-07-29 06:04:20', '2022-07-29 06:04:20'),
+(1429, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"20\"}', '2022-07-29 06:04:20', '2022-07-29 06:04:20'),
+(1430, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"21\"}', '2022-07-29 06:04:22', '2022-07-29 06:04:22'),
+(1431, 1, 'admin/venues', 'POST', '127.0.0.1', '{\"name\":\"Nirvana Patio Club\",\"description\":\"<h4><strong>Approach<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Ambience<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Food and Service<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Known For<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Best suited for<\\/strong><\\/h4><p><br><\\/p><ul><li>Anniversary<\\/li><li>Birthday Party<\\/li><li>Cocktail Party<\\/li><li>Conference<\\/li><li>Corporate Party<\\/li><li>Engagement<\\/li><li>First Birthday Party<\\/li><li>Meeting<\\/li><li>Party<\\/li><li>Pool Party<\\/li><li>Reception<\\/li><li>Social Gathering<\\/li><li>Team Building<\\/li><li>Wedding<\\/li><\\/ul><p><br><\\/p><h4><strong>Cuisines<\\/strong><\\/h4><p><br><\\/p><ul><li>Multi Cuisine<\\/li><li>Social Function Menu<\\/li><li>High Tea Menu<\\/li><\\/ul><p><br><\\/p><h4><strong>Terms and Conditions<\\/strong><\\/h4><p><br><\\/p><ul><li>All Government applicable taxes will be applied.<\\/li><li>All Venue Rules Apply.<\\/li><\\/ul><p class=\\\"ql-align-justify\\\"><br><\\/p><p><br><\\/p>\",\"categories\":[\"5\",\"8\",null],\"occasions\":[\"4\",\"5\",\"6\",\"10\",\"13\",null],\"amenities\":[\"2\",\"3\",\"4\",\"5\",\"6\",\"13\",\"20\",null],\"price_type\":\"per-day\",\"price\":\"25000\",\"capacity\":\"1200\",\"division_id\":\"3\",\"district_id\":\"21\",\"city_id\":\"185\",\"is_enabled\":\"on\",\"created_by\":\"1\",\"_token\":\"fVmyO5JM3glxhS79gIhM0y56jVCpAoXBJJHlo64g\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/venues\"}', '2022-07-29 06:04:33', '2022-07-29 06:04:33'),
+(1432, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-07-29 06:04:33', '2022-07-29 06:04:33'),
+(1433, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"5\"}', '2022-07-29 06:06:34', '2022-07-29 06:06:34'),
+(1434, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"36\"}', '2022-07-29 06:06:35', '2022-07-29 06:06:35'),
+(1435, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"38\"}', '2022-07-29 06:06:37', '2022-07-29 06:06:37'),
+(1436, 1, 'admin/venues', 'POST', '127.0.0.1', '{\"name\":\"Acura BMK\",\"description\":\"<h4><strong>Approach<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Ambience<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Food and Service<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Known For<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Best suited for<\\/strong><\\/h4><p><br><\\/p><ul><li>Anniversary<\\/li><li>Birthday Party<\\/li><li>Cocktail Party<\\/li><li>Conference<\\/li><li>Corporate Party<\\/li><li>Engagement<\\/li><li>First Birthday Party<\\/li><li>Meeting<\\/li><li>Party<\\/li><li>Pool Party<\\/li><li>Reception<\\/li><li>Social Gathering<\\/li><li>Team Building<\\/li><li>Wedding<\\/li><\\/ul><p><br><\\/p><h4><strong>Cuisines<\\/strong><\\/h4><p><br><\\/p><ul><li>Multi Cuisine<\\/li><li>Social Function Menu<\\/li><li>High Tea Menu<\\/li><\\/ul><p><br><\\/p><h4><strong>Terms and Conditions<\\/strong><\\/h4><p><br><\\/p><ul><li>All Government applicable taxes will be applied.<\\/li><li>All Venue Rules Apply.<\\/li><\\/ul><p class=\\\"ql-align-justify\\\"><br><\\/p><p><br><\\/p>\",\"categories\":[\"1\",\"8\",null],\"occasions\":[\"3\",\"7\",\"16\",null],\"amenities\":[\"2\",\"3\",\"4\",\"5\",\"6\",\"9\",\"11\",null],\"price_type\":\"per-night\",\"price\":\"85000\",\"capacity\":\"15000\",\"division_id\":\"5\",\"district_id\":\"38\",\"city_id\":\"296\",\"is_enabled\":\"on\",\"created_by\":\"1\",\"_token\":\"fVmyO5JM3glxhS79gIhM0y56jVCpAoXBJJHlo64g\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/venues\"}', '2022-07-29 06:10:00', '2022-07-29 06:10:00'),
+(1437, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-07-29 06:10:01', '2022-07-29 06:10:01'),
+(1438, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"7\"}', '2022-07-29 06:12:54', '2022-07-29 06:12:54'),
+(1439, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"53\"}', '2022-07-29 06:12:54', '2022-07-29 06:12:54'),
+(1440, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"56\"}', '2022-07-29 06:12:58', '2022-07-29 06:12:58'),
+(1441, 1, 'admin/venues', 'POST', '127.0.0.1', '{\"name\":\"Hotel Mizu\",\"description\":\"<h4><strong>Approach<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Ambience<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Food and Service<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Known For<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Best suited for<\\/strong><\\/h4><p><br><\\/p><ul><li>Anniversary<\\/li><li>Birthday Party<\\/li><li>Cocktail Party<\\/li><li>Conference<\\/li><li>Corporate Party<\\/li><li>Engagement<\\/li><li>First Birthday Party<\\/li><li>Meeting<\\/li><li>Party<\\/li><li>Pool Party<\\/li><li>Reception<\\/li><li>Social Gathering<\\/li><li>Team Building<\\/li><li>Wedding<\\/li><\\/ul><p><br><\\/p><h4><strong>Cuisines<\\/strong><\\/h4><p><br><\\/p><ul><li>Multi Cuisine<\\/li><li>Social Function Menu<\\/li><li>High Tea Menu<\\/li><\\/ul><p><br><\\/p><h4><strong>Terms and Conditions<\\/strong><\\/h4><p><br><\\/p><ul><li>All Government applicable taxes will be applied.<\\/li><li>All Venue Rules Apply.<\\/li><\\/ul><p class=\\\"ql-align-justify\\\"><br><\\/p><p><br><\\/p>\",\"categories\":[\"8\",null],\"occasions\":[\"6\",\"7\",\"14\",\"15\",null],\"amenities\":[\"2\",\"3\",\"7\",\"17\",\"20\",\"21\",null],\"price_type\":\"per-day\",\"price\":\"25000\",\"capacity\":\"1450\",\"division_id\":\"7\",\"district_id\":\"56\",\"city_id\":\"426\",\"is_enabled\":\"on\",\"created_by\":\"1\",\"_token\":\"fVmyO5JM3glxhS79gIhM0y56jVCpAoXBJJHlo64g\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/venues\"}', '2022-07-29 06:13:09', '2022-07-29 06:13:09'),
+(1442, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-07-29 06:13:10', '2022-07-29 06:13:10'),
+(1443, 1, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2022-07-30 07:17:12', '2022-07-30 07:17:12'),
+(1444, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-07-30 07:17:13', '2022-07-30 07:17:13'),
+(1445, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-30 07:17:19', '2022-07-30 07:17:19'),
+(1446, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-07-30 23:09:33', '2022-07-30 23:09:33'),
+(1447, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-30 23:09:43', '2022-07-30 23:09:43'),
+(1448, 1, 'admin/venues/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-07-30 23:09:47', '2022-07-30 23:09:47'),
+(1449, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"3\"}', '2022-07-30 23:09:56', '2022-07-30 23:09:56'),
+(1450, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":null}', '2022-07-30 23:09:57', '2022-07-30 23:09:57'),
+(1451, 1, 'admin/load-api/districts', 'GET', '127.0.0.1', '{\"q\":\"2\"}', '2022-07-30 23:09:58', '2022-07-30 23:09:58'),
+(1452, 1, 'admin/load-api/cities', 'GET', '127.0.0.1', '{\"q\":\"16\"}', '2022-07-30 23:09:58', '2022-07-30 23:09:58');
+INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `input`, `created_at`, `updated_at`) VALUES
+(1453, 1, 'admin/venues/1', 'PUT', '127.0.0.1', '{\"name\":\"Radisson\",\"description\":\"<h4><strong>Approach<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Ambience<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Food and Service<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Known For<\\/strong><\\/h4><p><br><\\/p><p class=\\\"ql-align-justify\\\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.<\\/p><p class=\\\"ql-align-justify\\\"><br><\\/p><h4><strong>Best suited for<\\/strong><\\/h4><p><br><\\/p><ul><li>Anniversary<\\/li><li>Birthday Party<\\/li><li>Cocktail Party<\\/li><li>Conference<\\/li><li>Corporate Party<\\/li><li>Engagement<\\/li><li>First Birthday Party<\\/li><li>Meeting<\\/li><li>Party<\\/li><li>Pool Party<\\/li><li>Reception<\\/li><li>Social Gathering<\\/li><li>Team Building<\\/li><li>Wedding<\\/li><\\/ul><p><br><\\/p><h4><strong>Cuisines<\\/strong><\\/h4><p><br><\\/p><ul><li>Multi Cuisine<\\/li><li>Social Function Menu<\\/li><li>High Tea Menu<\\/li><\\/ul><p><br><\\/p><h4><strong>Terms and Conditions<\\/strong><\\/h4><p><br><\\/p><ul><li>All Government applicable taxes will be applied.<\\/li><li>All Venue Rules Apply.<\\/li><\\/ul><p class=\\\"ql-align-justify\\\"><br><\\/p><p><br><\\/p>\",\"categories\":[\"9\",null],\"occasions\":[\"1\",\"2\",\"8\",null],\"amenities\":[\"1\",\"2\",\"4\",\"7\",\"9\",\"13\",\"17\",\"34\",null],\"price_type\":\"per-day\",\"price\":\"50000.00\",\"capacity\":\"5000\",\"division_id\":\"2\",\"district_id\":\"16\",\"city_id\":\"146\",\"is_enabled\":\"on\",\"updated_by\":\"1\",\"_token\":\"MZR5rDQ8vnJjFiEZkvcytqJp3K8zbvzTYatTv782\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/venues\"}', '2022-07-30 23:10:01', '2022-07-30 23:10:01'),
+(1454, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-07-30 23:10:02', '2022-07-30 23:10:02'),
+(1455, 1, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2022-07-31 03:37:53', '2022-07-31 03:37:53'),
+(1456, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-07-31 03:37:55', '2022-07-31 03:37:55'),
+(1457, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-08-02 03:19:10', '2022-08-02 03:19:10'),
+(1458, 1, 'admin/users', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-02 03:19:17', '2022-08-02 03:19:17'),
+(1459, 1, 'admin/users/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-02 03:19:25', '2022-08-02 03:19:25'),
+(1460, 1, 'admin/users/1', 'PUT', '127.0.0.1', '{\"name\":\"User\",\"username\":\"user\",\"email\":\"user@gmail.com\",\"type\":\"0\",\"password\":\"$2y$10$42fQJep86380hDrRU\\/Chs.d4TGNWj5RhRRIeUC3WuyoSjdJKkJOE6\",\"password_confirmation\":\"$2y$10$42fQJep86380hDrRU\\/Chs.d4TGNWj5RhRRIeUC3WuyoSjdJKkJOE6\",\"email_verified_at\":\"2022-08-02 09:19:26\",\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/users\"}', '2022-08-02 03:19:36', '2022-08-02 03:19:36'),
+(1461, 1, 'admin/users', 'GET', '127.0.0.1', '[]', '2022-08-02 03:19:36', '2022-08-02 03:19:36'),
+(1462, 1, 'admin/users/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-02 03:19:39', '2022-08-02 03:19:39'),
+(1463, 1, 'admin/users', 'POST', '127.0.0.1', '{\"name\":\"admin\",\"username\":\"admin\",\"email\":\"admin@gmail.com\",\"type\":\"1\",\"venue_id\":[\"1\",\"8\",null],\"password\":\"123456\",\"password_confirmation\":\"123456\",\"email_verified_at\":\"2022-08-02 09:19:39\",\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/users\"}', '2022-08-02 03:20:16', '2022-08-02 03:20:16'),
+(1464, 1, 'admin/users', 'GET', '127.0.0.1', '[]', '2022-08-02 03:20:17', '2022-08-02 03:20:17'),
+(1465, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-02 03:22:34', '2022-08-02 03:22:34'),
+(1466, 1, 'admin/venues/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-02 03:22:40', '2022-08-02 03:22:40'),
+(1467, 1, 'admin/calendar', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-02 03:43:52', '2022-08-02 03:43:52'),
+(1468, 1, 'admin/calendar', 'GET', '127.0.0.1', '[]', '2022-08-02 03:43:54', '2022-08-02 03:43:54'),
+(1469, 1, 'admin/calendar/events/1', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 03:44:01', '2022-08-02 03:44:01'),
+(1470, 1, 'admin/calendar/event/update/1', 'POST', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\",\"status\":\"approved\"}', '2022-08-02 03:44:14', '2022-08-02 03:44:14'),
+(1471, 1, 'admin/calendar/events/1', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 03:44:15', '2022-08-02 03:44:15'),
+(1472, 1, 'admin/calendar/events/5', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 03:58:27', '2022-08-02 03:58:27'),
+(1473, 1, 'admin/calendar/events/1', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 03:58:29', '2022-08-02 03:58:29'),
+(1474, 1, 'admin/calendar', 'GET', '127.0.0.1', '[]', '2022-08-02 04:21:49', '2022-08-02 04:21:49'),
+(1475, 1, 'admin/calendar/events/1', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 04:21:56', '2022-08-02 04:21:56'),
+(1476, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-02 04:25:42', '2022-08-02 04:25:42'),
+(1477, 1, 'admin/venues/8/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-02 04:25:47', '2022-08-02 04:25:47'),
+(1478, 1, 'admin/calendar', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-02 04:26:19', '2022-08-02 04:26:19'),
+(1479, 1, 'admin/calendar/events/8', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 04:26:22', '2022-08-02 04:26:22'),
+(1480, 1, 'admin/calendar/events/8', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 04:26:22', '2022-08-02 04:26:22'),
+(1481, 1, 'admin/calendar/events/7', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 04:36:44', '2022-08-02 04:36:44'),
+(1482, 1, 'admin/calendar/events/7', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 04:36:44', '2022-08-02 04:36:44'),
+(1483, 1, 'admin/calendar/events/1', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 04:36:46', '2022-08-02 04:36:46'),
+(1484, 1, 'admin/calendar/events/1', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 04:36:47', '2022-08-02 04:36:47'),
+(1485, 1, 'admin/calendar/events/6', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 04:36:49', '2022-08-02 04:36:49'),
+(1486, 1, 'admin/calendar/events/6', 'GET', '127.0.0.1', '{\"_token\":\"zgj7Dej3QtBntlbHPjd954EhMxSoj9kjFJlxUPas\"}', '2022-08-02 04:36:49', '2022-08-02 04:36:49');
 
 -- --------------------------------------------------------
 
@@ -553,6 +678,88 @@ CREATE TABLE `amenity_venue` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `amenity_venue`
+--
+
+INSERT INTO `amenity_venue` (`id`, `amenity_id`, `venue_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, NULL, NULL),
+(2, 2, 1, NULL, NULL),
+(3, 4, 1, NULL, NULL),
+(4, 7, 1, NULL, NULL),
+(5, 9, 1, NULL, NULL),
+(6, 13, 1, NULL, NULL),
+(7, 17, 1, NULL, NULL),
+(8, 34, 1, NULL, NULL),
+(9, 1, 2, NULL, NULL),
+(10, 6, 2, NULL, NULL),
+(11, 8, 2, NULL, NULL),
+(12, 10, 2, NULL, NULL),
+(13, 18, 2, NULL, NULL),
+(14, 29, 2, NULL, NULL),
+(15, 30, 2, NULL, NULL),
+(16, 31, 2, NULL, NULL),
+(17, 1, 3, NULL, NULL),
+(18, 3, 3, NULL, NULL),
+(19, 4, 3, NULL, NULL),
+(20, 21, 3, NULL, NULL),
+(21, 30, 3, NULL, NULL),
+(22, 36, 3, NULL, NULL),
+(23, 1, 4, NULL, NULL),
+(24, 2, 4, NULL, NULL),
+(25, 3, 4, NULL, NULL),
+(26, 4, 4, NULL, NULL),
+(27, 5, 4, NULL, NULL),
+(28, 6, 4, NULL, NULL),
+(29, 7, 4, NULL, NULL),
+(30, 12, 4, NULL, NULL),
+(31, 17, 4, NULL, NULL),
+(32, 19, 4, NULL, NULL),
+(33, 20, 4, NULL, NULL),
+(34, 21, 4, NULL, NULL),
+(35, 22, 4, NULL, NULL),
+(36, 23, 4, NULL, NULL),
+(37, 24, 4, NULL, NULL),
+(38, 25, 4, NULL, NULL),
+(39, 26, 4, NULL, NULL),
+(40, 27, 4, NULL, NULL),
+(41, 28, 4, NULL, NULL),
+(42, 32, 4, NULL, NULL),
+(43, 35, 4, NULL, NULL),
+(44, 36, 4, NULL, NULL),
+(45, 1, 5, NULL, NULL),
+(46, 3, 5, NULL, NULL),
+(47, 5, 5, NULL, NULL),
+(48, 12, 5, NULL, NULL),
+(49, 13, 5, NULL, NULL),
+(50, 15, 5, NULL, NULL),
+(51, 16, 5, NULL, NULL),
+(52, 17, 5, NULL, NULL),
+(53, 18, 5, NULL, NULL),
+(54, 19, 5, NULL, NULL),
+(55, 21, 5, NULL, NULL),
+(56, 22, 5, NULL, NULL),
+(57, 2, 6, NULL, NULL),
+(58, 3, 6, NULL, NULL),
+(59, 4, 6, NULL, NULL),
+(60, 5, 6, NULL, NULL),
+(61, 6, 6, NULL, NULL),
+(62, 13, 6, NULL, NULL),
+(63, 20, 6, NULL, NULL),
+(64, 2, 7, NULL, NULL),
+(65, 3, 7, NULL, NULL),
+(66, 4, 7, NULL, NULL),
+(67, 5, 7, NULL, NULL),
+(68, 6, 7, NULL, NULL),
+(69, 9, 7, NULL, NULL),
+(70, 11, 7, NULL, NULL),
+(71, 2, 8, NULL, NULL),
+(72, 3, 8, NULL, NULL),
+(73, 7, 8, NULL, NULL),
+(74, 17, 8, NULL, NULL),
+(75, 20, 8, NULL, NULL),
+(76, 21, 8, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -598,6 +805,26 @@ CREATE TABLE `category_venue` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `category_venue`
+--
+
+INSERT INTO `category_venue` (`id`, `category_id`, `venue_id`, `created_at`, `updated_at`) VALUES
+(1, 9, 1, NULL, NULL),
+(2, 8, 2, NULL, NULL),
+(3, 6, 3, NULL, NULL),
+(4, 4, 4, NULL, NULL),
+(5, 6, 4, NULL, NULL),
+(6, 8, 4, NULL, NULL),
+(7, 9, 4, NULL, NULL),
+(8, 8, 5, NULL, NULL),
+(9, 9, 5, NULL, NULL),
+(10, 5, 6, NULL, NULL),
+(11, 8, 6, NULL, NULL),
+(12, 1, 7, NULL, NULL),
+(13, 8, 7, NULL, NULL),
+(14, 8, 8, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1249,15 +1476,27 @@ CREATE TABLE `event_calendars` (
   `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci,
   `feedback` text COLLATE utf8mb4_unicode_ci,
-  `start_date` datetime DEFAULT NULL,
-  `end_date` datetime DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
   `all_day_event` tinyint(1) NOT NULL DEFAULT '1',
   `status` enum('pending','approved','rejected','completed') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
-  `created_by` int(10) UNSIGNED DEFAULT NULL,
+  `created_by` bigint(20) UNSIGNED NOT NULL,
   `updated_by` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `event_calendars`
+--
+
+INSERT INTO `event_calendars` (`id`, `venue_id`, `title`, `description`, `feedback`, `start_date`, `end_date`, `all_day_event`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Weeding', 'Available for any Weeding occasions', NULL, '2022-08-05', '2022-08-06', 1, 'approved', 2, 1, '2022-08-02 03:43:35', '2022-08-02 03:44:14'),
+(2, 1, 'Weeding', 'Available for any Weeding occasions', NULL, '2022-08-10', '2022-08-12', 1, 'approved', 2, NULL, '2022-08-02 04:03:28', '2022-08-02 04:03:28'),
+(5, 8, 'Party', 'Available for any perty', NULL, '2022-08-07', '2022-08-13', 1, 'approved', 2, NULL, '2022-08-02 04:26:07', '2022-08-02 04:26:07'),
+(6, 8, 'Party', 'Available for any perty', NULL, '2022-08-18', '2022-08-19', 1, 'pending', 2, NULL, '2022-08-02 04:37:06', '2022-08-02 04:37:06'),
+(7, 1, 'Weeding', 'Available', NULL, '2022-08-14', '2022-08-17', 1, 'pending', 2, NULL, '2022-08-02 04:39:13', '2022-08-02 04:39:13'),
+(8, 1, 'Weeding', NULL, NULL, '2022-08-22', '2022-08-24', 1, 'pending', 2, NULL, '2022-08-02 04:39:25', '2022-08-02 04:39:25');
 
 -- --------------------------------------------------------
 
@@ -1307,8 +1546,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (35, '2022_07_02_173603_create_category_venue_table', 7),
 (36, '2022_07_02_173805_create_occasion_venue_table', 7),
 (37, '2022_07_02_173843_create_amenity_venue_table', 7),
-(38, '2022_07_15_050549_create_event_calendars_table', 8),
-(39, '2022_07_27_125752_create_orders_table', 9);
+(39, '2022_07_27_125752_create_orders_table', 9),
+(40, '2022_07_15_050549_create_event_calendars_table', 10);
 
 -- --------------------------------------------------------
 
@@ -1364,6 +1603,53 @@ CREATE TABLE `occasion_venue` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `occasion_venue`
+--
+
+INSERT INTO `occasion_venue` (`id`, `occasion_id`, `venue_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, NULL, NULL),
+(2, 2, 1, NULL, NULL),
+(3, 8, 1, NULL, NULL),
+(4, 3, 2, NULL, NULL),
+(5, 6, 2, NULL, NULL),
+(6, 9, 2, NULL, NULL),
+(7, 10, 2, NULL, NULL),
+(8, 14, 2, NULL, NULL),
+(9, 15, 2, NULL, NULL),
+(10, 16, 2, NULL, NULL),
+(11, 6, 3, NULL, NULL),
+(12, 7, 3, NULL, NULL),
+(13, 12, 3, NULL, NULL),
+(14, 15, 3, NULL, NULL),
+(15, 16, 3, NULL, NULL),
+(16, 1, 4, NULL, NULL),
+(17, 2, 4, NULL, NULL),
+(18, 4, 4, NULL, NULL),
+(19, 6, 4, NULL, NULL),
+(20, 8, 4, NULL, NULL),
+(21, 14, 4, NULL, NULL),
+(22, 1, 5, NULL, NULL),
+(23, 2, 5, NULL, NULL),
+(24, 4, 5, NULL, NULL),
+(25, 5, 5, NULL, NULL),
+(26, 8, 5, NULL, NULL),
+(27, 10, 5, NULL, NULL),
+(28, 12, 5, NULL, NULL),
+(29, 16, 5, NULL, NULL),
+(30, 4, 6, NULL, NULL),
+(31, 5, 6, NULL, NULL),
+(32, 6, 6, NULL, NULL),
+(33, 10, 6, NULL, NULL),
+(34, 13, 6, NULL, NULL),
+(35, 3, 7, NULL, NULL),
+(36, 7, 7, NULL, NULL),
+(37, 16, 7, NULL, NULL),
+(38, 6, 8, NULL, NULL),
+(39, 7, 8, NULL, NULL),
+(40, 14, 8, NULL, NULL),
+(41, 15, 8, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1376,8 +1662,8 @@ CREATE TABLE `orders` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `category_id` bigint(20) UNSIGNED NOT NULL,
   `occasion_id` bigint(20) UNSIGNED NOT NULL,
-  `start_date` datetime DEFAULT NULL,
-  `end_date` datetime DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mobile_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1394,6 +1680,15 @@ CREATE TABLE `orders` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `venue_id`, `user_id`, `category_id`, `occasion_id`, `start_date`, `end_date`, `name`, `email`, `mobile_number`, `capacity`, `total_guests`, `price_type`, `net_total_price`, `address`, `receive_promotional_offers`, `agree`, `status`, `payment_id`, `payment_status`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 2, '2022-08-06', '2022-08-11', 'rre', 'user@gmail.com', '4343', 2000, 43, 'Per Night', '30000.00', '4343', 1, 1, 'approved', NULL, 'completed', '2022-07-31 05:20:24', '2022-07-31 05:20:24'),
+(2, 1, 1, 1, 1, '2022-08-12', '2022-08-12', 'User', 'user@gmail.com', '3223', 5000, 44, 'Per Day', '50000.00', '323232', 1, 1, 'pending', NULL, 'pending', '2022-08-03 23:42:53', '2022-08-03 23:42:53'),
+(3, 1, 1, 1, 1, '2022-08-05', '2022-08-05', 'User', 'user@gmail.com', '323', 5000, 3232, 'Per Day', '50000.00', '3232', 1, 1, 'pending', NULL, 'pending', '2022-08-04 00:10:07', '2022-08-04 00:10:07');
 
 -- --------------------------------------------------------
 
@@ -1425,6 +1720,15 @@ CREATE TABLE `personal_access_tokens` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `personal_access_tokens`
+--
+
+INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
+(3, 'App\\Models\\User', 2, 'admin@gmail.com_Token', '55dae2139b604cea08029b95e561f295bafc422e528b561ebd2fcb3d8f22683d', '[\"*\"]', '2022-08-02 04:39:26', '2022-08-02 03:20:47', '2022-08-02 04:39:26'),
+(4, 'App\\Models\\User', 2, 'admin@gmail.com_Token', 'e6f449e4d8802fad45d20cc50ff432a0f63c71f2fd978186d87737b75ab18e70', '[\"*\"]', '2022-08-02 23:53:42', '2022-08-02 23:12:33', '2022-08-02 23:53:42'),
+(8, 'App\\Models\\User', 1, 'user@gmail.com_Token', '9c13174e799de472ef722097bbab8a4f68244ce47e350c7672e0de88fe623b1d', '[\"*\"]', '2022-08-04 00:11:23', '2022-08-04 00:09:55', '2022-08-04 00:11:23');
+
 -- --------------------------------------------------------
 
 --
@@ -1444,6 +1748,14 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `type`, `venue_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'User', 'user', 'user@gmail.com', '2022-08-02 03:19:26', '$2y$10$42fQJep86380hDrRU/Chs.d4TGNWj5RhRRIeUC3WuyoSjdJKkJOE6', 0, NULL, NULL, '2022-07-31 05:09:46', '2022-08-02 03:19:36'),
+(2, 'admin', 'admin', 'admin@gmail.com', '2022-08-02 03:19:39', '$2y$10$MxD/BxA13ZTpVfG.U8UJu.oyi0NuxxOLIl7UajNoGPpa6K18oZb9m', 1, '[\"1\",\"8\"]', NULL, '2022-08-02 03:20:17', '2022-08-02 03:20:17');
 
 -- --------------------------------------------------------
 
@@ -1471,6 +1783,20 @@ CREATE TABLE `venues` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `venues`
+--
+
+INSERT INTO `venues` (`id`, `featured_image`, `images`, `name`, `slug`, `description`, `additional_info`, `price_type`, `price`, `capacity`, `division_id`, `district_id`, `city_id`, `is_enabled`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'images/a37482a49d2d8be7f8cd672b113a70af.jpg', '[\"images\\/9207fcd26ab3f333e43fa2bb6a490822.jpg\",\"images\\/ccc3321c0876de924a201e3c7e99758e.jpg\",\"images\\/629c02c54c4ee7f15ac8e3b535f06d83.jpg\",\"images\\/4bc2319d8ad5023494962a6e860595cc.jpg\",\"images\\/8f63cfcb3140122620d4c0250698b493.jpg\",\"images\\/39f511b194694706ce3300fca2d3ceac.jpg\"]', 'Radisson', 'radisson', '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul><p class=\"ql-align-justify\"><br></p><p><br></p>', NULL, 'per-day', '50000.00', 5000, 2, 16, 146, 1, 1, 1, '2022-07-29 05:27:58', '2022-07-29 05:30:30'),
+(2, 'images/ecc1f5feaa3d04d18bb267a168ddde93.jpg', '[\"images\\/4261349ffd7c372a2e3aee32fe135432.jpg\",\"images\\/a28db48be398205b44e5ce93fc4a1d3d.jpg\",\"images\\/86a3be7307e5ccccbe8b0b107eeae690.jpg\",\"images\\/c9f29ee6a0277f895337185dd1762bcc.jpg\",\"images\\/2c19186ea5814cb7ab2f784b2c5d7a1f.jpg\"]', 'Essel Tower Club', 'essel-tower-club', '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul><p class=\"ql-align-justify\"><br></p><p><br></p>', NULL, 'per-night', '30000.00', 2000, 6, 41, 317, 1, 1, NULL, '2022-07-29 05:35:39', '2022-07-29 05:35:39'),
+(3, 'images/7f3661339aa4b6985d4ad3fadb0d4381.jpg', '[\"images\\/ead5e126a0944278d00c5dacd405a3d3.jpg\",\"images\\/967ae11f4ab07961d3da3a8ef6e68d98.jpg\",\"images\\/dcf264d3d3250b129650fa0247297d3e.jpg\",\"images\\/d08989d96a004451912d046f3cf6c9b4.jpg\",\"images\\/718a2ac555c92843865ca941bbe12ef4.jpg\",\"images\\/9f7f002e1dabbfc66bb701403e0441d9.jpg\",\"images\\/72af8f89a50fe232a1ed1ebbab588cd5.jpg\",\"images\\/168b3db307fbff48e7aeaa4eb09ce789.jpg\",\"images\\/d6b22601040c367d309c0db961348a9c.jpg\",\"images\\/569f8b2e02160d10cbf1bf32a0a3ee61.jpg\"]', 'Farm Aravalia Mangar', 'farm-aravalia-mangar', '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul>', NULL, 'per-day', '70000.00', 10000, 5, 38, 299, 1, 1, NULL, '2022-07-29 05:46:20', '2022-07-29 05:46:20'),
+(4, 'images/0c2c51ea4ab44383f29e5b1a815978d7.jpg', '[\"images\\/001bad455e66c40d6ee1688215d37121.jpg\",\"images\\/68e71848b990d2c04e265c538c326181.jpg\",\"images\\/59be9358e31f763ebf9d34c88b1dea10.jpg\",\"images\\/f2ecfc8c06540a1ff5f6ae34a0e8b325.jpg\",\"images\\/ffe12e10c5a5d402d78c0e973c04f710.jpg\",\"images\\/115086b41b2e2961f45b038b69f0c808.jpg\"]', 'Dreams Gardens', 'dreams-gardens', '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul><p><br></p>', NULL, 'per-day', '80000.00', 20000, 8, 63, 479, 1, 1, NULL, '2022-07-29 05:52:38', '2022-07-29 05:52:38'),
+(5, 'images/79c55288e35ca7e4ea74c9c482918450.jpg', '[\"images\\/4b39601d950b2fa88fa787c85a6f6ecd.jpg\",\"images\\/a7b6fa160967264012da4a616e6bb1ca.jpg\",\"images\\/576345e0667936de4a9fe4154dac0925.jpg\",\"images\\/ebd00fea5753daeb20ed53c80c4d027f.jpg\",\"images\\/5a7dcd78be299fb2269ef163b84b2ab5.jpg\",\"images\\/5a00568dbc456b9d9ce4a9f7b074d792.jpg\"]', 'Casabella Banquet', 'casabella-banquet', '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul><p class=\"ql-align-justify\"><br></p><p><br></p>', NULL, 'per-night', '150000.00', 25000, 1, 1, 1, 1, 1, NULL, '2022-07-29 06:02:15', '2022-07-29 06:02:15'),
+(6, 'images/11f8a891055f8d2cc24cb21be30d7652.jpg', '[\"images\\/a259743e73e261fc4f05a9ea1f63b68f.jpg\",\"images\\/feacfbc9ec1dda68caadc18660c2a2e5.jpg\",\"images\\/7ba562e690d18dc638ca96368b70d74b.jpg\",\"images\\/b6bbb1c924b203d7c1f8b83aad80e2d7.jpg\",\"images\\/c60616696f280e9193b11602a4420c43.jpg\",\"images\\/884ba6a98b2f9849068202a19eb7bef9.jpg\",\"images\\/a5b78d369191c227f5a98c79917c67a2.jpg\"]', 'Nirvana Patio Club', 'nirvana-patio-club', '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul><p class=\"ql-align-justify\"><br></p><p><br></p>', NULL, 'per-day', '25000.00', 1200, 3, 21, 185, 1, 1, NULL, '2022-07-29 06:04:33', '2022-07-29 06:04:33'),
+(7, 'images/16e9395349e72b453e28222aa6ec3b86.jpg', '[\"images\\/af783a589d887cf9a755eeaae1b836e6.jpg\",\"images\\/4a953405322fa17db5d1d93e7c6b53df.jpg\",\"images\\/94cfb2325903ad872c2dfc26e8f72163.jpg\",\"images\\/ce6e509e2f1b6ea34deeaf13a911dc3a.jpg\",\"images\\/68b8df9c043086323a9661a95a0b2678.jpg\",\"images\\/a737649a03bbebde7fc0beb87173ade8.jpg\",\"images\\/cc9ea217a4804735d77681bc5d85b5bb.jpg\",\"images\\/895632426d1bf1904b6dac7bfb15a68f.jpg\",\"images\\/f32a06bc9ea3743a56acf10609e93a57.jpg\",\"images\\/98ee6ecc38f2aa5df04bc7ac68a2de1c.jpg\",\"images\\/af920a4d9adced7272dce36c2b66d55c.jpg\",\"images\\/b390c02af8ef3b06cd4c6387022deeb4.png\"]', 'Acura BMK', 'acura-bmk', '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul><p class=\"ql-align-justify\"><br></p><p><br></p>', NULL, 'per-night', '85000.00', 15000, 5, 38, 296, 1, 1, NULL, '2022-07-29 06:10:00', '2022-07-29 06:10:00'),
+(8, 'images/795e67074cccb57fdbf6431abdb77dea.jpg', '[\"images\\/41c6e3defcad68bc83103ac133809cf5.jpg\",\"images\\/966efa28b6031e46ea0b3a8ea42f751e.jpg\",\"images\\/aed1538fd1e2ee827c34abc98a1cf163.jpg\",\"images\\/88358a785214bf612143dfea88604869.jpg\",\"images\\/4a9b56d9304920ba36b5528d5b6b85a3.jpg\",\"images\\/93a0a6799f7a0117cae852fc3d845222.jpg\",\"images\\/e34bc37575b21af820dc5ee575df7940.png\",\"images\\/b443e238ac8467010e9d0b2ee028e628.png\",\"images\\/52de172d39570165c548b8ff2322f0fa.png\",\"images\\/533f62a71c73166936de9c6d0f5e64e9.png\",\"images\\/cc9ab7dc3580d225d5f4c478a1ad01b0.png\",\"images\\/7ff319de28ccc0810d17760920042dfd.png\",\"images\\/39113d5c86b4364c44ed72a953eafb32.png\",\"images\\/c6da4c38cbbdf4eba49d797964f14c33.png\"]', 'Hotel Mizu', 'hotel-mizu', '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul><p class=\"ql-align-justify\"><br></p><p><br></p>', NULL, 'per-day', '25000.00', 1450, 7, 56, 426, 1, 1, NULL, '2022-07-29 06:13:09', '2022-07-29 06:13:09');
 
 --
 -- Indexes for dumped tables
@@ -1610,11 +1936,10 @@ ALTER TABLE `divisions`
 ALTER TABLE `event_calendars`
   ADD PRIMARY KEY (`id`),
   ADD KEY `event_calendars_venue_id_foreign` (`venue_id`),
+  ADD KEY `event_calendars_created_by_foreign` (`created_by`),
   ADD KEY `event_calendars_start_date_index` (`start_date`),
   ADD KEY `event_calendars_end_date_index` (`end_date`),
   ADD KEY `event_calendars_all_day_event_index` (`all_day_event`),
-  ADD KEY `event_calendars_status_index` (`status`),
-  ADD KEY `event_calendars_created_by_index` (`created_by`),
   ADD KEY `event_calendars_updated_by_index` (`updated_by`);
 
 --
@@ -1714,7 +2039,7 @@ ALTER TABLE `admin_menu`
 -- AUTO_INCREMENT for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1363;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1487;
 
 --
 -- AUTO_INCREMENT for table `admin_permissions`
@@ -1744,7 +2069,7 @@ ALTER TABLE `amenities`
 -- AUTO_INCREMENT for table `amenity_venue`
 --
 ALTER TABLE `amenity_venue`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -1756,7 +2081,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `category_venue`
 --
 ALTER TABLE `category_venue`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `cities`
@@ -1780,7 +2105,7 @@ ALTER TABLE `divisions`
 -- AUTO_INCREMENT for table `event_calendars`
 --
 ALTER TABLE `event_calendars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1792,7 +2117,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `occasions`
@@ -1804,31 +2129,31 @@ ALTER TABLE `occasions`
 -- AUTO_INCREMENT for table `occasion_venue`
 --
 ALTER TABLE `occasion_venue`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `venues`
 --
 ALTER TABLE `venues`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -1889,7 +2214,7 @@ ALTER TABLE `divisions`
 -- Constraints for table `event_calendars`
 --
 ALTER TABLE `event_calendars`
-  ADD CONSTRAINT `event_calendars_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `event_calendars_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `event_calendars_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `event_calendars_venue_id_foreign` FOREIGN KEY (`venue_id`) REFERENCES `venues` (`id`) ON DELETE CASCADE;
 

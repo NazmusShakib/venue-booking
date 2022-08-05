@@ -137,6 +137,26 @@ class ApiController extends Controller
         return VenueResource::collection($venues);
     }
 
+    public function popular_venues(){
+        $venues = Venue::leftJoin('orders','venues.id','=','orders.venue_id')
+                    ->selectRaw('venues.*, COALESCE(count(orders.venue_id),0) total_orders')
+                    ->groupBy('venues.id')
+                    ->orderBy('total_orders','desc')
+                    ->take(9)
+                    ->get();
+        return VenueResource::collection($venues);
+    }
+
+    public function top_visited_venues(){
+        $venues = Venue::leftJoin('orders','venues.id','=','orders.venue_id')
+                            ->selectRaw("venues.*, count(case when orders.status = 'approved' and orders.payment_status = 'completed' then 1 end) as total_completed")
+                            ->groupBy('venues.id')
+                            ->orderBy('total_completed','desc')
+                            ->take(6)
+                            ->get();
+        return VenueResource::collection($venues);
+    }
+
     public function venue_details($slug){
         $venue = new VenueDetailsResource(Venue::where('slug', $slug)->first());
         return response()->json([

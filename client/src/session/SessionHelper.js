@@ -124,6 +124,22 @@ class SessionHelper extends Component {
     static GetOccasionsSession(){
         return JSON.parse(sessionStorage.getItem('occasions'));
     }
+
+    static SetPopularVenuesSession(data){
+        sessionStorage.setItem('popular_venues', JSON.stringify(data));
+    }
+
+    static GetPopularVenuesSession(){
+        return JSON.parse(sessionStorage.getItem('popular_venues'));
+    }
+
+    static SetTopVisitedVenuesSession(data){
+        sessionStorage.setItem('top_visited_venues', JSON.stringify(data));
+    }
+
+    static GetTopVisitedVenuesSession(){
+        return JSON.parse(sessionStorage.getItem('top_visited_venues'));
+    }
 }
 
 export default SessionHelper;

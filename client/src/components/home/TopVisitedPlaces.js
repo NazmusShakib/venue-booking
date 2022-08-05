@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import SessionHelper from "../../session/SessionHelper";
 
 class TopVisitedPlaces extends Component {
     constructor() {
@@ -11,11 +12,20 @@ class TopVisitedPlaces extends Component {
         }
     }
     componentDidMount() {
-        let filter = [];
-        axios.post('/api/venues', filter).then(res => {
-            this.setState({venues:res.data.data});
-            this.setState({loading:false});
-        }).catch((error)=>{});
+        let topVisitedVenues = SessionHelper.GetTopVisitedVenuesSession();
+        if(topVisitedVenues === null)
+        {
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                axios.get('/api/top/visited/venues').then(res => {
+                    this.setState({venues: res.data.data});
+                    this.setState({loading: false});
+                    SessionHelper.SetTopVisitedVenuesSession(res.data.data);
+                }).catch((error) => {});
+            });
+        }else{
+            this.setState({loading: false});
+            this.setState({venues: topVisitedVenues});
+        }
     }
 
     render() {

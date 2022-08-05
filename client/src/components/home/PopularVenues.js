@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PopularVenuesSlider from "../partials/PopularVenuesSlider";
 import axios from "axios";
+import SessionHelper from "../../session/SessionHelper";
 
 class PopularVenues extends Component {
     constructor() {
@@ -11,10 +12,19 @@ class PopularVenues extends Component {
     }
 
     componentDidMount() {
-        let filter = [];
-        axios.post('/api/venues', filter).then(res => {
-            this.setState({venues:res.data.data});
-        }).catch((error)=>{});
+        let popularVenues = SessionHelper.GetPopularVenuesSession();
+        if(popularVenues === null)
+        {
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                axios.get('/api/popular/venues').then(res => {
+                    this.setState({venues: res.data.data});
+                    SessionHelper.SetPopularVenuesSession(res.data.data);
+                }).catch((error) => {});
+            });
+        }else{
+            this.setState({venues: popularVenues});
+        }
+
     }
 
     render() {

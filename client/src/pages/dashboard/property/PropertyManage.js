@@ -25,7 +25,7 @@ class PropertyManage extends Component {
                             <div className="col-sm-6 mb-5">
                                 <div className="card">
                                     <div class="card-body media">
-                                        <i className="las la-user font-size-18 align-self-start mr-3"></i>
+                                        <i className="las la-landmark font-size-30 align-self-start mr-3"></i>
                                         <div class="media-body">
                                             <h5 class="mt-0 text-black">Organization</h5>
                                             <p>Manage Organization</p>
@@ -37,7 +37,7 @@ class PropertyManage extends Component {
                             <div className="col-sm-6 mb-5">
                                 <div className="card">
                                     <div class="card-body media">
-                                        <i className="las la-user font-size-18 align-self-start mr-3"></i>
+                                        <i className="las la-cart-plus font-size-30 align-self-start mr-3"></i>
                                         <div class="media-body">
                                             <h5 class="mt-0 text-black">Orders</h5>
                                             <p>Your order lists</p>
@@ -49,7 +49,7 @@ class PropertyManage extends Component {
                             <div className="col-sm-6 mb-5">
                                 <div className="card">
                                     <div class="card-body media">
-                                        <i className="las la-user font-size-18 align-self-start mr-3"></i>
+                                        <i className="las la-building font-size-30 align-self-start mr-3"></i>
                                         <div class="media-body">
                                             <h5 class="mt-0 text-black">Property</h5>
                                             <p>Manage your property</p>
@@ -61,7 +61,7 @@ class PropertyManage extends Component {
                             <div className="col-sm-6 mb-5">
                                 <div className="card">
                                     <div class="card-body media">
-                                        <i className="las la-user font-size-18 align-self-start mr-3"></i>
+                                        <i className="las la-calendar-check font-size-30 align-self-start mr-3"></i>
                                         <div class="media-body">
                                             <h5 class="mt-0 text-black">Calendar</h5>
                                             <p>Manage available dates for property</p>

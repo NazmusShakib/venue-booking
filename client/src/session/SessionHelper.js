@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 
 class SessionHelper extends Component {
     static SetAuthSession(data){
-        sessionStorage.setItem('AuthUser', JSON.stringify(data));
+        localStorage.setItem('AuthUser', JSON.stringify(data));
     }
 
     static GetAuthSession(){
-        return JSON.parse(sessionStorage.getItem('AuthUser'));
+        return JSON.parse(localStorage.getItem('AuthUser'));
     }
 
     static GetAuthUserId(){
@@ -14,9 +14,10 @@ class SessionHelper extends Component {
     }
 
     static RemoveAuthSession(){
-        sessionStorage.removeItem('AuthUser');
+        localStorage.removeItem('AuthUser');
     }
 
+    //Need to minimize those sessions
     static SetFilterSession(data){
         sessionStorage.setItem('filter', JSON.stringify(data));
     }
@@ -68,6 +69,7 @@ class SessionHelper extends Component {
     static GetSessionFilterOccasion(){
         return (this.GetFilterSession() !== null && this.GetFilterSession().occasion !== undefined && this.GetFilterSession().occasion !== null) ? this.GetFilterSession().occasion : [];
     }
+    //Need to minimize those sessions
 
     static SetCityListForDropdownSession(data){
         sessionStorage.setItem('city_lists_for_dropdown', JSON.stringify(data));

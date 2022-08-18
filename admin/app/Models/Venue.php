@@ -9,6 +9,8 @@ class Venue extends Model
 {
     use HasFactory;
 
+    protected $appends = ['creator', 'updater'];
+
     /**
    * Set the title attribute and automatically the slug
    *
@@ -48,6 +50,44 @@ class Venue extends Model
     public function getImagesAttribute($images)
     {
         return json_decode($images, true);
+    }
+
+    public function adminCreator()
+    {
+        return $this->belongsTo(AdminUser::class, 'created_by', 'id');
+    }
+
+    public function userCreator()
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+    public function getCreatorAttribute()
+    {
+        if($this->creator_type === 'AdminUser'){
+            return $this->adminCreator->username;
+        }elseif($this->creator_type === 'User'){
+            return $this->userCreator->name;
+        }
+    }
+
+    public function adminUpdater()
+    {
+        return $this->belongsTo(AdminUser::class, 'updated_by', 'id');
+    }
+
+    public function userUpdater()
+    {
+        return $this->belongsTo(User::class, 'updated_by', 'id');
+    }
+
+    public function getUpdaterAttribute()
+    {
+        if($this->updater_type === 'AdminUser'){
+            return $this->adminUpdater->username;
+        }elseif($this->updater_type === 'User'){
+            return $this->userUpdater->name;
+        }
     }
 
     public function categories()

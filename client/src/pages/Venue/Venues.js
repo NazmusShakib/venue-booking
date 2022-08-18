@@ -27,7 +27,6 @@ class Venues extends Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0);
-
     }
 
     receiveFilterResponseFromSidebar(responseType, filter){
@@ -65,6 +64,7 @@ class Venues extends Component {
         let getSessionCat = SessionHelper.GetSessionFilterCategory();
         let getSessionCity = SessionHelper.GetSessionFilterCity();
         let getSessionOccasion = SessionHelper.GetSessionFilterOccasion();
+        // HomePageSearchFromSession
 
         data['category'] = this.props.params.category !== null ? this.props.params.category : '';
         data['cities'] = filteredCities.concat(getSessionCity);

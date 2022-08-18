@@ -17,7 +17,7 @@ class Amenities extends Component {
         else
         {
             amenities = amenities.filter(function(cat){
-                return cat != e.target.value;
+                return cat !== e.target.value;
             });
         }
         responseAmenities['responsedAmenities'] = amenities;

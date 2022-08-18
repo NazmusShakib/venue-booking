@@ -18,6 +18,15 @@ import AuthRoutes from "../_utility/AuthRoutes";
 import GuestRoutes from "../_utility/GuestRoutes";
 import VenueDetails from "../pages/Venue/VenueDetails";
 import VenueBooking from "../pages/Venue/VenueBooking";
+import PersonalOrders from "../pages/dashboard/PersonalOrders";
+import EventCalendar from "../pages/dashboard/property/EventCalendar";
+import PropertyManage from "../pages/dashboard/property/PropertyManage";
+import Organization from "../pages/dashboard/property/organization/Organization";
+import PropertyOrders from "../pages/dashboard/property/PropertyOrders";
+import {Navigate} from "react-router";
+import OrganizationCreate from "../pages/dashboard/property/organization/OrganizationCreate";
+import PropertyList from "../pages/dashboard/property/PropertyList";
+import PropertyCreate from "../pages/dashboard/property/PropertyCreate";
 
 class AppRoute extends Component {
     render() {
@@ -40,6 +49,18 @@ class AppRoute extends Component {
                         <Route element={<AuthRoutes/>}>
                             <Route path="dashboard" element={<Dashboard />} />
                             <Route path="profile" element={<Profile />} />
+                            <Route path="orders" element={<PersonalOrders />} />
+
+                            <Route path="/manage/property" element={<PropertyManage />} />
+                            <Route path="/manage/property/list" element={<PropertyList />} />
+                            <Route path="/manage/property/create" element={<PropertyCreate />} />
+                            <Route path="/manage/property/calendar" element={<EventCalendar />} />
+                            <Route path="/property">
+                                <Route index element={ <Navigate to="/manage/property" /> }/>
+                                <Route path="organization" element={<Organization />} />
+                                <Route path="organization/create" element={<OrganizationCreate />} />
+                                <Route path="orders" element={<PropertyOrders />} />
+                            </Route>
                         </Route>
 
                         <Route path="/venues">

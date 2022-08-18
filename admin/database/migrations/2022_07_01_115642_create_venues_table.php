@@ -28,15 +28,11 @@ return new class extends Migration
             $table->foreignId('district_id')->constrained();
             $table->foreignId('city_id')->constrained();
             $table->boolean('is_enabled')->default(false)->index();
-            $table->integer('created_by')->unsigned()->nullable()->index();
-            $table->integer('updated_by')->unsigned()->nullable()->index();
+            $table->string('creator_type')->nullable()->index();
+            $table->string('updater_type')->nullable()->index();
+            $table->bigInteger('created_by')->nullable()->index();
+            $table->bigInteger('updated_by')->nullable()->index();
             $table->timestamps();
-        });
-
-        Schema::table('venues', function(Blueprint $table)
-        {
-            $table->foreign('created_by')->references('id')->on('admin_users')->onDelete('SET NULL');
-            $table->foreign('updated_by')->references('id')->on('admin_users')->onDelete('SET NULL');
         });
     }
 

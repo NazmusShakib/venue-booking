@@ -183,7 +183,7 @@ Fixed Issues:
 * [#711](https://github.com/ckeditor/ckeditor-dev/issues/711): Fixed: Dragging widgets should only work with the left mouse button.
 * [#862](https://github.com/ckeditor/ckeditor-dev/issues/862): Fixed: The "Object Styles" group in the [Styles Combo](https://ckeditor.com/cke4/addon/stylescombo) plugin is visible only if the whole element is selected.
 * [#994](https://github.com/ckeditor/ckeditor-dev/pull/994): Fixed: Typo in the [`CKEDITOR.focusManager.focus()`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_focusManager.html#method-focus) API documentation. Thanks to [benjy](https://github.com/benjy)!
-* [#1014](https://github.com/ckeditor/ckeditor-dev/issues/1014): Fixed: The [Table Tools](https://ckeditor.com/cke4/addon/tabletools) Cell Properties dialog is now [Advanced Content Filter](https://ckeditor.com/docs/ckeditor4/latest/guide/dev_acf.html) aware &mdash; it is not possible to change the cell width or height if corresponding styles are disabled.
+* [#1014](https://github.com/ckeditor/ckeditor-dev/issues/1014): Fixed: The [Table Tools](https://ckeditor.com/cke4/addon/tabletools) Cell PropertyList dialog is now [Advanced Content Filter](https://ckeditor.com/docs/ckeditor4/latest/guide/dev_acf.html) aware &mdash; it is not possible to change the cell width or height if corresponding styles are disabled.
 * [#877](https://github.com/ckeditor/ckeditor-dev/issues/877): Fixed: A list with custom bullets with exotic characters crashes the editor when [pasted from Word](https://ckeditor.com/cke4/addon/pastefromword).
 * [#605](https://github.com/ckeditor/ckeditor-dev/issues/605): Fixed: Inline widgets do not preserve trailing spaces.
 * [#1008](https://github.com/ckeditor/ckeditor-dev/issues/1008): Fixed: Shorthand Hex colors from the [`config.colorButton_colors`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html#cfg-colorButton_colors) option are not correctly highlighted in the [Color Button](https://ckeditor.com/cke4/addon/colorbutton) Text Color or Background Color panel.
@@ -247,7 +247,7 @@ Fixed Issues:
 * [#694](https://github.com/ckeditor/ckeditor-dev/pull/694): Refactoring in the [Table Selection](https://ckeditor.com/cke4/addon/tableselection) plugin:
   * [#520](https://github.com/ckeditor/ckeditor-dev/issues/520): Fixed: Widgets cannot be properly pasted into a table cell.
   * [#460](https://github.com/ckeditor/ckeditor-dev/issues/460): Fixed: Editor gone after pasting into an editor within a table.
-* [#579](https://github.com/ckeditor/ckeditor-dev/issues/579): Fixed: Internal `cke_table-faked-selection-table` class is visible in the Stylesheet Classes field of the [Table Properties](https://ckeditor.com/cke4/addon/table) dialog.
+* [#579](https://github.com/ckeditor/ckeditor-dev/issues/579): Fixed: Internal `cke_table-faked-selection-table` class is visible in the Stylesheet Classes field of the [Table PropertyList](https://ckeditor.com/cke4/addon/table) dialog.
 * [#545](https://github.com/ckeditor/ckeditor-dev/issues/545): [Edge] Fixed: Error thrown when pressing the [Select All](https://ckeditor.com/cke4/addon/selectall) button in [Source Mode](https://ckeditor.com/cke4/addon/sourcearea).
 * [#582](https://github.com/ckeditor/ckeditor-dev/issues/582): Fixed: Double slash in the path to stylesheet needed by the [Table Selection](https://ckeditor.com/cke4/addon/tableselection) plugin. Thanks to [Marius Dumitru Florea](https://github.com/mflorea)!
 * [#491](https://github.com/ckeditor/ckeditor-dev/issues/491): Fixed: Unnecessary dependency on the [Editor Toolbar](https://ckeditor.com/cke4/addon/toolbar) plugin inside the [Notification](https://ckeditor.com/cke4/addon/notification) plugin.
@@ -888,7 +888,7 @@ Fixed Issues:
 * [#12630](https://dev.ckeditor.com/ticket/12630): [Chrome] Fixed: Selection is placed outside the paragraph when the [New Page](https://ckeditor.com/cke4/addon/newpage) button is clicked. This patch significantly simplified the way how the initial selection (a selection after the content of the editable is overwritten) is being fixed. That might have fixed many related scenarios in all browsers.
 * [#11647](https://dev.ckeditor.com/ticket/11647): Fixed: The [`editor.blur`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_editor.html#event-blur) event is not fired on first blur after initializing the inline editor on an already focused element.
 * [#12601](https://dev.ckeditor.com/ticket/12601): Fixed: [Strikethrough](https://ckeditor.com/cke4/addon/basicstyles) button tooltip spelling.
-* [#12546](https://dev.ckeditor.com/ticket/12546): Fixed: The Preview tab in the [Document Properties](https://ckeditor.com/cke4/addon/docprops) dialog window is always disabled.
+* [#12546](https://dev.ckeditor.com/ticket/12546): Fixed: The Preview tab in the [Document PropertyList](https://ckeditor.com/cke4/addon/docprops) dialog window is always disabled.
 * [#12300](https://dev.ckeditor.com/ticket/12300): Fixed: The [`editor.change`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_editor.html#event-change) event fired on first navigation key press after typing.
 * [#12141](https://dev.ckeditor.com/ticket/12141): Fixed: List items are lost when indenting a list item with content wrapped with a block element.
 * [#12515](https://dev.ckeditor.com/ticket/12515): Fixed: Cursor is in the wrong position when undoing after adding an image and typing some text.
@@ -967,7 +967,7 @@ Other Changes:
 
 New Features:
 
-* [#12164](https://dev.ckeditor.com/ticket/12164): Added the "Justify" option to the "Horizontal Alignment" drop-down in the Table Cell Properties dialog window.
+* [#12164](https://dev.ckeditor.com/ticket/12164): Added the "Justify" option to the "Horizontal Alignment" drop-down in the Table Cell PropertyList dialog window.
 
 Fixed Issues:
 
@@ -1110,7 +1110,7 @@ New Features:
 Fixed Issues:
 
 * [#11677](https://dev.ckeditor.com/ticket/11677): Fixed: Undo/Redo keystrokes are blocked in the source mode.
-* [#11717](https://dev.ckeditor.com/ticket/11717): [Document Properties](https://ckeditor.com/cke4/addon/docprops) plugin requires the [Color Dialog](https://ckeditor.com/cke4/addon/colordialog) plugin to work.
+* [#11717](https://dev.ckeditor.com/ticket/11717): [Document PropertyList](https://ckeditor.com/cke4/addon/docprops) plugin requires the [Color Dialog](https://ckeditor.com/cke4/addon/colordialog) plugin to work.
 
 ## CKEditor 4.3.4
 
@@ -1151,7 +1151,7 @@ Fixed Issues:
 * [#11542](https://dev.ckeditor.com/ticket/11542): [IE11] Fixed: Blurry toolbar icons when Right-to-Left UI language is set.
 * [#11504](https://dev.ckeditor.com/ticket/11504): Fixed: When [`config.fullPage`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html#cfg-fullPage) is set to `true`, entities are not encoded in editor output.
 * [#11004](https://dev.ckeditor.com/ticket/11004): Integrated [Enhanced Image](https://ckeditor.com/cke4/addon/image2) dialog window with [Advanced Content Filter](https://ckeditor.com/docs/ckeditor4/latest/guide/dev_advanced_content_filter.html).
-* [#11439](https://dev.ckeditor.com/ticket/11439): Fixed: Properties get cloned in the Cell Properties dialog window if multiple cells are selected.
+* [#11439](https://dev.ckeditor.com/ticket/11439): Fixed: PropertyList get cloned in the Cell PropertyList dialog window if multiple cells are selected.
 
 ## CKEditor 4.3.2
 
@@ -1491,7 +1491,7 @@ Fixed Issues:
 * [#9772](https://dev.ckeditor.com/ticket/9772): Custom buttons in the dialog window footer have different look and size ([Moono](https://ckeditor.com/cke4/addon/moono), [Kama](https://ckeditor.com/cke4/addon/kama) skins).
 * [#9029](https://dev.ckeditor.com/ticket/9029): Custom styles added with the [`stylesSet.add()`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_stylesSet.html#method-add) are displayed in the wrong order.
 * [#9887](https://dev.ckeditor.com/ticket/9887): Disable [Magic Line](https://ckeditor.com/cke4/addon/magicline) when [`editor.readOnly`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_editor.html#property-readOnly) is set.
-* [#9882](https://dev.ckeditor.com/ticket/9882): Fixed empty document title on [`editor.getData()`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_editor.html#method-getData) if set via the Document Properties dialog window.
+* [#9882](https://dev.ckeditor.com/ticket/9882): Fixed empty document title on [`editor.getData()`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_editor.html#method-getData) if set via the Document PropertyList dialog window.
 * [#9773](https://dev.ckeditor.com/ticket/9773): Fixed rendering problems with selection fields in the Kama skin.
 * [#9851](https://dev.ckeditor.com/ticket/9851): The [`selectionChange`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_editor.html#event-selectionChange) event is not fired when mouse selection ended outside editable.
 * [#9903](https://dev.ckeditor.com/ticket/9903): [Inline editor] Bad positioning of floating space with page horizontal scroll.

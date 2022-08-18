@@ -97,3 +97,10 @@
     max-height: 700px;
     overflow-y: auto;
 }
+
+.custom-breadcrumb{
+    background-color: transparent;
+    font-size: 15px;
+    margin-bottom: 0;
+    padding: 0;
+}

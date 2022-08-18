@@ -13,6 +13,7 @@ const options = {
     nav: true,
     dots: false,
     smartSpeed: 700,
+    active: 'true',
     autoplay: true,
     margin: 0,
     navElement:'div',

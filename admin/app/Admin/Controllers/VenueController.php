@@ -39,9 +39,6 @@ class VenueController extends AdminController
         //$grid->column('slug', __('Slug'));
         //$grid->column('description', __('Description'));
         //$grid->column('additional_info', __('Additional info'));
-        //$grid->column('category_id', __('Category id'));
-        //$grid->column('occasion_id', __('Occasion id'));
-        //$grid->column('amenity_id', __('Amenity id'));
         $grid->column('division.name', __('Division'));
         $grid->column('district.name', __('District'));
         $grid->column('city.name', __('City'));
@@ -54,6 +51,13 @@ class VenueController extends AdminController
         $grid->column('updated_at', __('Updated at'))->display(function () {
             return !empty($this->updated_at) ? date('d/F/Y h:i a', strtotime($this->updated_at)) : '';
         })->sortable();
+        $grid->column('creator', __('Creator'))->display(function () {
+            if($this->creator_type === 'AdminUser'){
+                return '<span class="label label-success">'.$this->creator.'</span>';
+            }else{
+                return '<span class="label label-warning">'.$this->creator.'</span>';
+            }
+        });
 
         return $grid;
     }
@@ -136,11 +140,13 @@ class VenueController extends AdminController
 
         if($form->isCreating())
         {
+            $form->hidden('creator_type', __('Creator Type'))->default('AdminUser');
             $form->hidden('created_by', __('Created by'))->default(Admin::user()->id);
         }
 
         if($form->isEditing())
         {
+            $form->hidden('updater_type', __('Updater Type'))->default('AdminUser');
             $form->hidden('updated_by', __('Updated by'))->default(Admin::user()->id);
         }
 

@@ -54,6 +54,6 @@ class User extends Authenticatable
 
     public function getVenueIdAttribute($venue_id)
     {
-        return !empty($venue_id) ? json_decode($venue_id, true) : '';
+        return !empty($venue_id) ? json_decode($venue_id, true) : [];
     }
 }

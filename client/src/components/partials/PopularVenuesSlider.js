@@ -10,7 +10,7 @@ const options = {
     nav: true,
     dots: true,
     smartSpeed: 700,
-    active: true,
+    active: 'true',
     margin: 30,
     navElement:'div',
     navText: ['<i class="la la-angle-left"></i>', '<i class="la la-angle-right"></i>'],

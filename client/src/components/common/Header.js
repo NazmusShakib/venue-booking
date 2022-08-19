@@ -49,7 +49,6 @@ const Header = () => {
                                         {SessionHelper.GetAuthSession() !== null ? (
                                             <>
                                                 <Link to="/dashboard" className="theme-btn theme-btn-small theme-btn-transparent mr-1">Dashboard</Link>
-
                                                 <Link className="theme-btn theme-btn-small theme-btn-transparent" to="" onClick={handleLogout}>
                                                     <i className="fas fa-sign-out-alt"></i> Logout
                                                 </Link>
@@ -92,8 +91,8 @@ const Header = () => {
                                             </ul>
                                         </nav>
                                     </div>
-                                    <div className="nav-btn">
-                                        <span className="theme-btn"><i className="la la-phone mr-1"></i> +8801685562958</span>
+                                    <div className="pull-right">
+                                        <Link to="/property-listing" className="theme-btn theme-btn-small"><i className="las la-list-alt"></i> List Your Property</Link>
                                     </div>
                                 </div>
                             </div>

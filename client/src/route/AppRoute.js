@@ -27,6 +27,7 @@ import {Navigate} from "react-router";
 import OrganizationCreate from "../pages/dashboard/property/organization/OrganizationCreate";
 import PropertyList from "../pages/dashboard/property/PropertyList";
 import PropertyCreate from "../pages/dashboard/property/PropertyCreate";
+import ListYourProperty from "../pages/ListYourProperty";
 
 class AppRoute extends Component {
     render() {
@@ -42,6 +43,7 @@ class AppRoute extends Component {
                         <Route path="faq" element={<Faq />} />
                         <Route path="privacy-policy" element={<PrivacyPolicy />} />
                         <Route path="terms-and-conditions" element={<TermsAndConditions />} />
+                        <Route path="property-listing" element={<ListYourProperty />} />
                         <Route element={<GuestRoutes/>}>
                             <Route path="login" element={<Login />} />
                             <Route path="register" element={<Register />} />

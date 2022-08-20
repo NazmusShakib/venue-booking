@@ -406,44 +406,52 @@ return [
     */
     'extensions' => [
             'quill' => [
-                    // If the value is set to false, this extension will be disabled
-                    'enable' => true,
-                    'config' => [
-                        'modules' => [
-                            'syntax' => true,
-                            'toolbar' =>
-                                [
-                                    ['size' => []],
-                                    ['header' => []],
-                                    'bold',
-                                    'italic',
-                                    'underline',
-                                    'strike',
-                                    ['script' => 'super'],
-                                    ['script' => 'sub'],
-                                    ['color' => []],
-                                    ['background' => []],
-                                    'blockquote',
-                                    'code-block',
-                                    ['list' => 'ordered'],
-                                    ['list' => 'bullet'],
-                                    ['indent' => '-1'],
-                                    ['indent' => '+1'],
-                                    'direction',
-                                    ['align' => []],
-                                    'link',
-                                    'image',
-                                    'video',
-                                    'formula',
-                                    'clean'
-                                ],
-                                "htmlEditButton" => ["syntax" => true, "debug" => true],
-                        ],
-                        'theme' => 'snow',
-                        'height' => '500px',
-                    ]
+                // If the value is set to false, this extension will be disabled
+                'enable' => true,
+                'config' => [
+                    'modules' => [
+                        'syntax' => true,
+                        'toolbar' =>
+                            [
+                                ['size' => []],
+                                ['header' => []],
+                                'bold',
+                                'italic',
+                                'underline',
+                                'strike',
+                                ['script' => 'super'],
+                                ['script' => 'sub'],
+                                ['color' => []],
+                                ['background' => []],
+                                'blockquote',
+                                'code-block',
+                                ['list' => 'ordered'],
+                                ['list' => 'bullet'],
+                                ['indent' => '-1'],
+                                ['indent' => '+1'],
+                                'direction',
+                                ['align' => []],
+                                'link',
+                                'image',
+                                'video',
+                                'formula',
+                                'clean'
+                            ],
+                            "htmlEditButton" => ["syntax" => true, "debug" => true],
+                    ],
+                    'theme' => 'snow',
+                    'height' => '500px',
                 ]
+            ],
 
+            'star-rating' => [
+                 // set to false if you want to disable this extension
+                 'enable' => true,
 
+                 // configuration
+                 'config' => [
+                     'min' => 1, 'max' => 5, 'step' => 1, 'size' => 'xs', 'language' => 'en',
+                 ]
+             ]
     ],
 ];

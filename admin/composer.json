@@ -10,6 +10,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
         "jxlwqq/quill": "^1.0",
+        "jxlwqq/star-rating": "^1.0",
         "laravel/framework": "^9.11",
         "laravel/helpers": "^1.5",
         "laravel/sanctum": "^2.15",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd54fb9be622c669e41fa842511a68b4",
+    "content-hash": "ed24a29a01e47d48a7d6b8735efdba63",
     "packages": [
         {
             "name": "brick/math",
@@ -1447,6 +1447,62 @@
                 "source": "https://github.com/laravel-admin-extensions/quill/tree/1.0.4"
             },
             "time": "2021-12-15T10:49:17+00:00"
+        },
+        {
+            "name": "jxlwqq/star-rating",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-admin-extensions/star-rating.git",
+                "reference": "ef4fd6360cdf209e87984ff5a86d9383032b78ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-admin-extensions/star-rating/zipball/ef4fd6360cdf209e87984ff5a86d9383032b78ca",
+                "reference": "ef4fd6360cdf209e87984ff5a86d9383032b78ca",
+                "shasum": ""
+            },
+            "require": {
+                "encore/laravel-admin": "~1.6",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jxlwqq\\StarRating\\StarRatingServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jxlwqq\\StarRating\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jxlwqq",
+                    "email": "jxlwqq@gmail.com"
+                }
+            ],
+            "description": "Star Rating extension for laravel-admin.",
+            "homepage": "https://github.com/jxlwqq/star-rating",
+            "keywords": [
+                "extension",
+                "laravel-admin"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-admin-extensions/star-rating/issues",
+                "source": "https://github.com/laravel-admin-extensions/star-rating/tree/master"
+            },
+            "time": "2019-04-09T01:53:32+00:00"
         },
         {
             "name": "laravel/framework",

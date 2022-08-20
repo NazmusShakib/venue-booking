@@ -21,9 +21,7 @@ class User extends Authenticatable
         'name',
         'username',
         'email',
-        'password',
-        'venue_id',
-        'type'
+        'password'
     ];
 
     /**
@@ -45,15 +43,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function setVenueIdAttribute($venue_id)
+    public function venues()
     {
-        if (is_array($venue_id)) {
-            $this->attributes['venue_id'] = !empty($venue_id) ? json_encode($venue_id) : NULL;
-        }
-    }
-
-    public function getVenueIdAttribute($venue_id)
-    {
-        return !empty($venue_id) ? json_decode($venue_id, true) : [];
+        return $this->belongsToMany(Venue::class);
     }
 }

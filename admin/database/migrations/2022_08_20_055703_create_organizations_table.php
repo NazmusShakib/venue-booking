@@ -13,24 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('venues', function (Blueprint $table) {
+        Schema::create('organizations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('organization_id')->constrained();
-            $table->string('featured_image')->nullable();
-            $table->text('images')->nullable();
-            $table->string('name')->index();
+            $table->string('name')->unique();
             $table->string('slug')->nullable()->index();
-            $table->string('star_rating')->nullable();
+            $table->string('email')->unique();
             $table->longText('description')->nullable();
-            $table->text('additional_info')->nullable();
-            $table->string('price_type')->index();
-            $table->decimal('price', 11, 2)->index();
-            $table->bigInteger('capacity')->index();
-            $table->foreignId('division_id')->constrained();
-            $table->foreignId('district_id')->constrained();
-            $table->foreignId('city_id')->constrained();
+            $table->string('contact_name')->nullable();
+            $table->string('contact_number')->nullable();
             $table->text('address')->nullable();
-            $table->boolean('is_enabled')->default(false)->index();
+            $table->boolean('multiple_properties')->default(false)->index();
             $table->string('creator_type')->nullable()->index();
             $table->string('updater_type')->nullable()->index();
             $table->bigInteger('created_by')->nullable()->index();
@@ -46,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('venues');
+        Schema::dropIfExists('organizations');
     }
 };

@@ -9,6 +9,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Hash;
 use App\Models\Venue;
+use App\Admin\Selectable\VenuesSelectable;
 
 class UserController extends AdminController
 {
@@ -34,9 +35,6 @@ class UserController extends AdminController
         $grid->column('email', __('Email'))->sortable();
         //$grid->column('email_verified_at', __('Email verified at'));
         //$grid->column('password', __('Password'));
-        $grid->column('type', __('Type'))->display(function () {
-            return $this->type === 0 ? 'User' : 'Admin';
-        })->sortable();
         //$grid->column('remember_token', __('Remember token'));
         $grid->column('created_at', __('Created at'))->display(function () {
             return date('d/F/Y h:i a', strtotime($this->created_at));
@@ -64,7 +62,6 @@ class UserController extends AdminController
         $show->field('email', __('Email'));
         $show->field('email_verified_at', __('Email verified at'));
         $show->field('password', __('Password'));
-        $show->field('type', __('Type'));
         $show->field('remember_token', __('Remember token'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
@@ -88,18 +85,11 @@ class UserController extends AdminController
              ->creationRules(['required', "unique:users"])
              ->updateRules(['required', "unique:users,email,{{id}}"]);
 
-        $form->radio('type','Type')
-        ->options([
-            1 =>'Admin',
-            0 =>'User',
-        ])->when(1, function (Form $form) {
-            $form->multipleSelect('venue_id','Select Venues')->options(Venue::all()->pluck('name','id'));
-        })->rules('required');
-
         $form->password('password', 'Password')->rules('required|confirmed|min:6')
         ->default(function ($form) {
            return $form->model()->password;
         });
+
         $form->password('password_confirmation', 'Confirm Password')->rules('required')
         ->default(function ($form) {
            return $form->model()->password;
@@ -112,12 +102,9 @@ class UserController extends AdminController
             if ($form->password && $form->model()->password != $form->password) {
                 $form->password = Hash::make($form->password);
             }
-
-            if($form->type == 0)
-            {
-                $form->venue_id = NULL;
-            }
         });
+
+        $form->belongsToMany('venues', VenuesSelectable::class, __('Venues'));
         return $form;
     }
 }

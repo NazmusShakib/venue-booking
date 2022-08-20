@@ -14,6 +14,7 @@ use App\Models\City;
 use App\Models\Category;
 use App\Models\Occasion;
 use App\Models\Amenity;
+use App\Models\Organization;
 
 class VenueController extends AdminController
 {
@@ -35,6 +36,7 @@ class VenueController extends AdminController
 
         $grid->column('id', __('Id'))->sortable();
         $grid->column('featured_image', __('Featured Image'))->image(config('app.url').'/storage/', 100, 100);
+        $grid->column('organization.name', __('Organization'));
         $grid->column('name', __('Name'))->sortable();
         //$grid->column('slug', __('Slug'));
         //$grid->column('description', __('Description'));
@@ -45,18 +47,25 @@ class VenueController extends AdminController
         $grid->column('is_enabled', __('Enabled?'))->replace([0 => 'No', 1 => 'Yes'])->label();
         //$grid->column('created_by', __('Created by'));
         //$grid->column('updated_by', __('Updated by'));
-        $grid->column('created_at', __('Created at'))->display(function () {
-            return date('d/F/Y h:i a', strtotime($this->created_at));
-        })->sortable();
-        $grid->column('updated_at', __('Updated at'))->display(function () {
-            return !empty($this->updated_at) ? date('d/F/Y h:i a', strtotime($this->updated_at)) : '';
-        })->sortable();
         $grid->column('creator', __('Creator'))->display(function () {
             if($this->creator_type === 'AdminUser'){
                 return '<span class="label label-success">'.$this->creator.'</span>';
             }else{
                 return '<span class="label label-warning">'.$this->creator.'</span>';
             }
+        });
+        $grid->column('created_at', __('Created at'))->display(function () {
+            return date('d/F/Y h:i a', strtotime($this->created_at));
+        })->sortable();
+        $grid->column('updated_at', __('Updated at'))->display(function () {
+            return !empty($this->updated_at) ? date('d/F/Y h:i a', strtotime($this->updated_at)) : '';
+        })->sortable();
+
+        $grid->filter(function($filter){
+            // Remove the default id filter
+            $filter->disableIdFilter();
+            // Add a column filter
+            $filter->like('name', 'Name');
         });
 
         return $grid;
@@ -87,18 +96,11 @@ class VenueController extends AdminController
         $show->field('is_enabled', __('Is enabled'));
         //$show->field('created_by', __('Created by'));
         //$show->field('updated_by', __('Updated by'));
-        $grid->column('created_at', __('Created at'))->display(function () {
+        $show->field('created_at', __('Created at'))->display(function () {
             return date('d/F/Y h:i a', strtotime($this->created_at));
-        })->sortable();
-        $grid->column('updated_at', __('Updated at'))->display(function () {
+        });
+        $show->field('updated_at', __('Updated at'))->display(function () {
             return !empty($this->updated_at) ? date('d/F/Y h:i a', strtotime($this->updated_at)) : '';
-        })->sortable();
-
-        $grid->filter(function($filter){
-            // Remove the default id filter
-            $filter->disableIdFilter();
-            // Add a column filter
-            $filter->like('name', 'name');
         });
 
         return $show;
@@ -112,10 +114,11 @@ class VenueController extends AdminController
     protected function form()
     {
         $form = new Form(new Venue());
-
+        $form->select('organization_id','Organization')->options(Organization::all()->pluck('name','id'))->rules('required');
         $form->image('featured_image', __('Featured image'))->uniqueName()->removable();
         $form->multipleImage('images')->uniqueName()->removable();
         $form->text('name', __('Name'));
+        $form->starRating('star_rating', 'Rating');
         $form->quill('description');
         //$form->textarea('description', __('Description'));
         //$form->textarea('additional_info', __('Additional info'));
@@ -130,12 +133,9 @@ class VenueController extends AdminController
         $form->select('division_id', __('Division'))->options(function () {
             return Division::pluck('name', 'id');
         })->load('district_id', '/admin/load-api/districts');
-        $form->select('district_id', __('District'))->options(function ($divisionId) {
-            return District::where('division_id', $divisionId)->pluck('name', 'id');
-        })->load('city_id', '/admin/load-api/cities');
-        $form->select('city_id', __('City'))->options(function ($district_id) {
-            return City::where('district_id', $district_id)->pluck('name', 'id');
-        });
+        $form->select('district_id', __('District'))->options(District::class)->load('city_id', '/admin/load-api/cities');
+        $form->select('city_id', __('City'))->options(City::class)->rules('required');
+        $form->textarea('address', __('Address'));
         $form->switch('is_enabled', __('Is enabled'));
 
         if($form->isCreating())

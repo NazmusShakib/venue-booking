@@ -52,6 +52,11 @@ class Venue extends Model
         return json_decode($images, true);
     }
 
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
+    }
+
     public function adminCreator()
     {
         return $this->belongsTo(AdminUser::class, 'created_by', 'id');
@@ -119,7 +124,7 @@ class Venue extends Model
 
     public static function priceType(){
         return [
-            ''=>'--Select Price Type',
+            ''=>'--Select Price Type--',
             'per-day'=>'Per Day',
             'per-night'=>'Per Night',
             //'per-person'=>'Per Person'

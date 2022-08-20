@@ -208,7 +208,7 @@ class ApiController extends Controller
     }
 
     public function venues_lists_for_dropdown(Request $request){
-        $venue_id = User::find($request->user_id)->venue_id;
+        $venue_id = User::find($request->user_id)->venues->pluck('id')->toArray();
         $venues = Venue::select('id as value', 'name as label')->whereIn('id', $venue_id)->where('is_enabled', 1)->get()->toArray();
 
         return response()->json([

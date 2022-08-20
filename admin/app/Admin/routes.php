@@ -25,4 +25,5 @@ Route::group([
     $router->post('/calendar/event/update/{event_id}', 'CalendarController@update_event')->name('calendar.event.update');
     $router->resource('users', UserController::class);
     $router->resource('orders', OrderController::class);
+    $router->resource('organizations', OrganizationController::class);
 });

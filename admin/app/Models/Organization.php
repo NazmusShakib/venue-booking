@@ -82,4 +82,9 @@ class Organization extends Model
         $options = static::pluck('name', 'id')->toArray();
         return $options;
     }
+
+    public function collaborators()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

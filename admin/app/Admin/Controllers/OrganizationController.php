@@ -8,6 +8,7 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Encore\Admin\Facades\Admin;
+use App\Admin\Selectable\UsersSelectable;
 
 class OrganizationController extends AdminController
 {
@@ -103,6 +104,7 @@ class OrganizationController extends AdminController
         $form->text('contact_number', __('Contact number'));
         $form->textarea('address', __('Address'));
         $form->switch('multiple_properties', __('Multiple properties'));
+        $form->belongsToMany('collaborators', UsersSelectable::class, __('Collaborators'));
 
         if($form->isCreating())
         {

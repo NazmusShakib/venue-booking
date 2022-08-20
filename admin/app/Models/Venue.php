@@ -95,6 +95,11 @@ class Venue extends Model
         }
     }
 
+    public function collaborators()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);

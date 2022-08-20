@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 20, 2022 at 12:19 PM
+-- Generation Time: Aug 20, 2022 at 01:18 PM
 -- Server version: 5.7.33
 -- PHP Version: 8.1.3
 
@@ -781,7 +781,27 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 (1812, 1, 'admin/users/2/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 06:09:00', '2022-08-20 06:09:00'),
 (1813, 1, 'admin/_handle_selectable_', 'GET', '127.0.0.1', '{\"selectable\":\"App_Admin_Selectable_VenuesSelectable\",\"args\":[\"1\"]}', '2022-08-20 06:09:07', '2022-08-20 06:09:07'),
 (1814, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 06:14:23', '2022-08-20 06:14:23'),
-(1815, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 06:17:37', '2022-08-20 06:17:37');
+(1815, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 06:17:37', '2022-08-20 06:17:37'),
+(1816, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 06:50:15', '2022-08-20 06:50:15'),
+(1817, 1, 'admin/organizations', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:08:23', '2022-08-20 07:08:23'),
+(1818, 1, 'admin/organizations/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:08:26', '2022-08-20 07:08:26'),
+(1819, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-20 07:08:27', '2022-08-20 07:08:27'),
+(1820, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-20 07:08:41', '2022-08-20 07:08:41'),
+(1821, 1, 'admin/organizations/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:08:47', '2022-08-20 07:08:47'),
+(1822, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-20 07:08:49', '2022-08-20 07:08:49'),
+(1823, 1, 'admin/organizations/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:10:17', '2022-08-20 07:10:17'),
+(1824, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-20 07:10:18', '2022-08-20 07:10:18'),
+(1825, 1, 'admin/organizations/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:10:27', '2022-08-20 07:10:27'),
+(1826, 1, 'admin/_handle_selectable_', 'GET', '127.0.0.1', '{\"selectable\":\"App_Admin_Selectable_UsersSelectable\",\"args\":[\"1\"]}', '2022-08-20 07:10:30', '2022-08-20 07:10:30'),
+(1827, 1, 'admin/organizations/1', 'PUT', '127.0.0.1', '{\"name\":\"dsdsds\",\"email\":\"user@gmail.com\",\"description\":\"sdds\",\"contact_name\":\"sdds\",\"contact_number\":\"sdds\",\"address\":\"dsdsds\",\"multiple_properties\":\"on\",\"users\":[\"1\",null],\"updater_type\":\"AdminUser\",\"updated_by\":\"1\",\"_token\":\"7NAB0ToMfmJ5VXbs01pNwGqg41AuCGzoOrXEtk3g\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/organizations\"}', '2022-08-20 07:10:37', '2022-08-20 07:10:37'),
+(1828, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-20 07:10:37', '2022-08-20 07:10:37'),
+(1829, 1, 'admin/organizations/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:10:41', '2022-08-20 07:10:41'),
+(1830, 1, 'admin/organizations/1', 'PUT', '127.0.0.1', '{\"name\":\"dsdsds\",\"email\":\"user@gmail.com\",\"description\":\"sdds\",\"contact_name\":\"sdds\",\"contact_number\":\"sdds\",\"address\":\"dsdsds\",\"multiple_properties\":\"on\",\"users\":[\"1\",null],\"updater_type\":\"AdminUser\",\"updated_by\":\"1\",\"_token\":\"7NAB0ToMfmJ5VXbs01pNwGqg41AuCGzoOrXEtk3g\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/organizations\"}', '2022-08-20 07:10:43', '2022-08-20 07:10:43'),
+(1831, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-20 07:10:43', '2022-08-20 07:10:43'),
+(1832, 1, 'admin/organizations/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:17:11', '2022-08-20 07:17:11'),
+(1833, 1, 'admin/_handle_selectable_', 'GET', '127.0.0.1', '{\"selectable\":\"App_Admin_Selectable_UsersSelectable\",\"args\":[\"1\"]}', '2022-08-20 07:17:13', '2022-08-20 07:17:13'),
+(1834, 1, 'admin/organizations', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:17:16', '2022-08-20 07:17:16'),
+(1835, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:17:49', '2022-08-20 07:17:49');
 
 -- --------------------------------------------------------
 
@@ -1885,7 +1905,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (40, '2022_07_15_050549_create_event_calendars_table', 10),
 (42, '2022_08_20_055703_create_organizations_table', 12),
 (43, '2022_07_01_115642_create_venues_table', 13),
-(44, '2022_08_20_114821_create_user_venue_table', 14);
+(44, '2022_08_20_114821_create_user_venue_table', 14),
+(46, '2022_08_20_130211_create_organization_user_table', 15);
 
 -- --------------------------------------------------------
 
@@ -2059,7 +2080,28 @@ CREATE TABLE `organizations` (
 --
 
 INSERT INTO `organizations` (`id`, `name`, `slug`, `email`, `description`, `contact_name`, `contact_number`, `address`, `multiple_properties`, `creator_type`, `updater_type`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'dsdsds', 'dsdsds', 'user@gmail.com', 'sdds', 'sdds', 'sdds', 'dsdsds', 1, 'AdminUser', NULL, 1, NULL, '2022-08-20 00:38:53', '2022-08-20 00:38:53');
+(1, 'dsdsds', 'dsdsds', 'user@gmail.com', 'sdds', 'sdds', 'sdds', 'dsdsds', 1, 'AdminUser', 'AdminUser', 1, 1, '2022-08-20 00:38:53', '2022-08-20 07:10:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `organization_user`
+--
+
+CREATE TABLE `organization_user` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `organization_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `organization_user`
+--
+
+INSERT INTO `organization_user` (`id`, `organization_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2098,7 +2140,7 @@ CREATE TABLE `personal_access_tokens` (
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
 (3, 'App\\Models\\User', 2, 'admin@gmail.com_Token', '55dae2139b604cea08029b95e561f295bafc422e528b561ebd2fcb3d8f22683d', '[\"*\"]', '2022-08-02 04:39:26', '2022-08-02 03:20:47', '2022-08-02 04:39:26'),
 (4, 'App\\Models\\User', 2, 'admin@gmail.com_Token', 'e6f449e4d8802fad45d20cc50ff432a0f63c71f2fd978186d87737b75ab18e70', '[\"*\"]', '2022-08-02 23:53:42', '2022-08-02 23:12:33', '2022-08-02 23:53:42'),
-(5, 'App\\Models\\User', 1, 'user@gmail.com_Token', '5297126d8ee24354a298d955609d3dc95d370ba8227d484a5cd01ebbd522d82e', '[\"*\"]', '2022-08-20 05:35:21', '2022-08-19 23:56:19', '2022-08-20 05:35:21');
+(5, 'App\\Models\\User', 1, 'user@gmail.com_Token', '5297126d8ee24354a298d955609d3dc95d370ba8227d484a5cd01ebbd522d82e', '[\"*\"]', '2022-08-20 06:41:46', '2022-08-19 23:56:19', '2022-08-20 06:41:46');
 
 -- --------------------------------------------------------
 
@@ -2402,6 +2444,14 @@ ALTER TABLE `organizations`
   ADD KEY `organizations_updated_by_index` (`updated_by`);
 
 --
+-- Indexes for table `organization_user`
+--
+ALTER TABLE `organization_user`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `organization_user_organization_id_foreign` (`organization_id`),
+  ADD KEY `organization_user_user_id_foreign` (`user_id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -2465,7 +2515,7 @@ ALTER TABLE `admin_menu`
 -- AUTO_INCREMENT for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1816;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1836;
 
 --
 -- AUTO_INCREMENT for table `admin_permissions`
@@ -2543,7 +2593,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `occasions`
@@ -2567,6 +2617,12 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `organizations`
 --
 ALTER TABLE `organizations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `organization_user`
+--
+ALTER TABLE `organization_user`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -2678,6 +2734,13 @@ ALTER TABLE `orders`
   ADD CONSTRAINT `orders_occasion_id_foreign` FOREIGN KEY (`occasion_id`) REFERENCES `occasions` (`id`),
   ADD CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `orders_venue_id_foreign` FOREIGN KEY (`venue_id`) REFERENCES `venues` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `organization_user`
+--
+ALTER TABLE `organization_user`
+  ADD CONSTRAINT `organization_user_organization_id_foreign` FOREIGN KEY (`organization_id`) REFERENCES `organizations` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `organization_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `user_venue`

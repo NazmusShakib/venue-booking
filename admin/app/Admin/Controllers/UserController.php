@@ -94,6 +94,7 @@ class UserController extends AdminController
         ->default(function ($form) {
            return $form->model()->password;
         });
+        $form->belongsToMany('venues', VenuesSelectable::class, __('Venues'));
 
         $form->ignore(['password_confirmation']);
         $form->hidden('email_verified_at', __('Email Verified At'))->default(date('Y-m-d H:i:s'));
@@ -103,8 +104,6 @@ class UserController extends AdminController
                 $form->password = Hash::make($form->password);
             }
         });
-
-        $form->belongsToMany('venues', VenuesSelectable::class, __('Venues'));
         return $form;
     }
 }

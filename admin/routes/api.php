@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\Api\ApiUserDashboard;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -31,4 +32,8 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/delete/event/{id}', [ApiController::class, 'delete_event']);
     Route::post('/order/store', [ApiController::class, 'order_store']);
     Route::get('/orders/{user_id}', [ApiController::class, 'orders']);
+
+    Route::post('/organization/store', [ApiUserDashboard::class, 'organization_store']);
+    Route::get('/user/organizations/{user_id}', [ApiUserDashboard::class, 'organizations_by_user']);
+    Route::get('/delete/organization/{organization_id}', [ApiUserDashboard::class, 'delete_organization']);
 });

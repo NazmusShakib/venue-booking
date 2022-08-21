@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 20, 2022 at 01:18 PM
+-- Generation Time: Aug 21, 2022 at 01:40 PM
 -- Server version: 5.7.33
 -- PHP Version: 8.1.3
 
@@ -801,7 +801,44 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 (1832, 1, 'admin/organizations/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:17:11', '2022-08-20 07:17:11'),
 (1833, 1, 'admin/_handle_selectable_', 'GET', '127.0.0.1', '{\"selectable\":\"App_Admin_Selectable_UsersSelectable\",\"args\":[\"1\"]}', '2022-08-20 07:17:13', '2022-08-20 07:17:13'),
 (1834, 1, 'admin/organizations', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:17:16', '2022-08-20 07:17:16'),
-(1835, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:17:49', '2022-08-20 07:17:49');
+(1835, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:17:49', '2022-08-20 07:17:49'),
+(1836, 1, 'admin/organizations', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:45:19', '2022-08-20 07:45:19'),
+(1837, 1, 'admin/organizations/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 07:45:21', '2022-08-20 07:45:21'),
+(1838, 1, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2022-08-20 23:42:19', '2022-08-20 23:42:19'),
+(1839, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-08-20 23:42:20', '2022-08-20 23:42:20'),
+(1840, 1, 'admin/organizations', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 23:42:27', '2022-08-20 23:42:27'),
+(1841, 1, 'admin/organizations/4/edit', 'GET', '127.0.0.1', '[]', '2022-08-20 23:42:32', '2022-08-20 23:42:32'),
+(1842, 1, 'admin/organizations/5/edit', 'GET', '127.0.0.1', '[]', '2022-08-20 23:42:34', '2022-08-20 23:42:34'),
+(1843, 1, 'admin/organizations/6/edit', 'GET', '127.0.0.1', '[]', '2022-08-20 23:42:35', '2022-08-20 23:42:35'),
+(1844, 1, 'admin/organizations/7/edit', 'GET', '127.0.0.1', '[]', '2022-08-20 23:42:37', '2022-08-20 23:42:37'),
+(1845, 1, 'admin/_handle_selectable_', 'GET', '127.0.0.1', '{\"selectable\":\"App_Admin_Selectable_UsersSelectable\",\"args\":[\"1\"]}', '2022-08-20 23:42:50', '2022-08-20 23:42:50'),
+(1846, 1, 'admin/organizations/5', 'PUT', '127.0.0.1', '{\"name\":\"BK\",\"email\":\"userewwe@gmail.com\",\"description\":\"ewew\",\"contact_name\":\"ewewe\",\"contact_number\":\"weew\",\"address\":\"ewew\",\"multiple_properties\":\"off\",\"collaborators\":[\"1\",null],\"updater_type\":\"AdminUser\",\"updated_by\":\"1\",\"_token\":\"Iq7kdzmjPvnJZckOJQCoMW2rhUXdSlFuAdU30eAg\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/organizations\"}', '2022-08-20 23:42:54', '2022-08-20 23:42:54'),
+(1847, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-20 23:42:54', '2022-08-20 23:42:54'),
+(1848, 1, 'admin/_handle_selectable_', 'GET', '127.0.0.1', '{\"selectable\":\"App_Admin_Selectable_UsersSelectable\",\"args\":[\"1\"]}', '2022-08-20 23:42:55', '2022-08-20 23:42:55'),
+(1849, 1, 'admin/organizations/4', 'PUT', '127.0.0.1', '{\"name\":\"ewew\",\"email\":\"use22r@gmail.com\",\"description\":\"ewew\",\"contact_name\":\"sdds\",\"contact_number\":\"sdds\",\"address\":\"ewewew\",\"multiple_properties\":\"on\",\"collaborators\":[\"1\",null],\"updater_type\":\"AdminUser\",\"updated_by\":\"1\",\"_token\":\"Iq7kdzmjPvnJZckOJQCoMW2rhUXdSlFuAdU30eAg\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/organizations\"}', '2022-08-20 23:42:59', '2022-08-20 23:42:59'),
+(1850, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-20 23:42:59', '2022-08-20 23:42:59'),
+(1851, 1, 'admin/_handle_selectable_', 'GET', '127.0.0.1', '{\"selectable\":\"App_Admin_Selectable_UsersSelectable\",\"args\":[\"1\"]}', '2022-08-20 23:43:03', '2022-08-20 23:43:03'),
+(1852, 1, 'admin/organizations/6', 'PUT', '127.0.0.1', '{\"name\":\"serwe\",\"email\":\"usewerwerr@gmail.com\",\"description\":\"rwerwe\",\"contact_name\":\"rwer\",\"contact_number\":\"ewrwe\",\"address\":\"ewrwe\",\"multiple_properties\":\"on\",\"collaborators\":[\"1\",null],\"updater_type\":\"AdminUser\",\"updated_by\":\"1\",\"_token\":\"Iq7kdzmjPvnJZckOJQCoMW2rhUXdSlFuAdU30eAg\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/organizations\"}', '2022-08-20 23:43:07', '2022-08-20 23:43:07'),
+(1853, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-20 23:43:07', '2022-08-20 23:43:07'),
+(1854, 1, 'admin/organizations/7', 'PUT', '127.0.0.1', '{\"name\":\"ererer\",\"email\":\"uerreerser@gmail.com\",\"description\":\"re\",\"contact_name\":\"rere\",\"contact_number\":\"erer\",\"address\":\"rerere\",\"multiple_properties\":\"on\",\"collaborators\":[\"1\",null],\"updater_type\":\"AdminUser\",\"updated_by\":\"1\",\"_token\":\"Iq7kdzmjPvnJZckOJQCoMW2rhUXdSlFuAdU30eAg\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/organizations\"}', '2022-08-20 23:43:11', '2022-08-20 23:43:11'),
+(1855, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-20 23:43:11', '2022-08-20 23:43:11'),
+(1856, 1, 'admin/organizations/7/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 23:43:14', '2022-08-20 23:43:14'),
+(1857, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-20 23:43:16', '2022-08-20 23:43:16'),
+(1858, 1, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2022-08-21 07:24:44', '2022-08-21 07:24:44'),
+(1859, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-08-21 07:24:45', '2022-08-21 07:24:45'),
+(1860, 1, 'admin/organizations', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-21 07:24:58', '2022-08-21 07:24:58'),
+(1861, 1, 'admin/organizations/5/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-21 07:25:04', '2022-08-21 07:25:04'),
+(1862, 1, 'admin/_handle_selectable_', 'GET', '127.0.0.1', '{\"selectable\":\"App_Admin_Selectable_UsersSelectable\",\"args\":[\"1\"]}', '2022-08-21 07:25:07', '2022-08-21 07:25:07'),
+(1863, 1, 'admin/organizations/5', 'PUT', '127.0.0.1', '{\"name\":\"BK\",\"email\":\"userewwe@gmail.com\",\"description\":\"ewew\",\"contact_name\":\"ewewe\",\"contact_number\":\"weew\",\"address\":\"ewew\",\"multiple_properties\":\"off\",\"collaborators\":[\"1\",\"2\",null],\"updater_type\":\"AdminUser\",\"updated_by\":\"1\",\"_token\":\"GqZX4Q6J8BXzSHHu4Mt7fo8DCLiBH3hvGyn6U8Ut\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/organizations\"}', '2022-08-21 07:25:10', '2022-08-21 07:25:10'),
+(1864, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-21 07:25:11', '2022-08-21 07:25:11'),
+(1865, 1, 'admin/organizations/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-21 07:26:39', '2022-08-21 07:26:39'),
+(1866, 1, 'admin/_handle_selectable_', 'GET', '127.0.0.1', '{\"selectable\":\"App_Admin_Selectable_UsersSelectable\",\"args\":[\"1\"]}', '2022-08-21 07:26:42', '2022-08-21 07:26:42'),
+(1867, 1, 'admin/organizations/1', 'PUT', '127.0.0.1', '{\"name\":\"dsdsds\",\"email\":\"user@gmail.com\",\"description\":\"sdds\",\"contact_name\":\"sdds\",\"contact_number\":\"sdds\",\"address\":\"dsdsds\",\"multiple_properties\":\"on\",\"collaborators\":[\"1\",\"2\",null],\"updater_type\":\"AdminUser\",\"updated_by\":\"1\",\"_token\":\"GqZX4Q6J8BXzSHHu4Mt7fo8DCLiBH3hvGyn6U8Ut\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/organizations\"}', '2022-08-21 07:26:45', '2022-08-21 07:26:45'),
+(1868, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-21 07:26:46', '2022-08-21 07:26:46'),
+(1869, 1, 'admin/organizations/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-21 07:27:41', '2022-08-21 07:27:41'),
+(1870, 1, 'admin/_handle_selectable_', 'GET', '127.0.0.1', '{\"selectable\":\"App_Admin_Selectable_UsersSelectable\",\"args\":[\"1\"]}', '2022-08-21 07:27:43', '2022-08-21 07:27:43'),
+(1871, 1, 'admin/organizations/1', 'PUT', '127.0.0.1', '{\"name\":\"dsdsds\",\"email\":\"user@gmail.com\",\"description\":\"sdds\",\"contact_name\":\"sdds\",\"contact_number\":\"sdds\",\"address\":\"dsdsds\",\"multiple_properties\":\"on\",\"collaborators\":[\"1\",\"2\",null],\"updater_type\":\"AdminUser\",\"updated_by\":\"1\",\"_token\":\"GqZX4Q6J8BXzSHHu4Mt7fo8DCLiBH3hvGyn6U8Ut\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/organizations\"}', '2022-08-21 07:27:47', '2022-08-21 07:27:47'),
+(1872, 1, 'admin/organizations', 'GET', '127.0.0.1', '[]', '2022-08-21 07:27:47', '2022-08-21 07:27:47');
 
 -- --------------------------------------------------------
 
@@ -2101,7 +2138,8 @@ CREATE TABLE `organization_user` (
 --
 
 INSERT INTO `organization_user` (`id`, `organization_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, NULL, NULL);
+(9, 1, 1, NULL, NULL),
+(10, 1, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2140,7 +2178,7 @@ CREATE TABLE `personal_access_tokens` (
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
 (3, 'App\\Models\\User', 2, 'admin@gmail.com_Token', '55dae2139b604cea08029b95e561f295bafc422e528b561ebd2fcb3d8f22683d', '[\"*\"]', '2022-08-02 04:39:26', '2022-08-02 03:20:47', '2022-08-02 04:39:26'),
 (4, 'App\\Models\\User', 2, 'admin@gmail.com_Token', 'e6f449e4d8802fad45d20cc50ff432a0f63c71f2fd978186d87737b75ab18e70', '[\"*\"]', '2022-08-02 23:53:42', '2022-08-02 23:12:33', '2022-08-02 23:53:42'),
-(5, 'App\\Models\\User', 1, 'user@gmail.com_Token', '5297126d8ee24354a298d955609d3dc95d370ba8227d484a5cd01ebbd522d82e', '[\"*\"]', '2022-08-20 06:41:46', '2022-08-19 23:56:19', '2022-08-20 06:41:46');
+(5, 'App\\Models\\User', 1, 'user@gmail.com_Token', '5297126d8ee24354a298d955609d3dc95d370ba8227d484a5cd01ebbd522d82e', '[\"*\"]', '2022-08-21 07:39:13', '2022-08-19 23:56:19', '2022-08-21 07:39:13');
 
 -- --------------------------------------------------------
 
@@ -2515,7 +2553,7 @@ ALTER TABLE `admin_menu`
 -- AUTO_INCREMENT for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1836;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1873;
 
 --
 -- AUTO_INCREMENT for table `admin_permissions`
@@ -2617,13 +2655,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `organizations`
 --
 ALTER TABLE `organizations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `organization_user`
 --
 ALTER TABLE `organization_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

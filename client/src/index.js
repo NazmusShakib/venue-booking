@@ -10,6 +10,7 @@ import '../src/assets/css/daterangepicker.css';
 import 'react-rangeslider/lib/index.css';
 import '../src/assets/css/jquery-ui.css';
 import '../src/assets/css/placeholder-loading.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import '../src/assets/css/style.css';
 import '../src/assets/css/custom.css';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';

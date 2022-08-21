@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import {ToastContainer} from "react-toastify";
 
 class Footer extends Component {
     constructor() {
@@ -145,6 +146,8 @@ class Footer extends Component {
                         </div>
                     </div>
                 </section>
+
+                <ToastContainer />
             </>
         );
     }

@@ -15,9 +15,12 @@ Route::get('/occasions', [ApiController::class, 'occasions']);
 Route::post('/venues/{category?}', [ApiController::class, 'venues']);
 Route::get('/venue/details/{slug}', [ApiController::class, 'venue_details']);
 Route::post('/venues/lists/for/dropdown', [ApiController::class, 'venues_lists_for_dropdown']);
+Route::post('/division/lists/for/dropdown', [ApiController::class, 'division_lists_for_dropdown']);
+Route::post('/district/lists/for/dropdown', [ApiController::class, 'district_lists_for_dropdown']);
 Route::post('/city/lists/for/dropdown', [ApiController::class, 'city_lists_for_dropdown']);
 Route::post('/category/lists/for/dropdown', [ApiController::class, 'category_lists_for_dropdown']);
 Route::post('/occasion/lists/for/dropdown', [ApiController::class, 'occasion_lists_for_dropdown']);
+Route::post('/amenity/lists/for/dropdown', [ApiController::class, 'amenity_lists_for_dropdown']);
 Route::post('/booking/availability/checking', [ApiController::class, 'booking_availability_checking']);
 Route::get('/popular/venues', [ApiController::class, 'popular_venues']);
 Route::get('/top/visited/venues', [ApiController::class, 'top_visited_venues']);
@@ -35,5 +38,6 @@ Route::middleware('auth:sanctum')->group(function() {
 
     Route::post('/organization/store', [ApiUserDashboard::class, 'organization_store']);
     Route::get('/user/organizations/{user_id}', [ApiUserDashboard::class, 'organizations_by_user']);
+    Route::post('/organizations/lists/for/dropdown', [ApiUserDashboard::class, 'organizations_lists_for_dropdown']);
     Route::get('/delete/organization/{organization_id}', [ApiUserDashboard::class, 'delete_organization']);
 });

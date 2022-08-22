@@ -13,6 +13,8 @@ use App\Http\Resources\EventCalendarResource;
 use App\Http\Resources\CityResource;
 use App\Http\Resources\OrderResource;
 use App\Models\Category;
+use App\Models\Division;
+use App\Models\District;
 use App\Models\City;
 use App\Models\Amenity;
 use App\Models\Occasion;
@@ -217,8 +219,47 @@ class ApiController extends Controller
         ]);
     }
 
+    public function division_lists_for_dropdown(Request $request){
+        $value_field_as = $request->value_field_as ?? 'slug';
+        $divisions = Division::select("$value_field_as as value", "name as label")->get()->toArray();
+
+        return response()->json([
+            'status' => 200,
+            'divisions' => $divisions
+        ]);
+    }
+
+    public function district_lists_for_dropdown(Request $request){
+        $value_field_as = $request->value_field_as ?? 'slug';
+        $division_id = $request->division_id ?? '';
+        $confirm_parent = $request->confirm_parent_division ?? '';
+
+        if(!empty($division_id)){
+            $districts = District::select("$value_field_as as value", "name as label")->where('division_id', $division_id)->get()->toArray();
+        }elseif('Yes' !== $confirm_parent){
+            $districts = District::has('venues')->select("$value_field_as as value", "name as label")->get()->toArray();
+        }else{
+            $districts = [];
+        }
+
+        return response()->json([
+            'status' => 200,
+            'districts' => $districts
+        ]);
+    }
+
     public function city_lists_for_dropdown(Request $request){
-        $cities = City::has('venues')->select('slug as value', 'name as label')->get()->toArray();
+        $value_field_as = $request->value_field_as ?? 'slug';
+        $district_id = $request->district_id ?? '';
+        $confirm_parent = $request->confirm_parent_district ?? '';
+
+        if(!empty($district_id)){
+            $cities = City::select("$value_field_as as value", "name as label")->where('district_id', $district_id)->get()->toArray();
+        }elseif('Yes' !== $confirm_parent){
+            $cities = City::has('venues')->select("$value_field_as as value", "name as label")->get()->toArray();
+        }else{
+            $cities = [];
+        }
 
         return response()->json([
             'status' => 200,
@@ -227,7 +268,8 @@ class ApiController extends Controller
     }
 
     public function category_lists_for_dropdown(Request $request){
-        $cats = Category::select('slug as value', 'name as label')->get()->toArray();
+        $value_field_as = $request->value_field_as ?? 'slug';
+        $cats = Category::select("$value_field_as as value", "name as label")->get()->toArray();
 
         return response()->json([
             'status' => 200,
@@ -236,11 +278,22 @@ class ApiController extends Controller
     }
 
     public function occasion_lists_for_dropdown(Request $request){
-        $occasions = Occasion::select('slug as value', 'name as label')->get()->toArray();
+        $value_field_as = $request->value_field_as ?? 'slug';
+        $occasions = Occasion::select("$value_field_as as value", "name as label")->get()->toArray();
 
         return response()->json([
             'status' => 200,
             'occasions' => $occasions
+        ]);
+    }
+
+    public function amenity_lists_for_dropdown(Request $request){
+        $value_field_as = $request->value_field_as ?? 'slug';
+        $amenities = Amenity::select("$value_field_as as value", "name as label")->get()->toArray();
+
+        return response()->json([
+            'status' => 200,
+            'amenities' => $amenities
         ]);
     }
 

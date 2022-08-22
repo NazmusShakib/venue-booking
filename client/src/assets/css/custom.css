@@ -108,3 +108,10 @@
 #react-select-3-listbox{
     z-index: 999;
 }
+
+.ql-editor {
+    min-height: 200px;
+}
+.ql-snow .ql-picker{
+    height: 34px;
+}

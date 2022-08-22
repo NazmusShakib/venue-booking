@@ -61,6 +61,14 @@ class ApiUserDashboard extends Controller
         return OrganizationResource::collection($organizations);
     }
 
+    public function organizations_lists_for_dropdown(Request $request){
+        $organizations = User::find($request->user_id)->organizations()->get(['organizations.id as value', 'organizations.name as label'])->makeHidden(['creator','updater','pivot'])->toArray();
+        return response()->json([
+            'status' => 200,
+            'organizations' => $organizations
+        ]);
+    }
+
     public function delete_organization($organization_id){
         try {
             $organization = Organization::find($organization_id);

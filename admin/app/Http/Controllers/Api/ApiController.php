@@ -368,4 +368,32 @@ class ApiController extends Controller
         $order = Order::where('user_id', $user_id)->get();
         return OrderResource::collection($order);
     }
+
+    public function order_delete(Request $request){
+        $order = Order::find($request->order_id);
+        if('completed' !== strtolower($order->payment_status))
+        {
+            if(($request->user_id === $order->user_id && 'personal' === $request->type) || ('property' === $request->type))
+            {
+                try {
+                    $order->delete();
+                    return response()->json([
+                        'status' => 200,
+                        'message' => 'Order successfully deleted!'
+                    ]);
+                } catch (\Exception $e) {
+
+                    return response()->json([
+                        'status' => 500,
+                        'message' => $e->getMessage()
+                    ]);
+                }
+            }
+        }
+
+        return response()->json([
+            'status' => 500,
+            'message' => 'Sorry! you can\'t delete this order!'
+        ]);
+    }
 }

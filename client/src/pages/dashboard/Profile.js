@@ -1,21 +1,30 @@
-import React, {useState} from 'react';
-import {useNavigate} from "react-router";
+import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import SessionHelper from "../../session/SessionHelper";
 import {Link} from "react-router-dom";
+import Swal from "sweetalert2";
+import {toast} from "react-toastify";
 
 const Profile =()=> {
-    const navigate = useNavigate();
     const [profileInput, setProfile] = useState({
-                                                  'name':'',
-                                                  'username':'',
-                                                  'email':'',
+                                                  'name':SessionHelper.GetAuthSession().name,
+                                                  'username':SessionHelper.GetAuthSession().username,
+                                                  'email':SessionHelper.GetAuthSession().email,
                                                   'password':'',
                                                   'confirm_password':'',
                                                   'message':'',
                                                   'errors':[],
                                                   'processing':false
                                               });
+    // useEffect(() => {
+    //     axios.get('/sanctum/csrf-cookie').then(response => {
+    //         axios.get('/api/get/profile').then(res => {
+    //             setProfile({...profileInput, ...res.data});
+    //         }).catch((error)=>{
+    //             Swal.fire('Failed!',error.message.toString(),'error');
+    //         });
+    //     });
+    // }, []);
 
     const handleInput = (e) =>{
         e.persist();
@@ -33,27 +42,20 @@ const Profile =()=> {
             confirm_password: profileInput.confirm_password
         }
         axios.get('/sanctum/csrf-cookie').then(response => {
-            axios.post('/api/register', data).then(res => {
+            axios.post('/api/update/profile', data).then(res => {
                 if (res.data.status === 400)
                 {
                     setProfile({...profileInput, processing:false, message:res.data.message, errors:res.data.errors});
                 }
-                else
+                else if(res.data.status === 200)
                 {
                     SessionHelper.SetAuthSession(res.data.user);
-                    setProfile({...profileInput,
-                        processing:false,
-                        errors:[],
-                        name: '',
-                        username: '',
-                        email: '',
-                        password: '',
-                        confirm_password: '',
-                    });
-                    navigate('/');
+                    setProfile({...profileInput, errors:[], message:'', password:'', confirm_password:'', processing:false});
+                    toast.success(res.data.message);
                 }
             }).catch((error)=>{
                 setProfile({...profileInput, processing:false, message:'Sorry! something went wrong.'});
+                Swal.fire('Failed!',error.message.toString(),'error');
             });
         });
     }
@@ -62,7 +64,7 @@ const Profile =()=> {
             <section>
                 <div className="container padding-top-70px padding-bottom-100px">
                     <div className="row">
-                        <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center'}}>
+                        <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center'}}>
                             <div>
                                 <h1 className="text-black mb-1">Personal Details</h1>
                                 <p>Update Your Personal Information</p>
@@ -76,7 +78,7 @@ const Profile =()=> {
                                 </nav>
                             </div>
                         </div>
-                        <div className="col-lg-12 contact-form-action">
+                        <div className="col-sm-12 contact-form-action">
                             {profileInput.message !== '' ? (
                                 <>
                                     <div className="alert alert-danger" role="alert">{profileInput.message}</div>
@@ -156,13 +158,11 @@ const Profile =()=> {
                                     <p className="text-danger">{profileInput.errors.confirm_password}</p>
                                 </div>
                                 <div className="btn-box pt-3 pb-4">
-                                    <button type="submit" className={profileInput.processing === true ? 'btn btn-block btn-lg btn-danger disabled font-size-16' : 'btn btn-block btn-primary btn-lg font-size-16'} disabled={profileInput.processing === true ? 'disabled' : ''}>
+                                    <button type="submit" className={profileInput.processing === true ? 'btn float-right btn-lg btn-danger disabled font-size-16' : 'btn float-right btn-primary btn-lg font-size-16'} disabled={profileInput.processing === true ? 'disabled' : ''}>
                                         {profileInput.processing === true ? (
-                                            <>
-                                                <i className="las la-spinner"></i> Update Profile
-                                            </>
+                                            <><i className="las la-spinner la-spin"></i> Updating</>
                                         ) : (
-                                            <> Update Profile</>
+                                            <> <i className="la la-save ml-1"></i> Update</>
                                         )}
                                     </button>
                                 </div>

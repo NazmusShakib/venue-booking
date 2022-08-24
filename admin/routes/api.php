@@ -27,15 +27,15 @@ Route::get('/top/visited/venues', [ApiController::class, 'top_visited_venues']);
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+    Route::get('/get/profile', [ApiUserDashboard::class, 'get_profile']);
+    Route::post('/update/profile', [ApiUserDashboard::class, 'update_profile']);
 
     Route::post('/event/store', [ApiController::class, 'event_store']);
     Route::get('/events/{venue_id}', [ApiController::class, 'events']);
     Route::get('/delete/event/{id}', [ApiController::class, 'delete_event']);
     Route::post('/order/store', [ApiController::class, 'order_store']);
     Route::get('/orders/{user_id}', [ApiController::class, 'orders']);
+    Route::post('/delete/order', [ApiController::class, 'order_delete']);
 
     Route::post('/organization/store', [ApiUserDashboard::class, 'organization_store']);
     Route::get('/user/organizations/{user_id}', [ApiUserDashboard::class, 'organizations_by_user']);
@@ -44,5 +44,6 @@ Route::middleware('auth:sanctum')->group(function() {
 
     Route::post('/venue/store', [ApiUserDashboard::class, 'venue_store']);
     Route::get('/user/venues/{user_id}', [ApiUserDashboard::class, 'venues_by_user']);
+    Route::get('/venues/orders/{user_id}', [ApiUserDashboard::class, 'venues_orders']);
     Route::post('/delete/venue', [ApiUserDashboard::class, 'delete_venue']);
 });

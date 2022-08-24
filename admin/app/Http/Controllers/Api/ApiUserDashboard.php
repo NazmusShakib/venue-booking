@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\OrganizationResource;
 use App\Http\Resources\VenueResource;
+use App\Http\Resources\OrderResource;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Amenity;
@@ -17,9 +18,80 @@ use App\Models\User;
 use App\Models\Organization;
 use Validator;
 use Storage;
+use Hash;
 
 class ApiUserDashboard extends Controller
 {
+    public function get_profile(Request $request){
+        return $request->user();
+    }
+
+    public function update_profile(Request $request){
+        $rules = [
+             'name' => ['required', 'string', 'max:255'],
+             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$request->user()->id],
+             'username' => [
+                 'required', 'string', 'min:3', 'max:20', 'unique:users,username,'.$request->user()->id,
+                 function ($attribute, $value, $fail) {
+                     $words = ['username', '_username', 'username_', 'user_name', 'User_name', 'Username', 'Username_', '_Username', 'User_Name', 'user_Name'];
+                     foreach($words as $word){
+                         if (strpos($value, $word) !== false){
+                             $fail('The '.$attribute.' is invalid.');
+                         }
+                     }
+
+                     if(substr($value,0,1) == '_'){
+                         $fail('The username cannot contain underscores at the beginning or end.');
+                     }
+
+                     if(substr($value, -1) == '_'){
+                         $fail('The username cannot contain underscores at the beginning or end.');
+                     }
+                 },
+                 'regex:/^[A-Za-z0-9]+(?:[_][A-Za-z0-9]+)*$/',
+             ]
+         ];
+
+         if(!empty($request->password)){
+            $rules['password'] = ['required', 'string', 'min:6'];
+            $rules['confirm_password'] = ['required', 'string', 'min:6', 'same:password'];
+         }
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Profile update failed!.',
+                'errors' => $validation->messages()
+            ]);
+        }
+
+        $user = $request->user();
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        if(!empty($request->password))
+        {
+            $user->password = Hash::make($request->password);
+        }
+        $user->update();
+
+        $res = [
+            'user_id' => $user->id,
+            'name' => $user->name,
+            'username' => $user->username,
+            'email' => $user->email,
+            'token' => $request->bearerToken()
+        ];
+
+        return response()->json([
+            'status' => 200,
+            'user' => $res,
+            'message' => 'Profile successfully updated!.'
+        ]);
+    }
+
     public function organization_store(Request $request){
         $validation = Validator::make($request->all(), [
             'user_id' => ['required'],
@@ -215,5 +287,11 @@ class ApiUserDashboard extends Controller
             'status' => 500,
             'message' => 'Sorry! you can\'t delete this venue!'
         ]);
+    }
+
+    public function venues_orders($user_id){
+        $venues_id = User::find($user_id)->venues->pluck('id')->toArray();
+        $order = Order::whereIn('venue_id', $venues_id)->where('user_id', '!=', $user_id)->get();
+        return OrderResource::collection($order);
     }
 }

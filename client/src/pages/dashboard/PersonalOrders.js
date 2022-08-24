@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import SessionHelper from "../../session/SessionHelper";
 import {Link} from "react-router-dom";
+import Swal from "sweetalert2";
 
 class PersonalOrders extends Component {
     constructor() {
@@ -22,11 +23,46 @@ class PersonalOrders extends Component {
         });
     }
 
+    deleteOrder(order_id){
+        let data = {
+            user_id:SessionHelper.GetAuthUserId(),
+            order_id:order_id,
+            type:'personal'
+        }
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            denyButtonText: 'No, cancel!'
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                axios.get('/sanctum/csrf-cookie').then(response => {
+                    axios.post('/api/delete/order', data).then(res => {
+                        if(parseInt(res.data.status) === 200){
+                            document.getElementById('order_'+order_id).remove();
+                            Swal.fire('Deleted!','Your file has been deleted.','success');
+                        }else if(parseInt(res.data.status) === 500){
+                            Swal.fire('Failed!',res.data.message.toString(),'error');
+                        }
+                    }).catch((error)=>{
+                        Swal.fire('Failed!',error.message.toString(),'error');
+                    });
+                });
+            } else if (result.isDenied) {
+                Swal.fire('Cancelled','Your imaginary file is safe :)','error');
+            }
+        })
+    }
+
     render() {
         return (
             <>
                 <section>
-                    <div className="container padding-top-70px padding-bottom-100px">
+                    <div className="container-fluid full-with-section-padding-lr padding-top-70px padding-bottom-100px">
                         <div className="row">
                             <div className="col-sm-12 mb-5 p-0" style={{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center'}}>
                                 <div>
@@ -85,7 +121,7 @@ class PersonalOrders extends Component {
                                     {
                                         this.state.orders.map((order, index) => (
                                             <React.Fragment key={index}>
-                                                <tr>
+                                                <tr id={`order_`+order.id}>
                                                     <th scope="row">{index+1}</th>
                                                     <td>{order.venue}</td>
                                                     <td>{order.start_date}</td>
@@ -94,7 +130,12 @@ class PersonalOrders extends Component {
                                                     <td>{order.net_total_price}</td>
                                                     <td>{order.status}</td>
                                                     <td>{order.payment_status}</td>
-                                                    <td></td>
+                                                    <td>
+                                                        <button type="button" className="btn btn-sm btn-danger"
+                                                                onClick={(e) => this.deleteOrder(order.id)}>
+                                                            <i className="las la-trash"></i>
+                                                        </button>
+                                                    </td>
                                                 </tr>
                                             </React.Fragment>
                                         ))

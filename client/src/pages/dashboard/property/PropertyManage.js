@@ -6,7 +6,7 @@ class PropertyManage extends Component {
         return (
             <>
                 <section>
-                    <div className="container padding-top-70px padding-bottom-100px">
+                    <div className="container-fluid full-with-section-padding-lr padding-top-70px padding-bottom-100px">
                         <div className="row">
                             <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center'}}>
                                 <div>
@@ -22,7 +22,7 @@ class PropertyManage extends Component {
                                     </nav>
                                 </div>
                             </div>
-                            <div className="col-sm-6 mb-5">
+                            <div className="col-sm-3 mb-5">
                                 <div className="card">
                                     <div className="card-body media">
                                         <i className="las la-landmark font-size-30 align-self-start mr-3"></i>
@@ -34,7 +34,7 @@ class PropertyManage extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-sm-6 mb-5">
+                            <div className="col-sm-3 mb-5">
                                 <div className="card">
                                     <div className="card-body media">
                                         <i className="las la-cart-plus font-size-30 align-self-start mr-3"></i>
@@ -46,7 +46,7 @@ class PropertyManage extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-sm-6 mb-5">
+                            <div className="col-sm-3 mb-5">
                                 <div className="card">
                                     <div className="card-body media">
                                         <i className="las la-building font-size-30 align-self-start mr-3"></i>
@@ -58,7 +58,7 @@ class PropertyManage extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-sm-6 mb-5">
+                            <div className="col-sm-3 mb-5">
                                 <div className="card">
                                     <div className="card-body media">
                                         <i className="las la-calendar-check font-size-30 align-self-start mr-3"></i>

@@ -130,13 +130,13 @@ class PropertyList extends Component {
                                                 <React.Fragment key={index}>
                                                     <tr id={`venue_`+venue.id}>
                                                         <th scope="row">{index+1}</th>
-                                                        <td><img src={venue.thumbnail} style={{'maxWidth':'100px', 'maxHeight':'100px'}} className="img img-thumbnail"/></td>
+                                                        <td><img src={venue.thumbnail} style={{'maxWidth':'100px', 'maxHeight':'100px'}} alt={venue.name} className="img img-thumbnail"/></td>
                                                         <td>{venue.organization}</td>
                                                         <td>{venue.name}</td>
                                                         <td>{venue.division}</td>
                                                         <td>{venue.district}</td>
                                                         <td>{venue.city}</td>
-                                                        <td>{venue.is_enabled}</td>
+                                                        <td><span className={venue.is_enabled === 'Yes' ? 'badge badge-success' : 'badge badge-danger'}>{venue.is_enabled}</span></td>
                                                         <td>{venue.created_at}</td>
                                                         <td>{venue.updated_at}</td>
                                                         <td>

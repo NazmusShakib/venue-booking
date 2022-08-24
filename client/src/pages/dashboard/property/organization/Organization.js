@@ -56,7 +56,7 @@ class Organization extends Component {
         return (
             <>
                 <section>
-                    <div className="container padding-top-70px padding-bottom-100px">
+                    <div className="container-fluid full-with-section-padding-lr padding-top-70px padding-bottom-100px">
                         <div className="row">
                             <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center'}}>
                                 <div>

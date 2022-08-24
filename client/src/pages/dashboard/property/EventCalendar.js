@@ -141,7 +141,7 @@ class EventCalendar extends Component {
         return (
             <>
                 <section>
-                    <div className="container padding-top-70px padding-bottom-100px">
+                    <div className="container-fluid full-with-section-padding-lr padding-top-70px padding-bottom-100px">
                         <div className="row">
                             <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center'}}>
                                 <div>
@@ -222,6 +222,8 @@ class EventCalendar extends Component {
                                 </div>
                                 <div className="form-group mb-5">
                                     <Select
+                                        menuPortalTarget={document.body}
+                                        styles={{ menuPortal: base => ({ ...base, zIndex: 9999 }) }}
                                         name="venue_id"
                                         options={this.state.venueLists}
                                         onChange={this.handleVenueSelect}

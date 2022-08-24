@@ -5,7 +5,7 @@ class Dashboard extends Component {
         return (
             <>
                 <section>
-                    <div className="container padding-top-70px padding-bottom-100px">
+                    <div className="container-fluid full-with-section-padding-lr padding-top-70px padding-bottom-100px">
                         <div className="row">
                             <div className="col-sm-12 mb-5">
                                 <h1 className="text-black mb-1">Your Account</h1>

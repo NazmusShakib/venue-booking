@@ -360,7 +360,7 @@ class PropertyCreate extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className="col-sm-12 responsive-column">
+                                            <div className="col-6 responsive-column">
                                                 <div className="input-box">
                                                     <label className="label-text">Category</label>
                                                     <div className="form-group">
@@ -376,7 +376,7 @@ class PropertyCreate extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className="col-sm-12 responsive-column">
+                                            <div className="col-6 responsive-column">
                                                 <div className="input-box">
                                                     <label className="label-text">Occasion</label>
                                                     <div className="form-group">
@@ -392,7 +392,7 @@ class PropertyCreate extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className="col-sm-12 responsive-column">
+                                            <div className="col-6 responsive-column">
                                                 <div className="input-box">
                                                     <label className="label-text">Amenity</label>
                                                     <div className="form-group">
@@ -408,7 +408,7 @@ class PropertyCreate extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className="col-sm-12 responsive-column">
+                                            <div className="col-6 responsive-column">
                                                 <div className="input-box">
                                                     <label className="label-text">Price Type</label>
                                                     <div className="form-group">
@@ -423,7 +423,7 @@ class PropertyCreate extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className="col-sm-12 responsive-column">
+                                            <div className="col-6 responsive-column">
                                                 <div className="input-box">
                                                     <label className="label-text">Price</label>
                                                     <div className="form-group">
@@ -434,7 +434,7 @@ class PropertyCreate extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="col-sm-12 responsive-column">
+                                            <div className="col-6 responsive-column">
                                                 <div className="input-box">
                                                     <label className="label-text">Capacity</label>
                                                     <div className="form-group">
@@ -446,7 +446,7 @@ class PropertyCreate extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className="col-sm-12 responsive-column">
+                                            <div className="col-4 responsive-column">
                                                 <div className="input-box">
                                                     <label className="label-text">Division</label>
                                                     <div className="form-group">
@@ -461,7 +461,7 @@ class PropertyCreate extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className="col-sm-12 responsive-column">
+                                            <div className="col-4 responsive-column">
                                                 <div className="input-box">
                                                     <label className="label-text">District</label>
                                                     <div className="form-group">
@@ -477,7 +477,7 @@ class PropertyCreate extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className="col-sm-12 responsive-column">
+                                            <div className="col-4 responsive-column">
                                                 <div className="input-box">
                                                     <label className="label-text">City</label>
                                                     <div className="form-group">

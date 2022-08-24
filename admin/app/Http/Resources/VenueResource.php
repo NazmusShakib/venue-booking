@@ -17,6 +17,7 @@ class VenueResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'organization' => $this->organization->name,
             'thumbnail' => asset(\Storage::url($this->featured_image)),
             'name' => $this->name,
             'slug' => $this->slug,
@@ -24,8 +25,9 @@ class VenueResource extends JsonResource
             'price_type'=> Venue::priceType()[$this->price_type] ?? '',
             'capacity' => $this->capacity,
             'division' => $this->division->name,
-            'city' => $this->city->name,
             'district' => $this->district->name,
+            'city' => $this->city->name,
+            'is_enabled' => $this->is_enabled == 1 ? 'Yes' : 'No',
             'created_at' => date('d-m-Y', strtotime($this->created_at)),
             'updated_at' => date('d-m-Y', strtotime($this->updated_at))
         ];

@@ -8,7 +8,7 @@ class PropertyManage extends Component {
                 <section>
                     <div className="container padding-top-70px padding-bottom-100px">
                         <div className="row">
-                            <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center'}}>
+                            <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center'}}>
                                 <div>
                                     <h1 className="text-black mb-1">Manage Property</h1>
                                     <p>Manage property</p>

@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+
     Route::post('/event/store', [ApiController::class, 'event_store']);
     Route::get('/events/{venue_id}', [ApiController::class, 'events']);
     Route::get('/delete/event/{id}', [ApiController::class, 'delete_event']);
@@ -40,4 +41,8 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user/organizations/{user_id}', [ApiUserDashboard::class, 'organizations_by_user']);
     Route::post('/organizations/lists/for/dropdown', [ApiUserDashboard::class, 'organizations_lists_for_dropdown']);
     Route::get('/delete/organization/{organization_id}', [ApiUserDashboard::class, 'delete_organization']);
+
+    Route::post('/venue/store', [ApiUserDashboard::class, 'venue_store']);
+    Route::get('/user/venues/{user_id}', [ApiUserDashboard::class, 'venues_by_user']);
+    Route::post('/delete/venue', [ApiUserDashboard::class, 'delete_venue']);
 });

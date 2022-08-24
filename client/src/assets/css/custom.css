@@ -115,3 +115,15 @@
 .ql-snow .ql-picker{
     height: 34px;
 }
+
+.full-with-section-padding-lr {
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+@media (max-width: 1366px){
+    .full-with-section-padding-lr {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}

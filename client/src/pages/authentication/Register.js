@@ -4,6 +4,7 @@ import SessionHelper from "../../session/SessionHelper";
 import {useNavigate} from "react-router";
 import axios from "axios";
 import queryString from "query-string";
+import SocialLogin from "./SocialLogin";
 
 const Register = () => {
     useEffect(() => {
@@ -199,17 +200,18 @@ const Register = () => {
                                 <div className="btn-box pt-3 pb-4">
                                     {registerInput.processing === true ? (
                                         <>
-                                            <button type="submit" className="btn btn-block btn-lg btn-danger disabled font-size-16">
+                                            <button type="submit" className="theme-btn disabled w-100">
                                                 <i className="las la-spin la-spinner"></i> Register Account
                                             </button>
                                         </>
                                     ) : (
 
-                                        <button type="submit" className="btn btn-block btn-primary btn-lg font-size-16">
+                                        <button type="submit" className="theme-btn w-100">
                                             Register Account
                                         </button>
                                     )}
                                 </div>
+                                <SocialLogin/>
                             </form>
                         </div>
                     </div>

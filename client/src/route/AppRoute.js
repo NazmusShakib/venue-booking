@@ -28,6 +28,7 @@ import OrganizationCreate from "../pages/dashboard/property/organization/Organiz
 import PropertyList from "../pages/dashboard/property/PropertyList";
 import PropertyCreate from "../pages/dashboard/property/PropertyCreate";
 import ListYourProperty from "../pages/ListYourProperty";
+import SocialLoginCallback from "../pages/authentication/SocialLoginCallback";
 
 class AppRoute extends Component {
     render() {
@@ -47,6 +48,7 @@ class AppRoute extends Component {
                         <Route element={<GuestRoutes/>}>
                             <Route path="login" element={<Login />} />
                             <Route path="register" element={<Register />} />
+                            <Route path="auth/:provider/callback" element={<SocialLoginCallback />} />
                         </Route>
                         <Route element={<AuthRoutes/>}>
                             <Route path="dashboard" element={<Dashboard />} />

@@ -4,6 +4,7 @@ import {Link, useLocation} from "react-router-dom";
 import axios from "axios";
 import SessionHelper from "../../session/SessionHelper";
 import queryString from 'query-string';
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
     useEffect(() => {
@@ -154,20 +155,19 @@ const Login = () => {
                                 </div>
                                 <div className="btn-box pt-3 pb-4">
 
-
                                         {loginInput.processing === true ? (
                                             <>
-                                                <button type="submit" className="btn btn-block btn-lg btn-danger disabled font-size-16">
+                                                <button type="submit" className="theme-btn disabled w-100">
                                                     <i className="las la-spin la-spinner"></i> Login Account
                                                 </button>
                                             </>
                                         ) : (
-                                            <button type="submit" className="btn btn-block btn-primary btn-lg font-size-16">
+                                            <button type="submit" className="theme-btn w-100">
                                                Login Account
                                             </button>
                                         )}
-
                                 </div>
+                                <SocialLogin/>
                             </form>
                         </div>
                     </div>

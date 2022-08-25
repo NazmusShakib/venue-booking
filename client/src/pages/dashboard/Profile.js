@@ -7,7 +7,7 @@ import {toast} from "react-toastify";
 
 const Profile =()=> {
     const [profileInput, setProfile] = useState({'name':SessionHelper.GetAuthSession().name,'username':SessionHelper.GetAuthSession().username,'email':SessionHelper.GetAuthSession().email,'password':'','confirm_password':'','message':'','errors':[],'processing':false});
-    
+
     // useEffect(() => {
     //     axios.get('/sanctum/csrf-cookie').then(response => {
     //         axios.get('/api/get/profile').then(res => {

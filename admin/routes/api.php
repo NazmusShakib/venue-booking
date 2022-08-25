@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Api\ApiUserDashboard;
+use App\Http\Controllers\Api\SocialAuthController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -24,6 +25,10 @@ Route::post('/amenity/lists/for/dropdown', [ApiController::class, 'amenity_lists
 Route::post('/booking/availability/checking', [ApiController::class, 'booking_availability_checking']);
 Route::get('/popular/venues', [ApiController::class, 'popular_venues']);
 Route::get('/top/visited/venues', [ApiController::class, 'top_visited_venues']);
+
+
+Route::post('auth/{provider}', [SocialAuthController::class, 'redirectToAuthProvider']);
+Route::any('auth/{provider}/callback', [SocialAuthController::class, 'handleAuthProviderCallback']);
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::post('/logout', [AuthController::class, 'logout']);

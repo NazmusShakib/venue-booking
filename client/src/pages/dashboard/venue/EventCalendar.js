@@ -146,13 +146,13 @@ class EventCalendar extends Component {
                             <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center'}}>
                                 <div>
                                     <h1 className="text-black mb-1">Calendar</h1>
-                                    <p>Manage available dates for property</p>
+                                    <p>Manage available dates for venue</p>
                                 </div>
                                 <div>
                                     <nav aria-label="breadcrumb">
                                         <ol className="breadcrumb custom-breadcrumb">
                                             <li className="breadcrumb-item"><Link to='/dashboard'>Dashboard</Link></li>
-                                            <li className="breadcrumb-item"><Link to='/manage/property'>Manage Property</Link></li>
+                                            <li className="breadcrumb-item"><Link to='/manage/venue'>Manage Venue</Link></li>
                                             <li className="breadcrumb-item active">Calendar</li>
                                         </ol>
                                     </nav>

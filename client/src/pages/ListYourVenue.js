@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 
-class ListYourProperty extends Component {
+class ListYourVenue extends Component {
     render() {
         return (
             <>
@@ -268,4 +268,4 @@ class ListYourProperty extends Component {
     }
 }
 
-export default ListYourProperty;
+export default ListYourVenue;

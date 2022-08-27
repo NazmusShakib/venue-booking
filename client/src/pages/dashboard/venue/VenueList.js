@@ -4,7 +4,7 @@ import SessionHelper from "../../../session/SessionHelper";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-class PropertyList extends Component {
+class VenueList extends Component {
     constructor() {
         super();
         this.state = {
@@ -66,15 +66,15 @@ class PropertyList extends Component {
                         <div className="row">
                             <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center'}}>
                                 <div>
-                                    <h1 className="text-black mb-1">Property</h1>
-                                    <Link to='/manage/property/create' className="btn btn-primary btn-sm mt-2">Add New Property</Link>
+                                    <h1 className="text-black mb-1">Venue</h1>
+                                    <Link to='/manage/venue/create' className="btn btn-primary btn-sm mt-2">Add New Venue</Link>
                                 </div>
                                 <div>
                                     <nav aria-label="breadcrumb">
                                         <ol className="breadcrumb custom-breadcrumb">
                                             <li className="breadcrumb-item"><Link to='/dashboard'>Dashboard</Link></li>
-                                            <li className="breadcrumb-item"><Link to='/manage/property'>Manage Property</Link></li>
-                                            <li className="breadcrumb-item active">Property</li>
+                                            <li className="breadcrumb-item"><Link to='/manage/venue'>Manage Venue</Link></li>
+                                            <li className="breadcrumb-item active">Venue</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -140,6 +140,7 @@ class PropertyList extends Component {
                                                         <td>{venue.created_at}</td>
                                                         <td>{venue.updated_at}</td>
                                                         <td>
+                                                            <Link to={`/manage/venue/${venue.slug}/edit`} className="btn btn-sm btn-success mr-2"><i className="las la-edit"></i></Link>
                                                             <button type="button" className="btn btn-sm btn-danger"
                                                                     onClick={(e) => this.deleteVenue(venue.id)}>
                                                                 <i className="las la-trash"></i>
@@ -162,4 +163,4 @@ class PropertyList extends Component {
     }
 }
 
-export default PropertyList;
+export default VenueList;

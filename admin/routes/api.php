@@ -51,4 +51,6 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user/venues/{user_id}', [ApiUserDashboard::class, 'venues_by_user']);
     Route::get('/venues/orders/{user_id}', [ApiUserDashboard::class, 'venues_orders']);
     Route::post('/delete/venue', [ApiUserDashboard::class, 'delete_venue']);
+
 });
+Route::post('/venue/{slug}/edit', [ApiUserDashboard::class, 'venue_edit']);

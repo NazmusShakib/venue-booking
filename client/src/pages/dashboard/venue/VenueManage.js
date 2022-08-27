@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 
-class PropertyManage extends Component {
+class VenueManage extends Component {
     render() {
         return (
             <>
@@ -10,14 +10,14 @@ class PropertyManage extends Component {
                         <div className="row">
                             <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center'}}>
                                 <div>
-                                    <h1 className="text-black mb-1">Manage Property</h1>
-                                    <p>Manage property</p>
+                                    <h1 className="text-black mb-1">Manage Venue</h1>
+                                    <p>Manage venue</p>
                                 </div>
                                 <div>
                                     <nav aria-label="breadcrumb">
                                         <ol className="breadcrumb custom-breadcrumb">
                                             <li className="breadcrumb-item"><Link to='/dashboard'>Dashboard</Link></li>
-                                            <li className="breadcrumb-item active">Manage Property</li>
+                                            <li className="breadcrumb-item active">Manage Venue</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -29,7 +29,7 @@ class PropertyManage extends Component {
                                         <div className="media-body">
                                             <h5 className="mt-0 text-black">Organization</h5>
                                             <p>Manage Organization</p>
-                                            <Link to='/property/organization'>All Organization</Link>
+                                            <Link to='/manage/venue/organization'>All Organization</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -39,9 +39,9 @@ class PropertyManage extends Component {
                                     <div className="card-body media">
                                         <i className="las la-building font-size-30 align-self-start mr-3"></i>
                                         <div className="media-body">
-                                            <h5 className="mt-0 text-black">Property</h5>
-                                            <p>Manage your property</p>
-                                            <Link to='/manage/property/list'>All Property</Link>
+                                            <h5 className="mt-0 text-black">Venue</h5>
+                                            <p>Manage your venue</p>
+                                            <Link to='/manage/venue/list'>All Venues</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -52,8 +52,8 @@ class PropertyManage extends Component {
                                         <i className="las la-calendar-check font-size-30 align-self-start mr-3"></i>
                                         <div className="media-body">
                                             <h5 className="mt-0 text-black">Calendar</h5>
-                                            <p>Manage available dates for property</p>
-                                            <Link to='/manage/property/calendar'>Calendar</Link>
+                                            <p>Manage available dates for venue</p>
+                                            <Link to='/manage/venue/calendar'>Calendar</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@ class PropertyManage extends Component {
                                         <div className="media-body">
                                             <h5 className="mt-0 text-black">Orders</h5>
                                             <p>Your order lists</p>
-                                            <Link to='/property/orders'>All orders</Link>
+                                            <Link to='/manage/venue/orders'>All orders</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -78,4 +78,4 @@ class PropertyManage extends Component {
     }
 }
 
-export default PropertyManage;
+export default VenueManage;

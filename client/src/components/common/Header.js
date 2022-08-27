@@ -92,7 +92,7 @@ const Header = () => {
                                         </nav>
                                     </div>
                                     <div className="pull-right">
-                                        <Link to="/property-listing" className="theme-btn theme-btn-small"><i className="las la-list-alt"></i> List Your Property</Link>
+                                        <Link to="/venue-listing" className="theme-btn theme-btn-small"><i className="las la-list-alt"></i> List Your Venue</Link>
                                     </div>
                                 </div>
                             </div>

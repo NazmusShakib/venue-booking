@@ -6,7 +6,16 @@ import Swal from "sweetalert2";
 import {toast} from "react-toastify";
 
 const Profile =()=> {
-    const [profileInput, setProfile] = useState({'name':SessionHelper.GetAuthSession().name,'username':SessionHelper.GetAuthSession().username,'email':SessionHelper.GetAuthSession().email,'password':'','confirm_password':'','message':'','errors':[],'processing':false});
+    const [profileInput, setProfile] = useState({
+            'name':SessionHelper.GetAuthSession().name ?? undefined,
+            'username':SessionHelper.GetAuthSession().username ?? undefined,
+            'email':SessionHelper.GetAuthSession().email ?? undefined,
+            'password':'',
+            'confirm_password':'',
+            'message':'',
+            'errors':[],
+            'processing':false}
+        );
 
     // useEffect(() => {
     //     axios.get('/sanctum/csrf-cookie').then(response => {

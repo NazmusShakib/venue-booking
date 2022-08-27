@@ -373,7 +373,7 @@ class ApiController extends Controller
         $order = Order::find($request->order_id);
         if('completed' !== strtolower($order->payment_status))
         {
-            if(($request->user_id === $order->user_id && 'personal' === $request->type) || ('property' === $request->type))
+            if(($request->user_id === $order->user_id && 'personal' === $request->type) || ('collaborator' === $request->type))
             {
                 try {
                     $order->delete();

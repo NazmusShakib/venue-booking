@@ -8,9 +8,11 @@ use App\Http\Resources\OrganizationResource;
 use App\Http\Resources\VenueResource;
 use App\Http\Resources\OrderResource;
 use App\Models\Category;
-use App\Models\City;
 use App\Models\Amenity;
 use App\Models\Occasion;
+use App\Models\Division;
+use App\Models\District;
+use App\Models\City;
 use App\Models\Venue;
 use App\Models\EventCalendar;
 use App\Models\Order;
@@ -167,7 +169,7 @@ class ApiUserDashboard extends Controller
             'name' => ['required', 'string', 'max:255'],
             'star_rating' => ['required', 'numeric'],
             'featured_image' => ['required'],
-            'property_images' => ['required'],
+            'venue_images' => ['required'],
             'organization_id' => ['required', 'numeric'],
             'star_rating' => ['required', 'numeric'],
             'description' => ['required', 'string'],
@@ -211,23 +213,23 @@ class ApiUserDashboard extends Controller
             Storage::put("public/images/$featuredImageName", $featuredImageFile);
         }
 
-        //property_images
-        $property_images = [];
-        if(!empty($request->property_images))
+        //venue_images
+        $venue_images = [];
+        if(!empty($request->venue_images))
         {
-            foreach($request->property_images as $img){
-                $base64PropertyImage = explode(";base64,", $img);
-                $propertyImageName = str_random(40).'.'.explode("image/", $base64PropertyImage[0])[1];
-                $propertyImageFile = base64_decode($base64PropertyImage[1]);
-                $property_images[] = 'images/'.$propertyImageName;
-                Storage::put("public/images/$propertyImageName", $propertyImageFile);
+            foreach($request->venue_images as $img){
+                $base64venueImage = explode(";base64,", $img);
+                $venueImageName = str_random(40).'.'.explode("image/", $base64venueImage[0])[1];
+                $venueImageFile = base64_decode($base64venueImage[1]);
+                $venue_images[] = 'images/'.$venueImageName;
+                Storage::put("public/images/$venueImageName", $venueImageFile);
             }
         }
 
         $venue = new Venue;
         $venue->organization_id = $request->organization_id;
         $venue->featured_image = !empty($featuredImageName) ? "images/$featuredImageName" : '';
-        $venue->images = $property_images;
+        $venue->images = $venue_images;
         $venue->name = $request->name;
         $venue->star_rating = $request->star_rating;
         $venue->description = $request->description;
@@ -249,7 +251,7 @@ class ApiUserDashboard extends Controller
 
         return response()->json([
             'status' => 200,
-            'message' => 'Property successfully saved.'
+            'message' => 'venue successfully saved.'
         ]);
     }
 
@@ -293,5 +295,40 @@ class ApiUserDashboard extends Controller
         $venues_id = User::find($user_id)->venues->pluck('id')->toArray();
         $order = Order::whereIn('venue_id', $venues_id)->where('user_id', '!=', $user_id)->get();
         return OrderResource::collection($order);
+    }
+
+    public function venue_edit(Request $request, $slug){
+        $venue = Venue::where('slug', $slug)->first();
+        $data = [
+            'price'     =>  $venue->price,
+            'capacity'     =>  $venue->capacity,
+            'name'     =>  $venue->name,
+            'star_rating'     =>  $venue->star_rating,
+            'description'     =>  $venue->description,
+            'organizationLists' => User::find($request->user_id)->organizations()->get(['organizations.id as value', 'organizations.name as label'])->makeHidden(['creator','updater','pivot'])->toArray(),
+            'organization_id'     => $venue->organization_id,
+            'selected_organization_option'  =>  Organization::where('id', $venue->organization_id)->get(['id as value', 'name as label'])->makeHidden(['creator','updater'])->toArray(),
+            'categoryLists'     => Category::select("id as value", "name as label")->get()->toArray(),
+            'categories_id'     => $venue->categories->pluck('id')->toArray(),
+            'selected_category_option' => $venue->categories()->get(['categories.id as value', 'categories.name as label'])->makeHidden(['creator','updater','pivot'])->toArray(),
+            'occasionLists'     => Occasion::select("id as value", "name as label")->get()->toArray(),
+            'occasions_id'     => $venue->occasions->pluck('id')->toArray(),
+            'selected_occasion_option' => $venue->occasions()->get(['occasions.id as value', 'occasions.name as label'])->makeHidden(['creator','updater','pivot'])->toArray(),
+            'amenityLists'     => Amenity::select("id as value", "name as label")->get()->toArray(),
+            'amenities_id'     => $venue->amenities->pluck('id')->toArray(),
+            'selected_amenity_option' => $venue->amenities()->get(['amenities.id as value', 'amenities.name as label'])->makeHidden(['creator','updater','pivot'])->toArray(),
+            'divisionLists'     => Division::select("id as value", "name as label")->get()->toArray(),
+            'division_id'     => $venue->division_id,
+            'selected_division_option' => Division::where('id', $venue->division_id)->get(['id as value', 'name as label'])->toArray(),
+            'districtLists'     => District::where('division_id', $venue->division_id)->select("id as value", "name as label")->get()->toArray(),
+            'district_id'     => $venue->district_id,
+            'selected_district_option' => District::where('id', $venue->district_id)->get(['id as value', 'name as label'])->toArray(),
+            'cityLists'     => City::where('district_id', $venue->district_id)->select("id as value", "name as label")->get()->toArray(),
+            'city_id'     => $venue->city_id,
+            'selected_city_option' => City::where('id', $venue->city_id)->get(['id as value', 'name as label'])->toArray(),
+            'selected_price_type_option'  =>  ['label'=>Venue::priceType()[$venue->price_type], 'value'=>$venue->price_type],
+        ];
+
+        return response()->json(['status' => 200,'data' => $data]);
     }
 }

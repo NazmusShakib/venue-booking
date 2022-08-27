@@ -48,7 +48,7 @@ class OrganizationCreate extends Component {
                 {
                     this.setState({processing:false, errors:[], message:res.data.message});
                     toast.success(res.data.message);
-                    this.props.navigate('/property/organization');
+                    this.props.navigate('/manage/venue/organization');
                 }
             }).catch((error)=>{
                 console.log(error);
@@ -72,8 +72,8 @@ class OrganizationCreate extends Component {
                                     <nav aria-label="breadcrumb">
                                         <ol className="breadcrumb custom-breadcrumb">
                                             <li className="breadcrumb-item"><Link to='/dashboard'>Dashboard</Link></li>
-                                            <li className="breadcrumb-item"><Link to='/manage/property'>Manage Property</Link></li>
-                                            <li className="breadcrumb-item"><Link to='/property/organization'>Organization</Link></li>
+                                            <li className="breadcrumb-item"><Link to='/manage/venue'>Manage Venue</Link></li>
+                                            <li className="breadcrumb-item"><Link to='/manage/venue/organization'>Organization</Link></li>
                                             <li className="breadcrumb-item active">Create</li>
                                         </ol>
                                     </nav>

@@ -19,16 +19,17 @@ import GuestRoutes from "../_utility/GuestRoutes";
 import VenueDetails from "../pages/Venue/VenueDetails";
 import VenueBooking from "../pages/Venue/VenueBooking";
 import PersonalOrders from "../pages/dashboard/PersonalOrders";
-import EventCalendar from "../pages/dashboard/property/EventCalendar";
-import PropertyManage from "../pages/dashboard/property/PropertyManage";
-import Organization from "../pages/dashboard/property/organization/Organization";
-import PropertyOrders from "../pages/dashboard/property/PropertyOrders";
-import {Navigate} from "react-router";
-import OrganizationCreate from "../pages/dashboard/property/organization/OrganizationCreate";
-import PropertyList from "../pages/dashboard/property/PropertyList";
-import PropertyCreate from "../pages/dashboard/property/PropertyCreate";
-import ListYourProperty from "../pages/ListYourProperty";
+import EventCalendar from "../pages/dashboard/venue/EventCalendar";
+import VenueManage from "../pages/dashboard/venue/VenueManage";
+import Organization from "../pages/dashboard/venue/organization/Organization";
+import VenueOrders from "../pages/dashboard/venue/VenueOrders";
+//import {Navigate} from "react-router";
+import OrganizationCreate from "../pages/dashboard/venue/organization/OrganizationCreate";
+import VenueList from "../pages/dashboard/venue/VenueList";
+import VenueCreate from "../pages/dashboard/venue/VenueCreate";
+import ListYourVenue from "../pages/ListYourVenue";
 import SocialLoginCallback from "../pages/authentication/SocialLoginCallback";
+import VenueEdit from "../pages/dashboard/venue/VenueEdit";
 
 class AppRoute extends Component {
     render() {
@@ -44,7 +45,7 @@ class AppRoute extends Component {
                         <Route path="faq" element={<Faq />} />
                         <Route path="privacy-policy" element={<PrivacyPolicy />} />
                         <Route path="terms-and-conditions" element={<TermsAndConditions />} />
-                        <Route path="property-listing" element={<ListYourProperty />} />
+                        <Route path="venue-listing" element={<ListYourVenue />} />
                         <Route element={<GuestRoutes/>}>
                             <Route path="login" element={<Login />} />
                             <Route path="register" element={<Register />} />
@@ -55,15 +56,15 @@ class AppRoute extends Component {
                             <Route path="profile" element={<Profile />} />
                             <Route path="orders" element={<PersonalOrders />} />
 
-                            <Route path="/manage/property" element={<PropertyManage />} />
-                            <Route path="/manage/property/list" element={<PropertyList />} />
-                            <Route path="/manage/property/create" element={<PropertyCreate />} />
-                            <Route path="/manage/property/calendar" element={<EventCalendar />} />
-                            <Route path="/property">
-                                <Route index element={ <Navigate to="/manage/property" /> }/>
+                            <Route path="/manage/venue">
+                                <Route index element={<VenueManage />} />
                                 <Route path="organization" element={<Organization />} />
                                 <Route path="organization/create" element={<OrganizationCreate />} />
-                                <Route path="orders" element={<PropertyOrders />} />
+                                <Route path="list" element={<VenueList />} />
+                                <Route path="create" element={<VenueCreate />} />
+                                <Route path=":venue_slug/edit" element={<VenueEdit />} />
+                                <Route path="orders" element={<VenueOrders />} />
+                                <Route path="calendar" element={<EventCalendar />} />
                             </Route>
                         </Route>
 
@@ -71,9 +72,9 @@ class AppRoute extends Component {
                             <Route index element={<Venues />} />
                             <Route path=":category" element={<Venues />} />
                         </Route>
+
                         <Route path="/venue/details/:venue_slug" element={<VenueDetails />} />
                         <Route path="/venue/booking/:venue_slug" element={<VenueBooking />} />
-
                     </Routes>
                     <Footer/>
                 </BrowserRouter>

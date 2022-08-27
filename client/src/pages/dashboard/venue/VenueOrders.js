@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import SessionHelper from "../../../session/SessionHelper";
 import Swal from "sweetalert2";
 
-class PropertyOrders extends Component {
+class VenueOrders extends Component {
     constructor() {
         super();
         this.state = {
@@ -27,7 +27,7 @@ class PropertyOrders extends Component {
         let data = {
             user_id:SessionHelper.GetAuthUserId(),
             order_id:order_id,
-            type:'property'
+            type:'collaborator'
         }
 
         Swal.fire({
@@ -73,7 +73,7 @@ class PropertyOrders extends Component {
                                     <nav aria-label="breadcrumb">
                                         <ol className="breadcrumb custom-breadcrumb">
                                             <li className="breadcrumb-item"><Link to='/dashboard'>Dashboard</Link></li>
-                                            <li className="breadcrumb-item"><Link to='/manage/property'>Manage Property</Link></li>
+                                            <li className="breadcrumb-item"><Link to='/manage/venue'>Manage Venue</Link></li>
                                             <li className="breadcrumb-item active">Orders</li>
                                         </ol>
                                     </nav>
@@ -152,4 +152,4 @@ class PropertyOrders extends Component {
     }
 }
 
-export default PropertyOrders;
+export default VenueOrders;

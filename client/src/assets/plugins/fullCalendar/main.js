@@ -666,7 +666,7 @@ var FullCalendar = (function (exports) {
 
     var hasOwnProperty = Object.prototype.hasOwnProperty;
     // Merges an array of objects into a single object.
-    // The second argument allows for an array of property names who's object values will be merged together.
+    // The second argument allows for an array of venue names who's object values will be merged together.
     function mergeProps(propObjs, complexPropsMap) {
         var dest = {};
         if (complexPropsMap) {
@@ -6409,7 +6409,7 @@ var FullCalendar = (function (exports) {
     function excludeEventsBySourceId(eventStore, sourceId) {
         return filterEventStoreDefs(eventStore, function (eventDef) { return eventDef.sourceId !== sourceId; });
     }
-    // QUESTION: why not just return instances? do a general object-property-exclusion util
+    // QUESTION: why not just return instances? do a general object-venue-exclusion util
     function excludeInstances(eventStore, removals) {
         return {
             defs: eventStore.defs,

@@ -40,9 +40,9 @@ class Dashboard extends Component {
                                     <div className="card-body media">
                                         <i className="las la-industry font-size-30 align-self-start mr-3"></i>
                                         <div className="media-body">
-                                            <h5 className="mt-0 text-black">Manage Property</h5>
-                                            <p>Manage your property</p>
-                                            <Link to='/manage/property'>Manage Property</Link>
+                                            <h5 className="mt-0 text-black">Manage Venue</h5>
+                                            <p>Manage your venue</p>
+                                            <Link to='/manage/venue'>Manage Venue</Link>
                                         </div>
                                     </div>
                                 </div>

@@ -27,7 +27,7 @@ license choice. In any case, your choice will not restrict any
 recipient of your version of this software to use, reproduce, modify
 and distribute this software under any of the above licenses.
 
-Sources of Intellectual PropertyManage Included in CKEditor
+Sources of Intellectual VenueManage Included in CKEditor
 -----------------------------------------------------
 
 Where not otherwise indicated, all CKEditor content is authored by
@@ -996,7 +996,7 @@ Version 1.1
      Executable version or related documentation in which You describe the
      origin or ownership of the Covered Code.
 
-     3.4. Intellectual PropertyManage Matters
+     3.4. Intellectual VenueManage Matters
           (a) Third Party Claims.
           If Contributor has knowledge that a license under a third party's
           intellectual property rights is required to exercise the rights

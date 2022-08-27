@@ -1,37 +1,43 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
 import SessionHelper from "../../../session/SessionHelper";
 import axios from "axios";
 import {toast} from "react-toastify";
+import {Link} from "react-router-dom";
+import ImageUploading from "react-images-uploading";
 import Select from "react-select";
-import ImageUploading from 'react-images-uploading';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import QuillEditorToolbar, { modules, formats } from "../../../_utility/QuillEditorToolbar";
 import Rating from "react-rating";
+import QuillEditorToolbar, {formats, modules} from "../../../_utility/QuillEditorToolbar";
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
 import WithRouter from "../../../_utility/WithRouter";
 
-class PropertyCreate extends Component {
+class VenueEdit extends Component {
     constructor() {
         super();
         this.state = {
             featured_image:[],
-            property_images:[],
+            venue_images:[],
             organizationLists:[],
+            selected_organization_option:'',
             organization_id:'',
             name:'',
             star_rating:'',
             description:'',
             categoryLists:[],
+            selected_category_option:'',
             categories_id:[],
             occasionLists:[],
+            selected_occasion_option:'',
             occasions_id:[],
             amenityLists:[],
+            selected_amenity_option:'',
             amenities_id:[],
             price_type:'',
+            selected_price_type_option:'',
             price:'',
             capacity:'',
             divisionLists:[],
+            selected_division_option:'',
             division_id:'',
             districtLists:[],
             selected_district_option:'',
@@ -47,29 +53,14 @@ class PropertyCreate extends Component {
     }
 
     componentDidMount() {
+        let slug = this.props.params.venue_slug;
         let data = {
-            'user_id' : SessionHelper.GetAuthUserId(),
-            'value_field_as':'id',
+            'slug'      :   slug,
+            'user_id'   :   SessionHelper.GetAuthUserId(),
         };
         axios.get('/sanctum/csrf-cookie').then(response => {
-            axios.post('/api/organizations/lists/for/dropdown', data).then(res => {
-                this.setState({organizationLists:res.data.organizations});
-            }).catch((error)=>{});
-
-            axios.post('/api/category/lists/for/dropdown', data).then(res => {
-                this.setState({categoryLists:res.data.categories});
-            }).catch((error)=>{});
-
-            axios.post('/api/occasion/lists/for/dropdown', data).then(res => {
-                this.setState({occasionLists:res.data.occasions});
-            }).catch((error)=>{});
-
-            axios.post('/api/amenity/lists/for/dropdown', data).then(res => {
-                this.setState({amenityLists:res.data.amenities});
-            }).catch((error)=>{});
-
-            axios.post('/api/division/lists/for/dropdown', data).then(res => {
-                this.setState({divisionLists:res.data.divisions});
+            axios.post(`/api/venue/${slug}/edit`, data).then(res => {
+                this.setState({...res.data.data});
             }).catch((error)=>{});
         });
     }
@@ -81,7 +72,7 @@ class PropertyCreate extends Component {
 
     handleDivisionSelect = (selectedOption) =>{
         let data = {'value_field_as':'id', 'confirm_parent_division':'Yes', 'division_id':selectedOption.value}
-        this.setState({selected_district_option : '', selected_city_option : '', districtLists : [], cityLists : []});
+        this.setState({selected_division_option:selectedOption, selected_district_option : '', selected_city_option : '', districtLists : [], cityLists : []});
         axios.post('/api/district/lists/for/dropdown', data).then(res => {
             this.setState({division_id : selectedOption.value, districtLists:res.data.districts});
         }).catch((error)=>{});
@@ -101,7 +92,7 @@ class PropertyCreate extends Component {
         e.preventDefault();
         let data ={
             featured_image  :   this.state.featured_image.length > 0 ? this.state.featured_image[0].data_url : '',
-            property_images :   Array.from(this.state.property_images, img => img.data_url),
+            venue_images    :   Array.from(this.state.venue_images, img => img.data_url),
             organization_id :   this.state.organization_id,
             name            :   this.state.name,
             star_rating     :   this.state.star_rating,
@@ -121,8 +112,6 @@ class PropertyCreate extends Component {
             created_by      :   SessionHelper.GetAuthUserId()
         }
 
-        console.log(data);
-
         this.setState({processing : true, errors:[], message:''});
         axios.get('/sanctum/csrf-cookie').then(response => {
             axios.post('/api/venue/store', data).then(res => {
@@ -135,7 +124,7 @@ class PropertyCreate extends Component {
                 {
                     this.setState({processing:false, errors:[], message:res.data.message});
                     toast.success(res.data.message);
-                    this.props.navigate('/manage/property/list');
+                    this.props.navigate('/manage/venue/list');
                 }
             }).catch((error)=>{
                 console.log(error);
@@ -152,15 +141,15 @@ class PropertyCreate extends Component {
                         <div className="row">
                             <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center'}}>
                                 <div>
-                                    <h1 className="text-black mb-1">Property</h1>
-                                    <p>Add New Property</p>
+                                    <h1 className="text-black mb-1">venue</h1>
+                                    <p>Add New venue</p>
                                 </div>
                                 <div>
                                     <nav aria-label="breadcrumb">
                                         <ol className="breadcrumb custom-breadcrumb">
                                             <li className="breadcrumb-item"><Link to='/dashboard'>Dashboard</Link></li>
-                                            <li className="breadcrumb-item"><Link to='/manage/property'>Manage Property</Link></li>
-                                            <li className="breadcrumb-item"><Link to='/manage/property/list'>Property</Link></li>
+                                            <li className="breadcrumb-item"><Link to='/manage/venue'>Manage venue</Link></li>
+                                            <li className="breadcrumb-item"><Link to='/manage/venue/list'>venue</Link></li>
                                             <li className="breadcrumb-item active">Create</li>
                                         </ol>
                                     </nav>
@@ -169,7 +158,7 @@ class PropertyCreate extends Component {
                             <div className="col-sm-12">
                                 <div className="form-box">
                                     <div className="form-title-wrap">
-                                        <h3 className="title"><i className="la la-building mr-2 text-gray"></i>Property Information</h3>
+                                        <h3 className="title"><i className="la la-building mr-2 text-gray"></i>venue Information</h3>
                                     </div>
                                     <div className="form-content contact-form-action">
                                         <form className="row" onSubmit={this.formSubmit}>
@@ -207,14 +196,14 @@ class PropertyCreate extends Component {
                                                                 <div className="upload__image-wrapper">
                                                                     <label className="label-text mb-0 line-height-20 mr-2">Featured Image</label>
                                                                     <button
-                                                                    type="button"
-                                                                    className="btn btn-info btn-sm"
-                                                                    style={isDragging ? { color: 'red' } : undefined}
-                                                                    onClick={onImageUpload}
-                                                                    {...dragProps}
-                                                                >
-                                                                    <i className="las la-upload"></i> {isDragging ? "Drop here" : "Upload"}
-                                                                </button>
+                                                                        type="button"
+                                                                        className="btn btn-info btn-sm"
+                                                                        style={isDragging ? { color: 'red' } : undefined}
+                                                                        onClick={onImageUpload}
+                                                                        {...dragProps}
+                                                                    >
+                                                                        <i className="las la-upload"></i> {isDragging ? "Drop here" : "Upload"}
+                                                                    </button>
                                                                     &nbsp;
                                                                     {imageList.map((image, index) => (
                                                                         <div key={index} className="image-item">
@@ -238,8 +227,8 @@ class PropertyCreate extends Component {
                                                     <div className="form-group mt-3">
                                                         <ImageUploading
                                                             multiple={true}
-                                                            onChange={(imageList, addUpdateIndex) => this.setState({property_images:imageList})}
-                                                            value={this.state.property_images}
+                                                            onChange={(imageList, addUpdateIndex) => this.setState({venue_images:imageList})}
+                                                            value={this.state.venue_images}
                                                             maxNumber={10}
                                                             dataURLKey="data_url"
                                                             acceptType={['jpg', 'jpeg', 'png']}
@@ -257,7 +246,7 @@ class PropertyCreate extends Component {
                                                               }) => (
                                                                 // write your building UI
                                                                 <div className="upload__image-wrapper">
-                                                                    <label className="label-text mb-0 line-height-20 mr-2">Property Images</label> <button
+                                                                    <label className="label-text mb-0 line-height-20 mr-2">venue Images</label> <button
                                                                     type="button"
                                                                     className="btn btn-info btn-sm mr-2"
                                                                     style={isDragging ? { color: 'red' } : undefined}
@@ -294,7 +283,7 @@ class PropertyCreate extends Component {
                                                                 </div>
                                                             )}
                                                         </ImageUploading>
-                                                        <p className="text-danger">{this.state.errors.property_images}</p>
+                                                        <p className="text-danger">{this.state.errors.venue_images}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -305,6 +294,7 @@ class PropertyCreate extends Component {
                                                     <div className="form-group">
                                                         <Select
                                                             name="organization_id"
+                                                            value={this.state.selected_organization_option}
                                                             options={this.state.organizationLists}
                                                             onChange={(option) => this.setState({organization_id: option.value})}
                                                             placeholder='--Select Organization--'
@@ -319,8 +309,8 @@ class PropertyCreate extends Component {
                                                     <label className="label-text">Name</label>
                                                     <div className="form-group">
                                                         <span className="la la-building form-icon"></span>
-                                                        <input onChange={this.handleInput} className="form-control" type="text" name="name"
-                                                               placeholder="Property Name"/>
+                                                        <input onChange={this.handleInput} defaultValue={this.state.name} className="form-control" type="text" name="name"
+                                                               placeholder="venue Name"/>
                                                         <p className="text-danger">{this.state.errors.name}</p>
                                                     </div>
                                                 </div>
@@ -367,7 +357,8 @@ class PropertyCreate extends Component {
                                                         <Select
                                                             isMulti
                                                             name="categories_id"
-                                                            onChange={(selectedOption)=>this.setState({categories_id:Array.from(selectedOption, option => option.value)})}
+                                                            value={this.state.selected_category_option}
+                                                            onChange={(selectedOption)=>this.setState({selected_category_option:selectedOption, categories_id:Array.from(selectedOption, option => option.value)})}
                                                             options={this.state.categoryLists}
                                                             placeholder='--Select Categories--'
                                                         />
@@ -383,7 +374,8 @@ class PropertyCreate extends Component {
                                                         <Select
                                                             isMulti
                                                             name="occasions_id"
-                                                            onChange={(selectedOption)=>this.setState({occasions_id:Array.from(selectedOption, option => option.value)})}
+                                                            value={this.state.selected_occasion_option}
+                                                            onChange={(selectedOption)=>this.setState({selected_occasion_option:selectedOption, occasions_id:Array.from(selectedOption, option => option.value)})}
                                                             options={this.state.occasionLists}
                                                             placeholder='--Select Occasions--'
                                                         />
@@ -399,7 +391,8 @@ class PropertyCreate extends Component {
                                                         <Select
                                                             isMulti
                                                             name="amenities_id"
-                                                            onChange={(selectedOption)=>this.setState({amenities_id:Array.from(selectedOption, option => option.value)})}
+                                                            value={this.state.selected_amenity_option}
+                                                            onChange={(selectedOption)=>this.setState({selected_amenity_option:selectedOption, amenities_id:Array.from(selectedOption, option => option.value)})}
                                                             options={this.state.amenityLists}
                                                             placeholder='--Select Amenities--'
                                                         />
@@ -414,6 +407,7 @@ class PropertyCreate extends Component {
                                                     <div className="form-group">
                                                         <Select
                                                             name="price_type"
+                                                            value={this.state.selected_price_type_option}
                                                             options={this.price_types}
                                                             onChange={(option) => this.setState({price_type: option.value})}
                                                             placeholder='--Select Price Type--'
@@ -428,7 +422,7 @@ class PropertyCreate extends Component {
                                                     <label className="label-text">Price</label>
                                                     <div className="form-group">
                                                         <span className="la la-dollar-sign form-icon"></span>
-                                                        <input onChange={this.handleInput} className="form-control" type="number" min="0" name="price"
+                                                        <input onChange={this.handleInput} defaultValue={this.state.price} className="form-control" type="number" min="0" name="price"
                                                                placeholder="Price"/>
                                                         <p className="text-danger">{this.state.errors.price}</p>
                                                     </div>
@@ -439,7 +433,7 @@ class PropertyCreate extends Component {
                                                     <label className="label-text">Capacity</label>
                                                     <div className="form-group">
                                                         <span className="la la-users form-icon"></span>
-                                                        <input onChange={this.handleInput} className="form-control" type="number" min="0" name="capacity"
+                                                        <input onChange={this.handleInput} defaultValue={this.state.capacity} className="form-control" type="number" min="0" name="capacity"
                                                                placeholder="Capacity"/>
                                                         <p className="text-danger">{this.state.errors.capacity}</p>
                                                     </div>
@@ -452,6 +446,7 @@ class PropertyCreate extends Component {
                                                     <div className="form-group">
                                                         <Select
                                                             name="division_id"
+                                                            value={this.state.selected_division_option}
                                                             options={this.state.divisionLists}
                                                             onChange={this.handleDivisionSelect}
                                                             placeholder='--Select Division--'
@@ -498,7 +493,7 @@ class PropertyCreate extends Component {
                                                     <label className="label-text mb-0 line-height-20">Address</label>
                                                     <div className="form-group">
                                                         <span className="la la-pencil form-icon"></span>
-                                                        <textarea onChange={this.handleInput} className="message-control form-control" name="address" placeholder="In English only, no HTML, no web, no ALL CAPS"></textarea>
+                                                        <textarea onChange={this.handleInput} defaultValue={this.state.address} className="message-control form-control" name="address" placeholder="In English only, no HTML, no web, no ALL CAPS"></textarea>
                                                         <p className="text-danger">{this.state.errors.address}</p>
                                                     </div>
                                                 </div>
@@ -528,4 +523,4 @@ class PropertyCreate extends Component {
     }
 }
 
-export default WithRouter(PropertyCreate);
+export default WithRouter(VenueEdit);

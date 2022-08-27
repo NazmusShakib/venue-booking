@@ -61,13 +61,13 @@ class Organization extends Component {
                             <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center'}}>
                                 <div>
                                     <h1 className="text-black mb-1">Organization</h1>
-                                    <Link to='/property/organization/create' className="btn btn-primary btn-sm mt-2"><i className="las la-plus"></i> Add New Organization</Link>
+                                    <Link to='/manage/venue/organization/create' className="btn btn-primary btn-sm mt-2"><i className="las la-plus"></i> Add New Organization</Link>
                                 </div>
                                 <div>
                                     <nav aria-label="breadcrumb">
                                         <ol className="breadcrumb custom-breadcrumb">
                                             <li className="breadcrumb-item"><Link to='/dashboard'>Dashboard</Link></li>
-                                            <li className="breadcrumb-item"><Link to='/manage/property'>Manage Property</Link></li>
+                                            <li className="breadcrumb-item"><Link to='/manage/venue'>Manage Venue</Link></li>
                                             <li className="breadcrumb-item active">Organization</li>
                                         </ol>
                                     </nav>

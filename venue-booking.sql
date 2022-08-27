@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 24, 2022 at 07:20 AM
+-- Generation Time: Aug 27, 2022 at 06:01 AM
 -- Server version: 5.7.33
 -- PHP Version: 8.1.3
 
@@ -890,7 +890,11 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 (1920, 1, 'admin/venues/9/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-24 00:56:46', '2022-08-24 00:56:46'),
 (1921, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-24 00:59:55', '2022-08-24 00:59:55'),
 (1922, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-08-24 01:01:49', '2022-08-24 01:01:49'),
-(1923, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-08-24 01:01:51', '2022-08-24 01:01:51');
+(1923, 1, 'admin/venues', 'GET', '127.0.0.1', '[]', '2022-08-24 01:01:51', '2022-08-24 01:01:51'),
+(1924, 1, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2022-08-24 21:54:02', '2022-08-24 21:54:02'),
+(1925, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-08-24 21:54:04', '2022-08-24 21:54:04'),
+(1926, 1, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2022-08-24 23:31:28', '2022-08-24 23:31:28'),
+(1927, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-08-24 23:31:28', '2022-08-24 23:31:28');
 
 -- --------------------------------------------------------
 
@@ -1941,7 +1945,8 @@ INSERT INTO `event_calendars` (`id`, `venue_id`, `title`, `description`, `feedba
 (5, 8, 'Party', 'Available for any perty', NULL, '2022-08-07', '2022-08-13', 1, 'approved', 2, NULL, '2022-08-02 04:26:07', '2022-08-02 04:26:07'),
 (6, 8, 'Party', 'Available for any perty', NULL, '2022-08-18', '2022-08-19', 1, 'pending', 2, NULL, '2022-08-02 04:37:06', '2022-08-02 04:37:06'),
 (7, 1, 'Weeding', 'Available', NULL, '2022-08-14', '2022-08-17', 1, 'pending', 2, NULL, '2022-08-02 04:39:13', '2022-08-02 04:39:13'),
-(8, 1, 'Weeding', NULL, NULL, '2022-08-22', '2022-08-24', 1, 'pending', 2, NULL, '2022-08-02 04:39:25', '2022-08-02 04:39:25');
+(8, 1, 'Weeding', NULL, NULL, '2022-08-22', '2022-08-24', 1, 'pending', 2, NULL, '2022-08-02 04:39:25', '2022-08-02 04:39:25'),
+(9, 2, 'weeding', NULL, NULL, '2022-08-02', '2022-08-03', 1, 'pending', 1, NULL, '2022-08-24 06:34:10', '2022-08-24 06:34:10');
 
 -- --------------------------------------------------------
 
@@ -1957,6 +1962,22 @@ CREATE TABLE `failed_jobs` (
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linked_social_accounts`
+--
+
+CREATE TABLE `linked_social_accounts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `provider` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `provider_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1995,7 +2016,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (42, '2022_08_20_055703_create_organizations_table', 12),
 (43, '2022_07_01_115642_create_venues_table', 13),
 (44, '2022_08_20_114821_create_user_venue_table', 14),
-(46, '2022_08_20_130211_create_organization_user_table', 15);
+(46, '2022_08_20_130211_create_organization_user_table', 15),
+(47, '2022_08_27_052225_create_linked_social_accounts_table', 16);
 
 -- --------------------------------------------------------
 
@@ -2134,11 +2156,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `venue_id`, `user_id`, `category_id`, `occasion_id`, `start_date`, `end_date`, `name`, `email`, `mobile_number`, `capacity`, `total_guests`, `price_type`, `net_total_price`, `address`, `receive_promotional_offers`, `agree`, `status`, `payment_id`, `payment_status`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 2, '2022-08-06', '2022-08-11', 'rre', 'user@gmail.com', '4343', 2000, 43, 'Per Night', '30000.00', '4343', 1, 1, 'approved', NULL, 'completed', '2022-07-31 05:20:24', '2022-07-31 05:20:24'),
-(2, 1, 1, 1, 1, '2022-08-12', '2022-08-12', 'User', 'user@gmail.com', '3223', 5000, 44, 'Per Day', '50000.00', '323232', 1, 1, 'pending', NULL, 'pending', '2022-08-03 23:42:53', '2022-08-03 23:42:53'),
-(3, 1, 1, 1, 1, '2022-08-05', '2022-08-05', 'User', 'user@gmail.com', '323', 5000, 3232, 'Per Day', '50000.00', '3232', 1, 1, 'pending', NULL, 'pending', '2022-08-04 00:10:07', '2022-08-04 00:10:07'),
-(4, 8, 1, 1, 1, '2022-08-05', '2022-08-05', 'User', 'user@gmail.com', 'sss', 5000, 3, 'Per Day', '50000.00', 'weweew', 0, 0, 'pending', NULL, 'pending', '2022-08-04 23:52:55', '2022-08-04 23:52:55'),
-(5, 8, 1, 1, 1, '2022-08-05', '2022-08-05', 'User', 'user@gmail.com', 'sss', 5000, 3, 'Per Day', '50000.00', 'weweew', 0, 0, 'approved', NULL, 'completed', '2022-08-04 23:52:55', '2022-08-04 23:52:55');
+(5, 8, 2, 1, 1, '2022-08-05', '2022-08-05', 'User', 'user@gmail.com', 'sss', 5000, 3, 'Per Day', '50000.00', 'weweew', 0, 0, 'approved', NULL, 'pending', '2022-08-04 23:52:55', '2022-08-04 23:52:55'),
+(6, 1, 2, 1, 2, '2022-08-06', '2022-08-11', 'rre', 'user@gmail.com', '4343', 2000, 43, 'Per Night', '30000.00', '4343', 1, 1, 'approved', NULL, 'completed', '2022-07-31 05:20:24', '2022-07-31 05:20:24'),
+(7, 8, 2, 1, 1, '2022-08-05', '2022-08-05', 'User', 'user@gmail.com', 'sss', 5000, 3, 'Per Day', '50000.00', 'weweew', 0, 0, 'approved', NULL, 'pending', '2022-08-04 23:52:55', '2022-08-04 23:52:55'),
+(10, 1, 1, 1, 2, '2022-08-06', '2022-08-11', 'rre', 'user@gmail.com', '4343', 2000, 43, 'Per Night', '30000.00', '4343', 1, 1, 'approved', NULL, 'completed', '2022-07-31 05:20:24', '2022-07-31 05:20:24');
 
 -- --------------------------------------------------------
 
@@ -2228,9 +2249,12 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
-(3, 'App\\Models\\User', 2, 'admin@gmail.com_Token', '55dae2139b604cea08029b95e561f295bafc422e528b561ebd2fcb3d8f22683d', '[\"*\"]', '2022-08-02 04:39:26', '2022-08-02 03:20:47', '2022-08-02 04:39:26'),
-(4, 'App\\Models\\User', 2, 'admin@gmail.com_Token', 'e6f449e4d8802fad45d20cc50ff432a0f63c71f2fd978186d87737b75ab18e70', '[\"*\"]', '2022-08-02 23:53:42', '2022-08-02 23:12:33', '2022-08-02 23:53:42'),
-(5, 'App\\Models\\User', 1, 'user@gmail.com_Token', '5297126d8ee24354a298d955609d3dc95d370ba8227d484a5cd01ebbd522d82e', '[\"*\"]', '2022-08-24 01:19:47', '2022-08-19 23:56:19', '2022-08-24 01:19:47');
+(1, 'App\\Models\\User', 3, 'abdulawalbd121@gmail.com_Token', '2bd71dd75270b4615b5bb325ec256d4effa5ad0cb3f978d1334218f1efaa63a3', '[\"*\"]', NULL, '2022-08-25 06:46:36', '2022-08-25 06:46:36'),
+(2, 'App\\Models\\User', 5, 'abdulawalbd121@gmail.com_Token', '37a8594c78435bf0b9350df3562887f30ff7c96f448640cecfcf5a01ab0470a4', '[\"*\"]', NULL, '2022-08-25 06:51:37', '2022-08-25 06:51:37'),
+(3, 'App\\Models\\User', 6, 'abdulawalbd121@gmail.com_Token', '099722fe9aaae3482682a7fc942fe5c8ab3a6d94ff4104fd1e98ea0f90801a8a', '[\"*\"]', NULL, '2022-08-25 06:56:17', '2022-08-25 06:56:17'),
+(4, 'App\\Models\\User', 7, 'abdulawalbd121@gmail.com_Token', '2946a4bdef12496aa51cbe60a921d675b115fa1d987b099f670e2a764e64298c', '[\"*\"]', NULL, '2022-08-25 07:02:42', '2022-08-25 07:02:42'),
+(5, 'App\\Models\\User', 9, 'abdulawalbd121@gmail.com_Token', 'e8fbd69117d3174e97a896ae5db751829d6583491bf12ce6906a5318bf5efff0', '[\"*\"]', NULL, '2022-08-25 07:07:01', '2022-08-25 07:07:01'),
+(14, 'App\\Models\\User', 15, '_Token', '879a6eaea2f90044a10b94cd030edb8538c8c13aa03614673b7ff74e8cd1badc', '[\"*\"]', NULL, '2022-08-26 23:57:07', '2022-08-26 23:57:07');
 
 -- --------------------------------------------------------
 
@@ -2241,10 +2265,11 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `has_socials_auth` tinyint(1) NOT NULL DEFAULT '0',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -2254,9 +2279,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'User', 'user', 'user@gmail.com', '2022-08-02 03:19:26', '$2y$10$42fQJep86380hDrRU/Chs.d4TGNWj5RhRRIeUC3WuyoSjdJKkJOE6', NULL, '2022-07-31 05:09:46', '2022-08-02 03:19:36'),
-(2, 'admin', 'admin', 'admin@gmail.com', '2022-08-02 03:19:39', '$2y$10$MxD/BxA13ZTpVfG.U8UJu.oyi0NuxxOLIl7UajNoGPpa6K18oZb9m', NULL, '2022-08-02 03:20:17', '2022-08-02 03:20:17');
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `has_socials_auth`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'User', 'user', 'user@gmail.com', '2022-08-02 03:19:26', '$2y$10$kLzEDwuYiJ5q4XwoHDyNF./lno5/LzLhsTJLgxj8tq4BSH0hy5mje', 0, NULL, '2022-07-31 05:09:46', '2022-08-24 08:24:22'),
+(2, 'admin', 'admin', 'admin@gmail.com', '2022-08-02 03:19:39', '$2y$10$MxD/BxA13ZTpVfG.U8UJu.oyi0NuxxOLIl7UajNoGPpa6K18oZb9m', 0, NULL, '2022-08-02 03:20:17', '2022-08-02 03:20:17');
 
 -- --------------------------------------------------------
 
@@ -2481,6 +2506,15 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `linked_social_accounts`
+--
+ALTER TABLE `linked_social_accounts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linked_social_accounts_user_id_foreign` (`user_id`),
+  ADD KEY `linked_social_accounts_provider_index` (`provider`),
+  ADD KEY `linked_social_accounts_provider_id_index` (`provider_id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -2605,7 +2639,7 @@ ALTER TABLE `admin_menu`
 -- AUTO_INCREMENT for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1924;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1928;
 
 --
 -- AUTO_INCREMENT for table `admin_permissions`
@@ -2635,7 +2669,7 @@ ALTER TABLE `amenities`
 -- AUTO_INCREMENT for table `amenity_venue`
 --
 ALTER TABLE `amenity_venue`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -2647,7 +2681,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `category_venue`
 --
 ALTER TABLE `category_venue`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `cities`
@@ -2671,7 +2705,7 @@ ALTER TABLE `divisions`
 -- AUTO_INCREMENT for table `event_calendars`
 --
 ALTER TABLE `event_calendars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -2680,10 +2714,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `linked_social_accounts`
+--
+ALTER TABLE `linked_social_accounts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `occasions`
@@ -2695,13 +2735,13 @@ ALTER TABLE `occasions`
 -- AUTO_INCREMENT for table `occasion_venue`
 --
 ALTER TABLE `occasion_venue`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `organizations`
@@ -2719,25 +2759,25 @@ ALTER TABLE `organization_user`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user_venue`
 --
 ALTER TABLE `user_venue`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `venues`
 --
 ALTER TABLE `venues`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -2801,6 +2841,12 @@ ALTER TABLE `event_calendars`
   ADD CONSTRAINT `event_calendars_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `event_calendars_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `event_calendars_venue_id_foreign` FOREIGN KEY (`venue_id`) REFERENCES `venues` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `linked_social_accounts`
+--
+ALTER TABLE `linked_social_accounts`
+  ADD CONSTRAINT `linked_social_accounts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `occasions`

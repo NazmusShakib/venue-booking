@@ -9,6 +9,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Validator;
 use Hash;
 use App\Models\User;
+use App\Models\LinkedSocialAccount;
 
 class SocialAuthController extends Controller
 {
@@ -17,7 +18,7 @@ class SocialAuthController extends Controller
      *
      * @var string
      */
-    protected $providers = ['google', 'facebook'];
+    protected $providers = ['google', 'facebook', 'instagram'];
 
     /**
      * Check Supported Social App.
@@ -76,18 +77,26 @@ class SocialAuthController extends Controller
             return $this->sendFailedResponse($e->getMessage());
         }
 
-        $user = User::where('email', $response->getEmail())->first();
+        $social = LinkedSocialAccount::where('provider', $provider)->where('provider_id', $response->getId())->first();
 
-        if (empty($user)){
+        if (!empty($user)){
+            $user = $social->user;
+        }else{
             $user = new User;
-            $user->name = $response->getName();;
-            $user->username = $response->getEmail();
-            $user->email = $response->getEmail();
+            $user->name = $response->getName();
+            $user->username = empty(User::where('username', $response->getEmail())->first()) ? $response->getEmail() : NULL;
+            $user->email = empty(User::where('email', $response->getEmail())->first()) ? $response->getEmail() : NULL;
             $user->password = Hash::make($response->getId());
             $user->email_verified_at = date('Y-m-d H:i:s');
-            $user->provider = $provider;
-            $user->provider_id = $response->getId();
+            $user->has_socials_auth = true;
             $user->save();
+
+            $social = new LinkedSocialAccount;
+            $social->user_id = $user->id;
+            $social->email = $response->getEmail();
+            $social->provider = $provider;
+            $social->provider_id = $response->getId();
+            $social->save();
         }
 
         $res = [

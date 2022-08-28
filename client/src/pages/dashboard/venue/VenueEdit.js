@@ -10,6 +10,7 @@ import QuillEditorToolbar, {formats, modules} from "../../../_utility/QuillEdito
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import WithRouter from "../../../_utility/WithRouter";
+import Swal from "sweetalert2";
 
 class VenueEdit extends Component {
     constructor() {
@@ -46,6 +47,7 @@ class VenueEdit extends Component {
             selected_city_option:'',
             city_id:'',
             address:'',
+            loading:true,
             processing:false,
             message:'',
             errors:[]
@@ -60,7 +62,17 @@ class VenueEdit extends Component {
         };
         axios.get('/sanctum/csrf-cookie').then(response => {
             axios.post(`/api/venue/${slug}/edit`, data).then(res => {
-                this.setState({...res.data.data});
+                if(res.data.status === 200)
+                {
+                    this.setState({...res.data.data});
+                    this.setState({loading:false});
+                }
+
+                if(res.data.status === 400)
+                {
+                    toast.error(res.data.error);
+                    this.props.navigate('/manage/venue/list');
+                }
             }).catch((error)=>{});
         });
     }
@@ -91,8 +103,8 @@ class VenueEdit extends Component {
     formSubmit = (e) =>{
         e.preventDefault();
         let data ={
-            featured_image  :   this.state.featured_image.length > 0 ? this.state.featured_image[0].data_url : '',
-            venue_images    :   Array.from(this.state.venue_images, img => img.data_url),
+            featured_image  :   Array.from(this.state.featured_image, img => ({'server_key':img.server_key, 'data_url':img.data_url})),
+            venue_images    :   Array.from(this.state.venue_images, img => ({'server_key':img.server_key, 'data_url':img.data_url})),
             organization_id :   this.state.organization_id,
             name            :   this.state.name,
             star_rating     :   this.state.star_rating,
@@ -108,13 +120,15 @@ class VenueEdit extends Component {
             city_id         :   this.state.city_id,
             address         :   this.state.address,
             is_enabled      :   0,
-            creator_type    :   'User',
-            created_by      :   SessionHelper.GetAuthUserId()
+            updater_type    :   'User',
+            updated_by      :   SessionHelper.GetAuthUserId()
         }
 
+        let slug = this.props.params.venue_slug;
         this.setState({processing : true, errors:[], message:''});
         axios.get('/sanctum/csrf-cookie').then(response => {
-            axios.post('/api/venue/store', data).then(res => {
+            axios.post(`/api/venue/${slug}/update`, data).then(res => {
+                //console.log(res.data);
                 if (res.data.status === 400)
                 {
                     this.setState({processing:false, message:res.data.message, errors:res.data.errors});
@@ -124,6 +138,9 @@ class VenueEdit extends Component {
                 {
                     this.setState({processing:false, errors:[], message:res.data.message});
                     toast.success(res.data.message);
+                    this.props.navigate('/manage/venue/list');
+                }else if(res.data.status === 306){
+                    toast.error(res.data.error);
                     this.props.navigate('/manage/venue/list');
                 }
             }).catch((error)=>{
@@ -141,16 +158,16 @@ class VenueEdit extends Component {
                         <div className="row">
                             <div className="col-sm-12 mb-5" style={{'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center'}}>
                                 <div>
-                                    <h1 className="text-black mb-1">venue</h1>
-                                    <p>Add New venue</p>
+                                    <h1 className="text-black mb-1">Venue</h1>
+                                    <p>Edit</p>
                                 </div>
                                 <div>
                                     <nav aria-label="breadcrumb">
                                         <ol className="breadcrumb custom-breadcrumb">
                                             <li className="breadcrumb-item"><Link to='/dashboard'>Dashboard</Link></li>
-                                            <li className="breadcrumb-item"><Link to='/manage/venue'>Manage venue</Link></li>
-                                            <li className="breadcrumb-item"><Link to='/manage/venue/list'>venue</Link></li>
-                                            <li className="breadcrumb-item active">Create</li>
+                                            <li className="breadcrumb-item"><Link to='/manage/venue'>Manage Venue</Link></li>
+                                            <li className="breadcrumb-item"><Link to='/manage/venue/list'>Venue</Link></li>
+                                            <li className="breadcrumb-item active">Edit</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -158,10 +175,87 @@ class VenueEdit extends Component {
                             <div className="col-sm-12">
                                 <div className="form-box">
                                     <div className="form-title-wrap">
-                                        <h3 className="title"><i className="la la-building mr-2 text-gray"></i>venue Information</h3>
+                                        <h3 className="title"><i className="la la-building mr-2 text-gray"></i>Venue Information</h3>
                                     </div>
                                     <div className="form-content contact-form-action">
-                                        <form className="row" onSubmit={this.formSubmit}>
+                                        {this.state.loading === true && (
+                                            <div className="row">
+                                                <div className="col-sm-12 loaderPlaceholder">
+                                                    <div className="row">
+                                                        <div className="col-lg-12 responsive-column">
+                                                            <div className="ph-col">
+                                                                <div className="ph-picture"></div>
+                                                                <div className="ph-row">
+                                                                    <div className="ph-col-6 big"></div>
+                                                                    <div className="ph-col-4 empty big"></div>
+                                                                    <div className="ph-col-2 big"></div>
+                                                                    <div className="ph-col-4"></div>
+                                                                    <div className="ph-col-8 empty"></div>
+                                                                    <div className="ph-col-6"></div>
+                                                                    <div className="ph-col-6 empty"></div>
+                                                                    <div className="ph-col-12"></div>
+                                                                </div>
+                                                                <div className="ph-row">
+                                                                    <div className="ph-col-6 big"></div>
+                                                                    <div className="ph-col-4 empty big"></div>
+                                                                    <div className="ph-col-2 big"></div>
+                                                                    <div className="ph-col-4"></div>
+                                                                    <div className="ph-col-8 empty"></div>
+                                                                    <div className="ph-col-6"></div>
+                                                                    <div className="ph-col-6 empty"></div>
+                                                                    <div className="ph-col-12"></div>
+                                                                </div>
+                                                                <div className="ph-row">
+                                                                    <div className="ph-col-6 big"></div>
+                                                                    <div className="ph-col-4 empty big"></div>
+                                                                    <div className="ph-col-2 big"></div>
+                                                                    <div className="ph-col-4"></div>
+                                                                    <div className="ph-col-8 empty"></div>
+                                                                    <div className="ph-col-6"></div>
+                                                                    <div className="ph-col-6 empty"></div>
+                                                                    <div className="ph-col-12"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="ph-col">
+                                                                <div className="ph-picture"></div>
+                                                                <div className="ph-row">
+                                                                    <div className="ph-col-6 big"></div>
+                                                                    <div className="ph-col-4 empty big"></div>
+                                                                    <div className="ph-col-2 big"></div>
+                                                                    <div className="ph-col-4"></div>
+                                                                    <div className="ph-col-8 empty"></div>
+                                                                    <div className="ph-col-6"></div>
+                                                                    <div className="ph-col-6 empty"></div>
+                                                                    <div className="ph-col-12"></div>
+                                                                </div>
+                                                                <div className="ph-row">
+                                                                    <div className="ph-col-6 big"></div>
+                                                                    <div className="ph-col-4 empty big"></div>
+                                                                    <div className="ph-col-2 big"></div>
+                                                                    <div className="ph-col-4"></div>
+                                                                    <div className="ph-col-8 empty"></div>
+                                                                    <div className="ph-col-6"></div>
+                                                                    <div className="ph-col-6 empty"></div>
+                                                                    <div className="ph-col-12"></div>
+                                                                </div>
+                                                                <div className="ph-row">
+                                                                    <div className="ph-col-6 big"></div>
+                                                                    <div className="ph-col-4 empty big"></div>
+                                                                    <div className="ph-col-2 big"></div>
+                                                                    <div className="ph-col-4"></div>
+                                                                    <div className="ph-col-8 empty"></div>
+                                                                    <div className="ph-col-6"></div>
+                                                                    <div className="ph-col-6 empty"></div>
+                                                                    <div className="ph-col-12"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {this.state.loading === false && (
+                                            <form className="row" onSubmit={this.formSubmit}>
                                             {this.state.message !== '' ? (
                                                 <>
                                                     <div className="form-group col-lg-12 text-center">
@@ -205,8 +299,9 @@ class VenueEdit extends Component {
                                                                         <i className="las la-upload"></i> {isDragging ? "Drop here" : "Upload"}
                                                                     </button>
                                                                     &nbsp;
-                                                                    {imageList.map((image, index) => (
+                                                                    {this.state.featured_image.map((image, index) => (
                                                                         <div key={index} className="image-item">
+                                                                            {/*{console.log(image)}*/}
                                                                             <img className="img-thumbnail mt-3 mb-3" src={image['data_url']} alt="" style={{'width':'150px','height':'150px'}}/>
                                                                             <div className="image-item__btn-wrapper">
                                                                                 <button type="button" className="btn btn-primary btn-sm mr-2" onClick={() => onImageUpdate(index)}>Update</button>
@@ -269,8 +364,9 @@ class VenueEdit extends Component {
                                                                                     </ul>
                                                                                 </div>
                                                                             </>}
-                                                                            {imageList.map((image, index) => (
+                                                                            {this.state.venue_images.map((image, index) => (
                                                                                 <div key={index} className="img-thumbnail image-item mr-2 mb-3">
+                                                                                    {/*{console.log(image)}*/}
                                                                                     <img src={image['data_url']} alt="" style={{'width':'100px','height':'100px'}}/>
                                                                                     <div className="image-item__btn-wrapper mt-2 text-center">
                                                                                         <button type="button" title="Update" className="btn btn-primary btn-sm mr-2" onClick={() => onImageUpdate(index)}><i className="las la-sync"></i></button>
@@ -409,7 +505,7 @@ class VenueEdit extends Component {
                                                             name="price_type"
                                                             value={this.state.selected_price_type_option}
                                                             options={this.price_types}
-                                                            onChange={(option) => this.setState({price_type: option.value})}
+                                                            onChange={(option) => this.setState({selected_price_type_option:option, price_type: option.value})}
                                                             placeholder='--Select Price Type--'
                                                         />
                                                         <p className="text-danger">{this.state.errors.price_type}</p>
@@ -503,15 +599,16 @@ class VenueEdit extends Component {
                                                 <div className="btn-box pt-3">
                                                     {this.state.processing === true ? (
                                                         <>
-                                                            <button type="submit" className="theme-btn btn-danger disabled float-right"><i className="las la-spin la-spinner"></i> Save</button>
+                                                            <button type="submit" className="theme-btn btn-danger disabled float-right"><i className="las la-spin la-spinner"></i> Update</button>
                                                         </>
                                                     ) : (
-                                                        <button type="submit" className="theme-btn float-right"><i className="la la-save ml-1"></i> Save</button>
+                                                        <button type="submit" className="theme-btn float-right"><i className="la la-save ml-1"></i> Update</button>
                                                     )}
                                                 </div>
                                             </div>
 
                                         </form>
+                                        )}
                                     </div>
                                 </div>
                             </div>

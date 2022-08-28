@@ -50,7 +50,7 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::post('/venue/store', [ApiUserDashboard::class, 'venue_store']);
     Route::get('/user/venues/{user_id}', [ApiUserDashboard::class, 'venues_by_user']);
     Route::get('/venues/orders/{user_id}', [ApiUserDashboard::class, 'venues_orders']);
+    Route::post('/venue/{slug}/edit', [ApiUserDashboard::class, 'venue_edit']);
+    Route::post('/venue/{slug}/update', [ApiUserDashboard::class, 'venue_update']);
     Route::post('/delete/venue', [ApiUserDashboard::class, 'delete_venue']);
-
 });
-Route::post('/venue/{slug}/edit', [ApiUserDashboard::class, 'venue_edit']);

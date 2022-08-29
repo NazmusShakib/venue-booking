@@ -3,13 +3,17 @@ import {Link} from "react-router-dom";
 import SessionHelper from "../../../session/SessionHelper";
 import axios from "axios";
 import Swal from "sweetalert2";
+import {toast} from "react-toastify";
+import WithRouter from "../../../_utility/WithRouter";
 
 class VenueList extends Component {
     constructor() {
         super();
         this.state = {
             venues:[],
-            loading:true
+            loading:true,
+            edit_btn_loading:false,
+            delete_btn_loading:false
         }
     }
 
@@ -40,8 +44,10 @@ class VenueList extends Component {
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
+                this.setState({delete_btn_loading:true});
                 axios.get('/sanctum/csrf-cookie').then(response => {
                     axios.post('/api/delete/venue', data).then(res => {
+                        this.setState({delete_btn_loading:false});
                         if(parseInt(res.data.status) === 200){
                             document.getElementById('venue_'+venue_id).remove();
                             Swal.fire('Deleted!','Your file has been deleted.','success');
@@ -56,6 +62,28 @@ class VenueList extends Component {
                 Swal.fire('Cancelled','Your imaginary file is safe :)','error');
             }
         })
+    }
+
+    editVenue(venue_slug){
+        this.setState({edit_btn_loading:true});
+        let data = {
+            'slug'      :   venue_slug,
+            'user_id'   :   SessionHelper.GetAuthUserId(),
+        };
+        axios.get('/sanctum/csrf-cookie').then(response => {
+            axios.post(`/api/venue/${venue_slug}/edit`, data).then(res => {
+                this.setState({edit_btn_loading:false});
+                if(res.data.status === 200)
+                {
+                    this.props.navigate(`/manage/venue/${venue_slug}/edit`, {state: {venue:res.data.data}});
+                }
+
+                if(res.data.status === 306)
+                {
+                    Swal.fire('Failed!',res.data.error.toString(),'error');
+                }
+            }).catch((error)=>{});
+        });
     }
 
     render() {
@@ -140,10 +168,14 @@ class VenueList extends Component {
                                                         <td>{venue.created_at}</td>
                                                         <td>{venue.updated_at}</td>
                                                         <td>
-                                                            <Link to={`/manage/venue/${venue.slug}/edit`} className="btn btn-sm btn-success mr-2"><i className="las la-edit"></i></Link>
+                                                            <button type="button" className="btn btn-sm btn-success mr-2"
+                                                                    onClick={(e) => this.editVenue(venue.slug)}>
+                                                                {this.state.edit_btn_loading === false ? (<i className="las la-edit"></i>) : (<i className="las la-spin la-spinner"></i>)}
+                                                            </button>
+
                                                             <button type="button" className="btn btn-sm btn-danger"
                                                                     onClick={(e) => this.deleteVenue(venue.id)}>
-                                                                <i className="las la-trash"></i>
+                                                                {this.state.delete_btn_loading === false ? (<i className="las la-trash"></i>) : (<i className="las la-spin la-spinner"></i>)}
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -163,4 +195,4 @@ class VenueList extends Component {
     }
 }
 
-export default VenueList;
+export default WithRouter(VenueList);

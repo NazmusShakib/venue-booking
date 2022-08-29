@@ -30,6 +30,7 @@ import VenueCreate from "../pages/dashboard/venue/VenueCreate";
 import ListYourVenue from "../pages/ListYourVenue";
 import SocialLoginCallback from "../pages/authentication/SocialLoginCallback";
 import VenueEdit from "../pages/dashboard/venue/VenueEdit";
+import OrganizationEdit from "../pages/dashboard/venue/organization/OrganizationEdit";
 
 class AppRoute extends Component {
     render() {
@@ -60,6 +61,7 @@ class AppRoute extends Component {
                                 <Route index element={<VenueManage />} />
                                 <Route path="organization" element={<Organization />} />
                                 <Route path="organization/create" element={<OrganizationCreate />} />
+                                <Route path="organization/:organization_slug/edit" element={<OrganizationEdit />} />
                                 <Route path="list" element={<VenueList />} />
                                 <Route path="create" element={<VenueCreate />} />
                                 <Route path=":venue_slug/edit" element={<VenueEdit />} />

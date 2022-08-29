@@ -82,7 +82,7 @@ class OrganizationCreate extends Component {
                             <div className="col-sm-12">
                                 <div className="form-box">
                                     <div className="form-title-wrap">
-                                        <h3 className="title"><i className="la la-user mr-2 text-gray"></i>Organization Information</h3>
+                                        <h3 className="title"><i className="la la-landmark mr-2 text-gray"></i>Organization Information</h3>
                                     </div>
                                     <div className="form-content contact-form-action">
                                         <form className="row" onSubmit={this.formSubmit}>

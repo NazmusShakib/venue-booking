@@ -98,7 +98,7 @@ class ApiUserDashboard extends Controller
     public function organization_store(Request $request){
         $validation = Validator::make($request->all(), [
             'user_id' => ['required'],
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'unique:organizations'],
             'description' => ['required', 'string', 'max:255'],
             'contact_name' => ['required', 'string', 'max:255'],
             'contact_number' => ['required', 'string', 'max:255'],
@@ -133,6 +133,62 @@ class ApiUserDashboard extends Controller
         ]);
     }
 
+    public function organization_edit(Request $request, $slug){
+        $organization = Organization::where('slug', $slug)->first()->makeHidden(['creator', 'updater', 'created_at', 'updated_at', 'updater_type', 'updated_by']);
+        if($organization->creator_type === 'User' && $organization->created_by === (int)$request->updated_by)
+        {
+            return response()->json(['status' => 200,   'data' => $organization]);
+        }else{
+            return response()->json(['status' => 306,   'error' => 'Sorry you can\'t edit this organization']);
+        }
+    }
+
+    public function organization_update(Request $request, $slug){
+        $organization = Organization::where('slug', $slug)->first();
+
+        if($organization->creator_type !== 'User')
+        {
+            return response()->json(['status' => 306,   'error' => 'Sorry you can\'t update this organization']);
+        }elseif($organization->created_by !== (int)$request->updated_by)
+        {
+            return response()->json(['status' => 306,   'error' => 'Sorry you can\'t update this organization']);
+        }
+
+        $validation = Validator::make($request->all(), [
+            'updated_by' => ['required'],
+            'name' => ['required', 'string', 'max:255', 'unique:organizations,name,'.$organization->id],
+            'description' => ['required', 'string', 'max:255'],
+            'contact_name' => ['required', 'string', 'max:255'],
+            'contact_number' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'string', 'max:255', 'unique:organizations,email,'.$organization->id],
+            'address' => ['required', 'string', 'max:255']
+        ]);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Organization update failed!.',
+                'errors' => $validation->messages()
+            ]);
+        }
+
+        $organization->name = $request->name;
+        $organization->description = $request->description;
+        $organization->contact_name = $request->contact_name;
+        $organization->contact_number = $request->contact_number;
+        $organization->email = $request->email;
+        $organization->address = $request->address;
+        $organization->multiple_properties = $request->multiple_properties;
+        $organization->updater_type = 'User';
+        $organization->updated_by = $request->updated_by;
+        $organization->update();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Organization successfully updated.'
+        ]);
+    }
+
     public function organizations_by_user($user_id){
         $organizations = User::find($user_id)->organizations;
         return OrganizationResource::collection($organizations);
@@ -146,23 +202,29 @@ class ApiUserDashboard extends Controller
         ]);
     }
 
-    public function delete_organization($organization_id){
-        try {
-            $organization = Organization::find($organization_id);
-            $organization->delete();
-            $organization->collaborators()->detach();
+    public function delete_organization(Request $request, $organization_id){
+        $organization = Organization::find($organization_id);
+        if(((int)$organization->created_by === (int)$request->user_id) && ($organization->creator_type === $request->creator_type)){
+            try {
+                $organization->delete();
+                $organization->collaborators()->detach();
 
-            return response()->json([
-                'status' => 200,
-                'message' => 'Organization successfully deleted!'
-            ]);
-        } catch (\Exception $e) {
-
-            return response()->json([
-                'status' => 500,
-                'message' => $e->getMessage()
-            ]);
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Organization successfully deleted!'
+                ]);
+            } catch (\Exception $e) {
+                return response()->json([
+                    'status' => 500,
+                    'message' => $e->getMessage()
+                ]);
+            }
         }
+
+        return response()->json([
+            'status' => 500,
+            'message' => 'Sorry! you can\'t delete this organization!'
+        ]);
     }
 
     public function venue_store(Request $request){
@@ -300,20 +362,24 @@ class ApiUserDashboard extends Controller
 
     public function venue_edit(Request $request, $slug){
         $venue = Venue::where('slug', $slug)->first();
-        if($venue->creator_type === 'User' && $venue->created_by === $request->user_id)
+        if($venue->creator_type === 'User' && $venue->created_by === (int)$request->user_id)
         {
             $resource = new VenueEditResource($venue, $request->user_id);
             return response()->json(['status' => 200,   'data' => $resource]);
         }else{
-            return response()->json(['status' => 400,   'error' => 'Sorry you can\'t edit this venue']);
+            return response()->json(['status' => 306,   'error' => 'Sorry you can\'t edit this venue']);
         }
     }
 
     public function venue_update(Request $request, $slug){
         $venue = Venue::where('slug', $slug)->first();
-        if($venue->creator_type !== 'User' && $venue->created_by !== $request->updated_by)
+
+        if($venue->creator_type !== 'User')
         {
-            return response()->json(['status' => 306,   'errors' => 'Sorry you can\'t edit this venue']);
+            return response()->json(['status' => 306,   'error' => 'Sorry you can\'t update this venue']);
+        }elseif($venue->created_by !== (int)$request->updated_by)
+        {
+            return response()->json(['status' => 306,   'error' => 'Sorry you can\'t update this venue']);
         }
 
         $validation = Validator::make($request->all(), [

@@ -55,25 +55,10 @@ class VenueEdit extends Component {
     }
 
     componentDidMount() {
-        let slug = this.props.params.venue_slug;
-        let data = {
-            'slug'      :   slug,
-            'user_id'   :   SessionHelper.GetAuthUserId(),
-        };
-        axios.get('/sanctum/csrf-cookie').then(response => {
-            axios.post(`/api/venue/${slug}/edit`, data).then(res => {
-                if(res.data.status === 200)
-                {
-                    this.setState({...res.data.data});
-                    this.setState({loading:false});
-                }
-
-                if(res.data.status === 400)
-                {
-                    toast.error(res.data.error);
-                    this.props.navigate('/manage/venue/list');
-                }
-            }).catch((error)=>{});
+        this.setState(previousState => ({
+            ...this.props.location.state.venue
+        }), () => {
+            this.setState({loading:false});
         });
     }
 

@@ -142,6 +142,14 @@ class SessionHelper extends Component {
     static GetTopVisitedVenuesSession(){
         return JSON.parse(sessionStorage.getItem('top_visited_venues'));
     }
+
+    static SetTestmonialsSession(data){
+        sessionStorage.setItem('testmonials', JSON.stringify(data));
+    }
+
+    static GetTestmonialsSession(){
+        return JSON.parse(sessionStorage.getItem('testmonials'));
+    }
 }
 
 export default SessionHelper;

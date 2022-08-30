@@ -1,9 +1,66 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import axios from "axios";
+import {toast} from "react-toastify";
 
 class HelpAndSupport extends Component {
+    constructor() {
+        super();
+        this.state = {
+            name:'',
+            email:'',
+            subject:'',
+            message:'',
+            response_status:200,
+            response_message:'',
+            processing:false,
+            errors:[]
+        }
+    }
+
     componentDidMount() {
         window.scrollTo(0, 0);
+    }
+
+    handleInput = (e) =>{
+        e.persist();
+        this.setState({[e.target.name] : e.target.value});
+    }
+
+    formSubmit = (e) =>{
+        e.preventDefault();
+        let data ={
+            name:this.state.name,
+            subject:this.state.subject,
+            email:this.state.email,
+            message:this.state.message
+        }
+        this.setState({processing : true, errors:[], response_message:''});
+        axios.get('/sanctum/csrf-cookie').then(response => {
+            axios.post('/api/inbox/message/store', data).then(res => {
+                if (res.data.status === 400)
+                {
+                    this.setState({processing:false, response_message:res.data.message, errors:res.data.errors, response_status:res.data.status});
+                    toast.warn(res.data.message);
+                }
+                else if(res.data.status === 200)
+                {
+                    this.setState({
+                        name:'',
+                        message:'',
+                        subject:'',
+                        email:'',
+                        processing:false,
+                        errors:[],
+                        response_message:res.data.message,
+                        response_status:res.data.status
+                    });
+                    toast.success(res.data.message);
+                }
+            }).catch((error)=>{
+                this.setState({processing:false, response_message:'Sorry! something went wrong.', response_status:500});
+            });
+        });
     }
 
     render() {
@@ -49,18 +106,27 @@ class HelpAndSupport extends Component {
                                     </div>
                                     <div className="form-content ">
                                         <div className="contact-form-action">
-                                            <form className="row messenger-box-form" method="post" action="https://techydevs.com/demos/themes/html/trizen-demo/trizen/mailer.php">
-                                                <div className="alert alert-success messenger-box-contact__msg col-lg-12"
-                                                     style={{"display": "none"}} role="alert">
-                                                    Thank You! Your message has been sent.
-                                                </div>
+                                            <form className="row messenger-box-form" onSubmit={this.formSubmit}>
+                                                {this.state.response_message !== '' ? (
+                                                    <>
+                                                        {parseInt(this.state.response_status) === 200 ? (
+                                                            <div className="alert alert-success messenger-box-contact__msg col-lg-12" role="alert">{this.state.response_message}</div>
+                                                        ):(
+                                                            <div className="alert alert-danger messenger-box-contact__msg col-lg-12" role="alert">{this.state.response_message}</div>
+                                                        )}
+                                                    </>
+                                                ) : (
+                                                    <></>
+                                                )}
+
                                                 <div className="col-lg-6 responsive-column">
                                                     <div className="input-box messenger-box-input-wrap">
                                                         <label className="label-text" htmlFor="name">Your Name</label>
                                                         <div className="form-group">
                                                             <span className="la la-user form-icon"></span>
-                                                            <input className="form-control" type="text" id="name" name="name"
+                                                            <input onChange={this.handleInput} value={this.state.name} className="form-control" type="text" id="name" name="name"
                                                                    placeholder="Your name" required/>
+                                                            <p className="text-danger">{this.state.errors.name}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -69,8 +135,20 @@ class HelpAndSupport extends Component {
                                                         <label className="label-text" htmlFor="email">Your Email</label>
                                                         <div className="form-group">
                                                             <span className="la la-envelope-o form-icon"></span>
-                                                            <input className="form-control" type="email" name="email" id="email"
+                                                            <input onChange={this.handleInput} value={this.state.email} className="form-control" type="email" name="email" id="email"
                                                                    placeholder="Email address" required/>
+                                                            <p className="text-danger">{this.state.errors.email}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="col-lg-12 responsive-column">
+                                                    <div className="input-box messenger-box-input-wrap">
+                                                        <label className="label-text" htmlFor="name">Subject</label>
+                                                        <div className="form-group">
+                                                            <span className="la la-pencil form-icon"></span>
+                                                            <input onChange={this.handleInput} value={this.state.subject} className="form-control" type="text" id="subject" name="subject"
+                                                                   placeholder="Subject" required/>
+                                                            <p className="text-danger">{this.state.errors.subject}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -79,15 +157,21 @@ class HelpAndSupport extends Component {
                                                         <label className="label-text" htmlFor="message">Message</label>
                                                         <div className="form-group">
                                                             <span className="la la-pencil form-icon"></span>
-                                                            <textarea className="message-control form-control" name="message"
+                                                            <textarea onChange={this.handleInput} value={this.state.message} className="message-control form-control" name="message"
                                                                       id="message" placeholder="Write message" required/>
+                                                            <p className="text-danger">{this.state.errors.message}</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-12">
                                                     <div className="btn-box messenger-box-input-wrap">
-                                                        <button name="submit" type="submit" className="theme-btn send-message-btn"
-                                                                id="send-message-btn">Send Message</button>
+                                                        {this.state.processing === true ? (
+                                                            <>
+                                                                <button type="submit" className="theme-btn send-message-btn disabled"><i className="las la-spin la-spinner"></i> Send Message</button>
+                                                            </>
+                                                        ) : (
+                                                            <button type="submit" className="theme-btn send-message-btn"><i className="la la-envelope ml-1"></i> Send Message</button>
+                                                        )}
                                                     </div>
                                                 </div>
                                             </form>

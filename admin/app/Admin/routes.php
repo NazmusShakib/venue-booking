@@ -26,4 +26,6 @@ Route::group([
     $router->resource('users', UserController::class);
     $router->resource('orders', OrderController::class);
     $router->resource('organizations', OrganizationController::class);
+    $router->resource('inboxes', InboxController::class);
+    $router->resource('testmonials', TestmonialController::class);
 });

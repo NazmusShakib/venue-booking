@@ -25,7 +25,8 @@ Route::post('/amenity/lists/for/dropdown', [ApiController::class, 'amenity_lists
 Route::post('/booking/availability/checking', [ApiController::class, 'booking_availability_checking']);
 Route::get('/popular/venues', [ApiController::class, 'popular_venues']);
 Route::get('/top/visited/venues', [ApiController::class, 'top_visited_venues']);
-
+Route::post('/inbox/message/store', [ApiController::class, 'inbox_message_store']);
+Route::get('/testmonials', [ApiController::class, 'testmonials']);
 
 Route::post('auth/{provider}', [SocialAuthController::class, 'redirectToAuthProvider']);
 Route::any('auth/{provider}/callback', [SocialAuthController::class, 'handleAuthProviderCallback']);

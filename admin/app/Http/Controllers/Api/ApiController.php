@@ -12,6 +12,7 @@ use App\Http\Resources\VenueDetailsResource;
 use App\Http\Resources\EventCalendarResource;
 use App\Http\Resources\CityResource;
 use App\Http\Resources\OrderResource;
+use App\Http\Resources\TestmonialResource;
 use App\Models\Category;
 use App\Models\Division;
 use App\Models\District;
@@ -22,6 +23,8 @@ use App\Models\Venue;
 use App\Models\EventCalendar;
 use App\Models\Order;
 use App\Models\User;
+use App\Models\Inbox;
+use App\Models\Testmonial;
 use Validator;
 
 class ApiController extends Controller
@@ -395,5 +398,38 @@ class ApiController extends Controller
             'status' => 500,
             'message' => 'Sorry! you can\'t delete this order!'
         ]);
+    }
+
+    public function inbox_message_store(Request $request){
+        $validation = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'string', 'max:255'],
+            'subject' => ['required', 'string', 'max:255'],
+            'message' => ['required', 'string', 'max:255']
+        ]);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Sorry! your message sending failed!.',
+                'errors' => $validation->messages()
+            ]);
+        }
+
+        $inbox = new Inbox;
+        $inbox->name = $request->name;
+        $inbox->email = $request->email;
+        $inbox->subject = $request->subject;
+        $inbox->message = $request->message;
+        $inbox->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Thank You! Your message has been sent.'
+        ]);
+    }
+
+    public function testmonials(){
+        return TestmonialResource::collection(Testmonial::where('is_enabled', 1)->get());
     }
 }

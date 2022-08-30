@@ -66,7 +66,7 @@ class Footer extends Component {
                                     </h4>
                                     <ul className="list-items list--items">
                                         <li><Link to="/about-us">About Us</Link></li>
-                                        <li><Link to="/blog">News / Articles</Link></li>
+                                        {/*<li><Link to="/blog">News / Articles</Link></li>*/}
                                         <li><Link to="/contact-us">Help & Support</Link></li>
                                     </ul>
                                 </div>

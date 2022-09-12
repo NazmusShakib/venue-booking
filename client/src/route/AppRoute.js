@@ -31,6 +31,8 @@ import ListYourVenue from "../pages/ListYourVenue";
 import SocialLoginCallback from "../pages/authentication/SocialLoginCallback";
 import VenueEdit from "../pages/dashboard/venue/VenueEdit";
 import OrganizationEdit from "../pages/dashboard/venue/organization/OrganizationEdit";
+import PaymentCallback from "../pages/payment/PaymentCallback";
+import NotFound from "../pages/errors/NotFound";
 
 class AppRoute extends Component {
     render() {
@@ -39,6 +41,7 @@ class AppRoute extends Component {
                 <BrowserRouter>
                     <Header/>
                     <Routes>
+                        <Route path="*" element={<NotFound/>} />
                         <Route path="/" element={<Home />} />
                         <Route path="about-us" element={<AboutUs />} />
                         <Route path="blog" element={<Blog />} />
@@ -47,6 +50,7 @@ class AppRoute extends Component {
                         <Route path="privacy-policy" element={<PrivacyPolicy />} />
                         <Route path="terms-and-conditions" element={<TermsAndConditions />} />
                         <Route path="venue-listing" element={<ListYourVenue />} />
+                        <Route path="payment/callback" element={<PaymentCallback />} />
                         <Route element={<GuestRoutes/>}>
                             <Route path="login" element={<Login />} />
                             <Route path="register" element={<Register />} />

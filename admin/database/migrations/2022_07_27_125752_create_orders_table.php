@@ -32,8 +32,9 @@ return new class extends Migration
             $table->boolean('receive_promotional_offers')->default(false);
             $table->boolean('agree')->default(false);
             $table->enum('status', ['pending', 'approved', 'rejected', 'completed'])->default('pending');
-            $table->string('payment_id')->nullable();
-            $table->enum('payment_status', ['pending', 'completed', 'rejected'])->default('pending');
+            $table->string('transaction_id')->nullable();
+            $table->string('currency')->nullable();
+            $table->enum('payment_status', ['pending', 'canceled', 'complete', 'failed', 'processing'])->default('pending');
             $table->timestamps();
         });
     }

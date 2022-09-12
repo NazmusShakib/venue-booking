@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 30, 2022 at 11:49 AM
+-- Generation Time: Sep 12, 2022 at 02:55 PM
 -- Server version: 5.7.33
--- PHP Version: 8.1.3
+-- PHP Version: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -2158,7 +2158,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (35, '2022_07_02_173603_create_category_venue_table', 7),
 (36, '2022_07_02_173805_create_occasion_venue_table', 7),
 (37, '2022_07_02_173843_create_amenity_venue_table', 7),
-(39, '2022_07_27_125752_create_orders_table', 9),
 (40, '2022_07_15_050549_create_event_calendars_table', 10),
 (42, '2022_08_20_055703_create_organizations_table', 12),
 (43, '2022_07_01_115642_create_venues_table', 13),
@@ -2166,7 +2165,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (46, '2022_08_20_130211_create_organization_user_table', 15),
 (47, '2022_08_27_052225_create_linked_social_accounts_table', 16),
 (48, '2022_08_30_040136_create_inboxes_table', 17),
-(49, '2022_08_30_050052_create_testmonials_table', 18);
+(49, '2022_08_30_050052_create_testmonials_table', 18),
+(52, '2022_07_27_125752_create_orders_table', 19);
 
 -- --------------------------------------------------------
 
@@ -2284,8 +2284,8 @@ CREATE TABLE `orders` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `category_id` bigint(20) UNSIGNED NOT NULL,
   `occasion_id` bigint(20) UNSIGNED NOT NULL,
-  `start_date` date DEFAULT NULL,
-  `end_date` date DEFAULT NULL,
+  `start_date` datetime DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mobile_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -2297,8 +2297,9 @@ CREATE TABLE `orders` (
   `receive_promotional_offers` tinyint(1) NOT NULL DEFAULT '0',
   `agree` tinyint(1) NOT NULL DEFAULT '0',
   `status` enum('pending','approved','rejected','completed') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
-  `payment_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `payment_status` enum('pending','rejected','completed') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `transaction_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `currency` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_status` enum('pending','canceled','complete','failed','processing') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2307,11 +2308,9 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `venue_id`, `user_id`, `category_id`, `occasion_id`, `start_date`, `end_date`, `name`, `email`, `mobile_number`, `capacity`, `total_guests`, `price_type`, `net_total_price`, `address`, `receive_promotional_offers`, `agree`, `status`, `payment_id`, `payment_status`, `created_at`, `updated_at`) VALUES
-(5, 8, 2, 1, 1, '2022-08-05', '2022-08-05', 'User', 'user@gmail.com', 'sss', 5000, 3, 'Per Day', '50000.00', 'weweew', 0, 0, 'approved', NULL, 'pending', '2022-08-04 23:52:55', '2022-08-04 23:52:55'),
-(6, 1, 2, 1, 2, '2022-08-06', '2022-08-11', 'rre', 'user@gmail.com', '4343', 2000, 43, 'Per Night', '30000.00', '4343', 1, 1, 'approved', NULL, 'completed', '2022-07-31 05:20:24', '2022-07-31 05:20:24'),
-(7, 8, 2, 1, 1, '2022-08-05', '2022-08-05', 'User', 'user@gmail.com', 'sss', 5000, 3, 'Per Day', '50000.00', 'weweew', 0, 0, 'approved', NULL, 'pending', '2022-08-04 23:52:55', '2022-08-04 23:52:55'),
-(10, 1, 1, 1, 2, '2022-08-06', '2022-08-11', 'rre', 'user@gmail.com', '4343', 2000, 43, 'Per Night', '30000.00', '4343', 1, 1, 'approved', NULL, 'completed', '2022-07-31 05:20:24', '2022-07-31 05:20:24');
+INSERT INTO `orders` (`id`, `venue_id`, `user_id`, `category_id`, `occasion_id`, `start_date`, `end_date`, `name`, `email`, `mobile_number`, `capacity`, `total_guests`, `price_type`, `net_total_price`, `address`, `receive_promotional_offers`, `agree`, `status`, `transaction_id`, `currency`, `payment_status`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 2, 2, '2022-08-05 00:00:00', '2022-08-05 00:00:00', 'Baker Edwards', 'kixyzigu@mailinator.com', '716', 6000, 1602, 'Per Night', '55000.00', 'Nobis lorem aute vol', 0, 1, 'approved', 'BO/1/631f4441b8c04', 'BDT', 'complete', '2022-09-12 08:37:53', '2022-09-12 08:38:08'),
+(2, 1, 1, 1, 2, '2022-08-05 00:00:00', '2022-08-05 00:00:00', 'User', 'user@gmail.com', '01717293722', 6000, 1, 'Per Night', '55000.00', 'g', 0, 0, 'pending', 'BO/2/631f4466607e6', 'BDT', 'failed', '2022-09-12 08:38:29', '2022-09-12 08:38:37');
 
 -- --------------------------------------------------------
 
@@ -2407,7 +2406,7 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (4, 'App\\Models\\User', 7, 'abdulawalbd121@gmail.com_Token', '2946a4bdef12496aa51cbe60a921d675b115fa1d987b099f670e2a764e64298c', '[\"*\"]', NULL, '2022-08-25 07:02:42', '2022-08-25 07:02:42'),
 (5, 'App\\Models\\User', 9, 'abdulawalbd121@gmail.com_Token', 'e8fbd69117d3174e97a896ae5db751829d6583491bf12ce6906a5318bf5efff0', '[\"*\"]', NULL, '2022-08-25 07:07:01', '2022-08-25 07:07:01'),
 (14, 'App\\Models\\User', 15, '_Token', '879a6eaea2f90044a10b94cd030edb8538c8c13aa03614673b7ff74e8cd1badc', '[\"*\"]', NULL, '2022-08-26 23:57:07', '2022-08-26 23:57:07'),
-(17, 'App\\Models\\User', 1, 'user@gmail.com_Token', '180925235da841ed4788148f677718a85e0a77da9a85c77ca66c0b618b258b7e', '[\"*\"]', '2022-08-29 22:12:18', '2022-08-27 00:20:51', '2022-08-29 22:12:18');
+(17, 'App\\Models\\User', 1, 'user@gmail.com_Token', '180925235da841ed4788148f677718a85e0a77da9a85c77ca66c0b618b258b7e', '[\"*\"]', '2022-09-12 08:38:29', '2022-08-27 00:20:51', '2022-09-12 08:38:29');
 
 -- --------------------------------------------------------
 
@@ -2923,7 +2922,7 @@ ALTER TABLE `linked_social_accounts`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `occasions`
@@ -2941,7 +2940,7 @@ ALTER TABLE `occasion_venue`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `organizations`

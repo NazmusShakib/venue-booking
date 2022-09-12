@@ -363,6 +363,7 @@ class ApiController extends Controller
 
         return response()->json([
             'status' => 200,
+            'order_id' => $order->id,
             'message' => 'Order successfully stored in database.'
         ]);
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Api\ApiUserDashboard;
 use App\Http\Controllers\Api\SocialAuthController;
+use App\Http\Controllers\Api\SslCommerzPaymentController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -56,4 +57,12 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::post('/venue/{slug}/edit', [ApiUserDashboard::class, 'venue_edit']);
     Route::post('/venue/{slug}/update', [ApiUserDashboard::class, 'venue_update']);
     Route::post('/delete/venue', [ApiUserDashboard::class, 'delete_venue']);
+
+
 });
+
+Route::post('/payment', [SslCommerzPaymentController::class, 'payment']);
+Route::post('/payment/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/payment/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/payment/cancel', [SslCommerzPaymentController::class, 'cancel']);
+Route::post('/payment/ipn', [SslCommerzPaymentController::class, 'ipn']);

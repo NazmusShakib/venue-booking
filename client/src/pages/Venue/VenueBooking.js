@@ -108,20 +108,24 @@ class VenueBooking extends Component {
             'net_total_price':this.state.venue.price_integer_value,
             'receive_promotional_offers':this.state.receive_promotional_offers,
             'agree':this.state.agree,
-            'status':'pending',
+            'status':'pending'
         }
 
         axios.get('/sanctum/csrf-cookie').then(response => {
             axios.post('/api/order/store', data).then(res => {
-                this.setState({confirmBtn:true});
                 if (res.data.status === 400)
                 {
+                    this.setState({confirmBtn:true});
                     this.setState({errors:res.data.errors});
                 }
 
                 if (res.data.status === 200)
                 {
-                    this.props.navigate('/dashboard');
+                    this.setState({name:'', email:'', address:'', mobile_number:'', total_guests:''});
+                    axios.post('/api/payment', {"order_id":res.data.order_id}).then(res => {
+                        console.log(res.data.data);
+                        document.location.href=res.data.data;
+                    }).catch((error)=>{});
                 }
             }).catch((error)=>{});
         });

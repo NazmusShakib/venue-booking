@@ -33,6 +33,7 @@ import VenueEdit from "../pages/dashboard/venue/VenueEdit";
 import OrganizationEdit from "../pages/dashboard/venue/organization/OrganizationEdit";
 import PaymentCallback from "../pages/payment/PaymentCallback";
 import NotFound from "../pages/errors/NotFound";
+import VenueOwnerRoutes from "../_utility/VenueOwnerRoutes";
 
 class AppRoute extends Component {
     render() {
@@ -62,15 +63,17 @@ class AppRoute extends Component {
                             <Route path="orders" element={<PersonalOrders />} />
 
                             <Route path="/manage/venue">
-                                <Route index element={<VenueManage />} />
-                                <Route path="organization" element={<Organization />} />
                                 <Route path="organization/create" element={<OrganizationCreate />} />
-                                <Route path="organization/:organization_slug/edit" element={<OrganizationEdit />} />
-                                <Route path="list" element={<VenueList />} />
-                                <Route path="create" element={<VenueCreate />} />
-                                <Route path=":venue_slug/edit" element={<VenueEdit />} />
-                                <Route path="orders" element={<VenueOrders />} />
-                                <Route path="calendar" element={<EventCalendar />} />
+                                <Route element={<VenueOwnerRoutes/>}>
+                                    <Route index element={<VenueManage />} />
+                                    <Route path="organization" element={<Organization />} />
+                                    <Route path="organization/:organization_slug/edit" element={<OrganizationEdit />} />
+                                    <Route path="list" element={<VenueList />} />
+                                    <Route path="create" element={<VenueCreate />} />
+                                    <Route path=":venue_slug/edit" element={<VenueEdit />} />
+                                    <Route path="orders" element={<VenueOrders />} />
+                                    <Route path="calendar" element={<EventCalendar />} />
+                                </Route>
                             </Route>
                         </Route>
 

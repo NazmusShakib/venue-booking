@@ -5,6 +5,12 @@ class SessionHelper extends Component {
         localStorage.setItem('AuthUser', JSON.stringify(data));
     }
 
+    static SetAuthUserType(type){
+        let data = this.GetAuthSession();
+        data.type = type;
+        this.SetAuthSession(data);
+    }
+
     static GetAuthSession(){
         return JSON.parse(localStorage.getItem('AuthUser'));
     }

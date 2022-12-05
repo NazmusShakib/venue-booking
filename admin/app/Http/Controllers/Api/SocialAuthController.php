@@ -89,6 +89,7 @@ class SocialAuthController extends Controller
             $user->password = Hash::make($response->getId());
             $user->email_verified_at = date('Y-m-d H:i:s');
             $user->has_socials_auth = true;
+            $user->type = 'Customer';
             $user->save();
 
             $social = new LinkedSocialAccount;
@@ -104,6 +105,7 @@ class SocialAuthController extends Controller
             'name' => $user->name,
             'username' => $user->username,
             'email' => $user->email,
+            'type' => $user->type,
             'token' => $user->createToken($user->email.'_Token')->plainTextToken
         ];
 

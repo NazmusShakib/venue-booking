@@ -38,7 +38,7 @@ class ListYourVenue extends Component {
 
                                         <div className="card-body">
                                             <h3 className="card-title mb-1 font-size-16">Already started registration?</h3>
-                                            <Link to="/manage/property">Continue your registration</Link>
+                                            <Link to="/manage/venue/organization/create">Continue your registration</Link>
                                         </div>
                                     </div>
                                 </div>

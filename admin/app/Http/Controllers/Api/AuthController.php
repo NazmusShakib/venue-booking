@@ -15,6 +15,7 @@ class AuthController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6'],
+            'type' => ['required', 'string', 'in:Customer,Venue Owner'],
             'confirm_password' => ['required', 'string', 'min:6', 'same:password'],
             'username' => [
                 'required', 'string', 'min:3', 'max:20', 'unique:users',
@@ -49,6 +50,7 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'username' => $request->username,
                 'email' => $request->email,
+                'type' => $request->type,
                 'password' => Hash::make($request->password),
             ]);
 
@@ -59,6 +61,7 @@ class AuthController extends Controller
                 'name' => $user->name,
                 'username' => $user->username,
                 'email' => $user->email,
+                'type' => $user->type,
                 'token' => $token
             ];
 
@@ -101,6 +104,7 @@ class AuthController extends Controller
                 'name' => $user->name,
                 'username' => $user->username,
                 'email' => $user->email,
+                'type' => $user->type,
                 'token' => $token
             ];
 

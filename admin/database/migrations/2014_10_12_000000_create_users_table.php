@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('has_socials_auth')->default(false)->index();
+            $table->enum('type', ['Customer', 'Venue Owner'])->default('Customer');
             $table->rememberToken();
             $table->timestamps();
         });

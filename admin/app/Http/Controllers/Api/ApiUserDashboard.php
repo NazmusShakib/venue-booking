@@ -127,6 +127,8 @@ class ApiUserDashboard extends Controller
         $organization->save();
         $organization->collaborators()->attach($request->user_id);
 
+        User::find($request->user_id)->update(['type'=>'Venue Owner']);
+
         return response()->json([
             'status' => 200,
             'message' => 'Organization successfully saved.'

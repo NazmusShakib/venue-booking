@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import SessionHelper from "../../session/SessionHelper";
 class Dashboard extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
@@ -39,18 +40,20 @@ class Dashboard extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-sm-4">
-                                <div className="card">
-                                    <div className="card-body media">
-                                        <i className="las la-industry font-size-30 align-self-start mr-3"></i>
-                                        <div className="media-body">
-                                            <h5 className="mt-0 text-black">Manage Venue</h5>
-                                            <p>Manage your venue</p>
-                                            <Link to='/manage/venue'>Manage Venue</Link>
+                            {SessionHelper.GetAuthSession().type === 'Venue Owner' &&
+                                <div className="col-sm-4">
+                                    <div className="card">
+                                        <div className="card-body media">
+                                            <i className="las la-industry font-size-30 align-self-start mr-3"></i>
+                                            <div className="media-body">
+                                                <h5 className="mt-0 text-black">Manage Venue</h5>
+                                                <p>Manage your venue</p>
+                                                <Link to='/manage/venue'>Manage Venue</Link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </section>

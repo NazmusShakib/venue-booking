@@ -19,6 +19,7 @@ const Register = () => {
         'username':'',
         'email':'',
         'password':'',
+        'type':'',
         'confirm_password':'',
         'message':'',
         'errors':[],
@@ -38,6 +39,7 @@ const Register = () => {
             username: registerInput.username,
             email: registerInput.email,
             password: registerInput.password,
+            type: registerInput.type,
             confirm_password: registerInput.confirm_password
         }
         axios.get('/sanctum/csrf-cookie').then(response => {
@@ -56,6 +58,7 @@ const Register = () => {
                         username: '',
                         email: '',
                         password: '',
+                        type: '',
                         confirm_password: '',
                     });
                     if(redirectTo === undefined || redirectTo === null)
@@ -197,6 +200,21 @@ const Register = () => {
                                     </div>
                                     <p className="text-danger">{registerInput.errors.confirm_password}</p>
                                 </div>
+
+                                <div className="input-box pt-3">
+                                    <div className="form-group">
+                                        <div className="form-check form-check-inline">
+                                            <input className="form-check-input" onChange={handleInput} type="radio" name="type" id="as_a_customer" value="Customer"/>
+                                            <label className="form-check-label" htmlFor="as_a_customer">Register as a  Customer</label>
+                                        </div>
+                                        <div className="form-check form-check-inline">
+                                            <input className="form-check-input" onChange={handleInput} type="radio" name="type" id="as_a_owner" value="Venue Owner"/>
+                                            <label className="form-check-label" htmlFor="as_a_owner">Register as a Venue Owner</label>
+                                        </div>
+                                    </div>
+                                    <p className="text-danger">{registerInput.errors.type}</p>
+                                </div>
+
                                 <div className="btn-box pt-3 pb-4">
                                     {registerInput.processing === true ? (
                                         <>

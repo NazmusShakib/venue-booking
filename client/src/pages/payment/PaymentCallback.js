@@ -4,7 +4,7 @@ import queryString from 'query-string';
 
 function PaymentCallback(){
     const {search} = useLocation();
-    const {status, message} = queryString.parse(search);
+    const {order, status, message} = queryString.parse(search);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -27,6 +27,7 @@ function PaymentCallback(){
                                     <div className="col-lg-12 flex-direction-column text-center mt-5">
                                         <p>
                                             <Link className="line-height-40 theme-btn theme-btn-transparent mr-3" to='/'><i className="las la-home font-size-20 align-self-start mr-1"></i>Home</Link>
+                                            <a download="invoice.pdf" className="line-height-40 theme-btn btn-transparent" target="_blank" href={`${process.env.REACT_APP_API_DOMAIN}/storage/invoices/invoice_${order}.pdf`}><i className="las la-download font-size-20 align-self-start mr-1"></i> Download Invoice</a>
                                         </p>
                                     </div>
                                 </div>

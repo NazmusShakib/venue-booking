@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 05, 2022 at 03:02 PM
+-- Generation Time: Dec 12, 2022 at 05:15 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -1045,7 +1045,75 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 (2072, 1, 'admin/testmonials/4', 'PUT', '127.0.0.1', '{\"key\":\"0\",\"thumbnail\":\"_file_del_\",\"_file_del_\":null,\"_token\":\"dLDfFlyvtZH1BKY12Oi5KcR59004SJQy6er0mKfa\",\"_method\":\"PUT\"}', '2022-12-02 10:37:40', '2022-12-02 10:37:40'),
 (2073, 1, 'admin/testmonials/4', 'PUT', '127.0.0.1', '{\"name\":\"Richard Pam\",\"country_name\":\"Canada\",\"body\":\"Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.\",\"is_enabled\":\"on\",\"_token\":\"dLDfFlyvtZH1BKY12Oi5KcR59004SJQy6er0mKfa\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/localhost:8000\\/admin\\/testmonials\"}', '2022-12-02 10:37:57', '2022-12-02 10:37:57'),
 (2074, 1, 'admin/testmonials', 'GET', '127.0.0.1', '[]', '2022-12-02 10:37:57', '2022-12-02 10:37:57'),
-(2075, 1, 'admin/testmonials', 'GET', '127.0.0.1', '[]', '2022-12-02 10:38:26', '2022-12-02 10:38:26');
+(2075, 1, 'admin/testmonials', 'GET', '127.0.0.1', '[]', '2022-12-02 10:38:26', '2022-12-02 10:38:26'),
+(2076, 1, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2022-12-06 07:54:10', '2022-12-06 07:54:10'),
+(2077, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-12-06 07:54:12', '2022-12-06 07:54:12'),
+(2078, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-12-06 07:54:45', '2022-12-06 07:54:45'),
+(2079, 1, 'admin/organizations', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-12-06 07:54:52', '2022-12-06 07:54:52'),
+(2080, 1, 'admin/auth/users', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-12-06 07:55:04', '2022-12-06 07:55:04'),
+(2081, 1, 'admin/venues', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-12-06 07:56:23', '2022-12-06 07:56:23'),
+(2082, 1, 'admin/orders', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-12-06 07:56:25', '2022-12-06 07:56:25'),
+(2083, 1, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2022-12-07 21:57:29', '2022-12-07 21:57:29'),
+(2084, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-12-07 21:57:30', '2022-12-07 21:57:30'),
+(2085, 1, 'admin/orders', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-12-07 21:57:38', '2022-12-07 21:57:38'),
+(2086, 1, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2022-12-08 10:04:06', '2022-12-08 10:04:06'),
+(2087, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-12-08 10:04:08', '2022-12-08 10:04:08'),
+(2088, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-12-08 11:09:29', '2022-12-08 11:09:29'),
+(2089, 1, 'admin/orders', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-12-08 11:10:00', '2022-12-08 11:10:00'),
+(2090, 1, 'admin/orders/1/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-12-08 11:10:10', '2022-12-08 11:10:10'),
+(2091, 1, 'admin/orders', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-12-08 11:10:13', '2022-12-08 11:10:13'),
+(2092, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:11:34', '2022-12-08 11:11:34'),
+(2093, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:12:01', '2022-12-08 11:12:01'),
+(2094, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:12:24', '2022-12-08 11:12:24'),
+(2095, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:13:26', '2022-12-08 11:13:26'),
+(2096, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:13:45', '2022-12-08 11:13:45'),
+(2097, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:14:09', '2022-12-08 11:14:09'),
+(2098, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:14:15', '2022-12-08 11:14:15'),
+(2099, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:14:51', '2022-12-08 11:14:51'),
+(2100, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:20:11', '2022-12-08 11:20:11'),
+(2101, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:20:56', '2022-12-08 11:20:56'),
+(2102, 1, 'admin/venue/order/invoice/2', 'GET', '127.0.0.1', '[]', '2022-12-08 11:21:02', '2022-12-08 11:21:02'),
+(2103, 1, 'admin/venue/order/invoice/2', 'GET', '127.0.0.1', '[]', '2022-12-08 11:21:22', '2022-12-08 11:21:22'),
+(2104, 1, 'admin/venue/order/invoice/2', 'GET', '127.0.0.1', '[]', '2022-12-08 11:22:17', '2022-12-08 11:22:17'),
+(2105, 1, 'admin/venue/order/invoice/2', 'GET', '127.0.0.1', '[]', '2022-12-08 11:22:26', '2022-12-08 11:22:26'),
+(2106, 1, 'admin/venue/order/invoice/2', 'GET', '127.0.0.1', '[]', '2022-12-08 11:22:30', '2022-12-08 11:22:30'),
+(2107, 1, 'admin/venue/order/invoice/2', 'GET', '127.0.0.1', '[]', '2022-12-08 11:22:37', '2022-12-08 11:22:37'),
+(2108, 1, 'admin/venue/order/invoice/2', 'GET', '127.0.0.1', '[]', '2022-12-08 11:30:21', '2022-12-08 11:30:21'),
+(2109, 1, 'admin/venue/order/invoice/2', 'GET', '127.0.0.1', '[]', '2022-12-08 11:30:50', '2022-12-08 11:30:50'),
+(2110, 1, 'admin/venue/order/invoice/2', 'GET', '127.0.0.1', '[]', '2022-12-08 11:31:27', '2022-12-08 11:31:27'),
+(2111, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:32:28', '2022-12-08 11:32:28'),
+(2112, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:33:23', '2022-12-08 11:33:23'),
+(2113, 1, 'admin/orders', 'GET', '127.0.0.1', '[]', '2022-12-08 11:33:49', '2022-12-08 11:33:49'),
+(2114, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-08 11:34:48', '2022-12-08 11:34:48'),
+(2115, 1, 'admin/orders', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-12-08 11:35:49', '2022-12-08 11:35:49'),
+(2116, 1, 'admin/orders', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\",\"_export_\":\"all\"}', '2022-12-08 11:35:57', '2022-12-08 11:35:57'),
+(2117, 1, 'admin/auth/login', 'GET', '127.0.0.1', '[]', '2022-12-12 10:59:26', '2022-12-12 10:59:26'),
+(2118, 1, 'admin', 'GET', '127.0.0.1', '[]', '2022-12-12 10:59:28', '2022-12-12 10:59:28'),
+(2119, 1, 'admin/orders', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2022-12-12 10:59:37', '2022-12-12 10:59:37'),
+(2120, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 10:59:41', '2022-12-12 10:59:41'),
+(2121, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:02:56', '2022-12-12 11:02:56'),
+(2122, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:03:14', '2022-12-12 11:03:14'),
+(2123, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:04:09', '2022-12-12 11:04:09'),
+(2124, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:04:43', '2022-12-12 11:04:43'),
+(2125, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:05:15', '2022-12-12 11:05:15'),
+(2126, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:05:31', '2022-12-12 11:05:31'),
+(2127, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:05:45', '2022-12-12 11:05:45'),
+(2128, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:06:27', '2022-12-12 11:06:27'),
+(2129, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:06:50', '2022-12-12 11:06:50'),
+(2130, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:07:00', '2022-12-12 11:07:00'),
+(2131, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:07:14', '2022-12-12 11:07:14'),
+(2132, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:07:40', '2022-12-12 11:07:40'),
+(2133, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:08:04', '2022-12-12 11:08:04'),
+(2134, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:08:27', '2022-12-12 11:08:27'),
+(2135, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:09:10', '2022-12-12 11:09:10'),
+(2136, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:09:30', '2022-12-12 11:09:30'),
+(2137, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:10:05', '2022-12-12 11:10:05'),
+(2138, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:10:18', '2022-12-12 11:10:18'),
+(2139, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:10:41', '2022-12-12 11:10:41'),
+(2140, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:11:25', '2022-12-12 11:11:25'),
+(2141, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:13:08', '2022-12-12 11:13:08'),
+(2142, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:13:52', '2022-12-12 11:13:52'),
+(2143, 1, 'admin/venue/order/invoice/1', 'GET', '127.0.0.1', '[]', '2022-12-12 11:14:28', '2022-12-12 11:14:28');
 
 -- --------------------------------------------------------
 
@@ -2100,7 +2168,14 @@ INSERT INTO `event_calendars` (`id`, `venue_id`, `title`, `description`, `feedba
 (6, 8, 'Party', 'Available for any perty', NULL, '2022-08-18', '2022-08-19', 1, 'pending', 2, NULL, '2022-08-02 04:37:06', '2022-08-02 04:37:06'),
 (7, 1, 'Weeding', 'Available', NULL, '2022-08-14', '2022-08-17', 1, 'pending', 2, NULL, '2022-08-02 04:39:13', '2022-08-02 04:39:13'),
 (8, 1, 'Weeding', NULL, NULL, '2022-08-22', '2022-08-24', 1, 'pending', 2, NULL, '2022-08-02 04:39:25', '2022-08-02 04:39:25'),
-(9, 2, 'weeding', NULL, NULL, '2022-08-02', '2022-08-03', 1, 'pending', 1, NULL, '2022-08-24 06:34:10', '2022-08-24 06:34:10');
+(9, 2, 'weeding', NULL, NULL, '2022-08-02', '2022-08-03', 1, 'pending', 1, NULL, '2022-08-24 06:34:10', '2022-08-24 06:34:10'),
+(10, 1, 'Weeding', 'Available for any Weeding occasions', NULL, '2022-12-12', '2022-12-15', 1, 'approved', 2, 1, '2022-08-02 03:43:35', '2022-08-02 03:44:14'),
+(11, 2, 'Weeding', 'Available for any Weeding occasions', NULL, '2022-12-12', '2022-12-15', 1, 'approved', 2, 1, '2022-08-02 03:43:35', '2022-08-02 03:44:14'),
+(12, 3, 'Weeding', 'Available for any Weeding occasions', NULL, '2022-12-12', '2022-12-15', 1, 'approved', 2, 1, '2022-08-02 03:43:35', '2022-08-02 03:44:14'),
+(13, 4, 'Weeding', 'Available for any Weeding occasions', NULL, '2022-12-12', '2022-12-15', 1, 'approved', 2, 1, '2022-08-02 03:43:35', '2022-08-02 03:44:14'),
+(14, 6, 'Weeding', 'Available for any Weeding occasions', NULL, '2022-12-12', '2022-12-15', 1, 'approved', 2, 1, '2022-08-02 03:43:35', '2022-08-02 03:44:14'),
+(15, 7, 'Weeding', 'Available for any Weeding occasions', NULL, '2022-12-21', '2022-12-31', 1, 'approved', 2, 1, '2022-08-02 03:43:35', '2022-08-02 03:44:14'),
+(16, 8, 'Weeding', 'Available for any Weeding occasions', NULL, '2022-12-28', '2022-12-31', 1, 'approved', 2, 1, '2022-08-02 03:43:35', '2022-08-02 03:44:14');
 
 -- --------------------------------------------------------
 
@@ -2133,6 +2208,31 @@ CREATE TABLE `inboxes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` bigint UNSIGNED NOT NULL,
+  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attempts` tinyint UNSIGNED NOT NULL,
+  `reserved_at` int UNSIGNED DEFAULT NULL,
+  `available_at` int UNSIGNED NOT NULL,
+  `created_at` int UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `queue`, `payload`, `attempts`, `reserved_at`, `available_at`, `created_at`) VALUES
+(10, 'default', '{\"uuid\":\"8cd0699c-dd2f-4097-84d3-1839a238d8ba\",\"displayName\":\"App\\\\Mail\\\\AdminVenueBookingMailNotification\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Mail\\\\SendQueuedMailable\",\"command\":\"O:34:\\\"Illuminate\\\\Mail\\\\SendQueuedMailable\\\":15:{s:8:\\\"mailable\\\";O:42:\\\"App\\\\Mail\\\\AdminVenueBookingMailNotification\\\":3:{s:5:\\\"order\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":5:{s:5:\\\"class\\\";s:16:\\\"App\\\\Models\\\\Order\\\";s:2:\\\"id\\\";i:6;s:9:\\\"relations\\\";a:3:{i:0;s:5:\\\"venue\\\";i:1;s:18:\\\"venue.organization\\\";i:2;s:8:\\\"occasion\\\";}s:10:\\\"connection\\\";s:5:\\\"mysql\\\";s:15:\\\"collectionClass\\\";N;}s:2:\\\"to\\\";a:1:{i:0;a:2:{s:4:\\\"name\\\";N;s:7:\\\"address\\\";s:24:\\\"abdulawalbd121@gmail.com\\\";}}s:6:\\\"mailer\\\";s:4:\\\"smtp\\\";}s:5:\\\"tries\\\";N;s:7:\\\"timeout\\\";N;s:13:\\\"maxExceptions\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}s:3:\\\"job\\\";N;}\"}}', 0, NULL, 1670860471, 1670860471),
+(11, 'default', '{\"uuid\":\"83f0ed67-0290-4d18-a523-4f4a49c2e927\",\"displayName\":\"App\\\\Mail\\\\CustomerVenueBookingConfirmationNotification\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Mail\\\\SendQueuedMailable\",\"command\":\"O:34:\\\"Illuminate\\\\Mail\\\\SendQueuedMailable\\\":15:{s:8:\\\"mailable\\\";O:53:\\\"App\\\\Mail\\\\CustomerVenueBookingConfirmationNotification\\\":3:{s:5:\\\"order\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":5:{s:5:\\\"class\\\";s:16:\\\"App\\\\Models\\\\Order\\\";s:2:\\\"id\\\";i:6;s:9:\\\"relations\\\";a:3:{i:0;s:5:\\\"venue\\\";i:1;s:18:\\\"venue.organization\\\";i:2;s:8:\\\"occasion\\\";}s:10:\\\"connection\\\";s:5:\\\"mysql\\\";s:15:\\\"collectionClass\\\";N;}s:2:\\\"to\\\";a:1:{i:0;a:2:{s:4:\\\"name\\\";N;s:7:\\\"address\\\";s:24:\\\"abdulawalbd121@gmail.com\\\";}}s:6:\\\"mailer\\\";s:4:\\\"smtp\\\";}s:5:\\\"tries\\\";N;s:7:\\\"timeout\\\";N;s:13:\\\"maxExceptions\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}s:3:\\\"job\\\";N;}\"}}', 0, NULL, 1670860471, 1670860471),
+(12, 'default', '{\"uuid\":\"c0d78956-8724-48d4-b25f-771bd4848749\",\"displayName\":\"App\\\\Mail\\\\VenueOwnerVenueBookingMailNotification\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Mail\\\\SendQueuedMailable\",\"command\":\"O:34:\\\"Illuminate\\\\Mail\\\\SendQueuedMailable\\\":15:{s:8:\\\"mailable\\\";O:47:\\\"App\\\\Mail\\\\VenueOwnerVenueBookingMailNotification\\\":3:{s:5:\\\"order\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":5:{s:5:\\\"class\\\";s:16:\\\"App\\\\Models\\\\Order\\\";s:2:\\\"id\\\";i:6;s:9:\\\"relations\\\";a:3:{i:0;s:5:\\\"venue\\\";i:1;s:18:\\\"venue.organization\\\";i:2;s:8:\\\"occasion\\\";}s:10:\\\"connection\\\";s:5:\\\"mysql\\\";s:15:\\\"collectionClass\\\";N;}s:2:\\\"to\\\";a:1:{i:0;a:2:{s:4:\\\"name\\\";N;s:7:\\\"address\\\";s:24:\\\"abdulawalbd121@gmail.com\\\";}}s:6:\\\"mailer\\\";s:4:\\\"smtp\\\";}s:5:\\\"tries\\\";N;s:7:\\\"timeout\\\";N;s:13:\\\"maxExceptions\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}s:3:\\\"job\\\";N;}\"}}', 0, NULL, 1670860471, 1670860471);
 
 -- --------------------------------------------------------
 
@@ -2189,7 +2289,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (47, '2022_08_27_052225_create_linked_social_accounts_table', 16),
 (48, '2022_08_30_040136_create_inboxes_table', 17),
 (49, '2022_08_30_050052_create_testmonials_table', 18),
-(52, '2022_07_27_125752_create_orders_table', 19);
+(52, '2022_07_27_125752_create_orders_table', 19),
+(53, '2022_12_11_153820_create_jobs_table', 20);
 
 -- --------------------------------------------------------
 
@@ -2333,7 +2434,11 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `venue_id`, `user_id`, `category_id`, `occasion_id`, `start_date`, `end_date`, `name`, `email`, `mobile_number`, `capacity`, `total_guests`, `price_type`, `net_total_price`, `address`, `receive_promotional_offers`, `agree`, `status`, `transaction_id`, `currency`, `payment_status`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 2, 2, '2022-08-05 00:00:00', '2022-08-05 00:00:00', 'Baker Edwards', 'kixyzigu@mailinator.com', '716', 6000, 1602, 'Per Night', '55000.00', 'Nobis lorem aute vol', 0, 1, 'approved', 'BO/1/631f4441b8c04', 'BDT', 'complete', '2022-09-12 08:37:53', '2022-09-12 08:38:08'),
-(2, 1, 1, 1, 2, '2022-08-05 00:00:00', '2022-08-05 00:00:00', 'User', 'user@gmail.com', '01717293722', 6000, 1, 'Per Night', '55000.00', 'g', 0, 0, 'pending', 'BO/2/631f4466607e6', 'BDT', 'failed', '2022-09-12 08:38:29', '2022-09-12 08:38:37');
+(2, 1, 1, 1, 2, '2022-08-05 00:00:00', '2022-08-05 00:00:00', 'User', 'user@gmail.com', '01717293722', 6000, 1, 'Per Night', '55000.00', 'g', 0, 0, 'pending', 'BO/2/631f4466607e6', 'BDT', 'failed', '2022-09-12 08:38:29', '2022-09-12 08:38:37'),
+(3, 1, 5, 2, 1, '2022-08-05 00:00:00', '2022-08-05 00:00:00', 'Usertyytyt', 'abdulawalbd121@gmail.com', '01717293722', 6000, 100, 'Per Night', '55000.00', 'Walia, Lalpur, Natore.', 1, 1, 'approved', 'BO/3/6395fc66ab704', 'BDT', 'complete', '2022-12-11 09:51:01', '2022-12-11 09:52:47'),
+(4, 1, 5, 2, 2, '2022-08-05 00:00:00', '2022-08-05 00:00:00', 'Usertyytyt', 'abdulawalbd121@gmail.com', '01717293722', 6000, 111, 'Per Night', '55000.00', 'Walia, Lalpur, Natore.', 0, 0, 'approved', 'BO/4/6396051b64d9d', 'BDT', 'complete', '2022-12-11 10:28:10', '2022-12-11 10:28:22'),
+(5, 1, 5, 1, 2, '2022-08-05 00:00:00', '2022-08-05 00:00:00', 'Usertyytyt', 'abdulawalbd121@gmail.com', '01717293722', 6000, 2, 'Per Night', '55000.00', 'Walia, Lalpur, Natore.', 1, 1, 'approved', 'BO/5/639605a6a7de2', 'BDT', 'complete', '2022-12-11 10:30:29', '2022-12-11 10:30:42'),
+(6, 1, 5, 1, 1, '2022-12-13 00:00:00', '2022-12-13 00:00:00', 'Usertyytyt', 'abdulawalbd121@gmail.com', '3232', 6000, 50, 'Per Night', '55000.00', 'Walia, Lalpur, Natore.', 1, 1, 'approved', 'BO/6/63974e9342ed8', 'BDT', 'complete', '2022-12-12 09:53:54', '2022-12-12 09:54:28');
 
 -- --------------------------------------------------------
 
@@ -2434,7 +2539,8 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (3, 'App\\Models\\User', 6, 'abdulawalbd121@gmail.com_Token', '099722fe9aaae3482682a7fc942fe5c8ab3a6d94ff4104fd1e98ea0f90801a8a', '[\"*\"]', NULL, '2022-08-25 06:56:17', '2022-08-25 06:56:17'),
 (4, 'App\\Models\\User', 7, 'abdulawalbd121@gmail.com_Token', '2946a4bdef12496aa51cbe60a921d675b115fa1d987b099f670e2a764e64298c', '[\"*\"]', NULL, '2022-08-25 07:02:42', '2022-08-25 07:02:42'),
 (5, 'App\\Models\\User', 9, 'abdulawalbd121@gmail.com_Token', 'e8fbd69117d3174e97a896ae5db751829d6583491bf12ce6906a5318bf5efff0', '[\"*\"]', NULL, '2022-08-25 07:07:01', '2022-08-25 07:07:01'),
-(14, 'App\\Models\\User', 15, '_Token', '879a6eaea2f90044a10b94cd030edb8538c8c13aa03614673b7ff74e8cd1badc', '[\"*\"]', NULL, '2022-08-26 23:57:07', '2022-08-26 23:57:07');
+(14, 'App\\Models\\User', 15, '_Token', '879a6eaea2f90044a10b94cd030edb8538c8c13aa03614673b7ff74e8cd1badc', '[\"*\"]', NULL, '2022-08-26 23:57:07', '2022-08-26 23:57:07'),
+(23, 'App\\Models\\User', 5, 'erterert@gmail.com_Token', '22aac79d27448412056c6090a8d4450381ae80056113d51c3634dcf192ea66cd', '[\"*\"]', '2022-12-12 09:53:53', '2022-12-08 02:09:52', '2022-12-12 09:53:53');
 
 -- --------------------------------------------------------
 
@@ -2490,7 +2596,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `has_socials_auth`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'User', 'user', 'user@gmail.com', '2022-08-01 21:19:26', '$2y$10$UzF1VUYzeLHjvV9Tm5UKgeJ5G5uUHsmwXg/I0e2b0/pWqbWjFzaMW', 0, 'Customer', NULL, '2022-07-30 23:09:46', '2022-08-27 00:21:07'),
+(1, 'User', 'user', 'abdulawalbd121@gmail.com', '2022-08-01 21:19:26', '$2y$10$UzF1VUYzeLHjvV9Tm5UKgeJ5G5uUHsmwXg/I0e2b0/pWqbWjFzaMW', 0, 'Customer', NULL, '2022-07-30 23:09:46', '2022-08-27 00:21:07'),
 (2, 'admin', 'admin', 'admin@gmail.com', '2022-08-01 21:19:39', '$2y$10$MxD/BxA13ZTpVfG.U8UJu.oyi0NuxxOLIl7UajNoGPpa6K18oZb9m', 0, 'Customer', NULL, '2022-08-01 21:20:17', '2022-08-01 21:20:17'),
 (3, 'User', 'useddds', 'usser@gmail.com', NULL, '$2y$10$uaDtsva7C7FQdXt56Uqeb.KJ.CGzBSTOylw6sNsR.G4n2q67RTw6m', 0, 'Customer', NULL, '2022-12-03 19:30:33', '2022-12-03 19:30:33'),
 (4, 'User', 'user2323', 'abdulawalesesebd121@gmail.com', NULL, '$2y$10$y7k51u2I94DjGRb0XdLk9OvgcmITE5DI9h9m3jd4eKQr3runA2Mua', 0, 'Customer', NULL, '2022-12-03 19:31:52', '2022-12-03 19:31:52'),
@@ -2558,7 +2664,7 @@ CREATE TABLE `venues` (
 --
 
 INSERT INTO `venues` (`id`, `organization_id`, `featured_image`, `images`, `name`, `slug`, `star_rating`, `description`, `additional_info`, `price_type`, `price`, `capacity`, `division_id`, `district_id`, `city_id`, `address`, `is_enabled`, `creator_type`, `updater_type`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 'images/Su6K3abpVVMG6meWU1fNnftLx6nsRsl2VpgtX07n.jpeg', '[\"images\\/9207fcd26ab3f333e43fa2bb6a490822.jpg\",\"images\\/ccc3321c0876de924a201e3c7e99758e.jpg\",\"images\\/629c02c54c4ee7f15ac8e3b535f06d83.jpg\",\"images\\/4bc2319d8ad5023494962a6e860595cc.jpg\",\"images\\/8f63cfcb3140122620d4c0250698b493.jpg\",\"images\\/39f511b194694706ce3300fca2d3ceac.jpg\"]', 'Radisson', 'radisson', 5, '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul><p class=\"ql-align-justify\"><br></p>', NULL, 'per-night', '55000.00', 6000, 6, 47, 365, 'Dhaka', 0, 'AdminUser', 'AdminUser', 1, 1, '2022-07-28 17:27:58', '2022-08-29 00:17:44'),
+(1, 5, 'images/Su6K3abpVVMG6meWU1fNnftLx6nsRsl2VpgtX07n.jpeg', '[\"images\\/9207fcd26ab3f333e43fa2bb6a490822.jpg\",\"images\\/ccc3321c0876de924a201e3c7e99758e.jpg\",\"images\\/629c02c54c4ee7f15ac8e3b535f06d83.jpg\",\"images\\/4bc2319d8ad5023494962a6e860595cc.jpg\",\"images\\/8f63cfcb3140122620d4c0250698b493.jpg\",\"images\\/39f511b194694706ce3300fca2d3ceac.jpg\"]', 'Radisson', 'radisson', 5, '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul><p class=\"ql-align-justify\"><br></p>', NULL, 'per-night', '55000.00', 6000, 6, 47, 365, 'Dhaka', 0, 'AdminUser', 'AdminUser', 1, 1, '2022-07-28 17:27:58', '2022-08-29 00:17:44'),
 (2, 1, 'images/ecc1f5feaa3d04d18bb267a168ddde93.jpg', '[\"images\\/4261349ffd7c372a2e3aee32fe135432.jpg\",\"images\\/a28db48be398205b44e5ce93fc4a1d3d.jpg\",\"images\\/86a3be7307e5ccccbe8b0b107eeae690.jpg\",\"images\\/c9f29ee6a0277f895337185dd1762bcc.jpg\",\"images\\/2c19186ea5814cb7ab2f784b2c5d7a1f.jpg\"]', 'Essel Tower Club', 'essel-tower-club', 5, '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul><p class=\"ql-align-justify\"><br></p><p><br></p>', NULL, 'per-night', '30000.00', 2000, 6, 41, 318, NULL, 1, 'AdminUser', 'AdminUser', 1, 1, '2022-07-28 17:35:39', '2022-08-27 07:30:41'),
 (3, 1, 'images/7f3661339aa4b6985d4ad3fadb0d4381.jpg', '[\"images\\/ead5e126a0944278d00c5dacd405a3d3.jpg\",\"images\\/967ae11f4ab07961d3da3a8ef6e68d98.jpg\",\"images\\/dcf264d3d3250b129650fa0247297d3e.jpg\",\"images\\/d08989d96a004451912d046f3cf6c9b4.jpg\",\"images\\/718a2ac555c92843865ca941bbe12ef4.jpg\",\"images\\/9f7f002e1dabbfc66bb701403e0441d9.jpg\",\"images\\/72af8f89a50fe232a1ed1ebbab588cd5.jpg\",\"images\\/168b3db307fbff48e7aeaa4eb09ce789.jpg\",\"images\\/d6b22601040c367d309c0db961348a9c.jpg\",\"images\\/569f8b2e02160d10cbf1bf32a0a3ee61.jpg\"]', 'Farm Aravalia Mangar', 'farm-aravalia-mangar', 3, '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul>', NULL, 'per-day', '70000.00', 10000, 5, 38, 299, NULL, 1, 'AdminUser', 'AdminUser', 1, 1, '2022-07-28 17:46:20', '2022-08-27 07:30:56'),
 (4, 1, 'images/0c2c51ea4ab44383f29e5b1a815978d7.jpg', '[\"images\\/001bad455e66c40d6ee1688215d37121.jpg\",\"images\\/68e71848b990d2c04e265c538c326181.jpg\",\"images\\/59be9358e31f763ebf9d34c88b1dea10.jpg\",\"images\\/f2ecfc8c06540a1ff5f6ae34a0e8b325.jpg\",\"images\\/ffe12e10c5a5d402d78c0e973c04f710.jpg\",\"images\\/115086b41b2e2961f45b038b69f0c808.jpg\"]', 'Dreams Gardens', 'dreams-gardens', NULL, '<h4><strong>Approach</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson Gurgaon is an extremely beautiful property with all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyh all the necessary amenities. It is located near Delhi International Airport in Gurgaon, thus making it easily commutable. Radisson Gurgaon, Udyog Vihar III, stands for generosity and sophistication.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Ambience</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar has everything to organize your ceremonies easily and meet with all your party or banqueting needs &amp; demands to make your occasion an enjoyable experience for you and your famivent spaces like the beautiful banquet halls, smashing poolside venue, airy terrace space, and huge lawn space. The hotel is equipped to organize any kind of function, however, big or small it may be.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Food and Service</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson in Udyog Vihar offers you with its extravagant services to make your event a successful endeavor and make sure that you and your guests\' needs are fulfilled. Their in-house caterers offer an&nbsp;single aspect of your wedding will be taken care of. They put their best efforts to understand and fulfill all your expectations to deliver maximum customer satisfaction with their excellent services.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Known For</strong></h4><p><br></p><p class=\"ql-align-justify\">Radisson is well known for its great hospitality and services which is handled by efficient staff and management who would do everything catering to all your needs with the utmost care and courtesy. T&nbsp;do everything catering to all your needs with the utmost care and courtesy. They offer venue spaces to hold many events to celebrate various occasions and ensure that everyone has a great experience.</p><p class=\"ql-align-justify\"><br></p><h4><strong>Best suited for</strong></h4><p><br></p><ul><li>Anniversary</li><li>Birthday Party</li><li>Cocktail Party</li><li>Conference</li><li>Corporate Party</li><li>Engagement</li><li>First Birthday Party</li><li>Meeting</li><li>Party</li><li>Pool Party</li><li>Reception</li><li>Social Gathering</li><li>Team Building</li><li>Wedding</li></ul><p><br></p><h4><strong>Cuisines</strong></h4><p><br></p><ul><li>Multi Cuisine</li><li>Social Function Menu</li><li>High Tea Menu</li></ul><p><br></p><h4><strong>Terms and Conditions</strong></h4><p><br></p><ul><li>All Government applicable taxes will be applied.</li><li>All Venue Rules Apply.</li></ul><p><br></p>', NULL, 'per-day', '80000.00', 20000, 8, 63, 479, NULL, 1, 'AdminUser', NULL, 1, NULL, '2022-07-28 17:52:38', '2022-07-28 17:52:38'),
@@ -2725,6 +2831,13 @@ ALTER TABLE `inboxes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_queue_index` (`queue`);
+
+--
 -- Indexes for table `linked_social_accounts`
 --
 ALTER TABLE `linked_social_accounts`
@@ -2864,7 +2977,7 @@ ALTER TABLE `admin_menu`
 -- AUTO_INCREMENT for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2076;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2144;
 
 --
 -- AUTO_INCREMENT for table `admin_permissions`
@@ -2930,7 +3043,7 @@ ALTER TABLE `divisions`
 -- AUTO_INCREMENT for table `event_calendars`
 --
 ALTER TABLE `event_calendars`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -2945,6 +3058,12 @@ ALTER TABLE `inboxes`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `linked_social_accounts`
 --
 ALTER TABLE `linked_social_accounts`
@@ -2954,7 +3073,7 @@ ALTER TABLE `linked_social_accounts`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `occasions`
@@ -2972,7 +3091,7 @@ ALTER TABLE `occasion_venue`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `organizations`
@@ -2990,7 +3109,7 @@ ALTER TABLE `organization_user`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `testmonials`

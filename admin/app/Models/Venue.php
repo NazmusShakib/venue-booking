@@ -167,8 +167,8 @@ class Venue extends Model
         $calendarsDates = [];
         $ordersDates = [];
 
-        $calendars = EventCalendar::where('venue_id', $this->id)->where('status', 'approved')->get(['start_date', 'end_date'])->toArray();
-        $orders = Order::where('venue_id', $this->id)->where('status', 'approved')->where('payment_status', 'completed')->get(['start_date', 'end_date'])->toArray();
+        $calendars = EventCalendar::where('venue_id', $this->id)->where('status', 'approved')->whereDate('start_date', '>=', date('Y-m-d'))->get(['start_date', 'end_date'])->toArray();
+        $orders = Order::where('venue_id', $this->id)->where('status', 'approved')->where('payment_status', 'complete')->get(['start_date', 'end_date'])->toArray();
 
         foreach($calendars as $value)
             $calendarsDates = array_merge($calendarsDates, $this->getBetweenDates($value['start_date'], $value['end_date']));
@@ -188,7 +188,14 @@ class Venue extends Model
         $check_out = date('Y-m-d', strtotime($data['check_out']));
 
         $query->whereHas('calendarDates', function($query) use($check_in, $check_out) {
+           $query->where('status', 'approved')
+                ->whereDate('start_date', '>=', date('Y-m-d'))
+                ->whereDate('start_date', '<=', $check_in)
+                ->whereDate('end_date', '>=', $check_out);
+       })
+       ->whereDoesntHave('books', function($query) use($check_in, $check_out) {
             $query->where('status', 'approved')
+            ->where('payment_status', 'complete')
             ->where(function($query) use($check_in, $check_out) {
                 $query->where(function($query) use($check_in, $check_out){
                     $query->whereDate('start_date', '>=', $check_in)
@@ -196,9 +203,6 @@ class Venue extends Model
                 })->orWhere(function($query) use($check_in, $check_out){
                     $query->whereDate('end_date', '>=', $check_in)
                         ->whereDate('end_date', '<=', $check_out);
-                })->orWhere(function($query) use($check_in, $check_out){
-                    $query->where('start_date', '<=', $check_in)
-                      ->where('end_date', '>=', $check_out);
                 });
             });
         });
@@ -211,30 +215,25 @@ class Venue extends Model
         $venue_id = $data['venue_id'];
 
        $query->whereHas('calendarDates', function($query) use($check_in, $check_out, $venue_id) {
-               $query->where('venue_id', $venue_id)
-                ->where('status', 'approved')
-                ->whereBetween('start_date',[$check_in, $check_out])
-                ->whereBetween('end_date',[$check_in, $check_out])
-                ->orWhere(function($query) use($check_in, $check_out, $venue_id){
-                    $query->where('venue_id', $venue_id)
-                        ->where('status', 'approved')
-                        ->where('start_date', '<=', $check_in)
-                        ->where('end_date', '>=', $check_out);
-                });
-           })
-           ->whereDoesntHave('books', function($query) use($check_in, $check_out, $venue_id) {
-                $query->where('venue_id', $venue_id)
-                ->where('status', 'approved')
-                ->where('payment_status', 'completed')
-                ->where(function($query) use($check_in, $check_out) {
-                    $query->where(function($query) use($check_in, $check_out){
-                        $query->whereDate('start_date', '>=', $check_in)
-                            ->whereDate('start_date', '<=', $check_out);
-                    })->orWhere(function($query) use($check_in, $check_out){
-                        $query->whereDate('end_date', '>=', $check_in)
-                            ->whereDate('end_date', '<=', $check_out);
-                    });
+           $query->where('venue_id', $venue_id)
+            ->where('status', 'approved')
+            ->whereDate('start_date', '>=', date('Y-m-d'))
+            ->whereDate('start_date', '<=', $check_in)
+            ->whereDate('end_date', '>=', $check_out);
+       })
+       ->whereDoesntHave('books', function($query) use($check_in, $check_out, $venue_id) {
+            $query->where('venue_id', $venue_id)
+            ->where('status', 'approved')
+            ->where('payment_status', 'complete')
+            ->where(function($query) use($check_in, $check_out) {
+                $query->where(function($query) use($check_in, $check_out){
+                    $query->whereDate('start_date', '>=', $check_in)
+                        ->whereDate('start_date', '<=', $check_out);
+                })->orWhere(function($query) use($check_in, $check_out){
+                    $query->whereDate('end_date', '>=', $check_in)
+                        ->whereDate('end_date', '<=', $check_out);
                 });
             });
+        });
     }
 }

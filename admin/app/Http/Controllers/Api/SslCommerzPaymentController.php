@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Library\SslCommerz\SslCommerzNotification;
 use App\Models\Order;
+use Mpdf\Mpdf;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AdminVenueBookingMailNotification;
+use App\Mail\CustomerVenueBookingConfirmationNotification;
+use App\Mail\VenueOwnerVenueBookingMailNotification;
 
 class SslCommerzPaymentController extends Controller
 {
@@ -64,9 +69,40 @@ class SslCommerzPaymentController extends Controller
             print_r($payment_options);
             $payment_options = array();
         }
-
     }
 
+    public function after_payment_success($id){
+        $order = Order::find($id);
+        $html = view('pdf.bookingInvoice', compact('order'));
+
+        $mpdf = new mPDF([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'margin_bottom' => 0,
+            'margin_footer' => 5,
+        ]);
+
+        //For Multilanguage Start
+        $mpdf->autoScriptToLang = true;
+        $mpdf->baseScript = 1;
+        $mpdf->autoLangToFont = true;
+        $mpdf->autoVietnamese = true;
+        $mpdf->autoArabic = true;
+        //For Multilanguage End
+
+        $mpdf->setAutoTopMargin = 'stretch';
+        $mpdf->setAutoBottomMargin = 'stretch';
+        $mpdf->SetDisplayMode('none');
+        $mpdf->writeHTML($html);
+        //$mpdf->Output('invoice_'.time().'.pdf', 'I');
+        $name = 'invoice_'.$order->id.'.pdf';
+        $file = $mpdf->Output($name, 'S');
+        \Storage::disk('public')->put('invoices/'.$name, $file);
+
+        Mail::to(env('BOOKING_ADMIN_MAIL_ADDRESS'))->queue(new AdminVenueBookingMailNotification($order));
+        Mail::to($order->email)->queue(new CustomerVenueBookingConfirmationNotification($order));
+        Mail::to($order->venue->organization->email)->queue(new VenueOwnerVenueBookingMailNotification($order));
+    }
     public function success(Request $request)
     {
         $status = 200;
@@ -95,6 +131,9 @@ class SslCommerzPaymentController extends Controller
                 $order->status = 'approved';
                 $order->update();
                 $message = "Transaction is successfully Completed.";
+
+                //Invoice generating Email Notification Sending
+                $this->after_payment_success($order->id);
             } else {
                 /*
                 That means IPN did not work or IPN URL was not set in your merchant panel and Transation validation failed.
@@ -117,7 +156,7 @@ class SslCommerzPaymentController extends Controller
             $message = "Invalid Transaction.";
         }
 
-        $redirect_url = env("PAYMENT_CLIENT_REDIRECT")."?status={$status}&message={$message}";
+        $redirect_url = env("PAYMENT_CLIENT_REDIRECT")."?order={$order->id}&status={$status}&message={$message}";
         return redirect($redirect_url);
     }
 
